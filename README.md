@@ -1,58 +1,63 @@
 # TipiTip
 
-Per-paragraph content tipping MiniApp on Celo
+**Per-paragraph content tipping on Celo.** Writers publish a markdown article in a minute, share the link, readers tap ❤️ under any paragraph they like and instantly send the author a small cUSD tip. No subscriptions, no middlemen, no minimum payouts.
 
-A modern Celo blockchain application built with Next.js, TypeScript, and Turborepo.
+- ✍️ **Publish** in markdown with a live preview. Body content is uploaded to decentralized storage and content-addressed by hash.
+- ❤️ **Tip** any paragraph with a single tap. Readers pre-approve a cUSD allowance once; every tip after that is one transaction at sub-cent gas on Celo.
+- 💸 **Claim** accumulated tips to your wallet in one cUSD transfer. Works in MiniPay or any Celo-compatible wallet.
 
-## Getting Started
+## Architecture
 
-1. Install dependencies:
-   ```bash
-   pnpm install
-   ```
+| Layer | Tech |
+|---|---|
+| Web app | Next.js 14 (App Router), TypeScript, TailwindCSS, Radix UI, [@composer-kit/ui](https://www.composerkit.xyz/) |
+| Web3 client | viem 2.x + wagmi 2.x + RainbowKit |
+| Smart contract | UUPS-upgradeable Solidity 0.8.28 on Celo, OpenZeppelin contracts-upgradeable 5.6 |
+| Content storage | Vercel Blob (markdown bodies), content-addressed by keccak256 hash |
+| Monorepo | Turborepo |
 
-2. Start the development server:
-   ```bash
-   pnpm dev
-   ```
-
-3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+Articles are identified on-chain by `articleId = keccak256(authorAddress || slug)`. Per-paragraph tip targets use `paragraphKey = keccak256(articleId || uint32(paragraphIndex) || keccak256(paragraphText))` so edits to one paragraph do not invalidate tips already collected on another.
 
 ## Project Structure
 
-This is a monorepo managed by Turborepo with the following structure:
+```
+apps/web         Next.js application (writer, reader, dashboard)
+apps/contracts   Hardhat smart contract development environment
+```
 
-- `apps/web` - Next.js application with embedded UI components and utilities
-- `apps/contracts` - Hardhat smart contract development environment
+## Quick start
 
-## Available Scripts
+```bash
+pnpm install
+pnpm dev                 # runs Next.js dev server on :3000
+```
 
-- `pnpm dev` - Start development servers
-- `pnpm build` - Build all packages and apps
-- `pnpm lint` - Lint all packages and apps
-- `pnpm type-check` - Run TypeScript type checking
+Copy `.env.example` to the appropriate `.env` files and fill in the values. The web app reads `apps/web/.env.local`; the contracts read `apps/contracts/.env`.
 
-### Smart Contract Scripts
+## Smart contract scripts
 
-- `pnpm contracts:compile` - Compile smart contracts
-- `pnpm contracts:test` - Run smart contract tests
-- `pnpm contracts:deploy` - Deploy contracts to local network
-- `pnpm contracts:deploy:celo-sepolia` - Deploy to Celo Sepolia Testnet
-- `pnpm contracts:deploy:celo` - Deploy to Celo Mainnet
+```bash
+pnpm contracts:compile             # compile Solidity
+pnpm contracts:test                # run Hardhat test suite (viem + chai)
+pnpm contracts:deploy:celo-sepolia # deploy UUPS proxy to Celo Sepolia
+pnpm contracts:deploy:celo         # deploy UUPS proxy to Celo Mainnet
+```
 
-## Tech Stack
+After deploy the script prints both the proxy and implementation addresses. Verify the implementation on Celoscan with:
 
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: shadcn/ui
-- **Smart Contracts**: Hardhat with Viem
-- **Monorepo**: Turborepo
-- **Package Manager**: PNPM
+```bash
+cd apps/contracts
+pnpm hardhat verify --network celo-sepolia <implementation-address>
+```
 
-## Learn More
+## Tests
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Celo Documentation](https://docs.celo.org/)
-- [Turborepo Documentation](https://turbo.build/repo/docs)
-- [shadcn/ui Documentation](https://ui.shadcn.com/)
+```bash
+pnpm contracts:test                # 16 Hardhat tests covering register / tip /
+                                   # claim / UUPS upgrade safety / guards
+pnpm --filter web test:e2e         # Playwright smoke tests against dev server
+```
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
