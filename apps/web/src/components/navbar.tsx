@@ -13,9 +13,16 @@ import {
 } from "@/components/ui/sheet"
 import { ConnectButton } from "@/components/connect-button"
 
-const navLinks = [
+interface NavLink {
+  name: string
+  href: string
+  external?: boolean
+}
+
+const navLinks: NavLink[] = [
   { name: "Home", href: "/" },
-  { name: "Docs", href: "https://docs.celo.org", external: true },
+  { name: "Write", href: "/write" },
+  { name: "Dashboard", href: "/dashboard" },
 ]
 
 export function Navbar() {
