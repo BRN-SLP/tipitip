@@ -1,53 +1,97 @@
 import Link from "next/link";
+import { Heart, PenLine, Wallet, Zap } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { UserBalance } from "@/components/user-balance";
-import { Zap } from "lucide-react";
 
 export default function Home() {
   return (
-<main className="flex-1">
-  {/* Hero Section */}
-  <section className="relative py-20 lg:py-32">
-    <div className="container px-4 mx-auto max-w-7xl">
-      <div className="text-center max-w-4xl mx-auto">
-        {/* Badge */}
-        <div
-          className="inline-flex items-center gap-2 px-3 py-1 mb-8 text-sm font-medium bg-primary/10 text-primary rounded-full border border-primary/20"
-        >
-          <Zap className="h-4 w-4" />
-          Built on Celo
+    <main className="flex-1">
+      <section className="relative py-16 lg:py-24">
+        <div className="container mx-auto max-w-5xl px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+              <Zap className="h-4 w-4" />
+              Tip paragraph by paragraph
+            </div>
+
+            <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
+              Reward writers for the lines that move you
+            </h1>
+
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Publish a markdown article in a minute, share the link, let
+              readers tip you cUSD per paragraph. No subscriptions, no
+              middlemen, no minimum payouts.
+            </p>
+
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button asChild size="lg">
+                <Link href="/write">
+                  <PenLine className="mr-2 h-4 w-4" />
+                  Start writing
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/dashboard">
+                  <Wallet className="mr-2 h-4 w-4" />
+                  Open dashboard
+                </Link>
+              </Button>
+            </div>
+
+            <div className="mt-12">
+              <UserBalance />
+            </div>
+          </div>
         </div>
+      </section>
 
-        {/* Main Heading */}
-        <h1
-          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
-        >
-          Welcome to{" "}
-          <span className="text-primary">TipiTip</span>
-        </h1>
+      <section className="container mx-auto max-w-5xl px-4 pb-20">
+        <div className="grid gap-6 md:grid-cols-3">
+          <Card>
+            <CardHeader>
+              <PenLine className="h-6 w-6 text-primary" />
+              <CardTitle className="mt-3 text-lg">Publish in markdown</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground">
+              Live preview, slug auto-derived from your title, body uploaded to
+              decentralized storage and content-addressed by a hash.
+            </CardContent>
+          </Card>
 
-        {/* Subtitle */}
-        <p
-          className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed"
-        >
-          Start building your decentralized application on Celo. Fast and secure blockchain for everyone.
-        </p>
+          <Card>
+            <CardHeader>
+              <Heart className="h-6 w-6 text-rose-500" />
+              <CardTitle className="mt-3 text-lg">
+                Per-paragraph tips
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground">
+              Readers tap a heart under any paragraph. Pre-approve once,
+              every tip after that is one click and a few hundredths of a
+              cent in gas.
+            </CardContent>
+          </Card>
 
-        {/* User Balance Display */}
-        <UserBalance />
-
-        {/* CTA Buttons */}
-        <div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
-        >
-          <Button size="lg" className="px-8 py-3 text-base font-medium">
-            Get Started
-          </Button>
+          <Card>
+            <CardHeader>
+              <Wallet className="h-6 w-6 text-emerald-500" />
+              <CardTitle className="mt-3 text-lg">Claim anytime</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground">
+              Sweep accumulated tips to your wallet in one cUSD transfer.
+              Works inside MiniPay or any Celo-compatible wallet.
+            </CardContent>
+          </Card>
         </div>
-      </div>
-    </div>
-  </section>
-
-</main>
+      </section>
+    </main>
   );
 }
