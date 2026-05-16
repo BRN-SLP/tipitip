@@ -65,22 +65,31 @@ export function ParagraphTipper({
           onClick={handleClick}
           disabled={busy || disabled}
           aria-label={`Tip this paragraph ${formatUnits(amountWei, 18)} cUSD`}
-          className={`inline-flex h-7 w-7 items-center justify-center rounded-full border border-input bg-background transition-all ${
-            pulse ? "scale-125 border-rose-400" : ""
-          } hover:border-rose-400 disabled:cursor-not-allowed disabled:opacity-50`}
+          aria-busy={busy || undefined}
+          className={`inline-flex h-7 w-7 items-center justify-center rounded-full border border-input bg-background transition-all motion-reduce:transition-none ${
+            pulse ? "scale-125 border-primary motion-reduce:scale-100" : ""
+          } hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50`}
         >
           {busy ? (
-            <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            <Loader2
+              aria-hidden="true"
+              className="h-3.5 w-3.5 animate-spin motion-reduce:animate-none"
+            />
           ) : (
             <Heart
+              aria-hidden="true"
               className={`h-3.5 w-3.5 ${
-                count > 0 ? "fill-rose-500 text-rose-500" : "text-foreground/70"
+                count > 0 ? "fill-primary text-primary" : "text-foreground/70"
               }`}
             />
           )}
         </button>
-        <span className="text-muted-foreground">
-          ❤️ {count} • ${formatUnits(total, 18)}
+        <span
+          className="text-muted-foreground"
+          aria-live="polite"
+          aria-label={`${count} tip${count === 1 ? "" : "s"}, ${formatUnits(total, 18)} cUSD total`}
+        >
+          <span aria-hidden="true">❤️ {count} • ${formatUnits(total, 18)}</span>
         </span>
       </div>
     </div>
