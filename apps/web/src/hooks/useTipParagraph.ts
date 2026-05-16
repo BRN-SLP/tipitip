@@ -122,6 +122,10 @@ export function useTipParagraph(articleId: Hex | undefined): TipParagraphResult 
             ? err.message.split("\n")[0]
             : "transaction failed";
         setState({ kind: "error", message });
+        // Re-throw so the caller's catch (e.g. ParagraphTipper's
+        // optimistic counter rollback) fires. Without this, the
+        // awaited promise resolves and the optimistic +1 stays.
+        throw err instanceof Error ? err : new Error(message);
       }
     },
     [
