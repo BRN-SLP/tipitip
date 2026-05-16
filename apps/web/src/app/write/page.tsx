@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useAccount, useChainId, useWriteContract } from "wagmi";
 import { useWaitForTransactionReceipt } from "wagmi";
 
+import { ConnectPrompt } from "@/components/connect-prompt";
 import { MarkdownEditor } from "@/components/editor/MarkdownEditor";
 import { Button } from "@/components/ui/button";
 import {
@@ -139,9 +140,15 @@ export default function WriterPage() {
         </CardHeader>
         <CardContent className="space-y-6">
           {!isConnected ? (
-            <p className="text-sm text-muted-foreground">
-              Connect your wallet to publish.
-            </p>
+            <ConnectPrompt
+              title="Connect to publish your article"
+              subtitle="Authors sign the on-chain registration with their wallet so tips flow directly to them."
+              benefits={[
+                "Article body uploaded to decentralized storage",
+                "Per-paragraph tipping enabled on share",
+                "Sub-cent gas on Celo · MiniPay-friendly",
+              ]}
+            />
           ) : !tipJarAddress ? (
             <p className="text-sm text-destructive">
               No TipJar contract configured for the current network. Switch to

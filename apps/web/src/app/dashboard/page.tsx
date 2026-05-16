@@ -4,6 +4,7 @@ import Link from "next/link";
 import { formatUnits } from "viem";
 import { useAccount } from "wagmi";
 
+import { ConnectPrompt } from "@/components/connect-prompt";
 import { ClaimCard } from "@/components/dashboard/ClaimCard";
 import {
   Card,
@@ -35,9 +36,15 @@ export default function DashboardPage() {
       </div>
 
       {!isConnected ? (
-        <p className="text-sm text-muted-foreground">
-          Connect your wallet to see earnings.
-        </p>
+        <ConnectPrompt
+          title="Connect to see your earnings"
+          subtitle="Sign in with your Celo-compatible wallet to view pending tips, claim cUSD, and manage your published articles."
+          benefits={[
+            "Track pending tips per paragraph in real time",
+            "Sweep accumulated cUSD to your wallet in one tx",
+            "See every article you have ever published",
+          ]}
+        />
       ) : (
         <>
           <div className="grid gap-4 md:grid-cols-2">
