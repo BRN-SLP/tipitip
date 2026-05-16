@@ -2,71 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * TipiTip brand palette
+ * Warm rose / burgundy primary. Cream-tinted neutrals. Editorial feel
+ * that matches the per-paragraph-tipping motif (heart icon, reader love).
+ */
 @layer base {
   :root {
-    --border: 214.3 31.8% 91.4%;
-    --input: 216 33% 97%;
-    --ring: 215 20.2% 65.1%;
+    /* Surface — warm cream, not pure white */
+    --background: 30 33% 99%;
+    --foreground: 345 25% 12%;
 
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --card: 30 33% 99%;
+    --card-foreground: 345 25% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --popover: 30 33% 99%;
+    --popover-foreground: 345 25% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Primary — rose-600 ish (tip-heart pink) */
+    --primary: 346 77% 49%;
+    --primary-foreground: 30 33% 99%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Secondary — warm cream surface for cards on hover */
+    --secondary: 24 30% 96%;
+    --secondary-foreground: 345 25% 12%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 24 30% 96%;
+    --muted-foreground: 345 10% 42%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 24 30% 96%;
+    --accent-foreground: 345 25% 12%;
 
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 30 33% 99%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --border: 24 20% 90%;
+    --input: 24 20% 90%;
+    --ring: 346 77% 49%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Surface — deep burgundy-tinted dark */
+    --background: 340 30% 6%;
+    --foreground: 30 33% 96%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 340 30% 8%;
+    --card-foreground: 30 33% 96%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 340 30% 8%;
+    --popover-foreground: 30 33% 96%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 346 84% 60%;
+    --primary-foreground: 340 30% 6%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 340 18% 14%;
+    --secondary-foreground: 30 33% 96%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 340 18% 14%;
+    --muted-foreground: 30 12% 62%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 340 18% 14%;
+    --accent-foreground: 30 33% 96%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 30 33% 96%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 340 18% 16%;
+    --input: 340 18% 16%;
+    --ring: 346 84% 60%;
   }
 }
 
@@ -76,5 +81,12 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  /* Serif headings — editorial */
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif, "Fraunces"), Georgia, serif;
+    letter-spacing: -0.01em;
   }
 }
