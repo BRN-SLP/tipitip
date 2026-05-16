@@ -4,6 +4,7 @@ import { Heart, PenLine, Sparkles, Wallet } from "lucide-react";
 import { FloatingHeart } from "@/components/hero/FloatingHeart";
 import { RevealOnScroll } from "@/components/hero/RevealOnScroll";
 import { TypewriterTagline } from "@/components/hero/TypewriterTagline";
+import { FeaturedReads } from "@/components/landing/FeaturedReads";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,7 +14,7 @@ import {
 } from "@/components/ui/card";
 import { UserBalance } from "@/components/user-balance";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className="flex-1">
       {/* HERO — editorial asymmetric layout */}
@@ -116,6 +117,9 @@ export default function Home() {
           </RevealOnScroll>
         </div>
       </section>
+
+      {/* LATEST ARTICLES — pulled from on-chain ArticleRegistered events */}
+      <FeaturedReads />
 
       {/* FEATURE GRID */}
       <section className="container mx-auto max-w-5xl px-4 py-20">
