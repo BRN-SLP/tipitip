@@ -32,6 +32,26 @@ function getActiveChainId(): number | null {
   return null;
 }
 
+/**
+ * Article IDs and slug patterns excluded from the public Featured list.
+ * Use this for early-deploy smoke-test entries that live on-chain but
+ * don't represent real published content. Add new entries below — do not
+ * try to remove them on-chain (events are append-only).
+ */
+const ID_DENYLIST = new Set<`0x${string}`>([
+  // Sepolia smoke-test article registered during initial deploy verification.
+  "0x67f80f1ea33f7350f844441c9773b70258b85cdd0d9ad855258c9aea20e1ff51",
+]);
+
+/** Heuristic for slugs that smell like smoke-test fixtures (e.g. "smoke-…"). */
+const TEST_SLUG_PATTERN = /^smoke[-_]/i;
+
+function isExcluded(articleId: string, slug: string): boolean {
+  if (ID_DENYLIST.has(articleId as `0x${string}`)) return true;
+  if (TEST_SLUG_PATTERN.test(slug)) return true;
+  return false;
+}
+
 function buildClient(chainId: number): PublicClient {
   const chain = chainId === celo.id ? celo : celoSepolia;
   return createPublicClient({
@@ -64,6 +84,7 @@ export const getLatestArticles = unstable_cache(
           slug: log.args.slug as string,
           blockNumber: Number(log.blockNumber ?? 0n),
         }))
+        .filter((a) => !isExcluded(a.articleId, a.slug))
         .reverse()
         .slice(0, limit);
     } catch {
