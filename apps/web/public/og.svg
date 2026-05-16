@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#1f1340"/>
+    </linearGradient>
+    <linearGradient id="heart" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fda4af"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g transform="translate(96, 130)">
+    <path d="M120 220 C40 156 -10 100 36 60 C68 32 116 38 120 80 C124 38 172 32 204 60 C250 100 200 156 120 220 Z"
+          fill="url(#heart)"/>
+  </g>
+  <text x="380" y="240" font-family="Inter, system-ui, sans-serif" font-size="92" font-weight="800" fill="#ffffff" letter-spacing="-2">TipiTip</text>
+  <text x="380" y="310" font-family="Inter, system-ui, sans-serif" font-size="36" font-weight="400" fill="#cbd5e1">Tip writers per paragraph on Celo</text>
+  <text x="380" y="475" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="500" fill="#94a3b8">cUSD micro-tips · MiniPay-ready · no subscriptions</text>
+  <rect x="380" y="510" width="170" height="44" rx="22" fill="#e11d48"/>
+  <text x="465" y="540" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">Built on Celo</text>
+</svg>
