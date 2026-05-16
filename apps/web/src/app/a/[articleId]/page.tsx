@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
+import type { Metadata } from "next";
 
 import { ArticleRenderer } from "@/components/reader/ArticleRenderer";
 import { bytes32HexRegex } from "@/lib/articles";
@@ -9,6 +10,34 @@ export const dynamic = "force-dynamic";
 
 interface PageProps {
   params: Promise<{ articleId: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { articleId } = await params;
+  if (!bytes32HexRegex.test(articleId)) {
+    return { title: "Article not found" };
+  }
+  const short = `${articleId.slice(0, 10)}…${articleId.slice(-6)}`;
+  const title = `Article ${short}`;
+  const description = "Read the article and tip per paragraph in cUSD on Celo.";
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} · TipiTip`,
+      description,
+      type: "article",
+      images: ["/og.svg"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} · TipiTip`,
+      description,
+      images: ["/og.svg"],
+    },
+  };
 }
 
 export default async function ArticlePage({ params }: PageProps) {

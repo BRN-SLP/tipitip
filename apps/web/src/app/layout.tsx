@@ -7,15 +7,58 @@ import { WalletProvider } from "@/components/wallet-provider"
 
 const inter = Inter({ subsets: ['latin'] });
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://tipitip-sable.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'TipiTip',
-  description: 'Per-paragraph content tipping MiniApp on Celo',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'TipiTip — tip writers per paragraph on Celo',
+    template: '%s · TipiTip',
+  },
+  description:
+    'Publish a markdown article in a minute and let readers tip you in cUSD per paragraph. No subscriptions, no middlemen, no minimum payouts.',
+  applicationName: 'TipiTip',
+  keywords: [
+    'Celo',
+    'cUSD',
+    'MiniPay',
+    'tipping',
+    'micro-payments',
+    'writers',
+    'markdown',
+  ],
+  authors: [{ name: 'TipiTip' }],
   icons: {
     icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
     apple: [{ url: '/apple-touch-icon.svg', sizes: '180x180', type: 'image/svg+xml' }],
   },
   manifest: '/site.webmanifest',
   themeColor: '#0b1220',
+  openGraph: {
+    type: 'website',
+    siteName: 'TipiTip',
+    url: SITE_URL,
+    title: 'TipiTip — tip writers per paragraph on Celo',
+    description:
+      'Reader taps ❤️ under any paragraph → instant cUSD tip to the author. Built on Celo, MiniPay-ready.',
+    images: [
+      {
+        url: '/og.svg',
+        width: 1200,
+        height: 630,
+        alt: 'TipiTip — per-paragraph cUSD tipping on Celo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TipiTip — tip writers per paragraph on Celo',
+    description:
+      'Reader taps ❤️ under any paragraph → instant cUSD tip to the author.',
+    images: ['/og.svg'],
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
