@@ -5,10 +5,15 @@ import { useEffect, useState } from "react";
 
 const PHRASES = [
   "every paragraph",
-  "every honest line",
-  "the words that matter",
-  "the writers you love",
+  "honest writing",
+  "real voices",
+  "the good lines",
 ];
+
+// Width-stabilizing reservation: the longest phrase in PHRASES.
+// Rendered invisibly to keep the line height + box width constant
+// across phrase swaps so the H1 never reflows.
+const LONGEST = PHRASES.reduce((a, b) => (a.length >= b.length ? a : b));
 
 const TYPE_MS = 60;
 const ERASE_MS = 30;
@@ -51,16 +56,23 @@ export function TypewriterTagline() {
   }, [text, index, phase, prefersReduced]);
 
   return (
-    <span className="inline-flex items-baseline">
-      <span>{text}</span>
-      {!prefersReduced && (
-        <motion.span
-          aria-hidden="true"
-          className="ml-1 inline-block h-[1em] w-[2px] bg-primary"
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ duration: 0.9, repeat: Infinity, ease: "easeInOut" }}
-        />
-      )}
+    <span className="relative inline-block whitespace-nowrap">
+      {/* Invisible placeholder reserves space for the longest phrase
+          so the parent H1 never reflows mid-typing. */}
+      <span aria-hidden="true" className="invisible">
+        {LONGEST}
+      </span>
+      <span className="absolute inset-0 inline-flex items-baseline whitespace-nowrap">
+        <span>{text}</span>
+        {!prefersReduced && (
+          <motion.span
+            aria-hidden="true"
+            className="ml-1 inline-block h-[0.85em] w-[2px] self-center bg-primary"
+            animate={{ opacity: [1, 0, 1] }}
+            transition={{ duration: 0.9, repeat: Infinity, ease: "easeInOut" }}
+          />
+        )}
+      </span>
     </span>
   );
 }
