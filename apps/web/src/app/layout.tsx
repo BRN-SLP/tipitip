@@ -14,7 +14,6 @@ const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-serif',
   weight: ['400', '500', '600', '700', '800'],
-  axes: ['SOFT', 'opsz'],
 });
 
 const SITE_URL =
