@@ -5,6 +5,8 @@ import { useEffect, useMemo, useState } from "react";
 import { useAccount, useChainId, useWriteContract } from "wagmi";
 import { useWaitForTransactionReceipt } from "wagmi";
 
+import { toast } from "sonner";
+
 import { ConnectPrompt } from "@/components/connect-prompt";
 import { MarkdownEditor } from "@/components/editor/MarkdownEditor";
 import { Button } from "@/components/ui/button";
@@ -76,6 +78,9 @@ export default function WriterPage() {
     if (state.kind !== "confirming") return;
     if (receiptSuccess) {
       setState({ kind: "success", articleId: state.articleId });
+      toast.success("Article published", {
+        description: "Share the link to start collecting tips per paragraph.",
+      });
       router.push(`/a/${state.articleId}`);
     }
   }, [receiptSuccess, state, router]);
@@ -129,6 +134,7 @@ export default function WriterPage() {
       resetWrite();
       const message = err instanceof Error ? err.message : "publish failed";
       setState({ kind: "error", message });
+      toast.error("Publish failed", { description: message });
     }
   }
 
