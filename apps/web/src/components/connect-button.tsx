@@ -25,8 +25,8 @@ export function ConnectButton() {
   const [isMinipay, setIsMinipay] = useState(false);
 
   useEffect(() => {
-    // @ts-expect-error MiniPay's injected provider flag is custom.
-    if (window.ethereum?.isMiniPay) setIsMinipay(true);
+    const eth = (window as { ethereum?: { isMiniPay?: boolean } }).ethereum;
+    if (eth?.isMiniPay) setIsMinipay(true);
   }, []);
 
   if (isMinipay) return null;
