@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { toast } from "sonner";
 import {
   useAccount,
   useChainId,
@@ -8,7 +9,7 @@ import {
   useReadContract,
   useWriteContract,
 } from "wagmi";
-import { parseUnits, type Hex } from "viem";
+import { formatUnits, parseUnits, type Hex } from "viem";
 
 import { erc20Abi, getCUSDAddress, getTipJarAddress, tipJarAbi } from "@/lib/contracts";
 
@@ -114,14 +115,22 @@ export function useTipParagraph(articleId: Hex | undefined): TipParagraphResult 
           args: [articleId, paragraphKey, amountWei],
         });
         setState({ kind: "tipping", txHash: tipTx });
+        const toastId = toast.loading("Sending tip…", {
+          description: `${formatUnits(amountWei, 18)} cUSD`,
+        });
         await publicClient.waitForTransactionReceipt({ hash: tipTx });
         setState({ kind: "success" });
+        toast.success("Tip delivered", {
+          id: toastId,
+          description: "Author's balance has been updated.",
+        });
       } catch (err: unknown) {
         const message =
           err instanceof Error
             ? err.message.split("\n")[0]
             : "transaction failed";
         setState({ kind: "error", message });
+        toast.error("Tip failed", { description: message });
         // Re-throw so the caller's catch (e.g. ParagraphTipper's
         // optimistic counter rollback) fires. Without this, the
         // awaited promise resolves and the optimistic +1 stays.
