@@ -1,12 +1,21 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Fraunces } from 'next/font/google';
 import './globals.css';
 
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 import { WalletProvider } from "@/components/wallet-provider"
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  weight: ['400', '500', '600', '700', '800'],
+  axes: ['SOFT', 'opsz'],
+});
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://tipitip-sable.vercel.app';
@@ -68,8 +77,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+      <body className="font-sans">
         {/* Navbar is included on all pages */}
         <div className="relative flex min-h-screen flex-col">
           <WalletProvider>
