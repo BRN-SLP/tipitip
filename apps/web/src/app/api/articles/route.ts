@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { articleExists, putArticleBody } from "@/lib/blob";
-import { publishArticleSchema } from "@/lib/articles";
+import { articleExists, putArticleBody, putArticleMetadata } from "@/lib/blob";
+import { normalizeTags, publishArticleSchema } from "@/lib/articles";
 import { deriveContentHash } from "@/lib/paragraph-key";
 
 export const runtime = "nodejs";
@@ -30,7 +30,7 @@ export async function POST(req: Request): Promise<Response> {
       { status: 400 },
     );
   }
-  const { articleId, body } = parsed.data;
+  const { articleId, body, tags } = parsed.data;
 
   if (await articleExists(articleId)) {
     return NextResponse.json(
@@ -44,9 +44,19 @@ export async function POST(req: Request): Promise<Response> {
 
   await putArticleBody(articleId, body);
 
+  // Tags live in a SEPARATE Blob (meta/<articleId>.json) so the on-chain
+  // contentHash, which covers only the body, stays stable. Re-normalize
+  // server-side as defense in depth even though the client should have
+  // sent canonical kebab-case already.
+  const normalizedTags = tags ? normalizeTags(tags) : [];
+  if (normalizedTags.length > 0) {
+    await putArticleMetadata(articleId, { tags: normalizedTags });
+  }
+
   return NextResponse.json({
     articleId,
     contentHash: deriveContentHash(body),
+    tags: normalizedTags,
     storedAt: new Date().toISOString(),
   });
 }
