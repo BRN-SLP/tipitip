@@ -39,6 +39,46 @@ export type PublishArticleResponse = z.infer<
 >;
 
 /**
+ * Lift a usable display title + short excerpt out of the raw markdown
+ * body. Shared by /a/[articleId]/generateMetadata (for OG / Twitter
+ * cards) and the article page itself (for the visible heading and the
+ * share-bar tweet/cast text).
+ *
+ *   - title: first H1 line (`# ...`) if it leads the body; otherwise
+ *     the first non-empty line trimmed; otherwise `fallback`.
+ *   - excerpt: first non-empty line that isn't the title, truncated
+ *     to ~180 chars so social previews don't wrap awkwardly.
+ */
+export function extractTitleAndExcerpt(
+  body: string,
+  fallback: string,
+): { title: string; excerpt: string | null } {
+  const lines = body.split("\n");
+  let title: string | null = null;
+  let excerpt: string | null = null;
+
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (!line) continue;
+    if (!title) {
+      title = line.startsWith("# ") ? line.slice(2).trim() : line;
+      continue;
+    }
+    if (line.startsWith("#")) continue; // skip secondary headings
+    excerpt = line;
+    break;
+  }
+
+  const cleanTitle = title ?? fallback;
+  const cleanExcerpt =
+    excerpt && excerpt.length > 180
+      ? `${excerpt.slice(0, 177).trimEnd()}…`
+      : excerpt;
+
+  return { title: cleanTitle, excerpt: cleanExcerpt };
+}
+
+/**
  * Split a markdown document into paragraphs preserving order.
  *
  * Heuristic: paragraphs are separated by one or more blank lines. We keep

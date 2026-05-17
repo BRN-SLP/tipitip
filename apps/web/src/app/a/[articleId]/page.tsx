@@ -4,7 +4,8 @@ import { headers } from "next/headers";
 import type { Metadata } from "next";
 
 import { ArticleRenderer } from "@/components/reader/ArticleRenderer";
-import { bytes32HexRegex } from "@/lib/articles";
+import { ShareBar } from "@/components/reader/ShareBar";
+import { bytes32HexRegex, extractTitleAndExcerpt } from "@/lib/articles";
 
 export const dynamic = "force-dynamic";
 
@@ -25,9 +26,10 @@ export async function generateMetadata({
   // page itself reuses this response cheaply.
   const body = await fetchArticle(articleId);
   const short = `${articleId.slice(0, 10)}…${articleId.slice(-6)}`;
+  const fallbackTitle = `Article ${short}`;
   const { title, excerpt } = body
-    ? extractTitleAndExcerpt(body, short)
-    : { title: `Article ${short}`, excerpt: null };
+    ? extractTitleAndExcerpt(body, fallbackTitle)
+    : { title: fallbackTitle, excerpt: null };
   const description =
     excerpt ?? "Read the article and tip per paragraph in cUSD on Celo.";
 
@@ -49,43 +51,6 @@ export async function generateMetadata({
   };
 }
 
-/**
- * Lift a usable OG title + description out of the raw markdown body.
- *
- *   - Title: first H1 line (`# ...`) if it leads the body; otherwise the
- *     first non-empty line trimmed; otherwise the truncated articleId.
- *   - Excerpt: first non-empty line that isn't the title, truncated to
- *     ~180 chars so Twitter / OG previews don't wrap awkwardly.
- */
-function extractTitleAndExcerpt(
-  body: string,
-  fallbackShort: string,
-): { title: string; excerpt: string | null } {
-  const lines = body.split("\n");
-  let title: string | null = null;
-  let excerpt: string | null = null;
-
-  for (const raw of lines) {
-    const line = raw.trim();
-    if (!line) continue;
-    if (!title) {
-      title = line.startsWith("# ") ? line.slice(2).trim() : line;
-      continue;
-    }
-    if (line.startsWith("#")) continue; // skip secondary headings
-    excerpt = line;
-    break;
-  }
-
-  const cleanTitle = title ?? `Article ${fallbackShort}`;
-  const cleanExcerpt =
-    excerpt && excerpt.length > 180
-      ? `${excerpt.slice(0, 177).trimEnd()}…`
-      : excerpt;
-
-  return { title: cleanTitle, excerpt: cleanExcerpt };
-}
-
 export default async function ArticlePage({ params }: PageProps) {
   const { articleId } = await params;
   if (!bytes32HexRegex.test(articleId)) notFound();
@@ -93,15 +58,23 @@ export default async function ArticlePage({ params }: PageProps) {
   const body = await fetchArticle(articleId);
   if (!body) notFound();
 
+  // Derive the same title we shipped in OG meta + assemble the
+  // canonical URL so ShareBar feeds the platform intents an absolute
+  // https:// link, not a relative path that crawlers ignore.
+  const short = `${articleId.slice(0, 10)}…${articleId.slice(-6)}`;
+  const { title } = extractTitleAndExcerpt(body, `Article ${short}`);
+  const articleUrl = await canonicalUrl(`/a/${articleId}`);
+
   return (
     <main className="container mx-auto max-w-3xl px-4 py-10">
-      <div className="mb-6">
+      <div className="mb-6 flex items-center justify-between gap-4">
         <Link
           href="/"
           className="text-xs text-muted-foreground hover:text-foreground"
         >
           ← Home
         </Link>
+        <ShareBar url={articleUrl} title={title} />
       </div>
       <ArticleRenderer
         articleId={articleId as `0x${string}`}
@@ -109,6 +82,15 @@ export default async function ArticlePage({ params }: PageProps) {
       />
     </main>
   );
+}
+
+async function canonicalUrl(path: string): Promise<string> {
+  const reqHeaders = await headers();
+  const host = reqHeaders.get("host");
+  const protocol =
+    reqHeaders.get("x-forwarded-proto") ??
+    (host?.startsWith("localhost") ? "http" : "https");
+  return `${protocol}://${host}${path}`;
 }
 
 async function fetchArticle(articleId: string): Promise<string | null> {
