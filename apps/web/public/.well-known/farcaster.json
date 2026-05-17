@@ -1,0 +1,10 @@
+{
+  "frame": {
+    "version": "1",
+    "name": "TipiTip",
+    "homeUrl": "https://tipitip-sable.vercel.app",
+    "iconUrl": "https://tipitip-sable.vercel.app/favicon.svg",
+    "splashImageUrl": "https://tipitip-sable.vercel.app/og.svg",
+    "splashBackgroundColor": "#0b1220"
+  }
+}

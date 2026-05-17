@@ -33,6 +33,33 @@ export async function generateMetadata({
   const description =
     excerpt ?? "Read the article and tip per paragraph in cUSD on Celo.";
 
+  // Farcaster Frame v2 ("Mini App") embed payload.
+  // When this URL is cast in Warpcast, the meta tags below tell the
+  // client to render an inline preview card with a "Read & Tip" button
+  // that, on tap, opens the article page in an iframe inside Warpcast.
+  // The reader stays in the Farcaster feed; the wallet they're already
+  // connected to is injected so the tip transaction signs without ever
+  // leaving the cast view.
+  //
+  // `launch_frame` is the v2 action; `post` (v1's server callback) is
+  // not used here.
+  const frameImage = "/og.svg";
+  const frameTarget = `/a/${articleId}`;
+  const fcFrame = {
+    version: "next",
+    imageUrl: frameImage,
+    button: {
+      title: "Read & Tip",
+      action: {
+        type: "launch_frame",
+        name: "TipiTip",
+        url: frameTarget,
+        splashImageUrl: "/og.svg",
+        splashBackgroundColor: "#0b1220",
+      },
+    },
+  };
+
   return {
     title,
     description,
@@ -40,13 +67,24 @@ export async function generateMetadata({
       title: `${title} · TipiTip`,
       description,
       type: "article",
-      images: ["/og.svg"],
+      images: [frameImage],
     },
     twitter: {
       card: "summary_large_image",
       title: `${title} · TipiTip`,
       description,
-      images: ["/og.svg"],
+      images: [frameImage],
+    },
+    other: {
+      // v2 Mini App envelope (single JSON-stringified value on a known
+      // meta name). The duplicate `fc:frame` legacy meta keys below
+      // give us a graceful degrade-to-v1 preview button for older
+      // Warpcast clients.
+      "fc:frame": JSON.stringify(fcFrame),
+      "fc:frame:image": frameImage,
+      "fc:frame:button:1": "Read & Tip",
+      "fc:frame:button:1:action": "launch_frame",
+      "fc:frame:button:1:target": frameTarget,
     },
   };
 }
