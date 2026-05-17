@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Write an article · TipiTip",
     description:
       "Live markdown preview. Publish your article and start earning per paragraph in cUSD.",
-    images: ["/og.svg"],
+    images: ["/og.png"],
   },
 };
 

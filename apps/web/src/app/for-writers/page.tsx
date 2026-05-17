@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     description:
       "Two lines of React to add cUSD micro-tipping to your existing blog. No middlemen, no minimum payouts.",
     type: "website",
-    images: ["/og.svg"],
+    images: ["/og.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "TipiTip for writers",
     description:
       "Add per-paragraph cUSD tipping to your existing blog with two lines of code.",
-    images: ["/og.svg"],
+    images: ["/og.png"],
   },
 };
 

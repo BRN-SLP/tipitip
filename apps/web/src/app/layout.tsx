@@ -54,7 +54,7 @@ export const metadata: Metadata = {
       'Reader taps ❤️ under any paragraph → instant cUSD tip to the author. Built on Celo, MiniPay-ready.',
     images: [
       {
-        url: '/og.svg',
+        url: '/og.png',
         width: 1200,
         height: 630,
         alt: 'TipiTip — per-paragraph cUSD tipping on Celo',
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: 'TipiTip — tip writers per paragraph on Celo',
     description:
       'Reader taps ❤️ under any paragraph → instant cUSD tip to the author.',
-    images: ['/og.svg'],
+    images: ['/og.png'],
   },
   robots: { index: true, follow: true },
   // Talent App domain ownership verification (Proof of Ship S2 submission).
