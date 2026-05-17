@@ -10,6 +10,7 @@ import {
 } from "./TipAmountSelector";
 import { splitParagraphs } from "@/lib/articles";
 import { deriveParagraphKey } from "@/lib/paragraph-key";
+import { useHashHighlight } from "@/hooks/useHashHighlight";
 import { useTippedEvents } from "@/hooks/useTippedEvents";
 import { useTipParagraph } from "@/hooks/useTipParagraph";
 import { useChainId, useAccount } from "wagmi";
@@ -29,6 +30,7 @@ export function ArticleRenderer({ articleId, body }: ArticleRendererProps) {
   const { isConnected } = useAccount();
   const paragraphs = useMemo(() => splitParagraphs(body), [body]);
   const [tipAmount, setTipAmount] = useState<bigint>(TIP_AMOUNT_PRESETS[1]);
+  const hashId = useHashHighlight();
 
   const { byParagraph, loading } = useTippedEvents(chainId, articleId);
   const tipper = useTipParagraph(articleId);
@@ -57,7 +59,9 @@ export function ArticleRenderer({ articleId, body }: ArticleRendererProps) {
         {indexed.map(({ text, index, paragraphKey }) => (
           <ParagraphTipper
             key={`${index}-${paragraphKey}`}
+            paragraphIndex={index}
             paragraphKey={paragraphKey}
+            hashHighlighted={hashId === `p-${index}`}
             text={text}
             stats={byParagraph.get(paragraphKey)}
             amountWei={tipAmount}
