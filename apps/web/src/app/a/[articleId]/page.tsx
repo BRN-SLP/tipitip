@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { ArticleRenderer } from "@/components/reader/ArticleRenderer";
 import { ShareBar } from "@/components/reader/ShareBar";
 import { bytes32HexRegex, extractTitleAndExcerpt } from "@/lib/articles";
+import { getArticleMetadata } from "@/lib/blob";
 
 export const dynamic = "force-dynamic";
 
@@ -102,6 +103,8 @@ export default async function ArticlePage({ params }: PageProps) {
   const short = `${articleId.slice(0, 10)}…${articleId.slice(-6)}`;
   const { title } = extractTitleAndExcerpt(body, `Article ${short}`);
   const articleUrl = await canonicalUrl(`/a/${articleId}`);
+  const meta = await getArticleMetadata(articleId);
+  const tags = meta?.tags ?? [];
 
   return (
     <main className="container mx-auto max-w-3xl px-4 py-10">
@@ -114,6 +117,19 @@ export default async function ArticlePage({ params }: PageProps) {
         </Link>
         <ShareBar url={articleUrl} title={title} />
       </div>
+      {tags.length > 0 && (
+        <div className="mb-4 flex flex-wrap items-center gap-1.5">
+          {tags.map((tag) => (
+            <Link
+              key={tag}
+              href={`/tag/${tag}`}
+              className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 font-mono text-[12px] text-primary transition hover:bg-primary/20"
+            >
+              #{tag}
+            </Link>
+          ))}
+        </div>
+      )}
       <ArticleRenderer
         articleId={articleId as `0x${string}`}
         body={body}

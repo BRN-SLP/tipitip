@@ -9,6 +9,37 @@ export const MAX_BODY_BYTES = 200_000;
 /** Maximum article slug length — fits in a single event log entry. */
 export const MAX_SLUG_LENGTH = 80;
 
+/** Topic tag — short, kebab-case, ascii lowercase only. */
+const tagSchema = z
+  .string()
+  .min(2)
+  .max(24)
+  .regex(
+    /^[a-z][a-z0-9-]*[a-z0-9]$/,
+    "tags must be kebab-case ASCII (e.g. 'ai-agents', 'defi', 'football')",
+  );
+
+/** Curated suggestion list for the /write tag input. Free-form tags are still allowed. */
+export const SUGGESTED_TAGS = [
+  "ai-agents",
+  "crypto",
+  "defi",
+  "writing",
+  "africa",
+  "minipay",
+  "celo",
+  "trading",
+  "tech",
+  "culture",
+  "football",
+  "personal",
+  "fiction",
+  "essay",
+  "guide",
+] as const;
+
+export const MAX_TAGS_PER_ARTICLE = 5;
+
 /** Schema for the POST /api/articles request body. */
 export const publishArticleSchema = z.object({
   articleId: z
@@ -23,9 +54,48 @@ export const publishArticleSchema = z.object({
       "slug must contain only lowercase letters, digits and hyphens",
     ),
   body: z.string().min(1).max(MAX_BODY_BYTES),
+  tags: z.array(tagSchema).max(MAX_TAGS_PER_ARTICLE).optional(),
 });
 
 export type PublishArticleInput = z.infer<typeof publishArticleSchema>;
+
+/**
+ * Normalize a raw user-typed tag list (free-form, comma-separated, mixed
+ * case) into the canonical on-storage shape:
+ *   - lowercased
+ *   - spaces and underscores converted to hyphens
+ *   - non-[a-z0-9-] characters stripped
+ *   - de-duplicated, preserving first-seen order
+ *   - clamped to MAX_TAGS_PER_ARTICLE entries
+ *
+ * Used by both the /write client and the /api/articles server so the
+ * stored set matches what the writer expects on the article page.
+ */
+export function normalizeTags(input: string[] | string): string[] {
+  const list = Array.isArray(input)
+    ? input
+    : input
+        .split(/[,\n]/)
+        .map((s) => s.trim())
+        .filter(Boolean);
+
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const raw of list) {
+    const clean = raw
+      .toLowerCase()
+      .replace(/[\s_]+/g, "-")
+      .replace(/[^a-z0-9-]+/g, "")
+      .replace(/^-+|-+$/g, "")
+      .replace(/-{2,}/g, "-");
+    if (clean.length < 2 || clean.length > 24) continue;
+    if (seen.has(clean)) continue;
+    seen.add(clean);
+    out.push(clean);
+    if (out.length >= MAX_TAGS_PER_ARTICLE) break;
+  }
+  return out;
+}
 
 /** Schema for the POST /api/articles response. */
 export const publishArticleResponseSchema = z.object({

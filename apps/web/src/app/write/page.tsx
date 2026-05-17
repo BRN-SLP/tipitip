@@ -9,6 +9,7 @@ import { toast } from "sonner";
 
 import { ConnectPrompt } from "@/components/connect-prompt";
 import { MarkdownEditor } from "@/components/editor/MarkdownEditor";
+import { TagInput } from "@/components/editor/TagInput";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -46,6 +47,7 @@ export default function WriterPage() {
   const [slug, setSlug] = useState("");
   const [slugDirty, setSlugDirty] = useState(false);
   const [body, setBody] = useState("");
+  const [tags, setTags] = useState<string[]>([]);
   const [state, setState] = useState<PublishState>({ kind: "idle" });
 
   // Auto-derive slug from title until the user edits the slug directly.
@@ -106,7 +108,7 @@ export default function WriterPage() {
       const res = await fetch("/api/articles", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ articleId, slug, body }),
+        body: JSON.stringify({ articleId, slug, body, tags }),
       });
       if (!res.ok) {
         const errBody = (await res.json().catch(() => ({}))) as {
@@ -192,6 +194,23 @@ export default function WriterPage() {
             <p className="text-xs text-muted-foreground">
               Used in your shareable URL. Lowercase letters, digits, hyphens
               only. Up to {MAX_SLUG_LENGTH} characters.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium" htmlFor="tags-input">
+              Tags <span className="text-muted-foreground">(optional)</span>
+            </label>
+            <TagInput
+              value={tags}
+              onChange={setTags}
+              disabled={state.kind !== "idle"}
+            />
+            <p className="text-xs text-muted-foreground">
+              Helps readers find your article. Up to 5 tags. Lowercase
+              kebab-case (e.g. <span className="font-mono">ai-agents</span>,{" "}
+              <span className="font-mono">defi</span>,{" "}
+              <span className="font-mono">africa</span>).
             </p>
           </div>
 
