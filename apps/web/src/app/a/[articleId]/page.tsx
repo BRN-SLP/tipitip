@@ -19,9 +19,18 @@ export async function generateMetadata({
   if (!bytes32HexRegex.test(articleId)) {
     return { title: "Article not found" };
   }
+
+  // Pull the body so we can lift the real H1 + first paragraph into the
+  // OG metadata. Next.js dedupes fetch() calls inside one render, so the
+  // page itself reuses this response cheaply.
+  const body = await fetchArticle(articleId);
   const short = `${articleId.slice(0, 10)}…${articleId.slice(-6)}`;
-  const title = `Article ${short}`;
-  const description = "Read the article and tip per paragraph in cUSD on Celo.";
+  const { title, excerpt } = body
+    ? extractTitleAndExcerpt(body, short)
+    : { title: `Article ${short}`, excerpt: null };
+  const description =
+    excerpt ?? "Read the article and tip per paragraph in cUSD on Celo.";
+
   return {
     title,
     description,
@@ -38,6 +47,43 @@ export async function generateMetadata({
       images: ["/og.svg"],
     },
   };
+}
+
+/**
+ * Lift a usable OG title + description out of the raw markdown body.
+ *
+ *   - Title: first H1 line (`# ...`) if it leads the body; otherwise the
+ *     first non-empty line trimmed; otherwise the truncated articleId.
+ *   - Excerpt: first non-empty line that isn't the title, truncated to
+ *     ~180 chars so Twitter / OG previews don't wrap awkwardly.
+ */
+function extractTitleAndExcerpt(
+  body: string,
+  fallbackShort: string,
+): { title: string; excerpt: string | null } {
+  const lines = body.split("\n");
+  let title: string | null = null;
+  let excerpt: string | null = null;
+
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (!line) continue;
+    if (!title) {
+      title = line.startsWith("# ") ? line.slice(2).trim() : line;
+      continue;
+    }
+    if (line.startsWith("#")) continue; // skip secondary headings
+    excerpt = line;
+    break;
+  }
+
+  const cleanTitle = title ?? `Article ${fallbackShort}`;
+  const cleanExcerpt =
+    excerpt && excerpt.length > 180
+      ? `${excerpt.slice(0, 177).trimEnd()}…`
+      : excerpt;
+
+  return { title: cleanTitle, excerpt: cleanExcerpt };
 }
 
 export default async function ArticlePage({ params }: PageProps) {
