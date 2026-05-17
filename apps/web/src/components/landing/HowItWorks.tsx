@@ -84,8 +84,14 @@ const PERSONAS: Array<{ key: Persona; label: string; steps: Step[] }> = [
   { key: "reader", label: "If you're reading", steps: READER_STEPS },
 ];
 
-const ADVANCE_MS = 3500;
-const RESUME_AFTER_INTERACTION_MS = 9000;
+// 7 seconds per step — slow enough to actually read the body copy on the
+// active card without the next step yanking out from under the reader.
+// Bumped from 3.5s after live testing showed people couldn't finish the
+// "Earn" / "Approve once" bodies before the timer rolled over.
+const ADVANCE_MS = 7000;
+// Resume auto-advance after the visitor has been still for ~12s so the
+// pause window comfortably outlives one full step duration above.
+const RESUME_AFTER_INTERACTION_MS = 12000;
 
 /**
  * Two-flow, auto-advancing walkthrough. The visitor sees one persona at a
