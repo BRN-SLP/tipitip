@@ -69,11 +69,22 @@ export const getLatestArticles = unstable_cache(
 
     try {
       const client = buildClient(chainId);
+      // Forno (and most public Celo RPCs) timeout on `fromBlock: 0n` —
+      // scanning ~30M blocks of mainnet history is too expensive for
+      // a single eth_getLogs call. Bound the window to the last ~200k
+      // blocks (~11 days at Celo's ~5s block time), which comfortably
+      // covers our seeded content and recent organic writes. If we
+      // ever need deeper history (e.g. archival claim aggregation),
+      // that call gets paginated explicitly at its own callsite.
+      const latestBlock = await client.getBlockNumber();
+      const LOOKBACK = 200_000n;
+      const fromBlock =
+        latestBlock > LOOKBACK ? latestBlock - LOOKBACK : 0n;
       const logs = await client.getContractEvents({
         address,
         abi: tipJarAbi,
         eventName: "ArticleRegistered",
-        fromBlock: 0n,
+        fromBlock,
         toBlock: "latest",
       });
 
