@@ -1,7 +1,7 @@
 {
   "name": "@tipitip/embed",
-  "version": "0.0.1-alpha.0",
-  "description": "Drop-in React component for per-paragraph cUSD tipping on Celo",
+  "version": "0.1.0",
+  "description": "Drop-in React component for per-paragraph cUSD tipping on Celo. Add a tippable article block to any blog with two lines of code.",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
@@ -14,18 +14,18 @@
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "type-check": "tsc --noEmit",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm clean && pnpm build"
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18",
-    "viem": "^2",
-    "wagmi": "^2"
+    "react-dom": ">=18"
   },
   "dependencies": {
     "react-markdown": "^9"
@@ -44,6 +44,19 @@
     "tipping",
     "minipay",
     "react",
-    "tipitip"
-  ]
+    "tipitip",
+    "writers",
+    "content",
+    "micropayments",
+    "embed"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BRN-SLP/tipitip.git",
+    "directory": "packages/embed"
+  },
+  "bugs": {
+    "url": "https://github.com/BRN-SLP/tipitip/issues"
+  },
+  "homepage": "https://tipitip-sable.vercel.app"
 }
