@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Writer dashboard · TipiTip",
     description:
       "Pending tips, claim history, and your published articles in one place.",
-    images: ["/og.svg"],
+    images: ["/og.png"],
   },
   robots: { index: false, follow: false },
 };

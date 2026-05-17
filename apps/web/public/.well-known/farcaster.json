@@ -3,8 +3,8 @@
     "version": "1",
     "name": "TipiTip",
     "homeUrl": "https://tipitip-sable.vercel.app",
-    "iconUrl": "https://tipitip-sable.vercel.app/favicon.svg",
-    "splashImageUrl": "https://tipitip-sable.vercel.app/og.svg",
+    "iconUrl": "https://tipitip-sable.vercel.app/logo-512.png",
+    "splashImageUrl": "https://tipitip-sable.vercel.app/logo-512.png",
     "splashBackgroundColor": "#0b1220"
   }
 }
