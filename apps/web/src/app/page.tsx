@@ -5,13 +5,8 @@ import { FloatingHeart } from "@/components/hero/FloatingHeart";
 import { RevealOnScroll } from "@/components/hero/RevealOnScroll";
 import { TypewriterTagline } from "@/components/hero/TypewriterTagline";
 import { FeaturedReads } from "@/components/landing/FeaturedReads";
+import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { UserBalance } from "@/components/user-balance";
 
 export default async function Home() {
@@ -121,57 +116,8 @@ export default async function Home() {
       {/* LATEST ARTICLES — pulled from on-chain ArticleRegistered events */}
       <FeaturedReads />
 
-      {/* FEATURE GRID */}
-      <section className="container mx-auto max-w-5xl px-4 py-20">
-        <div className="grid gap-6 md:grid-cols-3">
-          <RevealOnScroll>
-            <Card className="h-full transition hover:-translate-y-1 hover:shadow-md hover:shadow-primary/10">
-              <CardHeader>
-                <PenLine className="h-6 w-6 text-primary" />
-                <CardTitle className="mt-3 font-serif text-xl">
-                  Publish in markdown
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-muted-foreground">
-                Live preview, slug auto-derived from your title, body
-                uploaded to decentralized storage and content-addressed by
-                a hash.
-              </CardContent>
-            </Card>
-          </RevealOnScroll>
-
-          <RevealOnScroll delay={0.08}>
-            <Card className="h-full transition hover:-translate-y-1 hover:shadow-md hover:shadow-primary/10">
-              <CardHeader>
-                <Heart className="h-6 w-6 fill-primary text-primary" />
-                <CardTitle className="mt-3 font-serif text-xl">
-                  Per-paragraph tips
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-muted-foreground">
-                Readers tap a heart under any paragraph. Pre-approve once,
-                every tip after that is one click and a few hundredths of a
-                cent in gas.
-              </CardContent>
-            </Card>
-          </RevealOnScroll>
-
-          <RevealOnScroll delay={0.16}>
-            <Card className="h-full transition hover:-translate-y-1 hover:shadow-md hover:shadow-primary/10">
-              <CardHeader>
-                <Wallet className="h-6 w-6 text-primary" />
-                <CardTitle className="mt-3 font-serif text-xl">
-                  Claim anytime
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-muted-foreground">
-                Sweep accumulated tips to your wallet in one cUSD transfer.
-                Works inside MiniPay or any Celo-compatible wallet.
-              </CardContent>
-            </Card>
-          </RevealOnScroll>
-        </div>
-      </section>
+      {/* HOW IT WORKS — concrete two-column walkthrough (writer / reader) */}
+      <HowItWorks />
     </main>
   );
 }
