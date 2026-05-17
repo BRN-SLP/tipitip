@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, Fraunces } from 'next/font/google';
 import './globals.css';
 
@@ -45,7 +45,6 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-touch-icon.svg', sizes: '180x180', type: 'image/svg+xml' }],
   },
   manifest: '/site.webmanifest',
-  themeColor: '#0b1220',
   openGraph: {
     type: 'website',
     siteName: 'TipiTip',
@@ -77,6 +76,33 @@ export const metadata: Metadata = {
     'talentapp:project_verification':
       '48d665b012a2ac6976c59b8403473ff4a6762ebb23e60737c54f2de3f595f7d0c4b54357f3b1d19db77e3655cf3afa0bd7e8b711f6dc009baec9a645aca25aec',
   },
+};
+
+/**
+ * Viewport metadata. Split from the `metadata` export because Next.js
+ * 14 moved theme-color / color-scheme / viewport-width into a dedicated
+ * `Viewport` type — the older nested form on `metadata` is deprecated
+ * and produces a build warning.
+ *
+ * Why two themeColor entries:
+ *   The mobile browser chrome (Safari/Chrome address bar, Android task
+ *   switcher) reads this tag to tint its UI. A single static value
+ *   leaves users in the "wrong" theme with a chrome that clashes with
+ *   the rest of the screen — e.g. a light-mode reader gets a dark
+ *   slate bar above the cream page. Two media-query entries let the
+ *   browser pick the right one automatically when the system or user
+ *   toggle flips the preference.
+ *
+ * `colorScheme: 'light dark'` tells the UA both modes are supported,
+ * which enables built-in form widgets, scrollbars, and any
+ * `color-scheme:` CSS query to react correctly.
+ */
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fbf8f4' },
+    { media: '(prefers-color-scheme: dark)', color: '#0b1220' },
+  ],
+  colorScheme: 'light dark',
 };
 
 export default function RootLayout({
