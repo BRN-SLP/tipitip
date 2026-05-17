@@ -25,13 +25,13 @@ export async function generateMetadata({
       type: "website",
       title: `#${name} · TipiTip`,
       description: `Articles tagged #${name} on TipiTip.`,
-      images: ["/og.svg"],
+      images: ["/og.png"],
     },
     twitter: {
       card: "summary_large_image",
       title: `#${name} · TipiTip`,
       description: `Articles tagged #${name} on TipiTip.`,
-      images: ["/og.svg"],
+      images: ["/og.png"],
     },
   };
 }

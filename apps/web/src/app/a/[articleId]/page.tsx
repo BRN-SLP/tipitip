@@ -44,8 +44,18 @@ export async function generateMetadata({
   //
   // `launch_frame` is the v2 action; `post` (v1's server callback) is
   // not used here.
-  const frameImage = "/og.svg";
-  const frameTarget = `/a/${articleId}`;
+  //
+  // IMPORTANT: every URL in the frame payload must be ABSOLUTE — Warpcast
+  // and other Farcaster clients fetch these from their own origin, so
+  // relative paths like "/og.svg" would resolve to warpcast.com/og.svg
+  // and fail. Next.js auto-prefixes openGraph.images with metadataBase
+  // but does NOT touch raw strings in `other`, hence the explicit prefix.
+  const siteUrl = (
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://tipitip-sable.vercel.app"
+  ).replace(/\/+$/, "");
+  const frameImage = `${siteUrl}/og.png`;
+  const frameTarget = `${siteUrl}/a/${articleId}`;
+  const splashImage = `${siteUrl}/logo-512.png`;
   const fcFrame = {
     version: "next",
     imageUrl: frameImage,
@@ -55,7 +65,7 @@ export async function generateMetadata({
         type: "launch_frame",
         name: "TipiTip",
         url: frameTarget,
-        splashImageUrl: "/og.svg",
+        splashImageUrl: splashImage,
         splashBackgroundColor: "#0b1220",
       },
     },
