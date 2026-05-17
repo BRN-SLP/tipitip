@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
-import { splitParagraphs } from "./markdown";
+import { splitParagraphs } from "./markdown.js";
 
 export type Hex = `0x${string}`;
 

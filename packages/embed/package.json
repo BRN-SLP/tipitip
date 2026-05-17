@@ -1,6 +1,6 @@
 {
   "name": "@tipitip/embed",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Drop-in React component for per-paragraph cUSD tipping on Celo. Add a tippable article block to any blog with two lines of code.",
   "license": "MIT",
   "type": "module",

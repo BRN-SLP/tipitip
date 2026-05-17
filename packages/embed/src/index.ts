@@ -1,3 +1,3 @@
-export { TipParagraphs } from "./TipParagraphs";
-export type { Hex, TipParagraphsProps } from "./TipParagraphs";
-export { splitParagraphs } from "./markdown";
+export { TipParagraphs } from "./TipParagraphs.js";
+export type { Hex, TipParagraphsProps } from "./TipParagraphs.js";
+export { splitParagraphs } from "./markdown.js";
