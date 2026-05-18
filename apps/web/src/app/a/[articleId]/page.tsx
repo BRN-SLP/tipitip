@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import type { Metadata } from "next";
 
+import { FrameReady } from "@/components/frame/FrameReady";
 import { ArticleRenderer } from "@/components/reader/ArticleRenderer";
 import { ShareBar } from "@/components/reader/ShareBar";
 import { bytes32HexRegex, extractTitleAndExcerpt } from "@/lib/articles";
@@ -118,6 +119,9 @@ export default async function ArticlePage({ params }: PageProps) {
 
   return (
     <main className="container mx-auto max-w-3xl px-4 py-10">
+      {/* Dismiss the Warpcast Mini App splash screen on mount.
+          No-ops outside a frame context. */}
+      <FrameReady />
       <div className="mb-6 flex items-center justify-between gap-4">
         <Link
           href="/"
