@@ -17,11 +17,11 @@ import { MANIFESTO } from "@/lib/manifesto";
  * page does not show an empty "Latest" section before mainnet seeding.
  */
 export async function FeaturedReads() {
-  // Fetch one extra so that after the pinned article is filtered out,
-  // the grid still has six cards. We always *want* a full grid below
-  // the pinned slot; pulling exactly six and then losing one looks
-  // unbalanced when the pin happens to be in the latest set.
-  const raw = await getLatestArticles(7);
+  // Fetch the same window the PinnedManifesto component fetches so
+  // both components hit the same `unstable_cache` key and Forno
+  // serves one event log per page render, not two. Slicing happens
+  // here in-memory after the dedup-friendly fetch.
+  const raw = await getLatestArticles(20);
   const articles = raw
     .filter((a) => a.articleId !== MANIFESTO.articleId)
     .slice(0, 6);
