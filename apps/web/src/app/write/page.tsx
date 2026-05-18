@@ -23,6 +23,7 @@ import {
   type PublishArticleResponse,
 } from "@/lib/articles";
 import { getTipJarAddress, tipJarAbi } from "@/lib/contracts";
+import { useFeeCurrencyOverride } from "@/hooks/useFeeCurrencyOverride";
 import { deriveArticleId, deriveContentHash } from "@/lib/paragraph-key";
 import { toSlug } from "@/lib/slug";
 
@@ -73,6 +74,9 @@ export default function WriterPage() {
     data: txHash,
     reset: resetWrite,
   } = useWriteContract();
+  // Inside MiniPay: pay gas in cUSD instead of CELO so writers
+  // without any CELO can still register articles.
+  const feeOverride = useFeeCurrencyOverride();
   const { isLoading: receiptLoading, isSuccess: receiptSuccess } =
     useWaitForTransactionReceipt({ hash: txHash });
 
@@ -130,6 +134,7 @@ export default function WriterPage() {
         abi: tipJarAbi,
         functionName: "registerArticle",
         args: [articleId, localHash, slug],
+        ...feeOverride,
       });
       setState({ kind: "confirming", articleId, txHash: sentTx });
     } catch (err: unknown) {

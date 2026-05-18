@@ -17,6 +17,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useFeeCurrencyOverride } from "@/hooks/useFeeCurrencyOverride";
 import { getTipJarAddress, tipJarAbi } from "@/lib/contracts";
 
 interface ClaimCardProps {
@@ -36,6 +37,8 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
   const { isConnected } = useAccount();
   const publicClient = usePublicClient({ chainId });
   const { writeContractAsync } = useWriteContract();
+  // Inside MiniPay: pay gas in cUSD instead of CELO.
+  const feeOverride = useFeeCurrencyOverride();
   const [state, setState] = useState<ClaimState>({ kind: "idle" });
 
   const hasFunds = pending > 0n;
@@ -51,6 +54,7 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
         address: tipJarAddress,
         abi: tipJarAbi,
         functionName: "claimEarnings",
+        ...feeOverride,
       });
       setState({ kind: "confirming", txHash: tx });
       const toastId = toast.loading("Claiming tips…", {

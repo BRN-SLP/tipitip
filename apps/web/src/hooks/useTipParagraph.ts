@@ -12,6 +12,7 @@ import {
 import { formatUnits, parseUnits, type Hex } from "viem";
 
 import { erc20Abi, getCUSDAddress, getTipJarAddress, tipJarAbi } from "@/lib/contracts";
+import { useFeeCurrencyOverride } from "@/hooks/useFeeCurrencyOverride";
 
 /** Pre-approve a large allowance so subsequent tips become one-click. */
 const PRE_APPROVE_AMOUNT = parseUnits("100", 18);
@@ -70,6 +71,9 @@ export function useTipParagraph(articleId: Hex | undefined): TipParagraphResult 
   });
 
   const { writeContractAsync } = useWriteContract();
+  // Inside MiniPay: pay gas in cUSD instead of CELO. Empty object
+  // for regular EVM wallets (MetaMask et al. reject feeCurrency).
+  const feeOverride = useFeeCurrencyOverride();
 
   const reset = useCallback(() => {
     setState({ kind: "idle" });
@@ -100,6 +104,7 @@ export function useTipParagraph(articleId: Hex | undefined): TipParagraphResult 
             abi: erc20Abi,
             functionName: "approve",
             args: [tipJarAddress, approveAmount],
+            ...feeOverride,
           });
           setState({ kind: "approving", txHash: approveTx });
           await publicClient.waitForTransactionReceipt({ hash: approveTx });
@@ -113,6 +118,7 @@ export function useTipParagraph(articleId: Hex | undefined): TipParagraphResult 
           abi: tipJarAbi,
           functionName: "tipParagraph",
           args: [articleId, paragraphKey, amountWei],
+          ...feeOverride,
         });
         setState({ kind: "tipping", txHash: tipTx });
         const toastId = toast.loading("Sending tip…", {
@@ -147,6 +153,7 @@ export function useTipParagraph(articleId: Hex | undefined): TipParagraphResult 
       publicClient,
       writeContractAsync,
       refetchAllowance,
+      feeOverride,
     ],
   );
 
