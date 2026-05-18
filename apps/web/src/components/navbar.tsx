@@ -37,7 +37,9 @@ export function Navbar() {
           {/* Mobile menu button */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              {/* h-11 w-11 enforces 44 px touch target (WCAG 2.5.5 AAA)
+                  — shadcn's default size="icon" is h-9 w-9 (36 px). */}
+              <Button variant="ghost" size="icon" className="h-11 w-11 md:hidden">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
