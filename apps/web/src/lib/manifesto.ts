@@ -39,7 +39,7 @@ export interface ManifestoConfig {
 export const MANIFESTO: ManifestoConfig = {
   articleId:
     "0xbdc473d818a4a15c39941bd9513dbff8eade14a57825619c39884ce36fa40178",
-  eyebrow: "Pinned · From the creator",
+  eyebrow: "Pinned · House manifesto",
   excerpt: "Why TipiTip exists, in one essay.",
   cta: "Read the manifesto",
 };
