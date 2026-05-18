@@ -3,6 +3,7 @@ import { Inter, Fraunces } from 'next/font/google';
 import './globals.css';
 
 import { Footer } from '@/components/footer';
+import { FrameReady } from '@/components/frame/FrameReady';
 import { Navbar } from '@/components/navbar';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/toaster';
@@ -117,6 +118,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans">
+        {/* Warpcast Mini App splash dismiss. Mounted as the first
+            child so its useEffect fires before any wagmi /
+            RainbowKit work — if the wallet subtree ever crashes
+            inside an iframe sandbox, this still resolves first. */}
+        <FrameReady />
         {/* Navbar is included on all pages */}
         <ThemeProvider>
           <div className="relative flex min-h-screen flex-col">
