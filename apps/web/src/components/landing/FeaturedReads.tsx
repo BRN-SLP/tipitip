@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { getLatestArticles } from "@/lib/articles-feed";
 import { displayName, resolveEnsBatch } from "@/lib/ens";
+import { MANIFESTO } from "@/lib/manifesto";
 
 /**
  * Latest seeded + community articles, queried directly from the on-chain
@@ -16,7 +17,14 @@ import { displayName, resolveEnsBatch } from "@/lib/ens";
  * page does not show an empty "Latest" section before mainnet seeding.
  */
 export async function FeaturedReads() {
-  const articles = await getLatestArticles(6);
+  // Fetch one extra so that after the pinned article is filtered out,
+  // the grid still has six cards. We always *want* a full grid below
+  // the pinned slot; pulling exactly six and then losing one looks
+  // unbalanced when the pin happens to be in the latest set.
+  const raw = await getLatestArticles(7);
+  const articles = raw
+    .filter((a) => a.articleId !== MANIFESTO.articleId)
+    .slice(0, 6);
   if (articles.length === 0) return null;
 
   // Resolve all authors' ENS names in parallel before render. The
