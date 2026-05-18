@@ -8,7 +8,6 @@ import { FeaturedReads } from "@/components/landing/FeaturedReads";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { PinnedManifesto } from "@/components/landing/PinnedManifesto";
 import { Button } from "@/components/ui/button";
-import { UserBalance } from "@/components/user-balance";
 
 export default async function Home() {
   return (
@@ -59,10 +58,6 @@ export default async function Home() {
                   Open dashboard
                 </Link>
               </Button>
-            </div>
-
-            <div className="pt-2">
-              <UserBalance />
             </div>
           </div>
 
