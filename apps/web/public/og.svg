@@ -1,66 +1,72 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
   <defs>
-    <!-- Subtle vertical gradient on pure navy — NO hue drift -->
+    <!-- Dark navy canvas — same family as the landing page hero, no purple drift. -->
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#0b1220"/>
       <stop offset="100%" stop-color="#070a14"/>
     </linearGradient>
-    <!-- Heart fill: same pink → rose as the site primary -->
-    <linearGradient id="heart" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#fda4af"/>
-      <stop offset="100%" stop-color="#e11d48"/>
-    </linearGradient>
-    <!-- Soft halo behind the heart — mirrors FloatingHeart on the site -->
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#e11d48" stop-opacity="0.32"/>
-      <stop offset="55%" stop-color="#e11d48" stop-opacity="0.10"/>
+    <!-- Outer halo behind the heart badge — mirrors the
+         `bg-primary/20 blur-3xl` glow that sits behind FloatingHeart
+         on the landing hero. Generous radius so the wine-tinted
+         glow blooms well past the inner badge. -->
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#e11d48" stop-opacity="0.36"/>
+      <stop offset="45%"  stop-color="#e11d48" stop-opacity="0.14"/>
       <stop offset="100%" stop-color="#e11d48" stop-opacity="0"/>
     </radialGradient>
-    <!-- Faint top-to-bottom highlight — gives the canvas depth -->
+    <!-- Faint top sheen for canvas depth. -->
     <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.04"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
   </defs>
 
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="200" fill="url(#sheen)"/>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="240" fill="url(#sheen)"/>
 
-  <!-- LEFT: editorial wordmark + supporting copy -->
+  <!-- LEFT: editorial wordmark + supporting copy.
+       Anchored vertically so it reads as a centered block. -->
   <g>
-    <!-- Wordmark: Fraunces 800, the same display face the hero uses -->
-    <text x="80" y="280"
+    <!-- Wordmark in Fraunces 800 — same display face the hero uses. -->
+    <text x="100" y="400"
           font-family="Fraunces, Georgia, 'Times New Roman', serif"
-          font-size="160" font-weight="800"
+          font-size="170" font-weight="800"
           letter-spacing="-4"
           fill="#ffffff">TipiTip</text>
 
-    <!-- Italic accent line, in primary rose — matches the hero's
-         "honest writing" / "the line that landed" treatment -->
-    <text x="80" y="360"
+    <!-- Italic accent line in primary rose — matches the hero's
+         "honest writing" treatment. -->
+    <text x="100" y="478"
           font-family="Fraunces, Georgia, serif"
-          font-size="46" font-weight="500" font-style="italic"
+          font-size="42" font-weight="500" font-style="italic"
           fill="#fda4af">Tip writers per paragraph.</text>
 
-    <!-- Tag line in Inter, neutral slate -->
-    <text x="80" y="540"
+    <!-- Supporting line, kept well above the bottom safe edge so
+         Warpcast's 3:2 viewport never clips it. -->
+    <text x="100" y="668"
           font-family="Inter, 'Helvetica Neue', system-ui, sans-serif"
-          font-size="26" font-weight="500"
+          font-size="24" font-weight="500"
           letter-spacing="0.5"
           fill="#94a3b8">cUSD micro-tips  ·  MiniPay-ready  ·  0% platform fee</text>
   </g>
 
-  <!-- RIGHT: heart + halo, mirroring the FloatingHeart on the landing.
-       Uses the lucide-react Heart path (same shape the site renders),
-       scaled and centered around (920, 315). -->
+  <!-- RIGHT: site-style heart badge.
+       Mirrors `FloatingHeart`: a soft outer blur halo, a faint
+       circular `bg-primary/10` badge, and a solid rose Lucide
+       Heart in the middle. Centered at (940, 400) so it sits
+       in the visual center of the right half of the 3:2 canvas. -->
   <g>
-    <!-- Halo first so the heart sits on top of it -->
-    <circle cx="920" cy="315" r="220" fill="url(#glow)"/>
-    <!-- Lucide Heart path: native 24x24 viewbox, scaled ×13 and
-         translated so its center lands on (920, 315). -->
-    <g transform="translate(764, 159) scale(13)">
+    <!-- Outer blur halo (≈ bg-primary/20 blur-3xl) -->
+    <circle cx="940" cy="400" r="300" fill="url(#halo)"/>
+    <!-- Inner badge (≈ bg-primary/10 rounded-full) -->
+    <circle cx="940" cy="400" r="180"
+            fill="#e11d48" fill-opacity="0.10"/>
+    <!-- Lucide Heart, native 24×24 viewBox, scaled ×10 so the
+         heart bbox is 200×180. Translated so the heart's visual
+         center (12,12 in the path) lands at (940, 400). -->
+    <g transform="translate(820, 280) scale(10)">
       <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
-            fill="url(#heart)"/>
+            fill="#e11d48"/>
     </g>
   </g>
 </svg>
