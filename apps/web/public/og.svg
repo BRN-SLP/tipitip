@@ -1,22 +1,66 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <!-- Subtle vertical gradient on pure navy — NO hue drift -->
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#0b1220"/>
-      <stop offset="100%" stop-color="#1f1340"/>
+      <stop offset="100%" stop-color="#070a14"/>
     </linearGradient>
+    <!-- Heart fill: same pink → rose as the site primary -->
     <linearGradient id="heart" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#fda4af"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
+    <!-- Soft halo behind the heart — mirrors FloatingHeart on the site -->
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e11d48" stop-opacity="0.32"/>
+      <stop offset="55%" stop-color="#e11d48" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#e11d48" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Faint top-to-bottom highlight — gives the canvas depth -->
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
   </defs>
+
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <g transform="translate(96, 130)">
-    <path d="M120 220 C40 156 -10 100 36 60 C68 32 116 38 120 80 C124 38 172 32 204 60 C250 100 200 156 120 220 Z"
-          fill="url(#heart)"/>
+  <rect width="1200" height="200" fill="url(#sheen)"/>
+
+  <!-- LEFT: editorial wordmark + supporting copy -->
+  <g>
+    <!-- Wordmark: Fraunces 800, the same display face the hero uses -->
+    <text x="80" y="280"
+          font-family="Fraunces, Georgia, 'Times New Roman', serif"
+          font-size="160" font-weight="800"
+          letter-spacing="-4"
+          fill="#ffffff">TipiTip</text>
+
+    <!-- Italic accent line, in primary rose — matches the hero's
+         "honest writing" / "the line that landed" treatment -->
+    <text x="80" y="360"
+          font-family="Fraunces, Georgia, serif"
+          font-size="46" font-weight="500" font-style="italic"
+          fill="#fda4af">Tip writers per paragraph.</text>
+
+    <!-- Tag line in Inter, neutral slate -->
+    <text x="80" y="540"
+          font-family="Inter, 'Helvetica Neue', system-ui, sans-serif"
+          font-size="26" font-weight="500"
+          letter-spacing="0.5"
+          fill="#94a3b8">cUSD micro-tips  ·  MiniPay-ready  ·  0% platform fee</text>
   </g>
-  <text x="380" y="240" font-family="Inter, system-ui, sans-serif" font-size="92" font-weight="800" fill="#ffffff" letter-spacing="-2">TipiTip</text>
-  <text x="380" y="310" font-family="Inter, system-ui, sans-serif" font-size="36" font-weight="400" fill="#cbd5e1">Tip writers per paragraph on Celo</text>
-  <text x="380" y="475" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="500" fill="#94a3b8">cUSD micro-tips · MiniPay-ready · no subscriptions</text>
-  <rect x="380" y="510" width="170" height="44" rx="22" fill="#e11d48"/>
-  <text x="465" y="540" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">Built on Celo</text>
+
+  <!-- RIGHT: heart + halo, mirroring the FloatingHeart on the landing.
+       Uses the lucide-react Heart path (same shape the site renders),
+       scaled and centered around (920, 315). -->
+  <g>
+    <!-- Halo first so the heart sits on top of it -->
+    <circle cx="920" cy="315" r="220" fill="url(#glow)"/>
+    <!-- Lucide Heart path: native 24x24 viewbox, scaled ×13 and
+         translated so its center lands on (920, 315). -->
+    <g transform="translate(764, 159) scale(13)">
+      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+            fill="url(#heart)"/>
+    </g>
+  </g>
 </svg>
