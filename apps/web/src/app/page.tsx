@@ -6,6 +6,7 @@ import { RevealOnScroll } from "@/components/hero/RevealOnScroll";
 import { TypewriterTagline } from "@/components/hero/TypewriterTagline";
 import { FeaturedReads } from "@/components/landing/FeaturedReads";
 import { HowItWorks } from "@/components/landing/HowItWorks";
+import { PinnedManifesto } from "@/components/landing/PinnedManifesto";
 import { Button } from "@/components/ui/button";
 import { UserBalance } from "@/components/user-balance";
 
@@ -112,6 +113,9 @@ export default async function Home() {
           </RevealOnScroll>
         </div>
       </section>
+
+      {/* PINNED MANIFESTO — featured "from the creator" slot above the grid */}
+      <PinnedManifesto />
 
       {/* LATEST ARTICLES — pulled from on-chain ArticleRegistered events */}
       <FeaturedReads />
