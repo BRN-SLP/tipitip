@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getLatestArticles } from "@/lib/articles-feed";
+import { displayName, resolveEnsBatch } from "@/lib/ens";
 
 /**
  * Latest seeded + community articles, queried directly from the on-chain
@@ -17,6 +18,11 @@ import { getLatestArticles } from "@/lib/articles-feed";
 export async function FeaturedReads() {
   const articles = await getLatestArticles(6);
   if (articles.length === 0) return null;
+
+  // Resolve all authors' ENS names in parallel before render. The
+  // helper de-duplicates and caches, so a feed where five articles
+  // share one author still fires a single mainnet lookup.
+  const ensMap = await resolveEnsBatch(articles.map((a) => a.author));
 
   return (
     <section className="border-t bg-background">
@@ -46,7 +52,7 @@ export async function FeaturedReads() {
                 </CardHeader>
                 <CardContent className="space-y-3 text-sm">
                   <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-                    by {shortAddr(article.author)}
+                    by {displayName(article.author, ensMap.get(article.author))}
                   </p>
                   <p className="inline-flex items-center gap-1 text-sm font-medium text-primary">
                     Read & tip
@@ -73,6 +79,3 @@ function slugToTitle(slug: string): string {
     .join(" ");
 }
 
-function shortAddr(addr: string): string {
-  return `${addr.slice(0, 6)}…${addr.slice(-4)}`;
-}
