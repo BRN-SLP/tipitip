@@ -1,27 +1,31 @@
 import Link from "next/link";
-import { ArrowRight, Pin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-import { Card, CardContent } from "@/components/ui/card";
 import { getLatestArticles } from "@/lib/articles-feed";
 import { displayName, resolveEnsName } from "@/lib/ens";
 import { MANIFESTO } from "@/lib/manifesto";
 
 /**
- * The featured "founder's manifesto" slot on the landing page.
+ * The featured "house manifesto" slot on the landing page.
  *
- * Renders a single wide card above the regular Latest grid that
- * advertises the pinned article (configured in `lib/manifesto.ts`).
- * Visually distinct from the grid below — wider, left-aligned, with
- * an eyebrow label, italic teaser, and a primary-coloured CTA — so
- * that it reads as "start here" rather than "another item in a list."
+ * Rendered as an editorial column — same width and typographic
+ * rhythm as the sample-paragraph block above it on the landing, so
+ * the page reads as a sequence of editorial columns (sample, pinned)
+ * flanking the hero and the Latest grid. Distinguished from the
+ * sample by a primary-coloured eyebrow ("Pinned · House manifesto"
+ * vs. the muted "From a sample article") — the colour tells the
+ * reader "this one is real, not a demo".
+ *
+ * Deliberately NOT a card. Card chrome on a single solo element
+ * between two card-free sections reads as an ad banner; pure
+ * typography on the page background reads as content.
  *
  * Edge cases handled:
- *   - The pinned articleId is not in the on-chain feed (article was
+ *   - Pinned articleId not in the on-chain feed (article was
  *     un-published, local dev with empty chain, RPC timeout). The
  *     component returns null and the page falls back to just the
- *     Latest grid — never broken, never a 404-ish empty card.
- *   - The author has set an ENS name — surfaced via the shared
- *     ens lib, same way the Latest grid does it.
+ *     Latest grid — never broken, never a 404-ish empty slot.
+ *   - Author has set an ENS name → surfaced via the shared ens lib.
  */
 export async function PinnedManifesto() {
   // Pull enough of the feed to find the pinned article. We don't
@@ -38,50 +42,46 @@ export async function PinnedManifesto() {
 
   return (
     <section className="border-t bg-background">
-      <div className="container mx-auto max-w-5xl px-4 pt-20">
-        <Link
-          href={`/a/${pinned.articleId}`}
-          className="group block focus-visible:outline-none"
-          aria-label={`${MANIFESTO.cta}: ${MANIFESTO.excerpt}`}
-        >
-          <Card className="relative overflow-hidden border-l-2 border-l-primary/60 bg-primary/[0.025] transition group-hover:bg-primary/[0.05] group-focus-visible:ring-2 group-focus-visible:ring-primary group-focus-visible:ring-offset-2">
-            {/* Subtle radial highlight in the top-right corner —
-                gives the card depth without using a hard background. */}
-            <div
+      <div className="container mx-auto max-w-3xl px-4 py-16">
+        {/* Eyebrow — same font-mono uppercase tracking as the
+            sample-paragraph block, but in primary color so the
+            two columns are distinguishable at a glance. */}
+        <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
+          Pinned · {MANIFESTO.eyebrow.replace(/^.*?·\s*/, "")}
+        </p>
+
+        {/* Title — serif, mirrors the sample paragraph block's
+            heading scale exactly. */}
+        <h2 className="font-serif text-3xl font-semibold leading-tight md:text-4xl">
+          {slugToTitle(pinned.slug)}
+        </h2>
+
+        {/* Italic supporting line — same italic-primary treatment
+            the hero and sample block use for "the line that
+            landed". */}
+        <p className="mt-4 font-serif text-lg italic text-muted-foreground md:text-xl">
+          {MANIFESTO.excerpt}
+        </p>
+
+        {/* Byline + CTA on a single row — keeps the column tight
+            and tells the reader "this is a real article by a real
+            author, not a marketing slot". */}
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+          <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+            by {byline}
+          </p>
+          <Link
+            href={`/a/${pinned.articleId}`}
+            className="group inline-flex items-center gap-1.5 text-sm font-medium text-primary outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            aria-label={`${MANIFESTO.cta}: ${MANIFESTO.excerpt}`}
+          >
+            <span>{MANIFESTO.cta}</span>
+            <ArrowRight
               aria-hidden="true"
-              className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-primary/10 blur-3xl"
+              className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
             />
-
-            <CardContent className="relative grid gap-6 p-8 md:grid-cols-[1fr_auto] md:items-end md:p-10">
-              <div className="space-y-3">
-                <p className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
-                  <Pin
-                    aria-hidden="true"
-                    className="h-3 w-3 -rotate-45"
-                  />
-                  {MANIFESTO.eyebrow}
-                </p>
-                <h2 className="font-serif text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
-                  {slugToTitle(pinned.slug)}
-                </h2>
-                <p className="font-serif text-lg italic text-muted-foreground md:text-xl">
-                  {MANIFESTO.excerpt}
-                </p>
-                <p className="pt-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-                  by {byline}
-                </p>
-              </div>
-
-              <div className="inline-flex items-center gap-1.5 text-sm font-medium text-primary md:self-center">
-                <span>{MANIFESTO.cta}</span>
-                <ArrowRight
-                  aria-hidden="true"
-                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-                />
-              </div>
-            </CardContent>
-          </Card>
-        </Link>
+          </Link>
+        </div>
       </div>
     </section>
   );
