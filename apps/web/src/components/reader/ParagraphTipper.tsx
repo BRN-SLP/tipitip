@@ -119,19 +119,22 @@ export function ParagraphTipper({
           disabled={busy || disabled}
           aria-label={`Tip this paragraph ${formatUnits(amountWei, 18)} cUSD`}
           aria-busy={busy || undefined}
-          className={`inline-flex h-7 w-7 items-center justify-center rounded-full border border-input bg-background transition-all motion-reduce:transition-none ${
+          // 44 px hit target (WCAG 2.5.5 AAA). MiniPay users tap with
+          // a thumb on small screens; the previous 28 px button was
+          // a fat-finger miss waiting to happen.
+          className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-input bg-background transition-all motion-reduce:transition-none ${
             pulse ? "scale-125 border-primary motion-reduce:scale-100" : ""
           } hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50`}
         >
           {busy ? (
             <Loader2
               aria-hidden="true"
-              className="h-3.5 w-3.5 animate-spin motion-reduce:animate-none"
+              className="h-4 w-4 animate-spin motion-reduce:animate-none"
             />
           ) : (
             <Heart
               aria-hidden="true"
-              className={`h-3.5 w-3.5 ${
+              className={`h-4 w-4 ${
                 count > 0 ? "fill-primary text-primary" : "text-foreground/70"
               }`}
             />
@@ -154,12 +157,14 @@ export function ParagraphTipper({
             linkCopied ? "Paragraph link copied" : "Copy link to this paragraph"
           }
           title={linkCopied ? "Copied!" : "Copy link to this paragraph"}
-          className="ml-auto inline-flex h-6 w-6 items-center justify-center rounded text-muted-foreground/60 opacity-0 transition-opacity hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 group-hover:opacity-100 focus-visible:opacity-100 motion-reduce:transition-none"
+          // Visual icon stays subtle (it's a secondary action) but
+          // the hit target is now 44 px square per WCAG 2.5.5 AAA.
+          className="ml-auto inline-flex h-11 w-11 items-center justify-center rounded text-muted-foreground/60 opacity-0 transition-opacity hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 group-hover:opacity-100 focus-visible:opacity-100 motion-reduce:transition-none"
         >
           {linkCopied ? (
-            <Check className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+            <Check className="h-4 w-4 text-primary" aria-hidden="true" />
           ) : (
-            <Link2 className="h-3.5 w-3.5" aria-hidden="true" />
+            <Link2 className="h-4 w-4" aria-hidden="true" />
           )}
         </button>
       </div>

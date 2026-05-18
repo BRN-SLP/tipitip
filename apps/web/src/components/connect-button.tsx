@@ -57,7 +57,10 @@ export function ConnectButton() {
                     onClick={openConnectModal}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm shadow-primary/20 transition hover:shadow-md hover:shadow-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    // min-h-11 enforces 44 px touch target (WCAG 2.5.5 AAA)
+                    // on mobile, where the primary connect-CTA must
+                    // be impossible to miss with a thumb.
+                    className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm shadow-primary/20 transition hover:shadow-md hover:shadow-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   >
                     <Heart
                       aria-hidden="true"
@@ -77,7 +80,7 @@ export function ConnectButton() {
                     onClick={openChainModal}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-1.5 text-sm font-medium text-amber-700 dark:text-amber-300"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-sm font-medium text-amber-700 dark:text-amber-300"
                   >
                     <AlertTriangle aria-hidden="true" className="h-3.5 w-3.5" />
                     <span>Wrong network</span>
@@ -86,7 +89,7 @@ export function ConnectButton() {
               }
 
               return (
-                <div className="inline-flex items-stretch overflow-hidden rounded-full border border-primary/20 bg-primary/5 text-sm">
+                <div className="inline-flex min-h-11 items-stretch overflow-hidden rounded-full border border-primary/20 bg-primary/5 text-sm">
                   <motion.button
                     type="button"
                     onClick={openChainModal}
