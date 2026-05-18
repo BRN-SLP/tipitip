@@ -6,7 +6,7 @@ import { injectedWallet } from "@rainbow-me/rainbowkit/wallets";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { WagmiProvider, createConfig, http, useConnect } from "wagmi";
-import { celo, celoSepolia, mainnet } from "wagmi/chains";
+import { celo, mainnet } from "wagmi/chains";
 import { ConnectButton } from "./connect-button";
 
 const connectors = connectorsForWallets(
@@ -29,12 +29,17 @@ const connectors = connectorsForWallets(
 // primary ENS name see e.g. "vitalik.eth" instead of "0xd8dA…6045".
 // `celo` stays first in the array so it remains the default chain
 // for transactions; the user is never prompted to switch to L1.
+//
+// Celo Sepolia is intentionally NOT in this list. The Proof of Ship
+// leaderboard only counts mainnet transactions, and exposing a
+// testnet switcher to readers invites confusion ("why didn't my tip
+// arrive?"). Sepolia contracts remain deployed for V2 upgrade
+// rehearsals — they are simply not user-facing.
 const wagmiConfig = createConfig({
-  chains: [celo, celoSepolia, mainnet],
+  chains: [celo, mainnet],
   connectors,
   transports: {
     [celo.id]: http(),
-    [celoSepolia.id]: http(),
     [mainnet.id]: http(),
   },
   ssr: true,
