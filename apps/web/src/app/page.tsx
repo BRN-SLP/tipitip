@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Heart, PenLine, Sparkles, Wallet } from "lucide-react";
+import { BookOpen, Heart, PenLine, Sparkles } from "lucide-react";
 
 import { FloatingHeart } from "@/components/hero/FloatingHeart";
 import { RevealOnScroll } from "@/components/hero/RevealOnScroll";
@@ -8,6 +8,7 @@ import { FeaturedReads } from "@/components/landing/FeaturedReads";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { PinnedManifesto } from "@/components/landing/PinnedManifesto";
 import { Button } from "@/components/ui/button";
+import { MANIFESTO } from "@/lib/manifesto";
 
 export default async function Home() {
   return (
@@ -45,6 +46,15 @@ export default async function Home() {
               cUSD micro-tip — no subscriptions, no middlemen.
             </p>
 
+            {/* Two CTAs by audience:
+                 - "Start writing" is the writer's path (any visitor
+                   can land on /write; the page itself prompts wallet
+                   connection there)
+                 - "Read a piece" sends new readers straight to the
+                   pinned manifesto so they meet a real article with
+                   a real tip surface before being asked to connect.
+                 The previous "Open dashboard" CTA was a dead end for
+                 anyone who hadn't connected yet — an empty page. */}
             <div className="flex flex-col items-start gap-3 sm:flex-row">
               <Button asChild size="lg" className="shadow-sm shadow-primary/20">
                 <Link href="/write">
@@ -53,9 +63,9 @@ export default async function Home() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/dashboard">
-                  <Wallet className="mr-2 h-4 w-4" />
-                  Open dashboard
+                <Link href={`/a/${MANIFESTO.articleId}`}>
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Read a piece
                 </Link>
               </Button>
             </div>
