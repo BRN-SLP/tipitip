@@ -34,7 +34,13 @@ export async function FeaturedReads() {
   const ensMap = await resolveEnsBatch(articles.map((a) => a.author));
 
   return (
-    <section className="border-t bg-background">
+    // Latest grid sits on the same uniform page background as every other
+    // landing section — the previous `border-t bg-background` was a leftover
+    // from an earlier banded layout. `bg-background` is the same token the
+    // body already uses, so it rendered identically, but the `border-t` drew
+    // a faint horizontal seam under the pinned card and broke the "one
+    // canvas" feel the user asked for in both light and dark themes.
+    <section>
       <div className="container mx-auto max-w-5xl px-4 py-20">
         <div className="mb-10">
           <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
