@@ -92,20 +92,20 @@
 }
 
 /* Heartbeat — used by the pinned-manifesto glow on the landing.
-   Double-pulse rhythm mimics a real heart (lub-dub) at a calm rate.
-   Stays subtle (opacity 0.18 -> 0.45) so it reads as ambience, not
-   as a flashing badge. Collapses to a static shape under
-   prefers-reduced-motion. */
+   Single smooth zoom-in/out pulse — breathes rather than thumps. The
+   previous double-beat (lub-dub) pattern read as jumpy on a static
+   editorial landing where everything else is calm; user asked to
+   replace it with a "light zoom in" while keeping the pulsing color
+   halo behind the card. Slower cycle (4.5 s), gentler opacity range
+   (0.16 -> 0.36), slightly larger peak scale (1.05) so the bloom
+   feels like a slow inhale, not a heartbeat-monitor. */
 @keyframes heartbeat {
-  0%, 100% { opacity: 0.18; transform: scale(1); }
-  20%      { opacity: 0.45; transform: scale(1.04); }
-  35%      { opacity: 0.25; transform: scale(1.01); }
-  55%      { opacity: 0.45; transform: scale(1.04); }
-  70%      { opacity: 0.20; transform: scale(1); }
+  0%, 100% { opacity: 0.16; transform: scale(0.98); }
+  50%      { opacity: 0.36; transform: scale(1.05); }
 }
 
 .animate-heartbeat {
-  animation: heartbeat 2.6s ease-in-out infinite;
+  animation: heartbeat 4.5s ease-in-out infinite;
   transform-origin: center;
 }
 
