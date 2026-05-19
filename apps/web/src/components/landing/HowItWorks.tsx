@@ -214,15 +214,20 @@ export function HowItWorks() {
       </RevealOnScroll>
 
       <div className="grid gap-6 md:grid-cols-[1.1fr_1fr] md:gap-10">
-        {/* Step list */}
+        {/* Step list — fixed-height rows so nothing shifts as the
+            walkthrough auto-advances. The active step's body lives
+            in the demo pane on the right; here we only show number,
+            icon, and title. The previous design rendered the body
+            inline via AnimatePresence with height: 0 -> auto, which
+            relayed-out the entire list on every advance and made
+            the rest of the page jitter. */}
         <RevealOnScroll delay={0.22}>
           <ol className="space-y-3">
             {steps.map((step, i) => {
               const isActive = i === activeStep;
               return (
-                <motion.li
+                <li
                   key={`${persona}-${step.title}`}
-                  layout
                   className={cn(
                     "group cursor-pointer rounded-lg border bg-card/40 p-4 transition",
                     isActive
@@ -232,7 +237,7 @@ export function HowItWorks() {
                   onClick={() => focusStep(i)}
                   aria-current={isActive ? "step" : undefined}
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-center gap-4">
                     <motion.div
                       animate={{
                         scale: isActive ? 1.05 : 1,
@@ -262,32 +267,9 @@ export function HowItWorks() {
                           {step.title}
                         </h3>
                       </div>
-                      <AnimatePresence initial={false}>
-                        {isActive && (
-                          <motion.p
-                            key="body"
-                            layout
-                            initial={
-                              prefersReducedMotion
-                                ? false
-                                : { opacity: 0, height: 0 }
-                            }
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={
-                              prefersReducedMotion
-                                ? undefined
-                                : { opacity: 0, height: 0 }
-                            }
-                            transition={{ duration: 0.25, ease: "easeOut" }}
-                            className="mt-1 overflow-hidden text-sm leading-relaxed text-muted-foreground"
-                          >
-                            {step.body}
-                          </motion.p>
-                        )}
-                      </AnimatePresence>
                     </div>
                   </div>
-                </motion.li>
+                </li>
               );
             })}
           </ol>
