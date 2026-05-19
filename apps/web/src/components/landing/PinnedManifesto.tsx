@@ -44,7 +44,7 @@ export async function PinnedManifesto() {
   const byline = displayName(pinned.author, ens);
 
   return (
-    <section className="border-y bg-secondary">
+    <section className="bg-secondary">
       <div className="container mx-auto max-w-3xl px-4 py-16">
         <Link
           href={`/a/${pinned.articleId}`}

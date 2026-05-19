@@ -34,7 +34,7 @@ export async function FeaturedReads() {
   const ensMap = await resolveEnsBatch(articles.map((a) => a.author));
 
   return (
-    <section className="border-t bg-background">
+    <section className="bg-background">
       <div className="container mx-auto max-w-5xl px-4 py-20">
         <div className="mb-10">
           <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">

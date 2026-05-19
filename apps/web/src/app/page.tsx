@@ -83,8 +83,17 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* SAMPLE PARAGRAPHS — editorial column */}
-      <section className="border-y bg-secondary/40">
+      {/* Soft gradient transition: dark hero -> lighter sample.
+          Replaces the previous hard border-y line with a smooth
+          96 px blend so the bg-shift reads as the page "breathing"
+          on scroll rather than a hard step. */}
+      <div
+        aria-hidden="true"
+        className="h-24 bg-gradient-to-b from-background to-secondary"
+      />
+
+      {/* SAMPLE PARAGRAPHS — editorial column (lighter band) */}
+      <section className="bg-secondary">
         <div className="container mx-auto max-w-3xl px-4 py-16">
           <RevealOnScroll>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -119,14 +128,33 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* PINNED MANIFESTO — featured "from the creator" slot above the grid */}
+      {/* PINNED MANIFESTO — same lighter band as the sample paragraph
+          above, so the two flow as one editorial zone with no break. */}
       <PinnedManifesto />
+
+      {/* Lighter -> darker transition before the Latest grid. */}
+      <div
+        aria-hidden="true"
+        className="h-24 bg-gradient-to-b from-secondary to-background"
+      />
 
       {/* LATEST ARTICLES — pulled from on-chain ArticleRegistered events */}
       <FeaturedReads />
 
+      {/* Darker -> lighter transition into the walkthrough. */}
+      <div
+        aria-hidden="true"
+        className="h-24 bg-gradient-to-b from-background to-secondary"
+      />
+
       {/* HOW IT WORKS — concrete two-column walkthrough (writer / reader) */}
       <HowItWorks />
+
+      {/* Lighter -> darker transition back down to the footer. */}
+      <div
+        aria-hidden="true"
+        className="h-24 bg-gradient-to-b from-secondary to-background"
+      />
     </main>
   );
 }
