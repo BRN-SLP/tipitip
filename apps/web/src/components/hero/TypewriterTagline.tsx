@@ -56,23 +56,33 @@ export function TypewriterTagline() {
   }, [text, index, phase, prefersReduced]);
 
   return (
-    // overflow-hidden is critical on mobile — without it, Brave/Chrome
-    // on Android leave GPU-compositor remnants of previous animation
-    // frames as faint pink letter-fragments below the typewriter line.
-    // The clip ensures every paint stays inside the box reserved by
-    // the invisible LONGEST placeholder.
+    // Two interlocking guards on this wrapper:
     //
-    // The pb-[0.2em] buffer is a fix on top of the fix: the tight
-    // leading-[0.95] on the H1 makes the line box land right on the
-    // baseline, so italic descenders (g, p, y in "every paragraph")
-    // get clipped by overflow-hidden too. 0.2em of bottom padding
-    // gives the descenders room while still cropping the stale GPU
-    // frames that sat further below the line.
+    // 1. `overflow-hidden` + `pb-[0.45em]` — the tight `leading-[0.95]`
+    //    on the H1 squeezes the line box shorter than Fraunces italic's
+    //    natural ascent + descent. Without the bottom buffer, descenders
+    //    on g / p / y in "every paragraph" physically extend below the
+    //    inner absolute layer and get clipped by the outer's hard edge.
+    //    0.45em is enough for the most aggressive italic descenders we
+    //    have in the rotation; 0.2em (the previous value) covered most
+    //    glyphs on most devices but cut the curve tail on heavier
+    //    italics at large font sizes.
+    //
+    // 2. `[contain:paint]` — `overflow-hidden` on its own enforces the
+    //    clip at PAINT time, which Chrome/Brave on Android sometimes
+    //    skips for elements whose children animate on the GPU
+    //    compositor (the typewriter and its blinking cursor do). The
+    //    result is faint pink letter-fragments of previous animation
+    //    frames sitting below the line. `contain: paint` is a hard
+    //    contract to the browser: nothing this element paints, or its
+    //    descendants paint, is allowed outside this box. The clip is
+    //    enforced at COMPOSITE time, which is the layer mobile
+    //    compositor leaks happen in. Forces a fresh stacking context
+    //    and its own compositor layer as side effects.
     //
     // `align-bottom` keeps the wrapper baseline-aligned with "Reward"
-    // above it after overflow-hidden converts the box to a block
-    // formatting context.
-    <span className="relative inline-block overflow-hidden align-bottom whitespace-nowrap pb-[0.2em]">
+    // above it after these conversions to a block formatting context.
+    <span className="relative inline-block overflow-hidden align-bottom whitespace-nowrap pb-[0.45em] [contain:paint]">
       {/* Invisible placeholder reserves space for the longest phrase
           so the parent H1 never reflows mid-typing. */}
       <span aria-hidden="true" className="invisible">
