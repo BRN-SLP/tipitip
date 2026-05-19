@@ -33,7 +33,20 @@ export default async function Home() {
               Per-paragraph cUSD micro-tipping
             </span>
 
-            <h1 className="font-serif text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl">
+            {/* H1 size uses clamp() so the typewriter's longest phrase
+                ("every paragraph", 15 chars at italic weight) still
+                fits on a 390 px mobile viewport without horizontal
+                overflow. The previous text-5xl (48 px) made the pink
+                italic line wider than the viewport, which combined
+                with the typewriter's rapid frame swaps produced
+                GPU-paint artifacts visible as pink letter fragments
+                below the line on Brave Android. Bounds chosen so the
+                desktop hero still hits text-7xl-equivalent (72 px),
+                mobile starts around 40 px. */}
+            <h1
+              className="font-serif font-bold leading-[0.95] tracking-tight"
+              style={{ fontSize: "clamp(2.5rem, 8vw + 0.5rem, 4.5rem)" }}
+            >
               <span className="block text-foreground">Reward</span>
               <span className="block italic text-primary">
                 <TypewriterTagline />

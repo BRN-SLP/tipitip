@@ -56,7 +56,16 @@ export function TypewriterTagline() {
   }, [text, index, phase, prefersReduced]);
 
   return (
-    <span className="relative inline-block whitespace-nowrap">
+    // overflow-hidden is critical on mobile — without it, Brave/Chrome
+    // on Android leave GPU-compositor remnants of previous animation
+    // frames as faint pink letter-fragments below the typewriter line.
+    // The clip ensures every paint stays inside the box reserved by
+    // the invisible LONGEST placeholder, and stale frames get cropped
+    // instead of bleeding into the next line of the hero. The added
+    // `align-bottom` keeps the wrapper baseline-aligned with "Reward"
+    // above it after overflow-hidden converts the box to a block
+    // formatting context.
+    <span className="relative inline-block overflow-hidden align-bottom whitespace-nowrap">
       {/* Invisible placeholder reserves space for the longest phrase
           so the parent H1 never reflows mid-typing. */}
       <span aria-hidden="true" className="invisible">
