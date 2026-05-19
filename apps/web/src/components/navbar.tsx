@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, ExternalLink } from "lucide-react"
 
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/sheet"
 import { ConnectButton } from "@/components/connect-button"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { TipiTipLogo } from "@/components/tipitip-logo"
 
 interface NavLink {
   name: string
@@ -45,20 +45,13 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-80">
-              {/* Drawer header — full painted mark stands in for the
-                  text wordmark we used to render here. Heart-only is
-                  reserved for favicon / browser tab; in any "brand
-                  zone" with room (drawer, sticky header) we show the
-                  full mark including the painted "tipitip" lettering. */}
-              <div className="flex items-center mb-8">
-                <Image
-                  src="/tipitip-logo.svg"
-                  alt="TipiTip"
-                  width={48}
-                  height={48}
-                  className="h-12 w-12"
-                  priority
-                />
+              {/* Drawer header — full painted mark. Inline SVG (not a
+                  next/image of the static .svg) so the mark inherits
+                  the surrounding text color via `currentColor`: dark
+                  plum on light theme, warm cream on dark. The static
+                  /tipitip-logo.svg stays for og:image / share. */}
+              <div className="flex items-center mb-8 text-foreground">
+                <TipiTipLogo className="h-12 w-auto" aria-label="TipiTip" />
               </div>
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) => (
@@ -83,26 +76,20 @@ export function Navbar() {
             </SheetContent>
           </Sheet>
 
-          {/* Logo — full painted mark (heart + finger + tipitip
-              wordmark). The square 640×640 SVG is rendered at h-10
-              on mobile / h-12 on desktop so the brushy wordmark in
-              the lower half stays legible inside the 64 px-tall
-              sticky header. `alt=""` because the Link already owns
-              the accessible name via aria-label; avoids a duplicate
-              screen-reader announcement. */}
+          {/* Logo — full painted mark, inline so it inherits theme
+              foreground via `currentColor`. ViewBox is cropped (see
+              tipitip-logo.tsx) so the same h-12 wrapper now shows
+              the artwork visibly bigger than the prior next/image
+              render — the original .svg had ~33% empty padding.
+              The <Link> owns the accessible name via aria-label;
+              the SVG itself is aria-hidden to avoid duplicate SR
+              announcement. */}
           <Link
             href="/"
-            className="flex items-center hover:opacity-80 transition-opacity"
+            className="flex items-center text-foreground hover:opacity-80 transition-opacity"
             aria-label="TipiTip — home"
           >
-            <Image
-              src="/tipitip-logo.svg"
-              alt=""
-              width={48}
-              height={48}
-              className="h-10 w-10 sm:h-12 sm:w-12"
-              priority
-            />
+            <TipiTipLogo className="h-10 w-auto sm:h-12" />
           </Link>
         </div>
         
