@@ -14,6 +14,7 @@
   "dependencies": {
     "@composer-kit/ui": "^0.0.3",
     "@farcaster/frame-sdk": "^0.2.0",
+    "@tipitip/embed": "^0.1.1",
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
