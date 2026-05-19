@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { getLatestArticles } from "@/lib/articles-feed";
 import { displayName, resolveEnsName } from "@/lib/ens";
 import { MANIFESTO } from "@/lib/manifesto";
+import { slugToTitle } from "@/lib/slug-to-title";
 
 /**
  * The featured "house manifesto" slot on the landing page.
@@ -87,11 +88,3 @@ export async function PinnedManifesto() {
   );
 }
 
-/** Mirror of FeaturedReads.slugToTitle so the two components agree. */
-function slugToTitle(slug: string): string {
-  return slug
-    .split("-")
-    .filter(Boolean)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-}
