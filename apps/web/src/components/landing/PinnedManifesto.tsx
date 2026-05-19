@@ -45,13 +45,16 @@ export async function PinnedManifesto() {
 
   return (
     <section className="border-y bg-secondary">
-      <div className="container mx-auto max-w-5xl px-4 py-16 md:py-20">
+      <div className="container mx-auto max-w-3xl px-4 py-16">
         <Link
           href={`/a/${pinned.articleId}`}
           aria-label={`${MANIFESTO.cta}: ${MANIFESTO.excerpt}`}
-          className="group block rounded-2xl border border-primary/15 bg-card p-8 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:p-12"
+          className="group block rounded-2xl border border-primary/15 bg-card p-6 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:p-10"
         >
-          {/* Eyebrow: pin icon + primary mono label */}
+          {/* Eyebrow: pin icon + primary mono label.
+              Matches the eyebrow class used in Sample / Latest /
+              HowItWorks — only the colour (primary) differs from
+              their muted-foreground variant. */}
           <p className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
             <Pin
               aria-hidden="true"
@@ -60,13 +63,16 @@ export async function PinnedManifesto() {
             {MANIFESTO.eyebrow}
           </p>
 
-          {/* Title — bigger than neighbors so the card feels like
-              its own statement, not "another paragraph". */}
-          <h2 className="mt-4 font-serif text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+          {/* Title — same class as every other h2 on the landing
+              (sample paragraph, latest grid, how-it-works) so the
+              page has one consistent section-heading scale. */}
+          <h2 className="mt-4 font-serif text-3xl font-semibold leading-tight md:text-4xl">
             {slugToTitle(pinned.slug)}
           </h2>
 
-          {/* Italic supporting line */}
+          {/* Italic supporting line — same italic-on-serif class
+              the hero subtitle and sample-paragraph supporting
+              line use. */}
           <p className="mt-4 font-serif text-lg italic text-muted-foreground md:text-xl">
             {MANIFESTO.excerpt}
           </p>
