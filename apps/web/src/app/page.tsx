@@ -83,8 +83,13 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* SAMPLE PARAGRAPHS — editorial column */}
-      <section className="border-y bg-secondary/40">
+      {/* SAMPLE PARAGRAPHS — editorial column on the same uniform
+          page background as every other section. The previous
+          `border-y bg-secondary/40` chrome was a leftover from an
+          earlier band-experiment; visually it still drew two thin
+          horizontal seams and a faint tint behind the column,
+          breaking the "one canvas" feel in both light and dark. */}
+      <section>
         <div className="container mx-auto max-w-3xl px-4 py-16">
           <RevealOnScroll>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
