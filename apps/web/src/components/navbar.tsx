@@ -47,10 +47,12 @@ export function Navbar() {
             <SheetContent side="left" className="w-80">
               {/* Drawer header — full painted mark. Inline SVG (not a
                   next/image of the static .svg) so the mark inherits
-                  the surrounding text color via `currentColor`: dark
-                  plum on light theme, warm cream on dark. The static
-                  /tipitip-logo.svg stays for og:image / share. */}
-              <div className="flex items-center mb-8 text-foreground">
+                  the surrounding text color via `currentColor`. Color
+                  policy: dark plum on light theme (the foreground
+                  token), primary pink on dark theme — the dark side
+                  benefits from the brand colour because cream-on-dark
+                  read as too neutral / "another bit of UI copy". */}
+              <div className="flex items-center mb-8 text-foreground dark:text-primary">
                 <TipiTipLogo className="h-12 w-auto" aria-label="TipiTip" />
               </div>
               <nav className="flex flex-col gap-4">
@@ -86,7 +88,7 @@ export function Navbar() {
               announcement. */}
           <Link
             href="/"
-            className="flex items-center text-foreground hover:opacity-80 transition-opacity"
+            className="flex items-center text-foreground dark:text-primary hover:opacity-80 transition-opacity"
             aria-label="TipiTip — home"
           >
             <TipiTipLogo className="h-10 w-auto sm:h-12" />
