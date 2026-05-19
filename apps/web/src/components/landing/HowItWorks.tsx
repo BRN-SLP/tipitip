@@ -151,10 +151,11 @@ export function HowItWorks() {
 
   return (
     <section
-      className="container mx-auto max-w-6xl px-4 py-20"
+      className="bg-secondary"
       aria-labelledby="how-it-works-heading"
     >
-      <div className="mb-10 max-w-2xl">
+      <div className="container mx-auto max-w-6xl px-4 py-20">
+        <div className="mb-10 max-w-2xl">
         <RevealOnScroll>
           <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
             How it works
@@ -364,6 +365,7 @@ export function HowItWorks() {
             </div>
           </div>
         </RevealOnScroll>
+      </div>
       </div>
     </section>
   );
