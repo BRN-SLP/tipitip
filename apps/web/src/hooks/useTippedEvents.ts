@@ -23,11 +23,29 @@ export interface ParagraphStats {
 }
 
 /**
+ * How far back to scan for historical `Tipped` events on a single article.
+ *
+ * The previous implementation used `fromBlock: 0n`, which silently failed on
+ * Forno (Celo's public RPC) — `eth_getLogs` over the full mainnet history
+ * (~30M blocks) blows the per-request range limit and the call either times
+ * out or returns an error that the calling try/finally swallows. Symptom: all
+ * paragraph tip counters render as zero even when the contract has emitted
+ * real `Tipped` events and the author's pending balance shows up in the
+ * dashboard.
+ *
+ * Same workaround is already in place for the landing feed
+ * (`lib/articles-feed.ts`), but it was never ported here.
+ *
+ * 500_000 blocks ≈ 29 days at Celo's ~5 s block time, which comfortably
+ * covers any recently-published article including the pinned house
+ * manifesto. For older articles we'll need an explicit pagination loop or
+ * a subgraph; both are out of scope for this fix.
+ */
+const TIP_HISTORY_LOOKBACK = 500_000n;
+
+/**
  * Read all historical `Tipped` events for one article and continue watching
  * the chain for new ones. Returns per-paragraph aggregates plus the raw list.
- *
- * Cheap-and-cheerful: full-history scan with no `fromBlock` cap. Acceptable
- * while volume is low; migrate to a subgraph when scan latency > 2s.
  */
 export function useTippedEvents(
   chainId: number | undefined,
@@ -54,16 +72,26 @@ export function useTippedEvents(
         return;
       }
       try {
+        const latestBlock = await publicClient.getBlockNumber();
+        const fromBlock =
+          latestBlock > TIP_HISTORY_LOOKBACK
+            ? latestBlock - TIP_HISTORY_LOOKBACK
+            : 0n;
         const logs = await publicClient.getContractEvents({
           address: tipJarAddress,
           abi: tipJarAbi,
           eventName: "Tipped",
           args: { articleId },
-          fromBlock: 0n,
+          fromBlock,
           toBlock: "latest",
         });
         if (cancelled) return;
         setEvents(logs.map(decodeLog));
+      } catch {
+        // Public RPC hiccup — leave events empty rather than crashing the
+        // article page. The optimistic-tip path still works because the
+        // user's own tips get bumped client-side in ParagraphTipper.
+        if (!cancelled) setEvents([]);
       } finally {
         if (!cancelled) setLoading(false);
       }

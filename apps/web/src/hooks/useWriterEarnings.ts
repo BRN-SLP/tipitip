@@ -63,13 +63,23 @@ export function useWriterEarnings() {
         return;
       }
       try {
+        // Same lookback fix as useTippedEvents: Forno rejects
+        // `fromBlock: 0n` against latest because the eth_getLogs range
+        // spans all of Celo mainnet (~30M blocks). 500K blocks ≈ 29 days,
+        // which covers any article a writer has published recently. Older
+        // articles + claims need pagination or a subgraph — out of scope.
+        const latestBlock = await publicClient.getBlockNumber();
+        const LOOKBACK = 500_000n;
+        const fromBlock =
+          latestBlock > LOOKBACK ? latestBlock - LOOKBACK : 0n;
+
         const [registerLogs, claimLogs] = await Promise.all([
           publicClient.getContractEvents({
             address: tipJarAddress,
             abi: tipJarAbi,
             eventName: "ArticleRegistered",
             args: { author: address },
-            fromBlock: 0n,
+            fromBlock,
             toBlock: "latest",
           }),
           publicClient.getContractEvents({
@@ -77,7 +87,7 @@ export function useWriterEarnings() {
             abi: tipJarAbi,
             eventName: "Claimed",
             args: { author: address },
-            fromBlock: 0n,
+            fromBlock,
             toBlock: "latest",
           }),
         ]);
@@ -98,6 +108,11 @@ export function useWriterEarnings() {
             transactionHash: l.transactionHash as Hex,
           })),
         );
+      } catch {
+        // Public RPC hiccup — render the dashboard with the data we
+        // already have (`pending` from `pendingOf`, which is a state
+        // read and not affected by eth_getLogs range limits). The
+        // articles/claims lists just stay at their previous values.
       } finally {
         if (!cancelled) setLoading(false);
       }
