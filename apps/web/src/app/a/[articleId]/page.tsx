@@ -144,6 +144,19 @@ export default async function ArticlePage({ params }: PageProps) {
         articleId={articleId as `0x${string}`}
         body={body}
       />
+      {/* "View as embed" — small footer link for writers who want to
+          drop this article into their own blog via @tipitip/embed.
+          Sits below the article so it doesn't compete with the tip
+          surface above; placed in muted styling because it's a
+          publisher-facing action, not a reader-facing one. */}
+      <div className="mt-12 flex justify-end border-t pt-4">
+        <Link
+          href={`/a/${articleId}/embed`}
+          className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground hover:text-foreground"
+        >
+          view as embed →
+        </Link>
+      </div>
     </main>
   );
 }
