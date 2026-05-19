@@ -47,12 +47,15 @@ export function Navbar() {
             <SheetContent side="left" className="w-80">
               {/* Drawer header — full painted mark. Inline SVG (not a
                   next/image of the static .svg) so the mark inherits
-                  the surrounding text color via `currentColor`. Color
-                  policy: dark plum on light theme (the foreground
-                  token), primary pink on dark theme — the dark side
-                  benefits from the brand colour because cream-on-dark
-                  read as too neutral / "another bit of UI copy". */}
-              <div className="flex items-center mb-8 text-foreground dark:text-primary">
+                  the surrounding text color via `currentColor`.
+                  Locked to primary pink on both themes: the previous
+                  "plum on light, pink on dark" gave a logo that on
+                  light read as plain black to the eye (foreground
+                  token is rgb(38,23,27) — visually black-adjacent),
+                  so the user perceived "the logo didn't update on
+                  light theme". Pink everywhere is the cleaner brand
+                  signal. */}
+              <div className="flex items-center mb-8 text-primary">
                 <TipiTipLogo className="h-12 w-auto" aria-label="TipiTip" />
               </div>
               <nav className="flex flex-col gap-4">
@@ -88,7 +91,7 @@ export function Navbar() {
               announcement. */}
           <Link
             href="/"
-            className="flex items-center text-foreground dark:text-primary hover:opacity-80 transition-opacity"
+            className="flex items-center text-primary hover:opacity-80 transition-opacity"
             aria-label="TipiTip — home"
           >
             <TipiTipLogo className="h-10 w-auto sm:h-12" />
