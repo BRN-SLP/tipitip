@@ -21,15 +21,24 @@ let nextId = 0;
 // so the visual peaks land at ~110ms (lub) and ~325ms (dub) — close
 // to the ~270ms gap of a real resting heartbeat.
 const PRESS_MS = 600;
-const RIPPLE_MS = 900;
 const BURST_MS = 1400;
+
+// Shockwave: a single tap emits multiple concentric rings staggered
+// in time. At any moment you see a near ring (just born), a middle
+// ring (mid-flight), and a far ring (almost gone) — reads as a real
+// water-ripple wavefront, not a single circle popping outward.
+const RIPPLE_DURATION_MS = 1400;
+const RIPPLE_STAGGER_MS = 220;
+const RIPPLES_PER_CLICK = 3;
+const RIPPLE_LAST_CLEANUP_MS =
+  RIPPLE_DURATION_MS + (RIPPLES_PER_CLICK - 1) * RIPPLE_STAGGER_MS;
 
 /**
  * Animated tipping heart for the TipiTip landing hero.
  * - Idle: gentle heartbeat scale loop.
  * - Click: triggers a more pronounced two-beat (lub-dub) pulse on
- *   the button itself, spawns a fading ring shockwave that radiates
- *   outward from the circle in all directions, AND fires 4-5 small
+ *   the button itself, emits a multi-ring water-ripple shockwave
+ *   that radiates outward in all directions, AND fires 4-5 small
  *   hearts that float up — mimicking the per-paragraph tip flow.
  *
  * Multiple rapid taps stack ripples + bursts naturally.
@@ -55,9 +64,19 @@ export function FloatingHeart() {
     }));
     setBursts((b) => [...b, ...next]);
 
-    // Shockwave ring expanding outward from the button outline.
-    const rid = nextId++;
-    setRipples((r) => [...r, { id: rid }]);
+    // Shockwave rings — spawn N rings staggered in time so they
+    // form a moving wavefront rather than one solitary circle.
+    const ripIds: number[] = [];
+    for (let i = 0; i < RIPPLES_PER_CLICK; i++) {
+      const rid = nextId++;
+      ripIds.push(rid);
+      window.setTimeout(() => {
+        setRipples((r) => [...r, { id: rid }]);
+        window.setTimeout(() => {
+          setRipples((r) => r.filter((x) => x.id !== rid));
+        }, RIPPLE_DURATION_MS);
+      }, i * RIPPLE_STAGGER_MS);
+    }
 
     // Drive the lub-dub on the button itself.
     setPressed(true);
@@ -66,9 +85,11 @@ export function FloatingHeart() {
     setTimeout(() => {
       setBursts((b) => b.filter((x) => !next.find((n) => n.id === x.id)));
     }, BURST_MS);
+    // Belt-and-braces cleanup in case any per-ring cleanup got
+    // skipped (e.g. component unmounted mid-flight then remounted).
     setTimeout(() => {
-      setRipples((r) => r.filter((x) => x.id !== rid));
-    }, RIPPLE_MS);
+      setRipples((r) => r.filter((x) => !ripIds.includes(x.id)));
+    }, RIPPLE_LAST_CLEANUP_MS + 100);
   }, [prefersReduced]);
 
   return (
@@ -137,19 +158,32 @@ export function FloatingHeart() {
         {/* Fading shockwave rings — children of the button so they
             scale outward from the button's exact center. Each ripple
             starts at the button's outline (inset-0, scale 1) and
-            expands to 2.4× while fading. The button's own pulse
-            compounds slightly with the ripple scale, which makes the
-            wave feel like it's emitted BY the beat rather than just
-            timed alongside it. */}
+            expands to 2.6× while fading from 0.5 → 0 opacity. Multiple
+            rings per click, staggered in time, create a continuous
+            wavefront. The opacity decay is non-linear — it sits near
+            full strength for the first ~25% and then trails off —
+            which sells the "deeper, slower" feel. The button's own
+            pulse compounds slightly with each ripple's scale, so the
+            wave reads as emitted BY the beat. */}
         {!prefersReduced &&
           ripples.map((r) => (
             <motion.span
               key={r.id}
               aria-hidden="true"
-              initial={{ scale: 1, opacity: 0.55 }}
-              animate={{ scale: 2.4, opacity: 0 }}
-              transition={{ duration: RIPPLE_MS / 1000, ease: [0.16, 1, 0.3, 1] }}
-              className="pointer-events-none absolute inset-0 rounded-full border-2 border-primary"
+              initial={{ scale: 1, opacity: 0.5 }}
+              animate={{
+                scale: 2.6,
+                opacity: [0.5, 0.45, 0.18, 0],
+              }}
+              transition={{
+                duration: RIPPLE_DURATION_MS / 1000,
+                // ease-out-quart — softer deceleration than expo,
+                // pushes more of the motion into the early phase so
+                // the ring "drifts" the rest of the way out.
+                ease: [0.22, 1, 0.36, 1],
+                opacity: { times: [0, 0.25, 0.7, 1] },
+              }}
+              className="pointer-events-none absolute inset-0 rounded-full border border-primary/80"
             />
           ))}
         <Heart className="h-14 w-14 fill-primary sm:h-20 sm:w-20" aria-hidden="true" />
