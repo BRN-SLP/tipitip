@@ -10,6 +10,7 @@ import {
 import { getLatestArticles } from "@/lib/articles-feed";
 import { displayName, resolveEnsBatch } from "@/lib/ens";
 import { MANIFESTO } from "@/lib/manifesto";
+import { slugToTitle } from "@/lib/slug-to-title";
 
 /**
  * Latest seeded + community articles, queried directly from the on-chain
@@ -77,13 +78,5 @@ export async function FeaturedReads() {
       </div>
     </section>
   );
-}
-
-function slugToTitle(slug: string): string {
-  return slug
-    .split("-")
-    .filter(Boolean)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
 }
 
