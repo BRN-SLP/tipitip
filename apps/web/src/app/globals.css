@@ -90,3 +90,28 @@
     letter-spacing: -0.01em;
   }
 }
+
+/* Heartbeat — used by the pinned-manifesto glow on the landing.
+   Double-pulse rhythm mimics a real heart (lub-dub) at a calm rate.
+   Stays subtle (opacity 0.18 -> 0.45) so it reads as ambience, not
+   as a flashing badge. Collapses to a static shape under
+   prefers-reduced-motion. */
+@keyframes heartbeat {
+  0%, 100% { opacity: 0.18; transform: scale(1); }
+  20%      { opacity: 0.45; transform: scale(1.04); }
+  35%      { opacity: 0.25; transform: scale(1.01); }
+  55%      { opacity: 0.45; transform: scale(1.04); }
+  70%      { opacity: 0.20; transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-heartbeat {
+    animation: none;
+    opacity: 0.22;
+  }
+}
