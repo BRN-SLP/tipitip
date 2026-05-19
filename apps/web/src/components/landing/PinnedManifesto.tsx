@@ -69,7 +69,7 @@ export async function PinnedManifesto() {
             author, not a marketing slot". */}
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
           <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-            by {byline}
+            by <span className="normal-case">{byline}</span>
           </p>
           <Link
             href={`/a/${pinned.articleId}`}
