@@ -45,11 +45,20 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-80">
-              <div className="flex items-center gap-2 mb-8">
-
-                <span className="font-bold text-lg">
-                  TipiTip
-                </span>
+              {/* Drawer header — full painted mark stands in for the
+                  text wordmark we used to render here. Heart-only is
+                  reserved for favicon / browser tab; in any "brand
+                  zone" with room (drawer, sticky header) we show the
+                  full mark including the painted "tipitip" lettering. */}
+              <div className="flex items-center mb-8">
+                <Image
+                  src="/tipitip-logo.svg"
+                  alt="TipiTip"
+                  width={48}
+                  height={48}
+                  className="h-12 w-12"
+                  priority
+                />
               </div>
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) => (
@@ -74,12 +83,26 @@ export function Navbar() {
             </SheetContent>
           </Sheet>
 
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-
-            <span className="hidden font-bold text-xl sm:inline-block">
-              TipiTip
-            </span>
+          {/* Logo — full painted mark (heart + finger + tipitip
+              wordmark). The square 640×640 SVG is rendered at h-10
+              on mobile / h-12 on desktop so the brushy wordmark in
+              the lower half stays legible inside the 64 px-tall
+              sticky header. `alt=""` because the Link already owns
+              the accessible name via aria-label; avoids a duplicate
+              screen-reader announcement. */}
+          <Link
+            href="/"
+            className="flex items-center hover:opacity-80 transition-opacity"
+            aria-label="TipiTip — home"
+          >
+            <Image
+              src="/tipitip-logo.svg"
+              alt=""
+              width={48}
+              height={48}
+              className="h-10 w-10 sm:h-12 sm:w-12"
+              priority
+            />
           </Link>
         </div>
         
