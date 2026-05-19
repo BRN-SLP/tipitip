@@ -2,9 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 
-import { TipParagraphs } from "@tipitip/embed";
-
 import { bytes32HexRegex } from "@/lib/articles";
+
+import { EmbedPreviewClient } from "./EmbedPreviewClient";
 
 export const dynamic = "force-dynamic";
 
@@ -91,7 +91,7 @@ export default function MyArticle() {
             so the preview matches what readers on Substack or a
             personal site would experience. */}
         <div className="rounded-xl border bg-white p-6 text-zinc-900 shadow-sm md:p-8">
-          <TipParagraphs articleId={articleId as `0x${string}`} />
+          <EmbedPreviewClient articleId={articleId as `0x${string}`} />
         </div>
       </section>
     </main>
