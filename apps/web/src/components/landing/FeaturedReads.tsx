@@ -61,7 +61,7 @@ export async function FeaturedReads() {
                 </CardHeader>
                 <CardContent className="space-y-3 text-sm">
                   <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-                    by {displayName(article.author, ensMap.get(article.author))}
+                    by <span className="normal-case">{displayName(article.author, ensMap.get(article.author))}</span>
                   </p>
                   <p className="inline-flex items-center gap-1 text-sm font-medium text-primary">
                     Read & tip
