@@ -83,12 +83,24 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* SAMPLE PARAGRAPHS — editorial column on the same uniform
-          page background as every other section. The previous
-          `border-y bg-secondary/40` chrome was a leftover from an
-          earlier band-experiment; visually it still drew two thin
-          horizontal seams and a faint tint behind the column,
-          breaking the "one canvas" feel in both light and dark. */}
+      {/* PINNED MANIFESTO — featured "from the creator" slot. Placed
+          right after the hero so a first-time reader meets the
+          editorial voice (and a real tippable article) before being
+          asked to understand the mechanics or scan a feed. */}
+      <PinnedManifesto />
+
+      {/* HOW IT WORKS — concrete two-column walkthrough (writer /
+          reader). Sits between the manifesto (why) and the sample
+          paragraph (what reading feels like) so the mechanics are
+          explained before the demo. */}
+      <HowItWorks />
+
+      {/* SAMPLE PARAGRAPHS — a tiny editorial demo of what a tippable
+          paragraph reads like in practice. Now lives after the
+          how-it-works walkthrough so the reader has the vocabulary
+          ("approve once, tap to tip") to recognise the gesture in the
+          last paragraph. Section sits on the same uniform body
+          background as every other landing section. */}
       <section>
         <div className="container mx-auto max-w-3xl px-4 py-16">
           <RevealOnScroll>
@@ -124,14 +136,10 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* PINNED MANIFESTO — featured "from the creator" slot above the grid */}
-      <PinnedManifesto />
-
-      {/* LATEST ARTICLES — pulled from on-chain ArticleRegistered events */}
+      {/* LATEST ARTICLES — pulled from on-chain ArticleRegistered
+          events. Sits at the bottom so the page ends on "pick
+          something to read" rather than a static walkthrough. */}
       <FeaturedReads />
-
-      {/* HOW IT WORKS — concrete two-column walkthrough (writer / reader) */}
-      <HowItWorks />
     </main>
   );
 }
