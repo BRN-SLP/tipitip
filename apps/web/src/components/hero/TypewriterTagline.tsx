@@ -60,12 +60,19 @@ export function TypewriterTagline() {
     // on Android leave GPU-compositor remnants of previous animation
     // frames as faint pink letter-fragments below the typewriter line.
     // The clip ensures every paint stays inside the box reserved by
-    // the invisible LONGEST placeholder, and stale frames get cropped
-    // instead of bleeding into the next line of the hero. The added
+    // the invisible LONGEST placeholder.
+    //
+    // The pb-[0.2em] buffer is a fix on top of the fix: the tight
+    // leading-[0.95] on the H1 makes the line box land right on the
+    // baseline, so italic descenders (g, p, y in "every paragraph")
+    // get clipped by overflow-hidden too. 0.2em of bottom padding
+    // gives the descenders room while still cropping the stale GPU
+    // frames that sat further below the line.
+    //
     // `align-bottom` keeps the wrapper baseline-aligned with "Reward"
     // above it after overflow-hidden converts the box to a block
     // formatting context.
-    <span className="relative inline-block overflow-hidden align-bottom whitespace-nowrap">
+    <span className="relative inline-block overflow-hidden align-bottom whitespace-nowrap pb-[0.2em]">
       {/* Invisible placeholder reserves space for the longest phrase
           so the parent H1 never reflows mid-typing. */}
       <span aria-hidden="true" className="invisible">
