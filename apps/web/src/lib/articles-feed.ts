@@ -43,8 +43,15 @@ const ID_DENYLIST = new Set<`0x${string}`>([
   "0x67f80f1ea33f7350f844441c9773b70258b85cdd0d9ad855258c9aea20e1ff51",
 ]);
 
-/** Heuristic for slugs that smell like smoke-test fixtures (e.g. "smoke-…"). */
-const TEST_SLUG_PATTERN = /^smoke[-_]/i;
+/**
+ * Heuristic for slugs that smell like throwaway / placeholder content
+ * authors leave on-chain by accident (e.g. "blabla", "test", "hello").
+ * We keep the heuristic conservative — only filters obvious "I clicked
+ * publish before writing" entries. Real articles are 2+ meaningful
+ * words long.
+ */
+const TEST_SLUG_PATTERN =
+  /^(smoke|test|hello|asdf|qwerty|lorem|placeholder|foo|bar|blabla|abc)([-_]|$)/i;
 
 function isExcluded(articleId: string, slug: string): boolean {
   if (ID_DENYLIST.has(articleId as `0x${string}`)) return true;
