@@ -43,10 +43,10 @@ export default function GlobalError({ error, reset }: ErrorBoundaryProps) {
       </p>
       <h1 className="mt-2 font-serif text-4xl font-semibold tracking-tight md:text-5xl">
         <span className="text-foreground">Something broke</span>{" "}
-        <span className="italic text-primary">in the editor stack.</span>
+        <span className="italic text-primary">on this page.</span>
       </h1>
       <p className="mt-4 max-w-md text-sm text-muted-foreground md:text-base">
-        We hit an unhandled error rendering this page. Try refreshing — most
+        We hit an unhandled error rendering this view. Try refreshing — most
         of the time the underlying state has already recovered.
       </p>
       {error.digest && (
