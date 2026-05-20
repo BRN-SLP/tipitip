@@ -23,24 +23,32 @@ let nextId = 0;
 const PRESS_MS = 600;
 const BURST_MS = 1400;
 
-// Water-droplet ripple, modelled after real surface waves (see
-// reference photos). In real water:
-//   1. Rings move at CONSTANT velocity outward (v), so the spacing
-//      between consecutive wavefronts stays fixed at λ = v/f. Ease
-//      curves bunch rings at the outer edge, which doesn't happen
-//      on water. We use linear scale animation below.
-//   2. Each crest holds visible amplitude almost all of its travel,
-//      then fades quickly when it dissipates at the far edge. We
-//      hold opacity at 1 for the first 85% of life and drop to 0
-//      in the last 15%.
+// Water-droplet ripple, modelled directly off the physics of real
+// surface gravity waves on water:
 //
-// Tuned so 11 rings are visible in flight at any moment in steady
-// state (D / Δt = 4000 / 350 ≈ 11), evenly distributed from the
-// button outline out to 2.2× the button radius.
-const RIPPLE_DURATION_MS = 4000;
-const RIPPLE_STAGGER_MS = 350;
-const RIPPLES_PER_CLICK = 12;
-const RIPPLE_FINAL_SCALE = 2.2;
+//   1. CONSTANT VELOCITY OUTWARD. A wavefront carries energy, not
+//      mass — the surface particle stays in place and oscillates,
+//      the disturbance propagates at v. So spacing between
+//      consecutive crests stays fixed at λ = v/f. Linear scale
+//      animation below gives exactly this.
+//
+//   2. AMPLITUDE DECAYS AS THE WAVE SPREADS. Energy is conserved,
+//      but it gets distributed over an ever-growing circumference
+//      (2πr). Crest height (= our opacity) drops as roughly 1/√r,
+//      and frictional dissipation adds an extra exponential
+//      multiplier on top. The combined visible behaviour is an
+//      `easeIn` opacity curve: slow decay near the source, faster
+//      fade at the edge. We apply that below.
+//
+// Tuned so ~10 rings are visible in flight at any moment (D / Δt
+// = 5000 / 500 = 10), spread evenly across the button outline out
+// to 4× its radius. Final scale of 4× (up from 2.2×) gives the
+// wavefront enough room to separate visually instead of stacking
+// into a solid pink halo — the previous "just pulsation" symptom.
+const RIPPLE_DURATION_MS = 5000;
+const RIPPLE_STAGGER_MS = 500;
+const RIPPLES_PER_CLICK = 10;
+const RIPPLE_FINAL_SCALE = 4.0;
 const RIPPLE_LAST_CLEANUP_MS =
   RIPPLE_DURATION_MS + (RIPPLES_PER_CLICK - 1) * RIPPLE_STAGGER_MS;
 
@@ -166,21 +174,21 @@ export function FloatingHeart() {
         whileHover={prefersReduced ? undefined : { scale: 1.06 }}
         whileTap={prefersReduced ? undefined : { scale: 0.94 }}
       >
-        {/* Water-droplet shockwave rings — children of the button so
-            they scale outward from its exact center.
+        {/* Water-droplet shockwave rings — physics-accurate model.
+            Each ring expands linearly (constant outward velocity =
+            energy propagation, not mass flow) and its opacity
+            decays continuously by an `easeIn` curve from 1 to 0
+            (combined effect of 1/√r geometric spread + frictional
+            dissipation). Newly born rings near the source are
+            bright; older rings far from the source fade smoothly.
 
-            Linear scale easing is critical: it gives each ring a
-            constant outward velocity, which keeps the spacing
-            between consecutive rings even — that's the defining
-            visual property of real water ripples (wavelength = v/f,
-            independent of distance from source). An ease-out curve
-            would bunch all the older rings at the outer edge and
-            leave the middle empty, which is what was wrong before.
-
-            Opacity holds at full strength for the first 85% of each
-            ring's life, then drops to 0 in the last 15%. Matches
-            how a real wavefront stays sharp until it dissipates at
-            the outer edge of its travel. */}
+            Why not the previous "hold at 1 then drop" curve: that
+            kept every ring at full strength simultaneously, which
+            stacked 11 rings into a single bright halo around the
+            button. The eye read it as a pulse, not as separate
+            wavefronts. Continuous decay lets the eye distinguish
+            individual rings by their distance-coded brightness —
+            exactly how real water ripples look. */}
         {!prefersReduced &&
           ripples.map((r) => (
             <motion.span
@@ -189,14 +197,14 @@ export function FloatingHeart() {
               initial={{ scale: 1, opacity: 1 }}
               animate={{
                 scale: RIPPLE_FINAL_SCALE,
-                opacity: [1, 1, 0],
+                opacity: 0,
               }}
               transition={{
                 duration: RIPPLE_DURATION_MS / 1000,
                 ease: "linear",
-                opacity: { times: [0, 0.85, 1], ease: "linear" },
+                opacity: { ease: "easeIn" },
               }}
-              className="pointer-events-none absolute inset-0 rounded-full border-2 border-primary/55"
+              className="pointer-events-none absolute inset-0 rounded-full border-2 border-primary/60"
             />
           ))}
         <Heart className="h-14 w-14 fill-primary sm:h-20 sm:w-20" aria-hidden="true" />
