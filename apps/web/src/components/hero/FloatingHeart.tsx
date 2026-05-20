@@ -174,37 +174,28 @@ export function FloatingHeart() {
         whileHover={prefersReduced ? undefined : { scale: 1.06 }}
         whileTap={prefersReduced ? undefined : { scale: 0.94 }}
       >
-        {/* Water-droplet shockwave rings — physics-accurate model.
-            Each ring expands linearly (constant outward velocity =
-            energy propagation, not mass flow) and its opacity
-            decays continuously by an `easeIn` curve from 1 to 0
-            (combined effect of 1/√r geometric spread + frictional
-            dissipation). Newly born rings near the source are
-            bright; older rings far from the source fade smoothly.
+        {/* Water-droplet shockwave rings.
+            Plain <span> with CSS keyframe animation (see
+            globals.css → `.animate-tipitip-ripple`). Not
+            framer-motion. Each ring is its own DOM element and its
+            CSS animation is independent of every other ring — that
+            independence cannot be reproduced reliably with
+            framer-motion `animate` props when the parent button
+            itself has an `animate: { repeat: Infinity }` cycle
+            (the ambient lub-dub). That setup leaked into "one ring
+            visible at a time" on production despite the spawn
+            function correctly creating 10 staggered state entries.
 
-            Why not the previous "hold at 1 then drop" curve: that
-            kept every ring at full strength simultaneously, which
-            stacked 11 rings into a single bright halo around the
-            button. The eye read it as a pulse, not as separate
-            wavefronts. Continuous decay lets the eye distinguish
-            individual rings by their distance-coded brightness —
-            exactly how real water ripples look. */}
+            Physics constants (5 s lifetime, final scale 4×, linear
+            scale + easeIn opacity) live in the CSS class. The JS
+            constants below drive the state-machine cleanup timing
+            and must stay in sync with the CSS values. */}
         {!prefersReduced &&
           ripples.map((r) => (
-            <motion.span
+            <span
               key={r.id}
               aria-hidden="true"
-              initial={{ scale: 1, opacity: 1 }}
-              animate={{
-                scale: RIPPLE_FINAL_SCALE,
-                opacity: 0,
-              }}
-              transition={{
-                duration: RIPPLE_DURATION_MS / 1000,
-                ease: "linear",
-                opacity: { ease: "easeIn" },
-              }}
-              className="pointer-events-none absolute inset-0 rounded-full border-2 border-primary/60"
+              className="animate-tipitip-ripple pointer-events-none absolute inset-0 rounded-full border-2 border-primary/60"
             />
           ))}
         <Heart className="h-14 w-14 fill-primary sm:h-20 sm:w-20" aria-hidden="true" />
