@@ -67,8 +67,13 @@ function buildClient(chainId: number): PublicClient {
   }) as PublicClient;
 }
 
-export const getLatestArticles = unstable_cache(
-  async (limit = 6): Promise<FeaturedArticle[]> => {
+/**
+ * Inner cached fetch. Returns the FULL (newest-first, denylist-filtered)
+ * list of articles. Slicing to a per-caller limit happens outside the
+ * cache, deliberately — see the wrapper below for the why.
+ */
+const fetchAllArticles = unstable_cache(
+  async (): Promise<FeaturedArticle[]> => {
     const chainId = getActiveChainId();
     if (chainId === null) return [];
     const address = ADDRESSES[chainId as keyof typeof ADDRESSES]?.tipJar;
@@ -108,8 +113,7 @@ export const getLatestArticles = unstable_cache(
           blockNumber: Number(log.blockNumber ?? 0n),
         }))
         .filter((a) => !isExcluded(a.articleId, a.slug))
-        .reverse()
-        .slice(0, limit);
+        .reverse();
     } catch {
       // Public RPC hiccup — render the landing without the section rather
       // than 500ing.
@@ -119,3 +123,24 @@ export const getLatestArticles = unstable_cache(
   ["featured-articles-v1"],
   { revalidate: 60, tags: ["articles"] },
 );
+
+/**
+ * Public accessor. Returns the newest-first list of articles, sliced
+ * to `limit`.
+ *
+ * Why slice outside the cache: `unstable_cache` keys are static — the
+ * `limit` argument is NOT part of the cache key. If we cached the
+ * sliced result, the first caller's `limit` would win for the rest
+ * of the cache lifetime: FeaturedReads calls with limit=6 first,
+ * cache stores 6 entries, then PinnedManifesto calls with limit=20
+ * and gets back the same 6 entries — missing the pinned article that
+ * sat at position 7+. That bug ate the manifesto card from the
+ * landing for over a day. Caching the full list and slicing per
+ * caller keeps a single RPC call serving everyone correctly.
+ */
+export async function getLatestArticles(
+  limit = 6,
+): Promise<FeaturedArticle[]> {
+  const all = await fetchAllArticles();
+  return all.slice(0, limit);
+}
