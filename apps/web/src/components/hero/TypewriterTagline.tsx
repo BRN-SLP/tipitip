@@ -56,7 +56,7 @@ export function TypewriterTagline() {
   }, [text, index, phase, prefersReduced]);
 
   return (
-    // Two interlocking guards on this wrapper:
+    // Three interlocking guards on this wrapper:
     //
     // 1. `overflow-hidden` + `pb-[0.45em]` — the tight `leading-[0.95]`
     //    on the H1 squeezes the line box shorter than Fraunces italic's
@@ -64,11 +64,18 @@ export function TypewriterTagline() {
     //    on g / p / y in "every paragraph" physically extend below the
     //    inner absolute layer and get clipped by the outer's hard edge.
     //    0.45em is enough for the most aggressive italic descenders we
-    //    have in the rotation; 0.2em (the previous value) covered most
-    //    glyphs on most devices but cut the curve tail on heavier
-    //    italics at large font sizes.
+    //    have in the rotation.
     //
-    // 2. `[contain:paint]` — `overflow-hidden` on its own enforces the
+    // 2. `pr-[0.15em]` — Fraunces italic has noticeable right-side
+    //    bearing: the visible glyph extends past its typographic
+    //    advance width by a few percent of em. The longest-phrase
+    //    placeholder sizes the box on advance widths alone, so the
+    //    final character of a phrase ending in italic letters with
+    //    rightward overhang ("h" in "paragraph", "g" in "writing")
+    //    gets clipped by the outer's hard edge. 0.15em is enough for
+    //    Fraunces italic at our font sizes.
+    //
+    // 3. `[contain:paint]` — `overflow-hidden` on its own enforces the
     //    clip at PAINT time, which Chrome/Brave on Android sometimes
     //    skips for elements whose children animate on the GPU
     //    compositor (the typewriter and its blinking cursor do). The
@@ -82,7 +89,7 @@ export function TypewriterTagline() {
     //
     // `align-bottom` keeps the wrapper baseline-aligned with "Reward"
     // above it after these conversions to a block formatting context.
-    <span className="relative inline-block overflow-hidden align-bottom whitespace-nowrap pb-[0.45em] [contain:paint]">
+    <span className="relative inline-block overflow-hidden align-bottom whitespace-nowrap pb-[0.45em] pr-[0.15em] [contain:paint]">
       {/* Invisible placeholder reserves space for the longest phrase
           so the parent H1 never reflows mid-typing. */}
       <span aria-hidden="true" className="invisible">
