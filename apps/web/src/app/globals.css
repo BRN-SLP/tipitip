@@ -115,3 +115,52 @@
     opacity: 0.22;
   }
 }
+
+/* Water-droplet ripple, used by FloatingHeart on tap.
+ *
+ * Why CSS keyframes instead of framer-motion: each ring is its own
+ * DOM element rendered through React state, and CSS animations on
+ * separate elements are 100% independent — they cannot interfere
+ * with each other, cannot be restarted by parent re-renders, and
+ * cannot be deduplicated by an animation library. Framer-motion's
+ * `animate` prop on sibling components with identical animation
+ * shapes inside a parent that itself has an `animate` loop (the
+ * heart's ambient lub-dub) leaked into a single visible ring per
+ * tap on production. CSS sidesteps that whole class of bugs.
+ *
+ * Two parallel animations:
+ *   - scale: linear from 1 to 4 over 5 s (constant outward velocity
+ *     mirrors the physics of energy propagation on a water surface)
+ *   - opacity: ease-in from 1 to 0 over 5 s (amplitude decays as the
+ *     wavefront spreads over a growing circumference 2πr, combined
+ *     with frictional dissipation)
+ *
+ * Constants here must stay in sync with RIPPLE_DURATION_MS and
+ * RIPPLE_FINAL_SCALE in FloatingHeart.tsx — the state cleanup
+ * timeout uses the JS constants, so a CSS-side mismatch would
+ * leak orphaned ring elements or chop the animation short.
+ */
+@keyframes tipitip-ripple-scale {
+  from { transform: scale(1); }
+  to   { transform: scale(4); }
+}
+
+@keyframes tipitip-ripple-fade {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.animate-tipitip-ripple {
+  animation:
+    tipitip-ripple-scale 5s linear forwards,
+    tipitip-ripple-fade 5s cubic-bezier(0.4, 0, 1, 1) forwards;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-tipitip-ripple {
+    animation: none;
+    opacity: 0;
+  }
+}
