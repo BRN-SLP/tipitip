@@ -153,10 +153,19 @@
 .animate-tipitip-ripple {
   animation:
     tipitip-ripple-scale 5s linear forwards,
-    tipitip-ripple-fade 5s cubic-bezier(0.4, 0, 1, 1) forwards;
+    tipitip-ripple-fade 5s cubic-bezier(0.55, 0, 1, 1) forwards;
   transform-origin: center;
   will-change: transform, opacity;
 }
+/*
+ * Fade curve note: cubic-bezier(0.55, 0, 1, 1) is a slightly softer
+ * ease-in than the more aggressive (0.4, 0, 1, 1) we shipped with the
+ * 10-ring train. With only 5 rings in flight the wavefront train is
+ * sparser, so each ring needs to hold visible amplitude longer to
+ * sustain the sense of a continuous wave. The first 40% of life now
+ * keeps opacity above 0.85; the back half drops faster as the ring
+ * approaches its outer edge of travel and energy fully dissipates.
+ */
 
 @media (prefers-reduced-motion: reduce) {
   .animate-tipitip-ripple {

@@ -40,14 +40,16 @@ const BURST_MS = 1400;
 //      `easeIn` opacity curve: slow decay near the source, faster
 //      fade at the edge. We apply that below.
 //
-// Tuned so ~10 rings are visible in flight at any moment (D / Δt
-// = 5000 / 500 = 10), spread evenly across the button outline out
-// to 4× its radius. Final scale of 4× (up from 2.2×) gives the
-// wavefront enough room to separate visually instead of stacking
-// into a solid pink halo — the previous "just pulsation" symptom.
+// Tuned so ~5 rings are visible in flight at peak (D / Δt =
+// 5000 / 1000 = 5), spread evenly across the button outline out
+// to 4× its radius. Halved density vs the previous 10-ring train
+// — same total reach, twice the spacing between consecutive
+// wavefronts (~48px between visible rings on the sm 160px button
+// vs ~24px previously). Reads as a sparser, more deliberate wave
+// rather than a dense flurry.
 const RIPPLE_DURATION_MS = 5000;
-const RIPPLE_STAGGER_MS = 500;
-const RIPPLES_PER_CLICK = 10;
+const RIPPLE_STAGGER_MS = 1000;
+const RIPPLES_PER_CLICK = 5;
 const RIPPLE_FINAL_SCALE = 4.0;
 const RIPPLE_LAST_CLEANUP_MS =
   RIPPLE_DURATION_MS + (RIPPLES_PER_CLICK - 1) * RIPPLE_STAGGER_MS;
