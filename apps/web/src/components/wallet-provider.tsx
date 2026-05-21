@@ -30,11 +30,11 @@ const connectors = connectorsForWallets(
 // `celo` stays first in the array so it remains the default chain
 // for transactions; the user is never prompted to switch to L1.
 //
-// Celo Sepolia is intentionally NOT in this list. The Proof of Ship
-// leaderboard only counts mainnet transactions, and exposing a
-// testnet switcher to readers invites confusion ("why didn't my tip
-// arrive?"). Sepolia contracts remain deployed for V2 upgrade
-// rehearsals — they are simply not user-facing.
+// Celo Sepolia is intentionally NOT in this list. The launch focus
+// is mainnet activity, and exposing a testnet switcher to readers
+// invites confusion ("why didn't my tip arrive?"). Sepolia contracts
+// remain deployed for V2 upgrade rehearsals — they are simply not
+// user-facing.
 const wagmiConfig = createConfig({
   chains: [celo, mainnet],
   connectors,

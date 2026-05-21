@@ -70,13 +70,6 @@ export const metadata: Metadata = {
     images: ['/og.png'],
   },
   robots: { index: true, follow: true },
-  // Talent App domain ownership verification (Proof of Ship S2 submission).
-  // Talent App fetches the homepage and looks for this meta tag once,
-  // then keeps the project linked to the domain.
-  other: {
-    'talentapp:project_verification':
-      '48d665b012a2ac6976c59b8403473ff4a6762ebb23e60737c54f2de3f595f7d0c4b54357f3b1d19db77e3655cf3afa0bd7e8b711f6dc009baec9a645aca25aec',
-  },
 };
 
 /**

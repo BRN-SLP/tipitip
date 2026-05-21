@@ -4,7 +4,6 @@
 
 🟢 **Live:** https://tipitip-sable.vercel.app
 🧪 **Sepolia TipJar proxy:** [`0xDB11f15D8d6A94AdF63Bd760B1AAE130379983b8`](https://celo-sepolia.blockscout.com/address/0xDB11f15D8d6A94AdF63Bd760B1AAE130379983b8)
-📖 **Talent App / Proof of Ship May edition** — eligible: MiniPay hook ✓, Celo contract ✓, OS repo ✓
 
 ---
 
