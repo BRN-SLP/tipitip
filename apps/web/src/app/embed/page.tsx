@@ -98,7 +98,7 @@ export default async function EmbedPage() {
       </section>
 
       {/* THREE MODES */}
-      <section className="border-b bg-secondary/40">
+      <section className="border-b">
         <div className="container mx-auto max-w-5xl px-4 py-16">
           <RevealOnScroll>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -174,7 +174,7 @@ export default async function EmbedPage() {
       </section>
 
       {/* API REFERENCE */}
-      <section className="border-b bg-secondary/40">
+      <section className="border-b">
         <div className="container mx-auto max-w-5xl px-4 py-16">
           <RevealOnScroll>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
