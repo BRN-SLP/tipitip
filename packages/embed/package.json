@@ -10,6 +10,10 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
+    },
+    "./inline": {
+      "import": "./dist/inline.js",
+      "types": "./dist/inline.d.ts"
     }
   },
   "files": [
@@ -25,7 +29,19 @@
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18"
+    "react-dom": ">=18",
+    "viem": ">=2"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "viem": {
+      "optional": true
+    }
   },
   "dependencies": {
     "react-markdown": "^9"
@@ -33,7 +49,8 @@
   "devDependencies": {
     "@types/react": "^18.2.0",
     "react": "^18.2.0",
-    "typescript": "^5.5.0"
+    "typescript": "^5.5.0",
+    "viem": "^2.0.0"
   },
   "publishConfig": {
     "access": "public"
