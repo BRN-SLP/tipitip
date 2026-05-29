@@ -94,6 +94,12 @@ export function TipParagraphsInline({
   const [amount, setAmount] = useState<number>(
     tipAmountsCusd[0] ?? DEFAULT_AMOUNTS[0],
   );
+  // Last preset chosen. Presets are sticky; a custom amount is one-shot
+  // and reverts to this the instant it fires (see onAfterFire below), so a
+  // manual amount can never silently repeat on the next tap.
+  const [lastPreset, setLastPreset] = useState<number>(
+    tipAmountsCusd[0] ?? DEFAULT_AMOUNTS[0],
+  );
 
   const engine = useMemo(
     () => createTipEngine({ chainId, tipJarAddress, cusdAddress, rpcUrl }),
@@ -198,7 +204,10 @@ export function TipParagraphsInline({
         amount={amount}
         amounts={tipAmountsCusd}
         onConnect={connect}
-        onAmount={setAmount}
+        onAmount={(a, source) => {
+          setAmount(a);
+          if (source === "preset") setLastPreset(a);
+        }}
       />
       {paragraphs.map((text, index) => (
         <InlineParagraph
@@ -209,6 +218,11 @@ export function TipParagraphsInline({
           stats={stats[String(index)]}
           amountCusd={amount}
           engine={engine}
+          onAfterFire={() => {
+            // One-shot custom: snap back to the last preset the moment a
+            // non-preset amount fires, so the next tap can't repeat it.
+            if (!tipAmountsCusd.includes(amount)) setAmount(lastPreset);
+          }}
           ensureConnected={async () => {
             if (address) return address;
             const addr = await engine.connect();
@@ -222,6 +236,10 @@ export function TipParagraphsInline({
   );
 }
 
+/** Largest single custom tip (fat-finger guard; one-shot revert is the
+ *  real safety). Mirrors the canonical reader's cap. */
+const MAX_CUSTOM_CUSD = 100;
+
 function TipToolbar({
   address,
   amount,
@@ -233,8 +251,37 @@ function TipToolbar({
   amount: number;
   amounts: number[];
   onConnect: () => void;
-  onAmount: (a: number) => void;
+  onAmount: (a: number, source: "preset" | "custom") => void;
 }) {
+  const [customOpen, setCustomOpen] = useState(false);
+  const [customText, setCustomText] = useState("");
+  const [customError, setCustomError] = useState(false);
+  const customActive = !amounts.includes(amount);
+
+  const submitCustom = () => {
+    const raw = customText.trim().replace(/^\$/, "").replace(",", ".");
+    const n = Number(raw);
+    if (!Number.isFinite(n) || n <= 0 || n > MAX_CUSTOM_CUSD) {
+      setCustomError(true);
+      return;
+    }
+    onAmount(n, "custom");
+    setCustomOpen(false);
+    setCustomText("");
+    setCustomError(false);
+  };
+
+  const chip = (active: boolean) => ({
+    padding: "4px 10px",
+    fontSize: 12,
+    borderRadius: 999,
+    cursor: "pointer",
+    border: "1px solid",
+    borderColor: active ? "#dc2626" : "#e4e4e7",
+    background: active ? "#fef2f2" : "transparent",
+    color: active ? "#dc2626" : "#52525b",
+  });
+
   return (
     <div
       className="tipitip-embed__toolbar"
@@ -249,26 +296,61 @@ function TipToolbar({
         borderBottom: "1px solid #e4e4e7",
       }}
     >
-      <div style={{ display: "inline-flex", gap: 6 }}>
+      <div style={{ display: "inline-flex", gap: 6, alignItems: "center" }}>
         {amounts.map((a) => (
           <button
             key={a}
             type="button"
-            onClick={() => onAmount(a)}
-            style={{
-              padding: "4px 10px",
-              fontSize: 12,
-              borderRadius: 999,
-              cursor: "pointer",
-              border: "1px solid",
-              borderColor: a === amount ? "#dc2626" : "#e4e4e7",
-              background: a === amount ? "#fef2f2" : "transparent",
-              color: a === amount ? "#dc2626" : "#52525b",
-            }}
+            onClick={() => onAmount(a, "preset")}
+            style={chip(a === amount)}
           >
             ${a}
           </button>
         ))}
+        {customOpen ? (
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+            <span style={{ fontSize: 12, color: "#52525b" }}>$</span>
+            <input
+              autoFocus
+              type="text"
+              inputMode="decimal"
+              value={customText}
+              onChange={(e) => {
+                setCustomText(e.target.value);
+                setCustomError(false);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") submitCustom();
+                if (e.key === "Escape") {
+                  setCustomOpen(false);
+                  setCustomText("");
+                  setCustomError(false);
+                }
+              }}
+              placeholder="0.25"
+              aria-label="Custom tip amount in cUSD"
+              style={{
+                width: 56,
+                fontSize: 12,
+                padding: "4px 6px",
+                borderRadius: 6,
+                border: `1px solid ${customError ? "#dc2626" : "#e4e4e7"}`,
+                outline: "none",
+              }}
+            />
+            <button type="button" onClick={submitCustom} style={chip(false)}>
+              ✓
+            </button>
+          </span>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setCustomOpen(true)}
+            style={chip(customActive)}
+          >
+            {customActive ? `$${amount}` : "Custom"}
+          </button>
+        )}
       </div>
       {address ? (
         <span style={{ fontSize: 12, color: "#16a34a" }}>
@@ -304,6 +386,9 @@ interface InlineParagraphProps {
   amountCusd: number;
   engine: ReturnType<typeof createTipEngine>;
   ensureConnected: () => Promise<Hex>;
+  /** Called the instant a tip is initiated, so the parent can revert a
+   *  one-shot custom amount back to the last preset. */
+  onAfterFire?: () => void;
 }
 
 function InlineParagraph({
@@ -314,6 +399,7 @@ function InlineParagraph({
   amountCusd,
   engine,
   ensureConnected,
+  onAfterFire,
 }: InlineParagraphProps) {
   const [optimistic, setOptimistic] = useState(0);
   const [status, setStatus] = useState<TipStatus>({ kind: "idle" });
@@ -326,10 +412,12 @@ function InlineParagraph({
   const onTip = useCallback(async () => {
     if (busy) return;
     setOptimistic((n) => n + 1);
+    // Capture the amount NOW, before the parent reverts a one-shot custom.
+    const amountWei = parseUnits(String(amountCusd), 18);
+    onAfterFire?.();
     try {
       await ensureConnected();
       const paragraphKey = deriveParagraphKey(articleId, index, text);
-      const amountWei = parseUnits(String(amountCusd), 18);
       await engine.tip({
         articleId,
         paragraphKey,
@@ -339,7 +427,7 @@ function InlineParagraph({
     } catch {
       setOptimistic((n) => Math.max(0, n - 1));
     }
-  }, [busy, ensureConnected, articleId, index, text, amountCusd, engine]);
+  }, [busy, ensureConnected, articleId, index, text, amountCusd, engine, onAfterFire]);
 
   const label =
     status.kind === "approving"
