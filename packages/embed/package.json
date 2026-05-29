@@ -1,6 +1,6 @@
 {
   "name": "@tipitip/embed",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Drop-in React component for per-paragraph cUSD tipping on Celo. Add a tippable article block to any blog with two lines of code.",
   "license": "MIT",
   "type": "module",
@@ -10,6 +10,14 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
+    },
+    "./inline": {
+      "import": "./dist/inline.js",
+      "types": "./dist/inline.d.ts"
+    },
+    "./vanilla": {
+      "import": "./dist/vanilla.js",
+      "types": "./dist/vanilla.d.ts"
     }
   },
   "files": [
@@ -21,11 +29,24 @@
     "build": "tsc -p tsconfig.json",
     "type-check": "tsc --noEmit",
     "clean": "rm -rf dist",
+    "prepare": "tsc -p tsconfig.json",
     "prepublishOnly": "pnpm clean && pnpm build"
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18"
+    "react-dom": ">=18",
+    "viem": ">=2"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "viem": {
+      "optional": true
+    }
   },
   "dependencies": {
     "react-markdown": "^9"
@@ -33,7 +54,8 @@
   "devDependencies": {
     "@types/react": "^18.2.0",
     "react": "^18.2.0",
-    "typescript": "^5.5.0"
+    "typescript": "^5.5.0",
+    "viem": "^2.0.0"
   },
   "publishConfig": {
     "access": "public"
