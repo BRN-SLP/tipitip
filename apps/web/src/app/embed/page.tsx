@@ -48,7 +48,7 @@ export default async function EmbedPage() {
   return (
     <main className="flex-1">
       {/* HERO */}
-      <section className="relative overflow-hidden border-b">
+      <section className="relative overflow-hidden">
         <div
           aria-hidden="true"
           className="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_0%,hsl(var(--primary)/0.10),transparent_70%)]"
@@ -98,7 +98,7 @@ export default async function EmbedPage() {
       </section>
 
       {/* THREE MODES */}
-      <section className="border-b">
+      <section>
         <div className="container mx-auto max-w-5xl px-4 py-16">
           <RevealOnScroll>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -157,7 +157,7 @@ export default async function EmbedPage() {
       </section>
 
       {/* PLAYGROUND */}
-      <section id="playground" className="border-b">
+      <section id="playground">
         <div className="container mx-auto max-w-5xl px-4 py-16">
           <RevealOnScroll>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -174,7 +174,7 @@ export default async function EmbedPage() {
       </section>
 
       {/* API REFERENCE */}
-      <section className="border-b">
+      <section>
         <div className="container mx-auto max-w-5xl px-4 py-16">
           <RevealOnScroll>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -236,7 +236,7 @@ export default async function EmbedPage() {
       </section>
 
       {/* THEMING */}
-      <section className="border-b">
+      <section>
         <div className="container mx-auto max-w-5xl px-4 py-16">
           <RevealOnScroll>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
