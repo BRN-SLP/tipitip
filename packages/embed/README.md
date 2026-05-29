@@ -16,6 +16,20 @@ export default function MyArticle() {
 
 ---
 
+## Three ways to embed
+
+Pick the entry that matches your stack. All three target the same on-chain article, so tips aggregate to one balance regardless of how they were sent.
+
+| Entry | Import | Wallet | Extra peer dep | Best for |
+|---|---|---|---|---|
+| **Lite** | `@tipitip/embed` | Deep-links to TipiTip to sign | none | Constrained surfaces (Substack, MDX), zero-dep budgets |
+| **Inline** | `@tipitip/embed/inline` | Signs in place on your page | `viem` | React blogs that want the tip to complete without a redirect |
+| **Vanilla** | `@tipitip/embed/vanilla` | Signs in place on your page | `viem` (via CDN) | WordPress, Ghost, plain HTML, no React, no build step |
+
+Lite stays dependency-free and never asks your reader to leave the formatting they trust. Inline and vanilla close the redirect gap: the reader taps a heart on your site and the cUSD transaction completes right there, inside MiniPay or any Celo wallet.
+
+---
+
 ## Why use this
 
 | If you're already writing on... | What this embed does for you |
@@ -38,7 +52,7 @@ npm i @tipitip/embed
 yarn add @tipitip/embed
 ```
 
-Peer dependencies you must already have: `react >= 18` and `react-dom >= 18`. No `viem`, no `wagmi`, no `@noble/hashes` in your bundle. The embed is intentionally dependency-light so it loads cleanly inside MDX, Substack custom HTML, and other constrained surfaces.
+The **lite** entry (`@tipitip/embed`) needs only `react >= 18` and `react-dom >= 18`. No `viem`, no `wagmi`, no `@noble/hashes` in your bundle, so it loads cleanly inside MDX, Substack custom HTML, and other constrained surfaces. The **inline** and **vanilla** entries additionally need `viem` (an optional peer dependency) because they sign transactions on your page; install it alongside, or let a CDN resolve it for the web component.
 
 ---
 
@@ -137,9 +151,77 @@ This is a **read-and-redirect** embed. The clickable heart counter under each pa
 4. The on-chain `Tipped` event is emitted with the same `paragraphKey` your embed already knows about.
 5. Within 30 seconds the embedded counter on your blog reflects the new tip.
 
-This split keeps your embed dependency-free and your wallet-aware UI on the verified TipiTip domain — your readers' trust signals (verified contract, brand recognition, multi-wallet support) all live at the canonical destination.
+This split keeps the lite embed dependency-free and your wallet-aware UI on the verified TipiTip domain — your readers' trust signals (verified contract, brand recognition, multi-wallet support) all live at the canonical destination.
 
-A future `v0.2` will add an opt-in `<TipParagraphsConnected>` component that lifts the entire flow inline using a `wagmi` peer dependency, for hosts that already ship a wallet stack.
+If you would rather the tip complete without a redirect, use the **inline** or **vanilla** entries below.
+
+---
+
+## Inline (wallet-signing) — `@tipitip/embed/inline`
+
+Signs the cUSD tip directly from your page. The reader taps a heart, approves a one-time allowance, and `tipParagraph(...)` fires in place. No wagmi, no RainbowKit, no wallet context required on the host — just `viem` and the reader's injected wallet (MiniPay auto-detected).
+
+```bash
+pnpm add @tipitip/embed viem
+```
+
+```tsx
+import { TipParagraphsInline } from "@tipitip/embed/inline";
+
+export function ArticleEmbed() {
+  return (
+    <TipParagraphsInline
+      articleId="0x…"
+      tipAmountsCusd={[0.001, 0.005, 0.01]}
+    />
+  );
+}
+```
+
+Inside MiniPay the transaction carries `feeCurrency: cUSD` automatically (CIP-64 fee abstraction), so the reader pays gas in the stablecoin they already hold and never needs CELO. On a desktop EVM wallet the field is omitted, as those wallets reject it.
+
+Extra props over the lite component: `tipAmountsCusd` (selectable amounts), `tipJarAddress` / `cusdAddress` / `rpcUrl` (overrides for staging or a fork).
+
+You can also drive the flow yourself with the bare engine:
+
+```ts
+import { createTipEngine, deriveParagraphKey } from "@tipitip/embed/inline";
+
+const engine = createTipEngine({ chainId: 42220 });
+await engine.connect();
+await engine.tip({
+  articleId: "0x…",
+  paragraphKey: deriveParagraphKey("0x…", 0, "the paragraph text"),
+  amountWei: 5_000_000_000_000_000n, // 0.005 cUSD
+  onStatus: (s) => console.log(s.kind),
+});
+```
+
+---
+
+## Vanilla web component — `@tipitip/embed/vanilla`
+
+No React, no build step. Drop one module script and a custom element onto any page (WordPress, Ghost, plain HTML). It registers `<tipitip-paragraphs>` and wraps the same signing engine as the inline component.
+
+```html
+<script type="module" src="https://esm.sh/@tipitip/embed/vanilla"></script>
+
+<tipitip-paragraphs
+  article-id="0x…"
+  tip-amount="0.005"
+  chain-id="42220"
+></tipitip-paragraphs>
+```
+
+| Attribute | Default | Description |
+|---|---|---|
+| `article-id` | — (required) | 32-byte hex article id |
+| `base-url` | production origin | TipiTip API origin |
+| `chain-id` | `42220` | `42220` (Mainnet) or `11142220` (Sepolia) |
+| `tip-amount` | `0.005` | Whole cUSD sent per tap |
+| `poll-interval` | `30000` | Stats refresh ms; `0` disables |
+
+Styling is isolated in a shadow root, so host CSS will not leak in or out. The CDN resolves `viem` for you; nothing to install.
 
 ---
 
