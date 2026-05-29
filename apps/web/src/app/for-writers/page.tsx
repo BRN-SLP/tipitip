@@ -225,6 +225,20 @@ export default function MyArticle() {
               </code>
             </pre>
           </RevealOnScroll>
+          <RevealOnScroll delay={0.15}>
+            <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+              <Button asChild variant="outline">
+                <Link href="/embed">
+                  <Code2 className="mr-2 h-4 w-4" />
+                  Full embed docs &amp; live playground
+                </Link>
+              </Button>
+              <p className="text-sm text-muted-foreground">
+                Inline wallet-signing and a vanilla web component for WordPress,
+                Ghost &amp; plain HTML.
+              </p>
+            </div>
+          </RevealOnScroll>
         </div>
       </section>
 
