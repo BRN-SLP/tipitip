@@ -53,7 +53,8 @@ export async function generateMetadata({
   const siteUrl = (
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://tipitip-sable.vercel.app"
   ).replace(/\/+$/, "");
-  const frameImage = `${siteUrl}/og.png`;
+  // Per-article card showing the real title, not the generic brand banner.
+  const frameImage = `${siteUrl}/a/${articleId}/og`;
   const frameTarget = `${siteUrl}/a/${articleId}`;
   const splashImage = `${siteUrl}/logo-512.png`;
   const fcFrame = {

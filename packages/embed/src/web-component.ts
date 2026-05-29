@@ -51,6 +51,12 @@ function formatCusd(weiStr: string): string {
   }
 }
 
+/** Standard preset amounts, matching the canonical reader + React embed. */
+const PRESETS = [0.001, 0.005, 0.01, 0.05];
+/** Largest single custom tip (fat-finger guard; one-shot revert is the
+ *  real safety). */
+const MAX_CUSTOM_CUSD = 100;
+
 class TipitipParagraphs extends HTMLElement {
   private engine: ReturnType<typeof createTipEngine> | null = null;
   private timer: ReturnType<typeof setInterval> | null = null;
@@ -59,6 +65,13 @@ class TipitipParagraphs extends HTMLElement {
   private optimistic: Record<number, number> = {};
   private address: Hex | null = null;
   private root: ShadowRoot;
+  // Active tip amount + the last preset to revert to. A custom amount is
+  // one-shot: it fires once then snaps back to lastPreset, so it can never
+  // silently repeat on the next tap.
+  private amount = 0.005;
+  private lastPreset = 0.005;
+  private customOpen = false;
+  private customText = "";
 
   constructor() {
     super();
@@ -95,6 +108,8 @@ class TipitipParagraphs extends HTMLElement {
       return;
     }
     this.engine = createTipEngine({ chainId: this.chainId });
+    this.amount = this.tipAmount;
+    this.lastPreset = this.tipAmount;
     this.renderShell("Loading article…");
     void this.loadBody();
     void this.pullStats();
@@ -131,7 +146,8 @@ class TipitipParagraphs extends HTMLElement {
         paragraphs?: Record<string, TipStats>;
       };
       this.stats = json.paragraphs ?? {};
-      if (this.paragraphs.length) this.render();
+      // Don't wipe an open custom input mid-typing on a background poll.
+      if (this.paragraphs.length && !this.customOpen) this.render();
     } catch {
       // keep last good stats
     }
@@ -146,14 +162,27 @@ class TipitipParagraphs extends HTMLElement {
     return addr;
   }
 
+  private submitCustom(): void {
+    const raw = this.customText.trim().replace(/^\$/, "").replace(",", ".");
+    const n = Number(raw);
+    if (!Number.isFinite(n) || n <= 0 || n > MAX_CUSTOM_CUSD) return;
+    this.amount = n; // not lastPreset — custom is one-shot
+    this.customOpen = false;
+    this.customText = "";
+    this.render();
+  }
+
   private async onTip(index: number, text: string): Promise<void> {
     if (!this.engine) return;
+    // Capture the fired amount BEFORE reverting a one-shot custom.
+    const firedAmount = this.amount;
+    const amountWei = parseUnits(String(firedAmount), 18);
     this.optimistic[index] = (this.optimistic[index] ?? 0) + 1;
+    if (!PRESETS.includes(firedAmount)) this.amount = this.lastPreset;
     this.render();
     try {
       await this.connect();
       const paragraphKey = deriveParagraphKey(this.articleId, index, text);
-      const amountWei = parseUnits(String(this.tipAmount), 18);
       await this.engine.tip({ articleId: this.articleId, paragraphKey, amountWei });
       void this.pullStats();
     } catch {
@@ -183,7 +212,7 @@ class TipitipParagraphs extends HTMLElement {
           <section style="margin:0 0 1.25rem 0">
             <div style="margin-bottom:0.5rem">${renderInlineMarkdown(text)}</div>
             <button data-act="tip" data-index="${i}"
-              title="Tip $${this.tipAmount} cUSD"
+              title="Tip $${this.amount} cUSD"
               style="display:inline-flex;align-items:center;gap:8px;padding:4px 10px;font-size:12px;color:#52525b;cursor:pointer;background:transparent;border:1px solid #e4e4e7;border-radius:999px">
               <span aria-hidden="true" style="color:#dc2626">&hearts;</span>
               <span>${label}</span>
@@ -195,7 +224,7 @@ class TipitipParagraphs extends HTMLElement {
     this.root.innerHTML = `
       <article style="font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.65">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid #e4e4e7">
-          <span style="font-size:12px;color:#71717a">Tip $${this.tipAmount} cUSD per tap</span>
+          ${this.renderSelector()}
           ${addrLabel}
         </div>
         ${blocks}
@@ -214,6 +243,65 @@ class TipitipParagraphs extends HTMLElement {
         void this.onTip(idx, this.paragraphs[idx] ?? "");
       });
     });
+
+    // Amount selector wiring.
+    this.root.querySelectorAll('[data-act="preset"]').forEach((el) => {
+      el.addEventListener("click", () => {
+        const a = Number((el as HTMLElement).dataset.amt);
+        this.amount = a;
+        this.lastPreset = a;
+        this.customOpen = false;
+        this.render();
+      });
+    });
+    this.root
+      .querySelector('[data-act="custom-open"]')
+      ?.addEventListener("click", () => {
+        this.customOpen = true;
+        this.render();
+      });
+    this.root
+      .querySelector('[data-act="custom-submit"]')
+      ?.addEventListener("click", () => this.submitCustom());
+    const input = this.root.querySelector(
+      '[data-act="custom-input"]',
+    ) as HTMLInputElement | null;
+    if (input) {
+      input.addEventListener("input", (e) => {
+        this.customText = (e.target as HTMLInputElement).value;
+      });
+      input.addEventListener("keydown", (e) => {
+        const k = (e as KeyboardEvent).key;
+        if (k === "Enter") this.submitCustom();
+        if (k === "Escape") {
+          this.customOpen = false;
+          this.customText = "";
+          this.render();
+        }
+      });
+      input.focus();
+    }
+  }
+
+  private renderSelector(): string {
+    const chip = (label: string, active: boolean, attrs: string): string =>
+      `<button ${attrs} style="padding:4px 10px;font-size:12px;border-radius:999px;cursor:pointer;border:1px solid ${
+        active ? "#dc2626" : "#e4e4e7"
+      };background:${active ? "#fef2f2" : "transparent"};color:${
+        active ? "#dc2626" : "#52525b"
+      }">${label}</button>`;
+    const customActive = !PRESETS.includes(this.amount);
+    const presets = PRESETS.map((a) =>
+      chip(`$${a}`, a === this.amount, `data-act="preset" data-amt="${a}"`),
+    ).join("");
+    const customPart = this.customOpen
+      ? `<span style="display:inline-flex;align-items:center;gap:4px"><span style="font-size:12px;color:#52525b">$</span><input data-act="custom-input" type="text" inputmode="decimal" value="${this.customText}" placeholder="0.25" aria-label="Custom tip amount in cUSD" style="width:56px;font-size:12px;padding:4px 6px;border-radius:6px;border:1px solid #e4e4e7;outline:none" />${chip("&check;", false, 'data-act="custom-submit"')}</span>`
+      : chip(
+          customActive ? `$${this.amount}` : "Custom",
+          customActive,
+          'data-act="custom-open"',
+        );
+    return `<div style="display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap">${presets}${customPart}</div>`;
   }
 }
 
