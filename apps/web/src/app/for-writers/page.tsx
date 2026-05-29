@@ -140,8 +140,8 @@ export default function ForWritersPage() {
             <RevealOnScroll delay={0.26}>
               <Pillar
                 icon={Globe}
-                title="MiniPay-native distribution"
-                body="MiniPay is Opera's wallet inside Africa's largest mobile browser — 5M+ users in Kenya, Nigeria, Ghana. Tips fire without a wallet popup. For African readers, TipiTip is the only feasible content-monetization rail."
+                title="Wallet-native, worldwide"
+                body="Tips settle in any Celo-compatible wallet — MetaMask, Rainbow, or MiniPay, the stablecoin wallet live in 60+ countries. Inside MiniPay a tip fires with no popup at all. A reader anywhere can back a paragraph in cUSD."
               />
             </RevealOnScroll>
             <RevealOnScroll delay={0.34}>

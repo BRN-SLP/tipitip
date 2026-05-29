@@ -1,6 +1,6 @@
 # TipiTip
 
-> **Tip the paragraph, not the post.** Per-paragraph cUSD micro-tipping for writers on Celo. Built for MiniPay-first readers in Africa.
+> **Tip the paragraph, not the post.** Per-paragraph cUSD micro-tipping for writers on Celo. Readers anywhere tip in cUSD, straight to the writer.
 
 🟢 **Live:** https://tipitip-sable.vercel.app
 🧪 **Sepolia TipJar proxy:** [`0xDB11f15D8d6A94AdF63Bd760B1AAE130379983b8`](https://celo-sepolia.blockscout.com/address/0xDB11f15D8d6A94AdF63Bd760B1AAE130379983b8)
@@ -32,7 +32,7 @@ Articles are identified on-chain by `articleId = keccak256(authorAddress || slug
 
 On Ethereum, sending 1¢ costs 50¢. That kills micropayments. Celo solves it differently — sub-cent gas, AND you can pay gas in cUSD itself (`feeCurrency`). No second token to fund, no bridge. A 1¢ tip leaves the reader and lands in the writer's wallet at ~99% efficiency. Compare to Patreon's 5% + Stripe's 2.9% + 30¢ fixed: a $1 tip nets the writer $0.92; a $0.01 tip Patreon won't even accept.
 
-Distribution: **MiniPay** ships with cUSD preinstalled across Kenya, Nigeria, Ghana, South Africa and ~a dozen other markets. ~8M wallets that already hold cUSD, already pay gas in cUSD, already trust the brand. A Lagos reader tipping a Nairobi writer 1¢ is the default case on this stack.
+Distribution: TipiTip works in any Celo-compatible wallet, anywhere. **MiniPay** alone ships cUSD preinstalled across 60+ countries — wallets that already hold cUSD, already pay gas in cUSD, already trust the brand. A reader anywhere tipping a writer anywhere 1¢ is the default case on this stack.
 
 ## Project Structure
 
