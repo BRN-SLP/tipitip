@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Per-paragraph content tipping MiniApp on Celo",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
