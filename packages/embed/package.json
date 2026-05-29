@@ -14,6 +14,10 @@
     "./inline": {
       "import": "./dist/inline.js",
       "types": "./dist/inline.d.ts"
+    },
+    "./vanilla": {
+      "import": "./dist/vanilla.js",
+      "types": "./dist/vanilla.d.ts"
     }
   },
   "files": [
