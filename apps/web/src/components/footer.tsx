@@ -5,7 +5,10 @@ import { Github } from "lucide-react";
 import { useChainId } from "wagmi";
 import { celo, celoSepolia } from "wagmi/chains";
 
-const VERSION = "0.1.0-alpha";
+// Sourced from next.config.js `env` (package version + Vercel commit SHA)
+// so it tracks releases and deploys instead of going stale.
+const VERSION = process.env.NEXT_PUBLIC_APP_VERSION ?? "0.0.0";
+const COMMIT_SHA = process.env.NEXT_PUBLIC_COMMIT_SHA || "";
 const REPO_URL = "https://github.com/BRN-SLP/tipitip";
 
 export function Footer() {
@@ -23,7 +26,9 @@ export function Footer() {
         <div className="flex flex-col gap-1 text-xs text-muted-foreground">
           <span className="font-medium text-foreground">TipiTip</span>
           <span>
-            v{VERSION} · MIT · per-paragraph cUSD tipping on Celo
+            v{VERSION}
+            {COMMIT_SHA ? ` · ${COMMIT_SHA}` : ""} · MIT · per-paragraph cUSD
+            tipping on Celo
           </span>
         </div>
 
