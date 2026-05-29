@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { TipParagraphs } from "@tipitip/embed";
 
@@ -47,6 +47,13 @@ export function EmbedPlayground({ defaultArticleId }: { defaultArticleId: string
   const [mode, setMode] = useState<Mode>("lite");
   const [articleId, setArticleId] = useState<string>(defaultArticleId);
   const [copied, setCopied] = useState(false);
+  // Pin the live preview to this deployment's own origin so the playground
+  // is self-consistent on preview and production alike. The copyable snippet
+  // intentionally omits baseUrl — real integrators want the canonical default.
+  const [origin, setOrigin] = useState<string | undefined>(undefined);
+  useEffect(() => {
+    setOrigin(window.location.origin);
+  }, []);
 
   const snippet = useMemo(() => snippetFor(mode, articleId), [mode, articleId]);
   const validId = /^0x[0-9a-fA-F]{64}$/.test(articleId.trim());
@@ -139,7 +146,10 @@ export function EmbedPlayground({ defaultArticleId }: { defaultArticleId: string
         </p>
         <div className="flex-1 rounded-lg border border-dashed border-border bg-secondary/30 p-5">
           {validId ? (
-            <TipParagraphs articleId={articleId.trim() as `0x${string}`} />
+            <TipParagraphs
+              articleId={articleId.trim() as `0x${string}`}
+              baseUrl={origin}
+            />
           ) : (
             <p className="text-sm text-muted-foreground">
               Enter a valid 32-byte article id (0x + 64 hex chars) to render a
