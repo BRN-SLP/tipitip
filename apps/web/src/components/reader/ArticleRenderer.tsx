@@ -30,6 +30,10 @@ export function ArticleRenderer({ articleId, body }: ArticleRendererProps) {
   const { isConnected } = useAccount();
   const paragraphs = useMemo(() => splitParagraphs(body), [body]);
   const [tipAmount, setTipAmount] = useState<bigint>(TIP_AMOUNT_PRESETS[1]);
+  // The last *preset* the reader picked. Presets are sticky; a custom
+  // amount is one-shot and reverts here right after it fires, so a manual
+  // amount can never silently carry over to the next heart tap.
+  const [lastPreset, setLastPreset] = useState<bigint>(TIP_AMOUNT_PRESETS[1]);
   const hashId = useHashHighlight();
 
   const { byParagraph, loading } = useTippedEvents(chainId, articleId);
@@ -51,7 +55,13 @@ export function ArticleRenderer({ articleId, body }: ArticleRendererProps) {
   return (
     <div className="space-y-4">
       <div className="sticky top-16 z-40 -mx-4 flex items-center justify-between gap-3 border-b bg-background/90 px-4 py-2 backdrop-blur">
-        <TipAmountSelector value={tipAmount} onChange={setTipAmount} />
+        <TipAmountSelector
+          value={tipAmount}
+          onChange={(next, source) => {
+            setTipAmount(next);
+            if (source === "preset") setLastPreset(next);
+          }}
+        />
         <TipperStatus state={tipper.state} />
       </div>
 
@@ -65,7 +75,16 @@ export function ArticleRenderer({ articleId, body }: ArticleRendererProps) {
             text={text}
             stats={byParagraph.get(paragraphKey)}
             amountWei={tipAmount}
-            onTip={(pk, amt) => tipper.tip(pk, amt)}
+            onTip={(pk, amt) => {
+              const result = tipper.tip(pk, amt);
+              // One-shot custom: the instant a non-preset amount fires,
+              // snap the selector back to the last preset so the next tap
+              // can't repeat the manual amount by accident.
+              if (!TIP_AMOUNT_PRESETS.some((p) => p === amt)) {
+                setTipAmount(lastPreset);
+              }
+              return result;
+            }}
             busy={tipBusy}
             disabled={!isConnected || loading}
           />
