@@ -247,6 +247,18 @@ The endpoint is public, CORS-permissive, and cached for 30 seconds at the edge.
 
 ---
 
+## Network access & privacy
+
+This package makes exactly one kind of network request: a `GET` to
+`{baseUrl}/api/articles/{articleId}` for the article body and `{baseUrl}/api/tip-stats`
+for tip counts, where `baseUrl` is the origin you pass in (default
+`https://tipitip-sable.vercel.app`). The inline entry additionally talks to your
+wallet's Celo RPC to broadcast the tip. There is no telemetry, no analytics, and
+no third-party domains. Point `baseUrl` at your own deployment to keep every call
+on your own infrastructure.
+
+---
+
 ## Demo
 
 A worked example with a real on-chain article:
