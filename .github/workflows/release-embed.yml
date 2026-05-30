@@ -1,0 +1,41 @@
+name: Publish @tipitip/embed
+
+# Publishes the embed SDK to npm with build provenance: a signed attestation
+# linking the published tarball to this exact commit and CI run. Provenance is
+# the real "supply chain security" signal (verifiable build origin).
+#
+# Trigger: push a tag like `embed-v0.2.1`. Bump packages/embed/package.json
+# version first; npm rejects republishing an existing version.
+#
+# Auth: npm Trusted Publishing (OIDC), no NPM_TOKEN secret. One-time setup at
+# npmjs.com -> package @tipitip/embed -> Settings -> Trusted Publisher:
+#   provider: GitHub Actions | owner: BRN-SLP | repo: tipitip
+#   workflow: release-embed.yml
+# Until that is configured the publish step fails and nothing is published.
+
+on:
+  push:
+    tags:
+      - "embed-v*"
+
+permissions:
+  contents: read
+  id-token: write # required for provenance and OIDC trusted publishing
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4 # reads pnpm version from root packageManager
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+      # OIDC trusted publishing needs npm >= 11.5.1, newer than setup-node ships.
+      - run: npm install -g npm@latest
+      - run: pnpm install --frozen-lockfile
+      # `npm publish` runs the package's prepublishOnly (clean + tsc build), so
+      # dist is rebuilt fresh from source in CI before upload.
+      - run: npm publish --provenance --access public
+        working-directory: packages/embed
