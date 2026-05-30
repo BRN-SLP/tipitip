@@ -60,7 +60,7 @@ export async function GET(
   const cleanTitle = stripMarkdown(title);
   const cleanExcerpt = excerpt ? stripMarkdown(excerpt) : null;
 
-  return new ImageResponse(
+  const image = new ImageResponse(
     (
       <div
         style={{
@@ -121,17 +121,15 @@ export async function GET(
         </div>
       </div>
     ),
-    {
-      width: 1200,
-      height: 630,
-      // next/og defaults to `immutable, max-age=31536000` (one year), which
-      // pins a stale card at the CDN and in Farcaster clients long after the
-      // template changes. Cache at the edge for a day with revalidation so
-      // template fixes propagate without a forced URL bump.
-      headers: {
-        "Cache-Control":
-          "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
-      },
-    },
+    { width: 1200, height: 630 },
   );
+  // next/og hard-codes `Cache-Control: immutable, max-age=31536000` (one year)
+  // and the ImageResponse `headers` option only APPENDS, leaving that default
+  // in place. .set() replaces it, so a template change is not pinned for a
+  // year: 1h in the browser, 1d at the edge, then serve-stale-while-revalidate.
+  image.headers.set(
+    "Cache-Control",
+    "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+  );
+  return image;
 }

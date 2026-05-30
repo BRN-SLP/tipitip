@@ -57,7 +57,7 @@ export async function generateMetadata({
   // "?v=" busts CDN and Farcaster image caches when the OG template changes;
   // without it the versionless URL keeps serving the old (immutable) card.
   // Bump this whenever the og/route template is updated.
-  const frameImage = `${siteUrl}/a/${articleId}/og?v=2`;
+  const frameImage = `${siteUrl}/a/${articleId}/og?v=3`;
   const frameTarget = `${siteUrl}/a/${articleId}`;
   const splashImage = `${siteUrl}/logo-512.png`;
   const fcFrame = {
