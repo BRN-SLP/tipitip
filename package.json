@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Per-paragraph content tipping MiniApp on Celo",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BRN-SLP/tipitip.git"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
