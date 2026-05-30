@@ -121,6 +121,17 @@ export async function GET(
         </div>
       </div>
     ),
-    { width: 1200, height: 630 },
+    {
+      width: 1200,
+      height: 630,
+      // next/og defaults to `immutable, max-age=31536000` (one year), which
+      // pins a stale card at the CDN and in Farcaster clients long after the
+      // template changes. Cache at the edge for a day with revalidation so
+      // template fixes propagate without a forced URL bump.
+      headers: {
+        "Cache-Control":
+          "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+      },
+    },
   );
 }
