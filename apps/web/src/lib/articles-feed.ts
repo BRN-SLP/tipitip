@@ -26,6 +26,15 @@ const RPC: Record<number, string> = {
   [celoSepolia.id]: "https://forno.celo-sepolia.celo-testnet.org/",
 };
 
+// Block at which each TipJar proxy was deployed. The feed scans from here
+// so articles never age out of a sliding window: a fixed lookback silently
+// drops every article once it is older than the window, which is exactly
+// what emptied the manifesto card and the Latest grid. Sepolia is omitted
+// (mainnet is the active deployment) and falls back to a recent window.
+const DEPLOY_BLOCK: Record<number, bigint> = {
+  [celo.id]: 67_086_457n,
+};
+
 function getActiveChainId(): number | null {
   if (ADDRESSES[celo.id]?.tipJar) return celo.id;
   if (ADDRESSES[celoSepolia.id]?.tipJar) return celoSepolia.id;
@@ -81,37 +90,43 @@ const fetchAllArticles = unstable_cache(
 
     try {
       const client = buildClient(chainId);
-      // Forno (and most public Celo RPCs) timeout on `fromBlock: 0n` —
-      // scanning ~30M blocks of mainnet history is too expensive for
-      // a single eth_getLogs call. We bound the window instead.
+      // Scan from the contract's deploy block, not a sliding lookback.
+      // A fixed "last N blocks" window silently drops every article once
+      // it ages past the window: at ~1s Celo blocks a 1M lookback is only
+      // ~11.6 days, so the seeded articles (and the pinned manifesto) fell
+      // out and emptied both the manifesto card and the Latest grid.
       //
-      // Celo post-L2 migration runs ~1s block times (not the ~5s of
-      // pre-migration), so 1M blocks ≈ 11.6 days — enough headroom
-      // to cover the pinned manifesto plus a week of new writes
-      // before the window starts dropping older content. Forno
-      // handles this range comfortably in a single getLogs call.
-      // If history ever needs to reach further (archival claim
-      // aggregation, all-time leaderboards) that call paginates
-      // explicitly at its own callsite.
+      // Forno is comfortable with ~1M-block getLogs ranges, so paginate in
+      // chunks rather than one unbounded call. The result set is tiny (a
+      // handful of ArticleRegistered events), so accumulation is cheap. A
+      // subgraph replaces this once volume justifies one.
       const latestBlock = await client.getBlockNumber();
-      const LOOKBACK = 1_000_000n;
-      const fromBlock =
-        latestBlock > LOOKBACK ? latestBlock - LOOKBACK : 0n;
-      const logs = await client.getContractEvents({
-        address,
-        abi: tipJarAbi,
-        eventName: "ArticleRegistered",
-        fromBlock,
-        toBlock: "latest",
-      });
+      const floor =
+        DEPLOY_BLOCK[chainId] ??
+        (latestBlock > 1_000_000n ? latestBlock - 1_000_000n : 0n);
+      const CHUNK = 900_000n;
 
-      return logs
-        .map((log) => ({
-          articleId: log.args.articleId as `0x${string}`,
-          author: log.args.author as `0x${string}`,
-          slug: log.args.slug as string,
-          blockNumber: Number(log.blockNumber ?? 0n),
-        }))
+      const collected: FeaturedArticle[] = [];
+      for (let from = floor; from <= latestBlock; from = from + CHUNK + 1n) {
+        const to = from + CHUNK < latestBlock ? from + CHUNK : latestBlock;
+        const events = await client.getContractEvents({
+          address,
+          abi: tipJarAbi,
+          eventName: "ArticleRegistered",
+          fromBlock: from,
+          toBlock: to,
+        });
+        for (const log of events) {
+          collected.push({
+            articleId: log.args.articleId as `0x${string}`,
+            author: log.args.author as `0x${string}`,
+            slug: log.args.slug as string,
+            blockNumber: Number(log.blockNumber ?? 0n),
+          });
+        }
+      }
+
+      return collected
         .filter((a) => !isExcluded(a.articleId, a.slug))
         .reverse();
     } catch {
