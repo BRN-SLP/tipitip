@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   BookOpen,
   CheckCircle2,
@@ -146,8 +146,6 @@ export function HowItWorks() {
     setActiveStep(i);
     setIsPaused(true);
   }
-
-  const ActiveIcon = steps[activeStep].icon;
 
   return (
     <section
@@ -296,50 +294,60 @@ export function HowItWorks() {
                 ))}
               </div>
 
-              {/* Animated step preview */}
-              <div className="relative min-h-[220px]">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`${persona}-${activeStep}`}
-                    initial={
-                      prefersReducedMotion
-                        ? false
-                        : { opacity: 0, y: 14 }
-                    }
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={
-                      prefersReducedMotion
-                        ? undefined
-                        : { opacity: 0, y: -14 }
-                    }
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="space-y-5"
-                  >
-                    <div
-                      aria-hidden="true"
-                      className="inline-flex h-14 w-14 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary shadow-sm shadow-primary/20"
+              {/* Animated step preview. Every step variant is stacked in the
+                  same grid cell (all children pinned to row/col 1), so the
+                  pane is always as tall as the TALLEST step in this flow, not
+                  whichever one is active. Inactive variants stay mounted at
+                  opacity 0 (opacity and transform never change layout), so the
+                  pane height is constant at all times, including mid-fade. That
+                  stops the page from jumping when the walkthrough auto-advances
+                  or a shorter step replaces a taller one. */}
+              <div className="grid min-h-[220px]">
+                {steps.map((step, i) => {
+                  const isActive = i === activeStep;
+                  const StepIcon = step.icon;
+                  return (
+                    <motion.div
+                      key={`${persona}-${i}`}
+                      aria-hidden={!isActive}
+                      initial={false}
+                      animate={
+                        prefersReducedMotion
+                          ? { opacity: isActive ? 1 : 0 }
+                          : { opacity: isActive ? 1 : 0, y: isActive ? 0 : 14 }
+                      }
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className={cn(
+                        "col-start-1 row-start-1 space-y-5",
+                        !isActive && "pointer-events-none",
+                      )}
                     >
-                      <ActiveIcon className="h-7 w-7" />
-                    </div>
-                    <div className="space-y-2">
-                      <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                        Step {String(activeStep + 1).padStart(2, "0")} /{" "}
-                        {String(steps.length).padStart(2, "0")}
-                      </p>
-                      <h4 className="font-serif text-2xl font-semibold text-foreground">
-                        {steps[activeStep].title}
-                      </h4>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {steps[activeStep].body}
-                      </p>
-                    </div>
-                    {/* Mock terminal-style caption */}
-                    <div className="rounded-md border border-border/80 bg-background/80 px-3 py-2 font-mono text-[12px] text-foreground/80">
-                      <span className="mr-2 text-primary/70">›</span>
-                      {steps[activeStep].demoCaption}
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
+                      <div
+                        aria-hidden="true"
+                        className="inline-flex h-14 w-14 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary shadow-sm shadow-primary/20"
+                      >
+                        <StepIcon className="h-7 w-7" />
+                      </div>
+                      <div className="space-y-2">
+                        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                          Step {String(i + 1).padStart(2, "0")} /{" "}
+                          {String(steps.length).padStart(2, "0")}
+                        </p>
+                        <h4 className="font-serif text-2xl font-semibold text-foreground">
+                          {step.title}
+                        </h4>
+                        <p className="text-sm leading-relaxed text-muted-foreground">
+                          {step.body}
+                        </p>
+                      </div>
+                      {/* Mock terminal-style caption */}
+                      <div className="rounded-md border border-border/80 bg-background/80 px-3 py-2 font-mono text-[12px] text-foreground/80">
+                        <span className="mr-2 text-primary/70">›</span>
+                        {step.demoCaption}
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
 
               {/* Auto-advance indicator */}
