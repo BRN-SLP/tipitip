@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Check, Heart } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { formatUnits } from "viem";
@@ -40,9 +42,11 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
   // Inside MiniPay: pay gas in cUSD instead of CELO.
   const feeOverride = useFeeCurrencyOverride();
   const [state, setState] = useState<ClaimState>({ kind: "idle" });
+  const prefersReducedMotion = useReducedMotion();
 
   const hasFunds = pending > 0n;
   const busy = state.kind === "submitting" || state.kind === "confirming";
+  const idle = state.kind === "idle";
 
   async function handleClaim() {
     if (!isConnected || !publicClient) return;
@@ -76,26 +80,46 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
   }
 
   return (
-    <Card>
+    <Card className="relative overflow-hidden">
+      {/* Calm pulsing bloom behind the figure when there is something to
+          claim, a quiet "money waiting" cue that reuses the site's heartbeat
+          glow. The CSS class already no-ops under prefers-reduced-motion. */}
+      {hasFunds && idle && (
+        <div
+          aria-hidden="true"
+          className="animate-heartbeat pointer-events-none absolute -left-12 -top-12 h-44 w-44 rounded-full bg-primary/20 blur-3xl"
+        />
+      )}
       <CardHeader>
-        <CardTitle className="text-lg">Pending tips</CardTitle>
+        <CardTitle className="flex items-center gap-2 text-lg">
+          <Heart className="h-4 w-4 text-primary" aria-hidden="true" />
+          Pending tips
+        </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <div className="text-3xl font-semibold tracking-tight">
+          <motion.div
+            key={pending.toString()}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="text-3xl font-semibold tracking-tight"
+          >
             {formatUnits(pending, 18)} <span className="text-base">cUSD</span>
-          </div>
-          {!hasFunds && (
-            <p className="mt-1 text-xs text-muted-foreground">
-              Nothing to claim yet — share an article link to start earning.
-            </p>
-          )}
+          </motion.div>
+          {/* Reserve one line so the card height is identical whether or not
+              there are funds — toggling this copy must not nudge the layout. */}
+          <p className="mt-1 min-h-[1rem] text-xs text-muted-foreground">
+            {hasFunds
+              ? "Ready to sweep to your wallet in one tap."
+              : "Nothing to claim yet. Share an article link to start earning."}
+          </p>
         </div>
         <Button
           onClick={handleClaim}
           disabled={!hasFunds || busy}
           size="lg"
-          className="w-full"
+          className="w-full transition-transform active:scale-[0.98]"
         >
           {busy
             ? state.kind === "submitting"
@@ -103,12 +127,42 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
               : "Waiting for confirmation…"
             : "Claim cUSD"}
         </Button>
-        {state.kind === "error" && (
-          <p className="text-xs text-destructive">Error: {state.message}</p>
-        )}
-        {state.kind === "success" && (
-          <p className="text-xs text-emerald-600">Claimed.</p>
-        )}
+        {/* Fixed-height status region so the idle / error / success transition
+            never resizes the card. */}
+        <div className="min-h-[1.25rem] text-xs">
+          <AnimatePresence mode="wait">
+            {state.kind === "error" && (
+              <motion.p
+                key="error"
+                initial={prefersReducedMotion ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="text-destructive"
+              >
+                Error: {state.message}
+              </motion.p>
+            )}
+            {state.kind === "success" && (
+              <motion.p
+                key="success"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="flex items-center gap-1.5 text-emerald-600"
+              >
+                <motion.span
+                  initial={prefersReducedMotion ? false : { scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 18 }}
+                  className="inline-flex"
+                >
+                  <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                </motion.span>
+                Claimed. Funds on their way to your wallet.
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
       </CardContent>
     </Card>
   );
