@@ -85,11 +85,13 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
           <div className="text-3xl font-semibold tracking-tight">
             {formatUnits(pending, 18)} <span className="text-base">cUSD</span>
           </div>
-          {!hasFunds && (
-            <p className="mt-1 text-xs text-muted-foreground">
-              Nothing to claim yet — share an article link to start earning.
-            </p>
-          )}
+          {/* Reserve one line so the card height is identical whether or not
+              there are funds — toggling this copy must not nudge the layout. */}
+          <p className="mt-1 min-h-[1rem] text-xs text-muted-foreground">
+            {hasFunds
+              ? "Ready to sweep to your wallet in one tap."
+              : "Nothing to claim yet. Share an article link to start earning."}
+          </p>
         </div>
         <Button
           onClick={handleClaim}
@@ -103,12 +105,18 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
               : "Waiting for confirmation…"
             : "Claim cUSD"}
         </Button>
-        {state.kind === "error" && (
-          <p className="text-xs text-destructive">Error: {state.message}</p>
-        )}
-        {state.kind === "success" && (
-          <p className="text-xs text-emerald-600">Claimed.</p>
-        )}
+        {/* Fixed-height status region so the idle / error / success transition
+            never resizes the card. */}
+        <div className="min-h-[1.25rem] text-xs">
+          {state.kind === "error" && (
+            <p className="text-destructive">Error: {state.message}</p>
+          )}
+          {state.kind === "success" && (
+            <p className="text-emerald-600">
+              Claimed. Funds on their way to your wallet.
+            </p>
+          )}
+        </div>
       </CardContent>
     </Card>
   );
