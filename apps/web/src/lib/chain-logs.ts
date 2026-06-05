@@ -33,10 +33,9 @@ const RPC: Record<number, string> = {
 
 /**
  * Block at which each TipJar proxy was deployed; full-history scans start here.
- * NOTE: keep the mainnet value in sync with `lib/articles-feed.ts` until that
- * module is migrated onto this one (tracked as a follow-up cleanup).
+ * Single source of truth — `lib/articles-feed.ts` imports this.
  */
-const DEPLOY_BLOCK: Record<number, bigint> = {
+export const DEPLOY_BLOCK: Record<number, bigint> = {
   [celo.id]: 67_086_457n,
 };
 
@@ -62,7 +61,9 @@ export function buildClient(chainId: number): PublicClient {
   const chain = chainId === celo.id ? celo : celoSepolia;
   return createPublicClient({
     chain,
-    transport: http(RPC[chainId]),
+    // Bound each RPC call so a degraded Forno node cannot hold a serverless
+    // function open until the platform timeout.
+    transport: http(RPC[chainId], { timeout: 10_000 }),
   }) as PublicClient;
 }
 
