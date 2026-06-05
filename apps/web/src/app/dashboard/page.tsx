@@ -4,6 +4,7 @@ import { formatUnits } from "viem";
 import { useAccount } from "wagmi";
 
 import { ConnectPrompt } from "@/components/connect-prompt";
+import { ActivityFeed } from "@/components/dashboard/ActivityFeed";
 import { ClaimCard } from "@/components/dashboard/ClaimCard";
 import { ProfileEditor } from "@/components/dashboard/ProfileEditor";
 import { WriterEarnings } from "@/components/dashboard/WriterEarnings";
@@ -65,6 +66,8 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
           </div>
+
+          {address && <ActivityFeed address={address} />}
 
           {address && <WriterEarnings address={address} />}
 
