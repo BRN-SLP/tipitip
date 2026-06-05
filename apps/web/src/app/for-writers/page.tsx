@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "For writers — keep your blog, get paid per paragraph",
   description:
-    "Add per-paragraph cUSD tipping to your existing Substack, dev.to or personal site with two lines of React. Sub-cent gas on Celo. No subscriptions. No platform cut.",
+    "Add per-paragraph cUSD tipping to your existing Substack, dev.to or personal site with two lines of React. Sub-cent gas on Celo. No subscriptions, no minimum payouts.",
   openGraph: {
     title: "TipiTip for writers — keep your blog, get paid per paragraph",
     description:
@@ -79,7 +79,7 @@ export default function ForWritersPage() {
               TipiTip lets readers tip you in cUSD under any paragraph of
               your work. Add it to your existing Substack, dev.to or
               personal site with two lines of React. Sub-cent gas on Celo.
-              No subscriptions. No middlemen. No platform cut.
+              No subscriptions. No middlemen. No minimum payouts.
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={0.18}>
@@ -147,8 +147,8 @@ export default function ForWritersPage() {
             <RevealOnScroll delay={0.34}>
               <Pillar
                 icon={CheckCircle2}
-                title="Zero platform cut"
-                body="100% of the tip goes to the author. There's no platform fee, no minimum payout, no monthly distribution lag. Sweep your accumulated balance to your wallet in one transaction whenever you want."
+                title="Most of every tip is yours"
+                body="A small protocol fee (currently 2.5%) funds development and a writer prize pool; the rest goes straight to you. No minimum payout, no monthly distribution lag. Sweep your accumulated balance to your wallet in one transaction whenever you want."
               />
             </RevealOnScroll>
           </div>
