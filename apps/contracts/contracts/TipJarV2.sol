@@ -63,6 +63,12 @@ contract TipJarV2 is
     ///         allows it exactly once and never re-runs the V1 initializer.
     /// @param feeBps_   Starting protocol fee in basis points (<= MAX_FEE_BPS).
     /// @param treasury_ Address that collects fees (claims like any author).
+    /// @dev V1 already ran __Ownable_init / __UUPSUpgradeable_init; this
+    ///      reinitializer only sets the new V2 fields and deliberately does NOT
+    ///      re-call parent initializers (doing so would reset ownership). The
+    ///      annotations below tell the OZ validator this is intentional.
+    /// @custom:oz-upgrades-validate-as-initializer
+    /// @custom:oz-upgrades-unsafe-allow missing-initializer-call
     function initializeV2(uint16 feeBps_, address treasury_)
         external
         reinitializer(2)
