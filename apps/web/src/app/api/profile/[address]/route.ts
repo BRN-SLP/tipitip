@@ -1,0 +1,37 @@
+import { NextResponse } from "next/server";
+import { isAddress } from "viem";
+
+import { getProfile } from "@/lib/profile";
+
+/**
+ * GET /api/profile/[address]
+ *
+ * Returns the stored profile for an address, or `{ profile: null }` when none
+ * exists. Returns the profile regardless of its `isPublic` flag — surfacing is
+ * the consumer's job (the public /u page renders only public profiles; the
+ * owner's editor needs to read its own profile to populate the form). See the
+ * privacy note in lib/profile.ts.
+ */
+export async function GET(
+  _req: Request,
+  { params }: { params: Promise<{ address: string }> },
+): Promise<NextResponse> {
+  const { address } = await params;
+  if (!isAddress(address)) {
+    return NextResponse.json(
+      { error: "address must be a valid 0x address" },
+      { status: 400 },
+    );
+  }
+
+  const profile = await getProfile(address);
+  return NextResponse.json(
+    { profile: profile ?? null },
+    {
+      status: 200,
+      headers: {
+        "Cache-Control": "public, s-maxage=30, stale-while-revalidate=60",
+      },
+    },
+  );
+}
