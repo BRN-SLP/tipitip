@@ -5,6 +5,7 @@ import { useAccount } from "wagmi";
 
 import { ConnectPrompt } from "@/components/connect-prompt";
 import { ClaimCard } from "@/components/dashboard/ClaimCard";
+import { ProfileEditor } from "@/components/dashboard/ProfileEditor";
 import { WriterEarnings } from "@/components/dashboard/WriterEarnings";
 import {
   Card,
@@ -66,6 +67,8 @@ export default function DashboardPage() {
           </div>
 
           {address && <WriterEarnings address={address} />}
+
+          {address && <ProfileEditor address={address} />}
         </>
       )}
     </main>
