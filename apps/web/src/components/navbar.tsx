@@ -27,6 +27,7 @@ const navLinks: NavLink[] = [
   { name: "Dashboard", href: "/dashboard" },
   { name: "For writers", href: "/for-writers" },
   { name: "Embed", href: "/embed" },
+  { name: "Showcase", href: "/showcase" },
 ]
 
 export function Navbar() {
