@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useProtocolFee } from "@/hooks/useProtocolFee";
 
 interface ParagraphDTO {
   index: number;
@@ -55,6 +56,7 @@ const TOP_PARAGRAPHS = 5;
 export function WriterEarnings({ address }: { address: `0x${string}` }) {
   const [data, setData] = useState<EarningsResponse | null>(null);
   const [state, setState] = useState<LoadState>("loading");
+  const { feeBps, feePct } = useProtocolFee();
 
   useEffect(() => {
     let cancelled = false;
@@ -100,6 +102,13 @@ export function WriterEarnings({ address }: { address: `0x${string}` }) {
         ) : (
           <div className="space-y-6">
             <TotalsStrip totals={data.totals} />
+            {feeBps > 0 && (
+              <p className="text-xs text-muted-foreground">
+                Totals are gross tips. A {feePct}% protocol fee applies to new
+                tips; your claimable balance (Pending tips, above) is already
+                net of it.
+              </p>
+            )}
             <ul className="divide-y">
               {data.articles.map((a) => (
                 <ArticleRow key={a.articleId} article={a} />
