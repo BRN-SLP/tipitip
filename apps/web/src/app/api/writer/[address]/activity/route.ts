@@ -1,3 +1,4 @@
+import { unstable_cache } from "next/cache";
 import { NextResponse } from "next/server";
 import { getAddress, isAddress, type Hex } from "viem";
 
@@ -16,8 +17,10 @@ import { paragraphIndexByKey } from "@/lib/tip-aggregation";
  *
  * Recent tips on a writer's paragraphs, newest first, for the in-app activity
  * feed (W2). Each item carries the article slug, the tipped paragraph snippet,
- * the amount, the tipper, and a block timestamp. Server-side because it scans
- * on-chain history the client cannot.
+ * the amount, the tipper, and a block timestamp.
+ *
+ * The on-chain scan is wrapped in `unstable_cache` keyed by (address, chainId)
+ * so repeated polls don't re-fan-out to the public RPC.
  */
 const MAX_ARTICLES = 50;
 const FEED_LIMIT = 25;
@@ -34,26 +37,12 @@ interface FeedItem {
   txHash: string | null;
 }
 
-export async function GET(
-  _req: Request,
-  { params }: { params: Promise<{ address: string }> },
-): Promise<NextResponse> {
-  const { address } = await params;
-  if (!isAddress(address)) {
-    return NextResponse.json({ error: "invalid address" }, { status: 400 });
-  }
-  const author = getAddress(address);
-
-  const chainId = getActiveChainId();
-  if (chainId === null) {
-    return NextResponse.json({ error: "no chain configured" }, { status: 503 });
-  }
-  const tipJar = ADDRESSES[chainId as SupportedChainId]?.tipJar;
-  if (!tipJar) {
-    return NextResponse.json({ error: "TipJar not configured" }, { status: 503 });
-  }
-
-  try {
+const loadWriterActivity = unstable_cache(
+  async (
+    author: `0x${string}`,
+    chainId: number,
+    tipJar: `0x${string}`,
+  ): Promise<FeedItem[]> => {
     const registerLogs = await fetchAllEvents({
       chainId,
       address: tipJar,
@@ -113,7 +102,6 @@ export async function GET(
       )
       .slice(0, FEED_LIMIT);
 
-    // Block timestamps for just the displayed slice (deduped).
     const client = buildClient(chainId);
     const uniqueBlocks = [...new Set(recent.map((e) => e.blockNumber))];
     const tsByBlock = new Map<bigint, number>();
@@ -128,7 +116,7 @@ export async function GET(
       }),
     );
 
-    const feed: FeedItem[] = recent.map((e) => ({
+    return recent.map((e) => ({
       articleId: e.articleId,
       slug: e.slug,
       paragraphIndex: e.paragraphIndex,
@@ -139,7 +127,32 @@ export async function GET(
       timestamp: tsByBlock.get(e.blockNumber) ?? null,
       txHash: e.txHash,
     }));
+  },
+  ["writer-activity-v1"],
+  { revalidate: 30, tags: ["writer-activity"] },
+);
 
+export async function GET(
+  _req: Request,
+  { params }: { params: Promise<{ address: string }> },
+): Promise<NextResponse> {
+  const { address } = await params;
+  if (!isAddress(address)) {
+    return NextResponse.json({ error: "invalid address" }, { status: 400 });
+  }
+  const author = getAddress(address);
+
+  const chainId = getActiveChainId();
+  if (chainId === null) {
+    return NextResponse.json({ error: "no chain configured" }, { status: 503 });
+  }
+  const tipJar = ADDRESSES[chainId as SupportedChainId]?.tipJar;
+  if (!tipJar) {
+    return NextResponse.json({ error: "TipJar not configured" }, { status: 503 });
+  }
+
+  try {
+    const feed = await loadWriterActivity(author, chainId, tipJar);
     return NextResponse.json(
       { chainId, author, feed },
       {
