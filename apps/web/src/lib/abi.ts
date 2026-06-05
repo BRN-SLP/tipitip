@@ -41,6 +41,15 @@ export const tipJarAbi = [
     outputs: [{ name: "", type: "uint256" }],
   },
   {
+    // V2 (post-fee upgrade): protocol fee in basis points (250 = 2.5%).
+    // Reverts on the pre-upgrade V1 implementation; callers treat that as 0.
+    type: "function",
+    name: "feeBps",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "uint16" }],
+  },
+  {
     type: "function",
     name: "articleAuthor",
     stateMutability: "view",
