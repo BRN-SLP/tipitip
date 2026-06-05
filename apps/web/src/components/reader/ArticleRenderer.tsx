@@ -11,6 +11,7 @@ import {
 import { splitParagraphs } from "@/lib/articles";
 import { deriveParagraphKey } from "@/lib/paragraph-key";
 import { useHashHighlight } from "@/hooks/useHashHighlight";
+import { useProtocolFee } from "@/hooks/useProtocolFee";
 import { useTippedEvents } from "@/hooks/useTippedEvents";
 import { useTipParagraph } from "@/hooks/useTipParagraph";
 import { useChainId, useAccount } from "wagmi";
@@ -38,6 +39,7 @@ export function ArticleRenderer({ articleId, body }: ArticleRendererProps) {
 
   const { byParagraph, loading } = useTippedEvents(chainId, articleId);
   const tipper = useTipParagraph(articleId);
+  const { feeBps, feePct } = useProtocolFee();
 
   const indexed = useMemo(
     () =>
@@ -62,7 +64,17 @@ export function ArticleRenderer({ articleId, body }: ArticleRendererProps) {
             if (source === "preset") setLastPreset(next);
           }}
         />
-        <TipperStatus state={tipper.state} />
+        <div className="flex items-center gap-3">
+          {feeBps > 0 && (
+            <span
+              className="hidden text-[11px] text-muted-foreground sm:inline"
+              title="A protocol fee on each tip funds development and a writer prize pool."
+            >
+              {feePct}% protocol fee
+            </span>
+          )}
+          <TipperStatus state={tipper.state} />
+        </div>
       </div>
 
       <div className="space-y-3">
