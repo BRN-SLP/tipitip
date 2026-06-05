@@ -66,6 +66,7 @@ contract TipJarV2 is
     function initializeV2(uint16 feeBps_, address treasury_)
         external
         reinitializer(2)
+        onlyOwner
     {
         if (treasury_ == address(0)) revert ZeroAddress();
         if (feeBps_ > MAX_FEE_BPS) revert FeeTooHigh(feeBps_);
