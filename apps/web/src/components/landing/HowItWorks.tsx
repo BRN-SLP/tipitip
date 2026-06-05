@@ -124,7 +124,7 @@ export function HowItWorks() {
       setActiveStep((s) => (s + 1) % steps.length);
     }, ADVANCE_MS);
     return () => window.clearInterval(id);
-  }, [isPaused, prefersReducedMotion, steps.length]);
+  }, [isPaused, prefersReducedMotion, steps.length, persona]);
 
   useEffect(() => {
     if (!isPaused) return;

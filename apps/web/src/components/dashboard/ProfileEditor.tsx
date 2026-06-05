@@ -161,7 +161,7 @@ export function ProfileEditor({ address }: { address: `0x${string}` }) {
           View <ExternalLink className="h-3 w-3" aria-hidden="true" />
         </Link>
       </CardHeader>
-      <CardContent>
+      <CardContent className="min-h-[22rem]">
         {loading ? (
           <p className="text-sm text-muted-foreground">Loading profile…</p>
         ) : (

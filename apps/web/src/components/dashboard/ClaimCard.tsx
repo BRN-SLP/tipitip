@@ -70,7 +70,12 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
         id: toastId,
         description: "Funds are on their way to your wallet.",
       });
-      await onClaimed();
+      try {
+        await onClaimed();
+      } catch {
+        // The claim itself succeeded; only the post-claim refetch failed. The
+        // balance will refresh on the next read — do not flip to an error state.
+      }
     } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message.split("\n")[0] : "claim failed";
