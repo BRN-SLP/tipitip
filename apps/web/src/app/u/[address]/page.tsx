@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ExternalLink } from "lucide-react";
@@ -55,12 +54,13 @@ async function loadEarnings(
   address: string,
 ): Promise<{ totals: EarningsTotals | null; articles: EarningsArticle[] }> {
   try {
-    const h = await headers();
-    const host = h.get("host");
-    if (!host) return { totals: null, articles: [] };
-    const proto =
-      h.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-    const res = await fetch(`${proto}://${host}/api/writer/${address}/earnings`, {
+    // Use the canonical site origin, never the request Host header — trusting
+    // the inbound Host here would be an SSRF vector (server fetches whatever
+    // host the caller claims) on non-Vercel deployments.
+    const base = (
+      process.env.NEXT_PUBLIC_SITE_URL ?? "https://tipitip-sable.vercel.app"
+    ).replace(/\/+$/, "");
+    const res = await fetch(`${base}/api/writer/${address}/earnings`, {
       next: { revalidate: 60 },
     });
     if (!res.ok) return { totals: null, articles: [] };

@@ -10,24 +10,27 @@ export const MAX_BIO = 280;
 export const MAX_LINKS = 5;
 
 export const linkSchema = z.object({
-  label: z.string().min(1).max(30),
+  label: z.string().trim().min(1).max(30),
   url: z
     .string()
+    .trim()
     .url()
     .max(200)
     .refine((u) => u.startsWith("https://"), "links must use https"),
 });
 
 /**
- * Validated, signable profile payload. Fields are NOT transformed (no trim) so
- * the message the server rebuilds is byte-identical to the one the client
- * signed; the client must send already-clean values.
+ * Validated, signable profile payload. Strings are trimmed so the canonical
+ * message normalizes identically on both sides: the client trims before
+ * signing and the server trims when parsing, so padded/whitespace variants
+ * cannot be smuggled past the signature check (they would rebuild a different
+ * message and fail verification).
  */
 export const profileInputSchema = z.object({
   address: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "invalid address"),
   isPublic: z.boolean(),
-  displayName: z.string().max(MAX_NAME),
-  bio: z.string().max(MAX_BIO),
+  displayName: z.string().trim().max(MAX_NAME),
+  bio: z.string().trim().max(MAX_BIO),
   links: z.array(linkSchema).max(MAX_LINKS),
 });
 export type ProfileInput = z.infer<typeof profileInputSchema>;

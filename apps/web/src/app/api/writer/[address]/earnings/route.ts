@@ -1,8 +1,9 @@
+import { unstable_cache } from "next/cache";
 import { NextResponse } from "next/server";
 import { getAddress, isAddress, type Hex } from "viem";
 
 import { getArticleBodyUrl } from "@/lib/blob";
-import { fetchAllEvents, getActiveChainId, type RawEventLog } from "@/lib/chain-logs";
+import { fetchAllEvents, getActiveChainId } from "@/lib/chain-logs";
 import { ADDRESSES, type SupportedChainId } from "@/lib/contracts";
 import { aggregateArticleEarnings } from "@/lib/tip-aggregation";
 
@@ -14,9 +15,10 @@ import { aggregateArticleEarnings } from "@/lib/tip-aggregation";
  * per-paragraph breakdown for the CURRENT body so the writer can see which line
  * earns most. Powers the W1 dashboard view.
  *
- * Server-side on purpose: the scan paginates the whole contract history through
- * Forno, which the client cannot do within `eth_getLogs` range limits, and the
- * result is cacheable.
+ * The heavy on-chain scan is wrapped in `unstable_cache` keyed by (address,
+ * chainId) so repeated hits within the revalidate window do not re-fan-out to
+ * the public RPC — without this an unauthenticated caller could exhaust Forno
+ * by polling arbitrary addresses.
  */
 
 /** Defensive cap so a pathological author (hundreds of articles) can't fan out
@@ -40,35 +42,22 @@ interface ArticleDTO {
   paragraphs: ParagraphDTO[];
 }
 
-export async function GET(
-  _req: Request,
-  { params }: { params: Promise<{ address: string }> },
-): Promise<NextResponse> {
-  const { address } = await params;
-  if (!isAddress(address)) {
-    return NextResponse.json(
-      { error: "address must be a valid 0x address" },
-      { status: 400 },
-    );
-  }
-  const author = getAddress(address);
+interface EarningsPayload {
+  totals: { earned: string; tips: number; supporters: number; articles: number };
+  articles: ArticleDTO[];
+  capped: { shown: number; total: number } | null;
+}
 
-  const chainId = getActiveChainId();
-  if (chainId === null) {
-    return NextResponse.json(
-      { error: "no TipJar contract configured for any supported chain" },
-      { status: 503 },
-    );
-  }
-  const tipJar = ADDRESSES[chainId as SupportedChainId]?.tipJar;
-  if (!tipJar) {
-    return NextResponse.json(
-      { error: `TipJar address not configured for chainId=${chainId}` },
-      { status: 503 },
-    );
-  }
-
-  try {
+/**
+ * Cached full-history earnings computation. Exported-free module function so it
+ * can also be reused server-side (e.g. the public /u page) without a self-fetch.
+ */
+const loadWriterEarnings = unstable_cache(
+  async (
+    author: `0x${string}`,
+    chainId: number,
+    tipJar: `0x${string}`,
+  ): Promise<EarningsPayload> => {
     const registerLogs = await fetchAllEvents({
       chainId,
       address: tipJar,
@@ -76,8 +65,6 @@ export async function GET(
       args: { author },
     });
 
-    // Dedupe by articleId (an id can only be registered once, but a reorg
-    // replay or RPC overlap could surface a duplicate), newest first.
     const seen = new Set<string>();
     const registered = registerLogs
       .map((l) => ({
@@ -90,7 +77,13 @@ export async function GET(
         seen.add(a.articleId);
         return true;
       })
-      .sort((a, b) => (b.blockNumber > a.blockNumber ? 1 : -1));
+      .sort((a, b) =>
+        b.blockNumber > a.blockNumber
+          ? 1
+          : b.blockNumber < a.blockNumber
+            ? -1
+            : 0,
+      );
 
     const capped = registered.length > MAX_ARTICLES;
     const slice = registered.slice(0, MAX_ARTICLES);
@@ -134,19 +127,53 @@ export async function GET(
     const earned = articles.reduce((acc, a) => acc + BigInt(a.total), 0n);
     const tips = articles.reduce((acc, a) => acc + a.count, 0);
 
-    return NextResponse.json(
-      {
-        chainId,
-        author,
-        totals: {
-          earned: earned.toString(),
-          tips,
-          supporters: globalSupporters.size,
-          articles: registered.length,
-        },
-        articles,
-        capped: capped ? { shown: MAX_ARTICLES, total: registered.length } : null,
+    return {
+      totals: {
+        earned: earned.toString(),
+        tips,
+        supporters: globalSupporters.size,
+        articles: registered.length,
       },
+      articles,
+      capped: capped ? { shown: MAX_ARTICLES, total: registered.length } : null,
+    };
+  },
+  ["writer-earnings-v1"],
+  { revalidate: 60, tags: ["writer-earnings"] },
+);
+
+export async function GET(
+  _req: Request,
+  { params }: { params: Promise<{ address: string }> },
+): Promise<NextResponse> {
+  const { address } = await params;
+  if (!isAddress(address)) {
+    return NextResponse.json(
+      { error: "address must be a valid 0x address" },
+      { status: 400 },
+    );
+  }
+  const author = getAddress(address);
+
+  const chainId = getActiveChainId();
+  if (chainId === null) {
+    return NextResponse.json(
+      { error: "no TipJar contract configured for any supported chain" },
+      { status: 503 },
+    );
+  }
+  const tipJar = ADDRESSES[chainId as SupportedChainId]?.tipJar;
+  if (!tipJar) {
+    return NextResponse.json(
+      { error: `TipJar address not configured for chainId=${chainId}` },
+      { status: 503 },
+    );
+  }
+
+  try {
+    const payload = await loadWriterEarnings(author, chainId, tipJar);
+    return NextResponse.json(
+      { chainId, author, ...payload },
       {
         status: 200,
         headers: {

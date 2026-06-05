@@ -12,6 +12,7 @@ import { unstable_cache } from "next/cache";
 import { createPublicClient, http, type PublicClient } from "viem";
 import { celo, celoSepolia } from "viem/chains";
 
+import { DEPLOY_BLOCK } from "./chain-logs";
 import { ADDRESSES, tipJarAbi } from "./contracts";
 
 export interface FeaturedArticle {
@@ -26,14 +27,11 @@ const RPC: Record<number, string> = {
   [celoSepolia.id]: "https://forno.celo-sepolia.celo-testnet.org/",
 };
 
-// Block at which each TipJar proxy was deployed. The feed scans from here
-// so articles never age out of a sliding window: a fixed lookback silently
-// drops every article once it is older than the window, which is exactly
-// what emptied the manifesto card and the Latest grid. Sepolia is omitted
-// (mainnet is the active deployment) and falls back to a recent window.
-const DEPLOY_BLOCK: Record<number, bigint> = {
-  [celo.id]: 67_086_457n,
-};
+// DEPLOY_BLOCK (per-chain TipJar deploy block) is the single source of truth in
+// ./chain-logs, imported above. The feed scans from there so articles never age
+// out of a sliding window: a fixed lookback silently drops every article once
+// it is older than the window, which is what emptied the manifesto card and the
+// Latest grid. Sepolia is omitted and falls back to a recent window.
 
 function getActiveChainId(): number | null {
   if (ADDRESSES[celo.id]?.tipJar) return celo.id;
