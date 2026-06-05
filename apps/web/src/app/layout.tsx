@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Fraunces } from 'next/font/google';
+import { Inter, Fraunces, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 
 import { Footer } from '@/components/footer';
@@ -17,6 +17,11 @@ const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-serif',
   weight: ['400', '500', '600', '700', '800'],
+});
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: ['300', '400'],
 });
 
 const SITE_URL =
@@ -107,7 +112,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable}`}
+      className={`${inter.variable} ${fraunces.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >
       <body className="font-sans">
