@@ -103,3 +103,24 @@ export function aggregateArticleEarnings(
 
   return { total, count, supporters: supporters.size, paragraphs: rankedParagraphs };
 }
+
+/**
+ * Map every CURRENT paragraph of an article to `{ index, snippet }` keyed by
+ * its lowercased paragraphKey, so individual `Tipped` events can be resolved to
+ * a human-readable line. Used by the activity feed (W2). Tips on an earlier
+ * body version simply miss the map and are shown without a snippet.
+ */
+export function paragraphIndexByKey(
+  articleId: Hex,
+  body: string,
+): Map<string, { index: number; snippet: string }> {
+  const paragraphs = splitParagraphs(body);
+  const map = new Map<string, { index: number; snippet: string }>();
+  paragraphs.forEach((text, index) => {
+    map.set(deriveParagraphKey(articleId, index, text).toLowerCase(), {
+      index,
+      snippet: paragraphSnippet(text),
+    });
+  });
+  return map;
+}
