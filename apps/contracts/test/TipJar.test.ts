@@ -352,7 +352,7 @@ describe("TipJar", function () {
       await tipJarBob.write.tipParagraph([id, paragraphKey(id, 0, "p"), ONE]);
       expect(await tipJar.read.pendingOf([alice.account.address])).to.equal(ONE);
 
-      const v2Impl = await hre.viem.deployContract("TipJarV2", []);
+      const v2Impl = await hre.viem.deployContract("TipJarUpgradeProbe", []);
 
       const ownerTipJar = await hre.viem.getContractAt(
         "TipJar",
@@ -362,7 +362,7 @@ describe("TipJar", function () {
       await ownerTipJar.write.upgradeToAndCall([v2Impl.address, "0x"]);
 
       // Treat proxy as V2 now.
-      const v2 = await hre.viem.getContractAt("TipJarV2", tipJar.address);
+      const v2 = await hre.viem.getContractAt("TipJarUpgradeProbe", tipJar.address);
 
       // V1 state survives.
       expect(getAddress(await v2.read.articleAuthor([id]))).to.equal(
@@ -372,7 +372,7 @@ describe("TipJar", function () {
 
       // V2-only function works.
       const v2OwnerAs = await hre.viem.getContractAt(
-        "TipJarV2",
+        "TipJarUpgradeProbe",
         tipJar.address,
         { client: { wallet: owner } },
       );
@@ -382,7 +382,7 @@ describe("TipJar", function () {
 
     it("rejects upgrade from non-owner", async function () {
       const { alice, tipJar } = await loadFixture(deployFixture);
-      const v2Impl = await hre.viem.deployContract("TipJarV2", []);
+      const v2Impl = await hre.viem.deployContract("TipJarUpgradeProbe", []);
       const tipJarAlice = await hre.viem.getContractAt(
         "TipJar",
         tipJar.address,
