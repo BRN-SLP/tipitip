@@ -38,9 +38,11 @@ export async function generateMetadata({
   // When this URL is cast in Warpcast, the meta tags below tell the
   // client to render an inline preview card with a "Read & Tip" button
   // that, on tap, opens the article page in an iframe inside Warpcast.
-  // The reader stays in the Farcaster feed; the wallet they're already
-  // connected to is injected so the tip transaction signs without ever
-  // leaving the cast view.
+  // The reader stays in the Farcaster feed and reads + tips there. Tipping
+  // in-frame uses whatever EIP-1193 wallet the client injects; clients that
+  // expose the wallet only through the Farcaster SDK provider need the
+  // dedicated mini-app wagmi connector (a follow-up: new dep + in-client
+  // test) so it does not risk the working injected / MiniPay flow.
   //
   // `launch_frame` is the v2 action; `post` (v1's server callback) is
   // not used here.
