@@ -1,15 +1,80 @@
 "use client";
 
 import Link from "next/link";
-import { Github } from "lucide-react";
 import { useChainId } from "wagmi";
 import { celo, celoSepolia } from "wagmi/chains";
+
+import { TipiTipLogo } from "@/components/tipitip-logo";
+import { MANIFESTO } from "@/lib/manifesto";
 
 // Sourced from next.config.js `env` (package version + Vercel commit SHA)
 // so it tracks releases and deploys instead of going stale.
 const VERSION = process.env.NEXT_PUBLIC_APP_VERSION ?? "0.0.0";
 const COMMIT_SHA = process.env.NEXT_PUBLIC_COMMIT_SHA || "";
 const REPO_URL = "https://github.com/BRN-SLP/tipitip";
+const NPM_URL = "https://www.npmjs.com/package/@tipitip/embed";
+
+type FootLink = readonly [label: string, href: string];
+
+const COLUMNS: { title: string; links: readonly FootLink[] }[] = [
+  {
+    title: "Product",
+    links: [
+      ["Write", "/write"],
+      ["Leaderboard", "/leaderboard"],
+      ["Showcase", "/showcase"],
+      ["Embed", "/embed"],
+    ],
+  },
+  {
+    title: "Learn",
+    links: [
+      ["For writers", "/for-writers"],
+      ["The manifesto", `/a/${MANIFESTO.articleId}`],
+    ],
+  },
+  {
+    title: "Build",
+    links: [
+      ["npm @tipitip/embed", NPM_URL],
+      ["GitHub", REPO_URL],
+    ],
+  },
+];
+
+function FootColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: readonly FootLink[];
+}) {
+  return (
+    <div>
+      <h3 className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-foreground">
+        {title}
+      </h3>
+      <ul className="space-y-2 font-mono text-[13px]">
+        {links.map(([label, href]) => {
+          const external = href.startsWith("http");
+          return (
+            <li key={href}>
+              <Link
+                href={href}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+                {...(external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                {label}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
 
 export function Footer() {
   const chainId = useChainId();
@@ -22,34 +87,43 @@ export function Footer() {
 
   return (
     <footer className="border-t bg-background/60 backdrop-blur-md">
-      <div className="container mx-auto flex max-w-screen-2xl flex-col gap-3 px-4 py-6 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-col gap-1 text-xs text-muted-foreground">
-          <span className="font-medium text-foreground">TipiTip</span>
-          <span>
-            v{VERSION}
-            {COMMIT_SHA ? ` · ${COMMIT_SHA}` : ""} · MIT · per-paragraph cUSD
-            tipping on Celo
-          </span>
+      <div className="container mx-auto max-w-screen-2xl px-4 py-12">
+        <div className="flex flex-col gap-10 md:flex-row md:justify-between">
+          {/* brand */}
+          <div className="max-w-xs">
+            <div className="text-foreground">
+              <TipiTipLogo className="text-[22px]" />
+            </div>
+            <p className="mt-4 font-mono text-xs leading-relaxed text-muted-foreground">
+              Tip writers per paragraph.
+              <br />
+              cUSD micro-tips · MiniPay-ready · 2.5% protocol fee
+              <br />
+              Built on Celo.
+            </p>
+          </div>
+
+          {/* link columns */}
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+            {COLUMNS.map((c) => (
+              <FootColumn key={c.title} title={c.title} links={c.links} />
+            ))}
+          </div>
         </div>
 
-        <div className="flex items-center gap-4 text-xs">
+        {/* meta row */}
+        <div className="mt-10 flex flex-col gap-3 border-t border-dashed pt-6 font-mono text-[11px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <span>
+            v{VERSION}
+            {COMMIT_SHA ? ` · ${COMMIT_SHA}` : ""} · MIT
+          </span>
           <span className="inline-flex items-center gap-2">
             <span
               aria-hidden="true"
               className={`h-2 w-2 rounded-full ${networkLabel.color}`}
             />
-            <span className="text-muted-foreground">{networkLabel.name}</span>
+            {networkLabel.name}
           </span>
-          <Link
-            href={REPO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground"
-            aria-label="View source on GitHub"
-          >
-            <Github className="h-4 w-4" aria-hidden="true" />
-            <span>GitHub</span>
-          </Link>
         </div>
       </div>
     </footer>
