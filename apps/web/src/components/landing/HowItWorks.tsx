@@ -34,7 +34,7 @@ const WRITER_STEPS: Step[] = [
     icon: Sparkles,
     title: "Publish",
     body: "One transaction registers the article on Celo. The body is content-addressed by a keccak256 hash, so edits don't break existing tips.",
-    demoCaption: "tx 0x9a3f…b14e  ✓ confirmed",
+    demoCaption: "tx 0x9a3f…b14e confirmed",
   },
   {
     icon: Heart,
@@ -61,19 +61,19 @@ const READER_STEPS: Step[] = [
     icon: CheckCircle2,
     title: "Approve once",
     body: "A single cUSD allowance covers every future tip. After that, every tap is a one-click micro-payment.",
-    demoCaption: "approve(TipJar, 100 cUSD)  ✓",
+    demoCaption: "approve(TipJar, 100 cUSD)",
   },
   {
     icon: Heart,
     title: "Tap",
     body: "Hit the heart under the paragraph that made you stop. The micro-tip lands on the author's balance in the same block.",
-    demoCaption: "tipParagraph(…)  →  ❤ 13",
+    demoCaption: "tipParagraph(…)  →  13 tips",
   },
   {
     icon: BookOpen,
     title: "Keep reading",
     body: "The tip counter under each paragraph updates in real time, so you see what other readers loved too.",
-    demoCaption: "live counter: ❤ 13 → ❤ 14",
+    demoCaption: "live counter: 13 → 14 tips",
   },
 ];
 

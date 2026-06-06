@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { formatUnits, parseUnits } from "viem";
+import { Check } from "lucide-react";
 
 export const TIP_AMOUNT_PRESETS = [
   parseUnits("0.001", 18),
@@ -113,7 +114,7 @@ export function TipAmountSelector({ value, onChange }: TipAmountSelectorProps) {
             aria-label="Apply custom tip amount for the next tap"
             className="inline-flex min-h-11 items-center justify-center rounded px-2 py-2 text-foreground/70 hover:bg-muted"
           >
-            ✓
+            <Check className="h-4 w-4" aria-hidden="true" />
           </button>
         </span>
       ) : (
