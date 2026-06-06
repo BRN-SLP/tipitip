@@ -42,7 +42,7 @@ export async function generateMetadata({
  * We pull the recent on-chain article list and then fetch metadata for
  * each in parallel. Articles published before the tags feature existed
  * have no metadata sidecar and are filtered out implicitly. The page is
- * statically cached for 60s (matches the FeaturedReads cache window).
+ * statically cached for 60s (matches the latest-articles cache window).
  */
 export default async function TagPage({ params }: TagPageProps) {
   const { name } = await params;

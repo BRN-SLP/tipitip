@@ -10,8 +10,8 @@ import { Toaster as SonnerToaster } from "sonner";
  *   - top-right placement keeps the heart-tipping flow uninterrupted
  *     in the article body.
  *   - 'rich-colors' applies success/error tints derived from the
- *     CSS theme variables — so toasts inherit our rose/cream palette
- *     in light mode and burgundy/cream in dark mode.
+ *     CSS theme variables, so toasts inherit our rose/cream palette
+ *     on light and rose/navy on dark.
  */
 export function Toaster() {
   return (

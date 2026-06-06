@@ -141,15 +141,13 @@ const fetchAllArticles = unstable_cache(
  * Public accessor. Returns the newest-first list of articles, sliced
  * to `limit`.
  *
- * Why slice outside the cache: `unstable_cache` keys are static — the
+ * Why slice outside the cache: `unstable_cache` keys are static, so the
  * `limit` argument is NOT part of the cache key. If we cached the
- * sliced result, the first caller's `limit` would win for the rest
- * of the cache lifetime: FeaturedReads calls with limit=6 first,
- * cache stores 6 entries, then PinnedManifesto calls with limit=20
- * and gets back the same 6 entries — missing the pinned article that
- * sat at position 7+. That bug ate the manifesto card from the
- * landing for over a day. Caching the full list and slicing per
- * caller keeps a single RPC call serving everyone correctly.
+ * sliced result, the first caller's `limit` would win for the rest of
+ * the cache lifetime: one caller asking for limit=6 would store 6
+ * entries, and a later caller asking for limit=20 would get back the
+ * same 6, missing entries at position 7+. Caching the full list and
+ * slicing per caller keeps a single RPC call serving everyone.
  */
 export async function getLatestArticles(
   limit = 6,
