@@ -18,11 +18,10 @@ import type { ComponentProps } from "react";
  *   - `attribute="class"` — toggles a `class="dark"` on <html>, which is
  *     exactly what our globals.css :root / .dark CSS-variable layers
  *     expect.
- *   - `defaultTheme="system"` — first-time visitors get the OS-level
- *     preference (prefers-color-scheme). Most readers won't think about
- *     theme; matching their device is the least surprising default.
- *   - `enableSystem` — keeps the "follow system" option selectable in
- *     the toggle so users can return to it after explicitly picking one.
+ *   - `defaultTheme="dark"` - the deep-navy machine-print look is the
+ *     brand's primary appearance, so first-time visitors land on it.
+ *   - `enableSystem` - keeps light + "follow system" selectable in the
+ *     toggle, so users who prefer them can still switch.
  *   - `disableTransitionOnChange` — prevents the brief flash of CSS
  *     transitions colliding with the simultaneous class swap, which
  *     otherwise produces a weird gradient-sweep during the toggle.
@@ -34,7 +33,7 @@ export function ThemeProvider({
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme="dark"
       enableSystem
       disableTransitionOnChange
       {...props}
