@@ -2,7 +2,6 @@ import Link from "next/link";
 import { BookOpen, PenLine } from "lucide-react";
 
 import { HeroDemo } from "@/components/hero/HeroDemo";
-import { TypewriterTagline } from "@/components/hero/TypewriterTagline";
 import { LedgerSection } from "@/components/landing/LedgerSection";
 import { WhyTipiTip } from "@/components/landing/WhyTipiTip";
 import { Button } from "@/components/ui/button";
@@ -59,18 +58,15 @@ export default async function Home() {
               Per-paragraph cUSD micro-tipping
             </span>
 
-            {/* H1 size uses clamp() so the typewriter's longest phrase
-                ("every paragraph", 15 chars at italic weight) still
-                fits on a 390 px mobile viewport without horizontal
-                overflow. Bounds chosen so the desktop hero still hits
-                ~72 px, mobile starts around 40 px. */}
+            {/* clamp() keeps the longest line inside a 390 px mobile
+                viewport without overflow; desktop tops out around 72 px. */}
             <h1
               className="font-bold leading-[0.95] tracking-tight"
               style={{ fontSize: "clamp(2.5rem, 8vw + 0.5rem, 4.5rem)" }}
             >
               <span className="block text-foreground">Reward</span>
-              <span className="block italic text-primary">
-                <TypewriterTagline />
+              <span className="block text-foreground">
+                real <span className="italic text-primary">voices.</span>
               </span>
             </h1>
 
