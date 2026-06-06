@@ -39,19 +39,9 @@ export default async function Home() {
         <span className="absolute bottom-0 right-0 h-4 w-4 border-b border-r border-primary/40" />
       </div>
 
-      {/* HERO — editorial asymmetric layout */}
-      <section className="relative overflow-hidden">
-        {/* Background washes */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_0%,hsl(var(--primary)/0.10),transparent_70%)]"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"
-        />
-
-        <div className="container relative mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-[3.375rem] md:pb-16 md:pt-[4.5rem]">
+      {/* HERO — editorial asymmetric layout, flat background (matches the mockup) */}
+      <section>
+        <div className="container mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-[3.375rem] md:pb-16 md:pt-[4.5rem]">
           {/* Left — copy */}
           <div className="space-y-8">
             <span className="inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
@@ -114,11 +104,7 @@ export default async function Home() {
           </div>
 
           {/* Right - tippable-article demo */}
-          <div className="relative">
-            <div
-              aria-hidden="true"
-              className="absolute -inset-6 -z-10 rounded-[2rem] bg-primary/10 blur-3xl"
-            />
+          <div>
             <HeroDemo />
           </div>
         </div>
