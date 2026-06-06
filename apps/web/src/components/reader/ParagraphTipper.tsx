@@ -145,7 +145,10 @@ export function ParagraphTipper({
           aria-live="polite"
           aria-label={`${count} tip${count === 1 ? "" : "s"}, ${formatUnits(total, 18)} cUSD total`}
         >
-          <span aria-hidden="true">❤️ {count} • ${formatUnits(total, 18)}</span>
+          <span aria-hidden="true" className="inline-flex items-center gap-1">
+            <Heart className="h-3 w-3 fill-current" />
+            {count} • ${formatUnits(total, 18)}
+          </span>
         </span>
         {/* Per-paragraph deep link — fades in on hover (or always-visible
             on touch devices) so the share affordance doesn't add visual
