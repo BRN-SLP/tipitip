@@ -51,7 +51,7 @@ export default async function Home() {
           className="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"
         />
 
-        <div className="container relative mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[1.05fr_0.95fr] md:items-center md:py-24">
+        <div className="container relative mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-[3.375rem] md:pb-16 md:pt-[4.5rem]">
           {/* Left — copy */}
           <div className="space-y-8">
             <span className="inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
@@ -60,10 +60,10 @@ export default async function Home() {
             </span>
 
             {/* clamp() keeps the longest line inside a 390 px mobile
-                viewport without overflow; desktop tops out around 72 px. */}
+                viewport without overflow; desktop caps at 62 px (mockup). */}
             <h1
               className="font-bold leading-[0.95] tracking-tight"
-              style={{ fontSize: "clamp(2.5rem, 8vw + 0.5rem, 4.5rem)" }}
+              style={{ fontSize: "clamp(2.5rem, 8vw + 0.5rem, 3.875rem)" }}
             >
               <span className="block text-foreground">Reward</span>
               <span className="block text-foreground">
@@ -71,7 +71,7 @@ export default async function Home() {
               </span>
             </h1>
 
-            <p className="max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p className="max-w-[34ch] text-[17px] leading-relaxed text-muted-foreground">
               TipiTip turns any article into something tippable. Readers tap a
               paragraph and instantly send the author a small cUSD micro-tip.
               No subscriptions, no middlemen.
@@ -104,7 +104,7 @@ export default async function Home() {
               </div>
               <div>
                 <dt className="font-mono text-2xl font-semibold tabular-nums text-foreground">760+</dt>
-                <dd className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">supporters</dd>
+                <dd className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">writers paid</dd>
               </div>
               <div>
                 <dt className="font-mono text-2xl font-semibold tabular-nums text-foreground">12,381</dt>
