@@ -1,16 +1,35 @@
 import Link from "next/link";
-import { BookOpen, Heart, PenLine } from "lucide-react";
+import { BookOpen, PenLine } from "lucide-react";
 
 import { HeroDemo } from "@/components/hero/HeroDemo";
-import { RevealOnScroll } from "@/components/hero/RevealOnScroll";
 import { TypewriterTagline } from "@/components/hero/TypewriterTagline";
-import { FeaturedReads } from "@/components/landing/FeaturedReads";
-import { HowItWorks } from "@/components/landing/HowItWorks";
-import { PinnedManifesto } from "@/components/landing/PinnedManifesto";
+import { LedgerSection } from "@/components/landing/LedgerSection";
+import { WhyTipiTip } from "@/components/landing/WhyTipiTip";
 import { Button } from "@/components/ui/button";
+import { getLeaderboard } from "@/lib/leaderboard";
 import { MANIFESTO } from "@/lib/manifesto";
 
+const STEPS = [
+  {
+    n: "01",
+    title: "Publish in a minute",
+    body: "Paste markdown, hit publish. Your piece is live with a tip target under every paragraph.",
+  },
+  {
+    n: "02",
+    title: "Readers tap to tip",
+    body: "A tap under any paragraph sends an instant cUSD micro-tip straight from a MiniPay wallet.",
+  },
+  {
+    n: "03",
+    title: "cUSD lands on-chain",
+    body: "No payout minimums, no middlemen. The tip settles to your address on Celo in about a second.",
+  },
+];
+
 export default async function Home() {
+  const board = await getLeaderboard();
+
   return (
     <main className="flex-1">
       {/* HERO — editorial asymmetric layout */}
@@ -43,15 +62,10 @@ export default async function Home() {
             {/* H1 size uses clamp() so the typewriter's longest phrase
                 ("every paragraph", 15 chars at italic weight) still
                 fits on a 390 px mobile viewport without horizontal
-                overflow. The previous text-5xl (48 px) made the pink
-                italic line wider than the viewport, which combined
-                with the typewriter's rapid frame swaps produced
-                GPU-paint artifacts visible as pink letter fragments
-                below the line on Brave Android. Bounds chosen so the
-                desktop hero still hits text-7xl-equivalent (72 px),
-                mobile starts around 40 px. */}
+                overflow. Bounds chosen so the desktop hero still hits
+                ~72 px, mobile starts around 40 px. */}
             <h1
-              className="font-serif font-bold leading-[0.95] tracking-tight"
+              className="font-bold leading-[0.95] tracking-tight"
               style={{ fontSize: "clamp(2.5rem, 8vw + 0.5rem, 4.5rem)" }}
             >
               <span className="block text-foreground">Reward</span>
@@ -66,15 +80,9 @@ export default async function Home() {
               No subscriptions, no middlemen.
             </p>
 
-            {/* Two CTAs by audience:
-                 - "Start writing" is the writer's path (any visitor
-                   can land on /write; the page itself prompts wallet
-                   connection there)
-                 - "Read a piece" sends new readers straight to the
-                   pinned manifesto so they meet a real article with
-                   a real tip surface before being asked to connect.
-                 The previous "Open dashboard" CTA was a dead end for
-                 anyone who hadn't connected yet — an empty page. */}
+            {/* Two CTAs by audience: "Start writing" is the writer's
+                path; "Read a piece" sends new readers straight to the
+                pinned manifesto so they meet a real tippable article. */}
             <div className="flex flex-col items-start gap-3 sm:flex-row">
               <Button asChild size="lg" className="shadow-sm shadow-primary/20">
                 <Link href="/write">
@@ -119,63 +127,57 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* PINNED MANIFESTO — featured "from the creator" slot. Placed
-          right after the hero so a first-time reader meets the
-          editorial voice (and a real tippable article) before being
-          asked to understand the mechanics or scan a feed. */}
-      <PinnedManifesto />
-
-      {/* HOW IT WORKS — concrete two-column walkthrough (writer /
-          reader). Sits between the manifesto (why) and the sample
-          paragraph (what reading feels like) so the mechanics are
-          explained before the demo. */}
-      <HowItWorks />
-
-      {/* SAMPLE PARAGRAPHS — a tiny editorial demo of what a tippable
-          paragraph reads like in practice. Now lives after the
-          how-it-works walkthrough so the reader has the vocabulary
-          ("approve once, tap to tip") to recognise the gesture in the
-          last paragraph. Section sits on the same uniform body
-          background as every other landing section. */}
-      <section>
-        <div className="container mx-auto max-w-3xl px-4 py-16">
-          <RevealOnScroll>
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-              from a sample article
-            </p>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.05}>
-            <h2 className="font-serif text-3xl font-semibold leading-tight md:text-4xl">
-              <span className="text-foreground">On the small dignity of</span>{" "}
-              <span className="italic text-primary">a paid paragraph.</span>
-            </h2>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.12}>
-            <p className="mt-6 text-lg leading-relaxed text-foreground/85">
-              A subscription is a permanent shrug — it says &ldquo;here is some
-              money, hope you write something good this month.&rdquo; A
-              per-paragraph tip is a specific gesture. It says &ldquo;this
-              line, right here, made me stop.&rdquo;
-              <Heart
-                aria-hidden="true"
-                className="ml-1 inline-block h-4 w-4 fill-primary text-primary align-text-bottom"
-              />
-            </p>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.2}>
-            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-              Sub-cent gas on Celo. Pre-approve once and every subsequent tap
-              is one transaction. MiniPay readers never see a wallet popup —
-              they just tap, and the writer&apos;s balance grows.
-            </p>
-          </RevealOnScroll>
+      {/* HOW IT WORKS — three steps */}
+      <section className="border-t">
+        <div className="container mx-auto max-w-6xl px-4 py-16 md:py-20">
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
+            <span aria-hidden="true">¶</span> How it works
+          </p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+            Three taps from draft to paid.
+          </h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {STEPS.map((s) => (
+              <div key={s.n} className="border-t-2 border-foreground pt-5">
+                <div className="font-mono text-xs font-semibold tracking-[0.1em] text-primary">
+                  {s.n}
+                </div>
+                <h3 className="mt-2 text-xl font-semibold">{s.title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground">{s.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* LATEST ARTICLES — pulled from on-chain ArticleRegistered
-          events. Sits at the bottom so the page ends on "pick
-          something to read" rather than a static walkthrough. */}
-      <FeaturedReads />
+      {/* WHY TIPITIP — three cards */}
+      <WhyTipiTip />
+
+      {/* THIS WEEK'S LEDGER — real most-tipped paragraphs */}
+      <LedgerSection paragraphs={board.topParagraphs.slice(0, 4)} />
+
+      {/* CTA BAND */}
+      <section className="border-t">
+        <div className="container mx-auto max-w-3xl px-4 py-20 text-center md:py-24">
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
+            <span aria-hidden="true">¶</span> Start earning today
+          </p>
+          <h2 className="mx-auto mt-3 max-w-xl text-4xl font-bold tracking-tight md:text-5xl">
+            Your next paragraph is worth something.
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            Publish in a minute. Get paid per paragraph, in real cUSD.
+          </p>
+          <div className="mt-7 flex justify-center">
+            <Button asChild size="lg" className="shadow-sm shadow-primary/20">
+              <Link href="/write">
+                <PenLine className="mr-2 h-4 w-4" />
+                Start writing
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
