@@ -49,7 +49,7 @@ export async function generateMetadata({
   //
   // IMPORTANT: every URL in the frame payload must be ABSOLUTE — Warpcast
   // and other Farcaster clients fetch these from their own origin, so
-  // relative paths like "/og.svg" would resolve to warpcast.com/og.svg
+  // relative paths like "/og.png" would resolve to warpcast.com/og.png
   // and fail. Next.js auto-prefixes openGraph.images with metadataBase
   // but does NOT touch raw strings in `other`, hence the explicit prefix.
   const siteUrl = (
