@@ -31,6 +31,14 @@ export default async function Home() {
 
   return (
     <main className="flex-1">
+      {/* registration / crop marks - fixed viewport frame (machine-print) */}
+      <div aria-hidden="true" className="pointer-events-none fixed inset-4 z-[60] hidden md:block">
+        <span className="absolute left-0 top-0 h-4 w-4 border-l border-t border-primary/40" />
+        <span className="absolute right-0 top-0 h-4 w-4 border-r border-t border-primary/40" />
+        <span className="absolute bottom-0 left-0 h-4 w-4 border-b border-l border-primary/40" />
+        <span className="absolute bottom-0 right-0 h-4 w-4 border-b border-r border-primary/40" />
+      </div>
+
       {/* HERO — editorial asymmetric layout */}
       <section className="relative overflow-hidden">
         {/* Background washes */}
@@ -42,13 +50,6 @@ export default async function Home() {
           aria-hidden="true"
           className="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"
         />
-        {/* registration / crop marks - machine-print detail */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-5 hidden md:block">
-          <span className="absolute left-0 top-0 h-3.5 w-3.5 border-l border-t border-primary/40" />
-          <span className="absolute right-0 top-0 h-3.5 w-3.5 border-r border-t border-primary/40" />
-          <span className="absolute bottom-0 left-0 h-3.5 w-3.5 border-b border-l border-primary/40" />
-          <span className="absolute bottom-0 right-0 h-3.5 w-3.5 border-b border-r border-primary/40" />
-        </div>
 
         <div className="container relative mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[1.05fr_0.95fr] md:items-center md:py-24">
           {/* Left — copy */}
