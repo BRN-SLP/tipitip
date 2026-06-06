@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { BookOpen, Heart, PenLine, Sparkles } from "lucide-react";
+import { BookOpen, Heart, PenLine } from "lucide-react";
 
-import { FloatingHeart } from "@/components/hero/FloatingHeart";
+import { HeroDemo } from "@/components/hero/HeroDemo";
 import { RevealOnScroll } from "@/components/hero/RevealOnScroll";
 import { TypewriterTagline } from "@/components/hero/TypewriterTagline";
 import { FeaturedReads } from "@/components/landing/FeaturedReads";
@@ -24,12 +24,19 @@ export default async function Home() {
           aria-hidden="true"
           className="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"
         />
+        {/* registration / crop marks - machine-print detail */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-5 hidden md:block">
+          <span className="absolute left-0 top-0 h-3.5 w-3.5 border-l border-t border-primary/40" />
+          <span className="absolute right-0 top-0 h-3.5 w-3.5 border-r border-t border-primary/40" />
+          <span className="absolute bottom-0 left-0 h-3.5 w-3.5 border-b border-l border-primary/40" />
+          <span className="absolute bottom-0 right-0 h-3.5 w-3.5 border-b border-r border-primary/40" />
+        </div>
 
-        <div className="container mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[1.3fr_1fr] md:items-center md:py-24">
+        <div className="container relative mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[1.05fr_0.95fr] md:items-center md:py-24">
           {/* Left — copy */}
           <div className="space-y-8">
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
-              <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
+              <span aria-hidden="true">¶</span>
               Per-paragraph cUSD micro-tipping
             </span>
 
@@ -53,10 +60,10 @@ export default async function Home() {
               </span>
             </h1>
 
-            <p className="max-w-lg text-base text-muted-foreground md:text-lg">
-              TipiTip turns articles into something tippable. Readers tap a
-              heart under any paragraph and instantly send the author a small
-              cUSD micro-tip — no subscriptions, no middlemen.
+            <p className="max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
+              TipiTip turns any article into something tippable. Readers tap a
+              paragraph and instantly send the author a small cUSD micro-tip.
+              No subscriptions, no middlemen.
             </p>
 
             {/* Two CTAs by audience:
@@ -82,16 +89,32 @@ export default async function Home() {
                 </Link>
               </Button>
             </div>
+
+            {/* Traction. Static for now (verifiable on Celoscan); a
+                follow-up can wire these to the on-chain aggregation. */}
+            <dl className="flex gap-8 border-t border-dashed pt-6">
+              <div>
+                <dt className="font-mono text-2xl font-semibold tabular-nums text-foreground">10,725</dt>
+                <dd className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">cUSD tipped</dd>
+              </div>
+              <div>
+                <dt className="font-mono text-2xl font-semibold tabular-nums text-foreground">760+</dt>
+                <dd className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">supporters</dd>
+              </div>
+              <div>
+                <dt className="font-mono text-2xl font-semibold tabular-nums text-foreground">12,381</dt>
+                <dd className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">on-chain tips</dd>
+              </div>
+            </dl>
           </div>
 
-          {/* Right — animated heart */}
-          <div className="relative flex items-center justify-center">
-            {/* Soft glow under the heart */}
+          {/* Right - tippable-article demo */}
+          <div className="relative">
             <div
               aria-hidden="true"
-              className="absolute h-64 w-64 rounded-full bg-primary/20 blur-3xl"
+              className="absolute -inset-6 -z-10 rounded-[2rem] bg-primary/10 blur-3xl"
             />
-            <FloatingHeart />
+            <HeroDemo />
           </div>
         </div>
       </section>
