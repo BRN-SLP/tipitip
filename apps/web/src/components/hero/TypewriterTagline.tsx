@@ -58,22 +58,22 @@ export function TypewriterTagline() {
   return (
     // Three interlocking guards on this wrapper:
     //
-    // 1. `overflow-hidden` + `pb-[0.45em]` — the tight `leading-[0.95]`
-    //    on the H1 squeezes the line box shorter than Fraunces italic's
+    // 1. `overflow-hidden` + `pb-[0.45em]`: the tight `leading-[0.95]`
+    //    on the H1 squeezes the line box shorter than the italic line's
     //    natural ascent + descent. Without the bottom buffer, descenders
     //    on g / p / y in "every paragraph" physically extend below the
     //    inner absolute layer and get clipped by the outer's hard edge.
     //    0.45em is enough for the most aggressive italic descenders we
     //    have in the rotation.
     //
-    // 2. `pr-[0.15em]` — Fraunces italic has noticeable right-side
+    // 2. `pr-[0.15em]`: the italic face has noticeable right-side
     //    bearing: the visible glyph extends past its typographic
     //    advance width by a few percent of em. The longest-phrase
     //    placeholder sizes the box on advance widths alone, so the
     //    final character of a phrase ending in italic letters with
     //    rightward overhang ("h" in "paragraph", "g" in "writing")
     //    gets clipped by the outer's hard edge. 0.15em is enough for
-    //    Fraunces italic at our font sizes.
+    //    the italic face at our font sizes.
     //
     // 3. `[contain:paint]` — `overflow-hidden` on its own enforces the
     //    clip at PAINT time, which Chrome/Brave on Android sometimes
