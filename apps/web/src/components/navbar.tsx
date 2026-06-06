@@ -48,18 +48,13 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-80">
-              {/* Drawer header — full painted mark. Inline SVG (not a
-                  next/image of the static .svg) so the mark inherits
-                  the surrounding text color via `currentColor`.
-                  Locked to primary pink on both themes: the previous
-                  "plum on light, pink on dark" gave a logo that on
-                  light read as plain black to the eye (foreground
-                  token is rgb(38,23,27) — visually black-adjacent),
-                  so the user perceived "the logo didn't update on
-                  light theme". Pink everywhere is the cleaner brand
-                  signal. */}
-              <div className="flex items-center mb-8 text-primary">
-                <TipiTipLogo className="h-12 w-auto" aria-label="TipiTip" />
+              {/* Drawer header - full brand lockup (Type Sort mark +
+                  mono wordmark). Sized by font-size, tinted via the
+                  foreground token so the block is plum ink on light
+                  and cream on dark; the rose nick + coins carry the
+                  accent on both themes. */}
+              <div className="mb-8 flex items-center text-foreground text-[30px]">
+                <TipiTipLogo />
               </div>
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) => (
@@ -84,20 +79,15 @@ export function Navbar() {
             </SheetContent>
           </Sheet>
 
-          {/* Logo — full painted mark, inline so it inherits theme
-              foreground via `currentColor`. ViewBox is cropped (see
-              tipitip-logo.tsx) so the same h-12 wrapper now shows
-              the artwork visibly bigger than the prior next/image
-              render — the original .svg had ~33% empty padding.
-              The <Link> owns the accessible name via aria-label;
-              the SVG itself is aria-hidden to avoid duplicate SR
-              announcement. */}
+          {/* Logo - the brand lockup, sized by font-size and tinted
+              via the foreground token (plum ink on light, cream on
+              dark). The lockup exposes its own role="img" name, which
+              becomes this home link's accessible name. */}
           <Link
             href="/"
-            className="flex items-center text-primary hover:opacity-80 transition-opacity"
-            aria-label="TipiTip — home"
+            className="flex items-center text-foreground transition-opacity hover:opacity-80 text-[26px] sm:text-[30px]"
           >
-            <TipiTipLogo className="h-10 w-auto sm:h-12" />
+            <TipiTipLogo />
           </Link>
         </div>
         
