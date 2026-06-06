@@ -74,30 +74,19 @@ export const metadata: Metadata = {
 };
 
 /**
- * Viewport metadata. Split from the `metadata` export because Next.js
- * 14 moved theme-color / color-scheme / viewport-width into a dedicated
- * `Viewport` type — the older nested form on `metadata` is deprecated
- * and produces a build warning.
+ * Viewport metadata. Split from `metadata` because Next.js 14 moved
+ * theme-color / color-scheme into a dedicated `Viewport` type.
  *
- * Why two themeColor entries:
- *   The mobile browser chrome (Safari/Chrome address bar, Android task
- *   switcher) reads this tag to tint its UI. A single static value
- *   leaves users in the "wrong" theme with a chrome that clashes with
- *   the rest of the screen — e.g. a light-mode reader gets a dark
- *   slate bar above the cream page. Two media-query entries let the
- *   browser pick the right one automatically when the system or user
- *   toggle flips the preference.
- *
- * `colorScheme: 'light dark'` tells the UA both modes are supported,
- * which enables built-in form widgets, scrollbars, and any
- * `color-scheme:` CSS query to react correctly.
+ * Dark is the default theme, so the mobile browser chrome (address bar,
+ * Android task switcher) is tinted navy for everyone. `colorScheme:
+ * 'dark light'` keeps both modes supported (light stays available via
+ * the toggle) so built-in widgets and scrollbars react correctly.
  */
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#fbf8f4' },
-    { media: '(prefers-color-scheme: dark)', color: '#0b1220' },
-  ],
-  colorScheme: 'light dark',
+  // Dark is the default site appearance, so the mobile browser chrome
+  // is tinted navy for everyone (light stays available via the toggle).
+  themeColor: '#0b1220',
+  colorScheme: 'dark light',
 };
 
 export default function RootLayout({
