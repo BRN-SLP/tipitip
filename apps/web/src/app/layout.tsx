@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: 'TipiTip — tip writers per paragraph on Celo',
     description:
-      'Reader taps ❤️ under any paragraph → instant cUSD tip to the author. Built on Celo, MiniPay-ready.',
+      'Tap any paragraph to send the author an instant cUSD micro-tip. Built on Celo, MiniPay-ready.',
     images: [
       {
         url: '/og.png',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'TipiTip — tip writers per paragraph on Celo',
     description:
-      'Reader taps ❤️ under any paragraph → instant cUSD tip to the author.',
+      'Tap any paragraph to send the author an instant cUSD micro-tip.',
     images: ['/og.png'],
   },
   robots: { index: true, follow: true },
