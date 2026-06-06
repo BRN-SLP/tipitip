@@ -15,7 +15,7 @@ export function TipiTipMark(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 100 100"
+      viewBox="26 18 50 68"
       fill="currentColor"
       aria-hidden="true"
       focusable="false"
