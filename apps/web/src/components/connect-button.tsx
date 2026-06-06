@@ -11,8 +11,8 @@ import { useEffect, useState } from "react";
  * Uses RainbowKit's `ConnectButton.Custom` so we control every visible
  * pixel while keeping their modal/account flow. Three states:
  *
- *   1. Disconnected — rose-filled "Connect wallet" with a serif italic
- *      label and a heart icon. Click opens the RainbowKit modal.
+ *   1. Disconnected - rose-filled "Connect" with a heart icon. Click
+ *      opens the RainbowKit modal.
  *   2. Connected — split pill: left half is a chain badge (clickable,
  *      opens chain switcher), right half is the truncated address
  *      with a wallet icon (clickable, opens account modal).
@@ -66,9 +66,7 @@ export function ConnectButton() {
                       aria-hidden="true"
                       className="h-3.5 w-3.5 fill-current transition-transform group-hover:scale-110"
                     />
-                    <span className="font-serif italic tracking-tight">
-                      Connect wallet
-                    </span>
+                    <span className="font-medium">Connect</span>
                   </motion.button>
                 );
               }
@@ -116,7 +114,7 @@ export function ConnectButton() {
                         className="h-2 w-2 rounded-full bg-emerald-500"
                       />
                     )}
-                    <span className="hidden font-serif italic sm:inline">
+                    <span className="hidden font-medium sm:inline">
                       {chain.name}
                     </span>
                   </motion.button>
