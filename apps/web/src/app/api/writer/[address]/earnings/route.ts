@@ -43,7 +43,16 @@ interface ArticleDTO {
 }
 
 interface EarningsPayload {
-  totals: { earned: string; tips: number; supporters: number; articles: number };
+  totals: {
+    earned: string;
+    tips: number;
+    supporters: number;
+    articles: number;
+    /** Full-history sum of the writer's on-chain Claimed events. */
+    claimed: string;
+    /** Number of Claimed events (claims on record). */
+    claims: number;
+  };
   articles: ArticleDTO[];
   capped: { shown: number; total: number } | null;
 }
@@ -58,12 +67,29 @@ const loadWriterEarnings = unstable_cache(
     chainId: number,
     tipJar: `0x${string}`,
   ): Promise<EarningsPayload> => {
-    const registerLogs = await fetchAllEvents({
-      chainId,
-      address: tipJar,
-      eventName: "ArticleRegistered",
-      args: { author },
-    });
+    const [registerLogs, claimLogs] = await Promise.all([
+      fetchAllEvents({
+        chainId,
+        address: tipJar,
+        eventName: "ArticleRegistered",
+        args: { author },
+      }),
+      // Full-history Claimed scan. The client dashboard hook only looks back
+      // ~500k blocks (~29 days), so it under-reports "Lifetime claimed" for any
+      // writer who claimed earlier; this server scan covers the whole history
+      // and reconciles with the gross "earned" total below.
+      fetchAllEvents({
+        chainId,
+        address: tipJar,
+        eventName: "Claimed",
+        args: { author },
+      }),
+    ]);
+
+    const claimedTotal = claimLogs.reduce(
+      (acc, l) => acc + ((l.args.amount as bigint | undefined) ?? 0n),
+      0n,
+    );
 
     const seen = new Set<string>();
     const registered = registerLogs
@@ -133,12 +159,14 @@ const loadWriterEarnings = unstable_cache(
         tips,
         supporters: globalSupporters.size,
         articles: registered.length,
+        claimed: claimedTotal.toString(),
+        claims: claimLogs.length,
       },
       articles,
       capped: capped ? { shown: MAX_ARTICLES, total: registered.length } : null,
     };
   },
-  ["writer-earnings-v1"],
+  ["writer-earnings-v2"],
   { revalidate: 60, tags: ["writer-earnings"] },
 );
 

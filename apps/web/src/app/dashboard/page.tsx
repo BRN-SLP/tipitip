@@ -15,10 +15,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useWriterEarnings } from "@/hooks/useWriterEarnings";
+import { useWriterEarningsApi } from "@/hooks/useWriterEarningsApi";
 
 export default function DashboardPage() {
   const { isConnected, address } = useAccount();
-  const { pending, refetchPending, claims } = useWriterEarnings();
+  const { pending, refetchPending } = useWriterEarnings();
+  const { data: earnings, state: earningsState } = useWriterEarningsApi(address);
 
   return (
     <main className="container mx-auto max-w-5xl space-y-6 px-4 py-10">
@@ -56,12 +58,15 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-semibold tracking-tight">
-                  {formatUnits(sumAmounts(claims), 18)}{" "}
+                  {earnings
+                    ? formatUnits(BigInt(earnings.totals.claimed), 18)
+                    : "…"}{" "}
                   <span className="text-base">cUSD</span>
                 </div>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  {claims.length} claim{claims.length === 1 ? "" : "s"} on
-                  record.
+                  {earnings
+                    ? `${earnings.totals.claims} claim${earnings.totals.claims === 1 ? "" : "s"} on record.`
+                    : "Loading claim history…"}
                 </p>
               </CardContent>
             </Card>
@@ -69,15 +74,11 @@ export default function DashboardPage() {
 
           {address && <ActivityFeed address={address} />}
 
-          {address && <WriterEarnings address={address} />}
+          {address && <WriterEarnings data={earnings} state={earningsState} />}
 
           {address && <ProfileEditor address={address} />}
         </>
       )}
     </main>
   );
-}
-
-function sumAmounts(items: Array<{ amount: bigint }>): bigint {
-  return items.reduce((acc, i) => acc + i.amount, 0n);
 }
