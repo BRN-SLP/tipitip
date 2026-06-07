@@ -1,5 +1,7 @@
 import { CircleDollarSign, Pilcrow, Sprout } from "lucide-react";
 
+import { RevealOnScroll } from "@/components/hero/RevealOnScroll";
+
 const CARDS = [
   {
     Icon: Pilcrow,
@@ -34,23 +36,22 @@ export function WhyTipiTip() {
         </p>
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {CARDS.map(({ Icon, title, body }) => (
-            <div
-              key={title}
-              className="group relative overflow-hidden rounded-2xl border bg-card p-6 transition-transform duration-200 hover:-translate-y-1"
-            >
-              <span
-                aria-hidden="true"
-                className="absolute left-0 top-0 h-[3px] w-12 bg-primary"
-              />
-              <Icon
-                className="mb-4 h-9 w-9 text-foreground"
-                strokeWidth={1.5}
-                aria-hidden="true"
-              />
-              <h3 className="text-xl font-semibold">{title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{body}</p>
-            </div>
+          {CARDS.map(({ Icon, title, body }, i) => (
+            <RevealOnScroll key={title} delay={i * 0.06}>
+              <div className="group relative h-full overflow-hidden rounded-2xl border bg-card p-6 transition-transform duration-200 hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 top-0 h-[3px] w-12 bg-primary"
+                />
+                <Icon
+                  className="mb-4 h-9 w-9 text-foreground"
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
+                <h3 className="text-xl font-semibold">{title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{body}</p>
+              </div>
+            </RevealOnScroll>
           ))}
         </div>
       </div>
