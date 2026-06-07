@@ -74,9 +74,23 @@ export default async function LeaderboardPage() {
       </RevealOnScroll>
 
       {board.empty ? (
-        <p className="mt-12 text-sm text-muted-foreground">
-          No tips yet. Be the first to tip a paragraph and you will show up here.
-        </p>
+        <div className="mt-12 flex flex-col items-center gap-3 rounded-2xl border border-dashed py-16 text-center">
+          <Flame
+            className="h-8 w-8 text-muted-foreground/40"
+            strokeWidth={1.5}
+            aria-hidden="true"
+          />
+          <p className="text-sm text-muted-foreground">
+            No tips yet. Be the first to tip a paragraph and you will show up
+            here.
+          </p>
+          <Link
+            href="/write"
+            className="text-sm font-medium text-primary underline-offset-4 hover:underline"
+          >
+            Publish the first one →
+          </Link>
+        </div>
       ) : (
         <div className="mt-12 space-y-14">
           {board.trendingParagraphs.length > 0 && (

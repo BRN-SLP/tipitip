@@ -4,6 +4,7 @@ import { formatUnits } from "viem";
 
 import { CountUp } from "@/components/count-up";
 import { HeroDemo } from "@/components/hero/HeroDemo";
+import { RevealOnScroll } from "@/components/hero/RevealOnScroll";
 import { LedgerSection } from "@/components/landing/LedgerSection";
 import { WhyTipiTip } from "@/components/landing/WhyTipiTip";
 import { Button } from "@/components/ui/button";
@@ -126,14 +127,18 @@ export default async function Home() {
             Three taps from draft to paid.
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {STEPS.map((s) => (
-              <div key={s.n} className="border-t-2 border-foreground pt-5">
-                <div className="font-mono text-xs font-semibold tracking-[0.1em] text-primary">
-                  {s.n}
+            {STEPS.map((s, i) => (
+              <RevealOnScroll key={s.n} delay={i * 0.06}>
+                <div className="border-t-2 border-foreground pt-5">
+                  <div className="font-mono text-xs font-semibold tracking-[0.1em] text-primary">
+                    {s.n}
+                  </div>
+                  <h3 className="mt-2 text-xl font-semibold">{s.title}</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">
+                    {s.body}
+                  </p>
                 </div>
-                <h3 className="mt-2 text-xl font-semibold">{s.title}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">{s.body}</p>
-              </div>
+              </RevealOnScroll>
             ))}
           </div>
         </div>
@@ -148,23 +153,25 @@ export default async function Home() {
       {/* CTA BAND */}
       <section className="border-t">
         <div className="container mx-auto max-w-3xl px-4 py-20 text-center md:py-24">
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
-            <span aria-hidden="true">¶</span> Start earning today
-          </p>
-          <h2 className="mx-auto mt-3 max-w-xl text-4xl font-bold tracking-tight md:text-5xl">
-            Your next paragraph is worth something.
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Publish in a minute. Get paid per paragraph, in real cUSD.
-          </p>
-          <div className="mt-7 flex justify-center">
-            <Button asChild size="lg" className="shadow-sm shadow-primary/20">
-              <Link href="/write">
-                <PenLine className="mr-2 h-4 w-4" />
-                Start writing
-              </Link>
-            </Button>
-          </div>
+          <RevealOnScroll>
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
+              <span aria-hidden="true">¶</span> Start earning today
+            </p>
+            <h2 className="mx-auto mt-3 max-w-xl text-4xl font-bold tracking-tight md:text-5xl">
+              Your next paragraph is worth something.
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Publish in a minute. Get paid per paragraph, in real cUSD.
+            </p>
+            <div className="mt-7 flex justify-center">
+              <Button asChild size="lg" className="shadow-sm shadow-primary/20">
+                <Link href="/write">
+                  <PenLine className="mr-2 h-4 w-4" />
+                  Start writing
+                </Link>
+              </Button>
+            </div>
+          </RevealOnScroll>
         </div>
       </section>
     </main>
