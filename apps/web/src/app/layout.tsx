@@ -23,8 +23,17 @@ const plexMono = IBM_Plex_Mono({
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://tipitip-sable.vercel.app';
 
+const WEBSITE_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'TipiTip',
+  url: SITE_URL,
+  description: 'Per-paragraph cUSD micro-tipping on Celo.',
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
   title: {
     default: 'TipiTip — tip writers per paragraph on Celo',
     template: '%s · TipiTip',
@@ -101,6 +110,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSONLD) }}
+        />
         {/* Warpcast Mini App splash dismiss. Mounted as the first
             child so its useEffect fires before any wagmi /
             RainbowKit work — if the wallet subtree ever crashes
