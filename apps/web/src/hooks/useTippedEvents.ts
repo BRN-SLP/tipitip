@@ -1,20 +1,10 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
-import { usePublicClient, useWatchContractEvent } from "wagmi";
+import { useEffect, useMemo, useState } from "react";
+import { useWatchContractEvent } from "wagmi";
 import type { Hex, Log } from "viem";
 
 import { getTipJarAddress, tipJarAbi } from "@/lib/contracts";
-
-/** A single accumulated `Tipped` event. */
-export interface TipEvent {
-  articleId: Hex;
-  paragraphKey: Hex;
-  tipper: `0x${string}`;
-  amount: bigint;
-  blockNumber: bigint;
-  transactionHash: Hex;
-}
 
 /** Aggregated stats per paragraph. */
 export interface ParagraphStats {
@@ -22,37 +12,35 @@ export interface ParagraphStats {
   total: bigint;
 }
 
-/**
- * How far back to scan for historical `Tipped` events on a single article.
- *
- * The previous implementation used `fromBlock: 0n`, which silently failed on
- * Forno (Celo's public RPC) — `eth_getLogs` over the full mainnet history
- * (~30M blocks) blows the per-request range limit and the call either times
- * out or returns an error that the calling try/finally swallows. Symptom: all
- * paragraph tip counters render as zero even when the contract has emitted
- * real `Tipped` events and the author's pending balance shows up in the
- * dashboard.
- *
- * Same workaround is already in place for the landing feed
- * (`lib/articles-feed.ts`), but it was never ported here.
- *
- * 500_000 blocks ≈ 29 days at Celo's ~5 s block time, which comfortably
- * covers any recently-published article including the pinned house
- * manifesto. For older articles we'll need an explicit pagination loop or
- * a subgraph; both are out of scope for this fix.
- */
-const TIP_HISTORY_LOOKBACK = 500_000n;
+interface LiveTip {
+  paragraphKey: Hex;
+  amount: bigint;
+  blockNumber: bigint;
+  transactionHash: Hex;
+}
 
 /**
- * Read all historical `Tipped` events for one article and continue watching
- * the chain for new ones. Returns per-paragraph aggregates plus the raw list.
+ * Per-paragraph tip totals for one article.
+ *
+ * Baseline counts come from the server FULL-HISTORY aggregation
+ * (`/api/tip-stats`, keyed by paragraphKey) so the reader matches the
+ * canonical totals instead of a recent client-side window (which silently
+ * under-reported older tips). Tips that land AFTER the snapshot
+ * (blockNumber > the snapshot's latestBlock) are layered on live via
+ * useWatchContractEvent, so nothing is double counted.
+ *
+ * Celo blocks are ~1s; the server scan covers the whole contract history,
+ * so there is no time window to keep in sync here anymore.
  */
 export function useTippedEvents(
   chainId: number | undefined,
   articleId: Hex | undefined,
 ) {
-  const publicClient = usePublicClient({ chainId });
-  const [events, setEvents] = useState<TipEvent[]>([]);
+  const [baseline, setBaseline] = useState<{
+    byKey: Map<string, ParagraphStats>;
+    latestBlock: bigint;
+  }>({ byKey: new Map(), latestBlock: 0n });
+  const [live, setLive] = useState<LiveTip[]>([]);
   const [loading, setLoading] = useState(true);
 
   const tipJarAddress = useMemo(() => {
@@ -66,41 +54,44 @@ export function useTippedEvents(
 
   useEffect(() => {
     let cancelled = false;
-    async function loadHistory() {
-      if (!publicClient || !tipJarAddress || !articleId) {
+    setLive([]);
+    setLoading(true);
+    async function load() {
+      if (!articleId || chainId === undefined) {
         setLoading(false);
         return;
       }
       try {
-        const latestBlock = await publicClient.getBlockNumber();
-        const fromBlock =
-          latestBlock > TIP_HISTORY_LOOKBACK
-            ? latestBlock - TIP_HISTORY_LOOKBACK
-            : 0n;
-        const logs = await publicClient.getContractEvents({
-          address: tipJarAddress,
-          abi: tipJarAbi,
-          eventName: "Tipped",
-          args: { articleId },
-          fromBlock,
-          toBlock: "latest",
-        });
+        const res = await fetch(
+          `/api/tip-stats/${articleId}?chainId=${chainId}`,
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = (await res.json()) as {
+          byKey?: Record<string, { count: number; total: string }>;
+          latestBlock?: string;
+        };
         if (cancelled) return;
-        setEvents(logs.map(decodeLog));
+        const byKey = new Map<string, ParagraphStats>();
+        for (const [k, v] of Object.entries(json.byKey ?? {})) {
+          byKey.set(k.toLowerCase(), { count: v.count, total: BigInt(v.total) });
+        }
+        setBaseline({
+          byKey,
+          latestBlock: json.latestBlock ? BigInt(json.latestBlock) : 0n,
+        });
       } catch {
-        // Public RPC hiccup — leave events empty rather than crashing the
-        // article page. The optimistic-tip path still works because the
-        // user's own tips get bumped client-side in ParagraphTipper.
-        if (!cancelled) setEvents([]);
+        // RPC/endpoint hiccup — render with no baseline rather than crash;
+        // the user's own tip still shows via ParagraphTipper's optimistic bump.
+        if (!cancelled) setBaseline({ byKey: new Map(), latestBlock: 0n });
       } finally {
         if (!cancelled) setLoading(false);
       }
     }
-    loadHistory();
+    load();
     return () => {
       cancelled = true;
     };
-  }, [publicClient, tipJarAddress, articleId]);
+  }, [articleId, chainId]);
 
   useWatchContractEvent({
     address: tipJarAddress,
@@ -109,53 +100,55 @@ export function useTippedEvents(
     args: articleId ? { articleId } : undefined,
     enabled: !!articleId && !!tipJarAddress,
     onLogs(logs) {
-      setEvents((prev) => {
+      setLive((prev) => {
         const next = [...prev];
-        for (const l of logs) next.push(decodeLog(l));
-        return dedupeByTxAndIndex(next);
+        for (const l of logs) {
+          const d = decodeLog(l as LogWithArgs);
+          if (d) next.push(d);
+        }
+        return dedupe(next);
       });
     },
   });
 
   const byParagraph = useMemo(() => {
     const map = new Map<Hex, ParagraphStats>();
-    for (const e of events) {
-      const cur = map.get(e.paragraphKey) ?? { count: 0, total: 0n };
-      cur.count += 1;
-      cur.total += e.amount;
-      map.set(e.paragraphKey, cur);
+    for (const [k, v] of baseline.byKey) {
+      map.set(k as Hex, { count: v.count, total: v.total });
+    }
+    for (const e of live) {
+      if (e.blockNumber <= baseline.latestBlock) continue; // already in baseline
+      const key = e.paragraphKey.toLowerCase() as Hex;
+      const cur = map.get(key) ?? { count: 0, total: 0n };
+      map.set(key, { count: cur.count + 1, total: cur.total + e.amount });
     }
     return map;
-  }, [events]);
+  }, [baseline, live]);
 
-  return { events, byParagraph, loading };
+  return { byParagraph, loading };
 }
 
-function decodeLog(
-  log: Log & {
-    args?: {
-      articleId?: Hex;
-      paragraphKey?: Hex;
-      tipper?: `0x${string}`;
-      amount?: bigint;
-    };
-  },
-): TipEvent {
+type LogWithArgs = Log & {
+  args?: { paragraphKey?: Hex; amount?: bigint };
+};
+
+function decodeLog(log: LogWithArgs): LiveTip | null {
+  const paragraphKey = log.args?.paragraphKey;
+  const amount = log.args?.amount;
+  if (!paragraphKey || amount === undefined) return null;
   return {
-    articleId: log.args?.articleId as Hex,
-    paragraphKey: log.args?.paragraphKey as Hex,
-    tipper: log.args?.tipper as `0x${string}`,
-    amount: log.args?.amount as bigint,
+    paragraphKey,
+    amount,
     blockNumber: log.blockNumber ?? 0n,
-    transactionHash: log.transactionHash as Hex,
+    transactionHash: (log.transactionHash as Hex) ?? ("0x" as Hex),
   };
 }
 
-function dedupeByTxAndIndex(events: TipEvent[]): TipEvent[] {
+function dedupe(events: LiveTip[]): LiveTip[] {
   const seen = new Set<string>();
-  const out: TipEvent[] = [];
+  const out: LiveTip[] = [];
   for (const e of events) {
-    const k = `${e.transactionHash}-${e.paragraphKey}-${e.tipper}-${e.amount.toString()}`;
+    const k = `${e.transactionHash}-${e.paragraphKey}-${e.amount.toString()}`;
     if (seen.has(k)) continue;
     seen.add(k);
     out.push(e);
