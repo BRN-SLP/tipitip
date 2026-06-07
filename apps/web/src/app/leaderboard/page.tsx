@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Flame, TrendingUp } from "lucide-react";
 import { formatUnits, getAddress } from "viem";
 
+import { PageHeader } from "@/components/page-header";
 import { RevealOnScroll } from "@/components/hero/RevealOnScroll";
 import { displayName as ensDisplay, resolveEnsBatch } from "@/lib/ens";
 import {
@@ -65,16 +66,11 @@ export default async function LeaderboardPage() {
   return (
     <main className="container mx-auto max-w-4xl px-4 py-16">
       <RevealOnScroll>
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-          Leaderboard
-        </p>
-        <h1 className="mt-2 font-serif text-4xl font-semibold leading-tight">
-          The best-paid lines on the internet
-        </h1>
-        <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-          Every tip is real cUSD on Celo. This is what readers actually paid to
-          reward, ranked.
-        </p>
+        <PageHeader
+          eyebrow="Leaderboard"
+          title="The best-paid lines on the internet"
+          subtitle="Every tip is real cUSD on Celo. This is what readers actually paid to reward, ranked."
+        />
       </RevealOnScroll>
 
       {board.empty ? (
