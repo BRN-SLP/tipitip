@@ -110,7 +110,7 @@ export default async function WriterProfilePage({ params }: PageProps) {
 
   const { totals, articles } = await loadEarnings(addr);
   const stats: Array<{ label: string; value: string }> = [
-    { label: "Earned", value: `${cusd(totals?.earned ?? "0")} cUSD` },
+    { label: "Earned (gross)", value: `${cusd(totals?.earned ?? "0")} cUSD` },
     { label: "Tips", value: (totals?.tips ?? 0).toLocaleString() },
     { label: "Supporters", value: (totals?.supporters ?? 0).toLocaleString() },
     { label: "Articles", value: (totals?.articles ?? 0).toLocaleString() },
@@ -164,6 +164,11 @@ export default async function WriterProfilePage({ params }: PageProps) {
             </div>
           ))}
         </div>
+        {(totals?.tips ?? 0) > 0 && (
+          <p className="mt-2 font-mono text-[11px] text-muted-foreground">
+            Earned is gross tips, before the 2.5% protocol fee.
+          </p>
+        )}
       </RevealOnScroll>
 
       {articles.length > 0 && (
