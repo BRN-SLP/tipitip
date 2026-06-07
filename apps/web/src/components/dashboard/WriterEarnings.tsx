@@ -94,7 +94,7 @@ function TotalsStrip({
   totals: EarningsResponse["totals"];
 }) {
   const items: Array<{ label: string; value: string }> = [
-    { label: "Total earned", value: `${cusd(totals.earned)} cUSD` },
+    { label: "Total earned (gross)", value: `${cusd(totals.earned)} cUSD` },
     { label: "Tips", value: totals.tips.toLocaleString() },
     { label: "Supporters", value: totals.supporters.toLocaleString() },
     { label: "Articles", value: totals.articles.toLocaleString() },
