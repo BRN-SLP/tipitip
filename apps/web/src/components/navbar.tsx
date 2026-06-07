@@ -16,6 +16,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { TipiTipLogo } from "@/components/tipitip-logo"
 
 const navLinks = [
+  { name: "Read", href: "/read" },
   { name: "Leaderboard", href: "/leaderboard" },
   { name: "Write", href: "/write" },
   { name: "Dashboard", href: "/dashboard" },
