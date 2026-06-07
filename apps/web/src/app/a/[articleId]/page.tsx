@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { headers } from "next/headers";
 import type { Metadata } from "next";
 
 import { ArticleRenderer } from "@/components/reader/ArticleRenderer";
@@ -8,7 +7,14 @@ import { ShareBar } from "@/components/reader/ShareBar";
 import { bytes32HexRegex, extractTitleAndExcerpt } from "@/lib/articles";
 import { getArticleBodyUrl, getArticleMetadata } from "@/lib/blob";
 
-export const dynamic = "force-dynamic";
+const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://tipitip-sable.vercel.app"
+).replace(/\/+$/, "");
+
+// Article bodies are immutable (content-addressed by articleId), so cache the
+// page and revalidate instead of force-dynamic. Live tip counts are fetched
+// client-side in ArticleRenderer, so they stay fresh regardless.
+export const revalidate = 60;
 
 interface PageProps {
   params: Promise<{ articleId: string }>;
@@ -182,12 +188,7 @@ export default async function ArticlePage({ params }: PageProps) {
 }
 
 async function canonicalUrl(path: string): Promise<string> {
-  const reqHeaders = await headers();
-  const host = reqHeaders.get("host");
-  const protocol =
-    reqHeaders.get("x-forwarded-proto") ??
-    (host?.startsWith("localhost") ? "http" : "https");
-  return `${protocol}://${host}${path}`;
+  return `${SITE_URL}${path}`;
 }
 
 async function fetchArticle(articleId: string): Promise<string | null> {
