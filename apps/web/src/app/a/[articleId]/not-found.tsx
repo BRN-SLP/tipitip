@@ -35,7 +35,7 @@ export default function ArticleNotFound() {
       <p className="mt-4 max-w-md text-sm text-muted-foreground md:text-base">
         Either the article ID in the URL is malformed, or the body hasn&apos;t
         finished propagating to decentralized storage yet. Try again in a few
-        seconds — or browse the latest reads from the home page.
+        seconds — or browse the latest reads.
       </p>
       <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
         <Button asChild size="lg">
@@ -45,7 +45,7 @@ export default function ArticleNotFound() {
           </Link>
         </Button>
         <Button asChild variant="outline" size="lg">
-          <Link href="/#featured">
+          <Link href="/read">
             <Search className="mr-2 h-4 w-4" />
             Browse articles
           </Link>
