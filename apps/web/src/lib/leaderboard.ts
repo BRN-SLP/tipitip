@@ -46,11 +46,23 @@ export interface ParagraphRank {
   total: string;
   count: number;
 }
+export interface LeaderboardTotals {
+  /** Sum of every tip amount, in wei (cUSD, 18 decimals). */
+  tipped: string;
+  /** Count of on-chain tips. */
+  tips: number;
+  /** Unique tippers (supporters). */
+  supporters: number;
+  /** Distinct authors who received tips. */
+  authors: number;
+}
 export interface Leaderboard {
   topArticles: ArticleRank[];
   topAuthors: AuthorRank[];
   topParagraphs: ParagraphRank[];
   trendingParagraphs: ParagraphRank[];
+  /** Platform-wide grand totals, from the same full-history scan. */
+  totals: LeaderboardTotals;
   empty: boolean;
 }
 
@@ -59,6 +71,7 @@ const EMPTY: Leaderboard = {
   topAuthors: [],
   topParagraphs: [],
   trendingParagraphs: [],
+  totals: { tipped: "0", tips: 0, supporters: 0, authors: 0 },
   empty: true,
 };
 
@@ -120,6 +133,9 @@ async function compute(): Promise<Leaderboard> {
     { articleId: string; key: string; total: bigint; count: number }
   >();
   const trend = new Map<string, number>();
+  const supporters = new Set<string>();
+  let grandTotal = 0n;
+  let tipCount = 0;
 
   for (const t of tips) {
     const articleId = (t.args.articleId as Hex | undefined)?.toLowerCase();
@@ -127,6 +143,11 @@ async function compute(): Promise<Leaderboard> {
     const amount = t.args.amount as bigint | undefined;
     if (!articleId || !pk || amount === undefined) continue;
     const m = meta.get(articleId);
+
+    grandTotal += amount;
+    tipCount += 1;
+    const tipper = (t.args.tipper as string | undefined)?.toLowerCase();
+    if (tipper) supporters.add(tipper);
 
     const a = perArticle.get(articleId) ?? { total: 0n, count: 0 };
     perArticle.set(articleId, { total: a.total + amount, count: a.count + 1 });
@@ -224,12 +245,18 @@ async function compute(): Promise<Leaderboard> {
     topAuthors,
     topParagraphs: topParaRaw.map(resolvePara),
     trendingParagraphs: trendParaRaw.map(resolvePara),
+    totals: {
+      tipped: grandTotal.toString(),
+      tips: tipCount,
+      supporters: supporters.size,
+      authors: perAuthor.size,
+    },
     empty: false,
   };
 }
 
 /** Cached global leaderboard. Revalidates every 2 minutes. */
-export const getLeaderboard = unstable_cache(compute, ["leaderboard-v1"], {
+export const getLeaderboard = unstable_cache(compute, ["leaderboard-v2"], {
   revalidate: 120,
   tags: ["leaderboard"],
 });
