@@ -44,7 +44,7 @@ export function HeroDemo() {
           <Heart className="h-4 w-4 fill-current" aria-hidden="true" />
         </span>
         <span className="font-mono text-xs text-muted-foreground">
-          tap any paragraph to tip
+          readers tap a paragraph to tip
         </span>
         <span className="ml-auto font-mono text-sm font-semibold text-primary">
           +$0.010
