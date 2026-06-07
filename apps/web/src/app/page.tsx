@@ -75,7 +75,7 @@ export default async function Home() {
               <Button asChild variant="outline" size="lg">
                 <Link href={`/a/${MANIFESTO.articleId}`}>
                   <BookOpen className="mr-2 h-4 w-4" />
-                  Read a piece
+                  {MANIFESTO.cta}
                 </Link>
               </Button>
             </div>
