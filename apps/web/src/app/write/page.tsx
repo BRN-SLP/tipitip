@@ -146,7 +146,8 @@ export default function WriterPage() {
   }
 
   return (
-    <div className="container mx-auto max-w-5xl px-4 py-12">
+    <main className="container mx-auto max-w-5xl px-4 py-12">
+      <h1 className="sr-only">Write an article</h1>
       <Card>
         <CardHeader>
           <CardTitle>Write an article</CardTitle>
@@ -245,7 +246,7 @@ export default function WriterPage() {
           </div>
         </CardContent>
       </Card>
-    </div>
+    </main>
   );
 }
 
