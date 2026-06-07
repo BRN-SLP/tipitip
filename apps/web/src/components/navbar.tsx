@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import {
   Sheet,
   SheetContent,
+  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { ConnectButton } from "@/components/connect-button"
@@ -42,6 +43,7 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-80">
+              <SheetTitle className="sr-only">Navigation menu</SheetTitle>
               <div className="mb-8 flex items-center text-foreground text-[30px]">
                 <TipiTipLogo />
               </div>
@@ -50,6 +52,7 @@ export function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    aria-current={pathname === link.href ? "page" : undefined}
                     className={`text-base font-medium transition-colors hover:text-foreground ${
                       pathname === link.href ? "text-foreground" : "text-foreground/70"
                     }`}
@@ -80,6 +83,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
+              aria-current={pathname === link.href ? "page" : undefined}
               className={`text-sm transition-colors hover:text-foreground ${
                 pathname === link.href ? "text-foreground" : "text-foreground/70"
               }`}
