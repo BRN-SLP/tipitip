@@ -61,7 +61,7 @@ function FootColumn({
             <li key={href}>
               <Link
                 href={href}
-                className="text-muted-foreground transition-colors hover:text-foreground"
+                className="link-underline text-muted-foreground transition-colors hover:text-foreground"
                 {...(external
                   ? { target: "_blank", rel: "noopener noreferrer" }
                   : {})}
