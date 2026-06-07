@@ -63,6 +63,12 @@ export function WriterEarnings({
         ) : (
           <div className="space-y-6">
             <TotalsStrip totals={data.totals} />
+            {data.capped && (
+              <p className="text-xs text-muted-foreground">
+                Totals cover your {data.capped.shown} most recent articles of{" "}
+                {data.capped.total}.
+              </p>
+            )}
             {feeBps > 0 && (
               <p className="text-xs text-muted-foreground">
                 Totals are gross tips. A {feePct}% protocol fee applies to new

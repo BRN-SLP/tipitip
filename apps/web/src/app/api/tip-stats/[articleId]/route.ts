@@ -1,10 +1,9 @@
 import { headers } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
-import { createPublicClient, http, type Chain, type Hex } from "viem";
-import { celo, celoSepolia } from "viem/chains";
+import { type Hex } from "viem";
 
-import { tipJarAbi } from "@/lib/abi";
 import { bytes32HexRegex, splitParagraphs } from "@/lib/articles";
+import { buildClient, fetchAllEvents } from "@/lib/chain-logs";
 import { ADDRESSES, type SupportedChainId } from "@/lib/contracts";
 import { deriveParagraphKey } from "@/lib/paragraph-key";
 
@@ -48,24 +47,6 @@ const CORS_HEADERS = {
   "Access-Control-Allow-Methods": "GET, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
   "Access-Control-Max-Age": "86400",
-};
-
-// Scan window: 200,000 blocks (~3-4 days on Celo). Generous enough to
-// cover any single article's recent tip volume; older history comes
-// from a subgraph once we have one (see migration trigger in README).
-const DEFAULT_SCAN_WINDOW = 200_000n;
-
-interface ChainCfg {
-  chain: Chain;
-  rpc: string;
-}
-
-const CHAIN_CONFIG: Record<SupportedChainId, ChainCfg> = {
-  42220: { chain: celo, rpc: "https://forno.celo.org" },
-  11142220: {
-    chain: celoSepolia,
-    rpc: "https://forno.celo-sepolia.celo-testnet.org/",
-  },
 };
 
 export async function OPTIONS(): Promise<NextResponse> {
@@ -130,40 +111,43 @@ export async function GET(
     keyByIndex.set(key, index);
   });
 
-  const cfg = CHAIN_CONFIG[chainId];
-  const client = createPublicClient({
-    chain: cfg.chain,
-    transport: http(cfg.rpc),
-  });
-
   try {
-    const latestBlock = await client.getBlockNumber();
-    const fromBlock =
-      latestBlock > DEFAULT_SCAN_WINDOW
-        ? latestBlock - DEFAULT_SCAN_WINDOW
-        : 0n;
+    // Full on-chain history (not a recent window) so counts match the
+    // canonical app and never under-report on third-party embeds.
+    const [latestBlock, logs] = await Promise.all([
+      buildClient(chainId).getBlockNumber(),
+      fetchAllEvents({
+        chainId,
+        address: tipJarAddress,
+        eventName: "Tipped",
+        args: { articleId: articleId as Hex },
+      }),
+    ]);
 
-    const logs = await client.getContractEvents({
-      address: tipJarAddress,
-      abi: tipJarAbi,
-      eventName: "Tipped",
-      args: { articleId: articleId as Hex },
-      fromBlock,
-      toBlock: latestBlock,
-    });
-
-    const paragraphStats: Record<string, { count: number; total: string }> = {};
+    // `paragraphs` is keyed by CURRENT-body index (tips on older body
+    // versions are dropped — not surfaceable in this view). `byKey` is
+    // keyed by paragraphKey across ALL versions, so the canonical reader
+    // can seed accurate per-paragraph totals from it.
+    const paragraphs: Record<string, { count: number; total: string }> = {};
+    const byKey: Record<string, { count: number; total: string }> = {};
     for (const log of logs) {
-      const { paragraphKey, amount } = log.args as {
-        paragraphKey?: Hex;
-        amount?: bigint;
-      };
+      const paragraphKey = (
+        log.args.paragraphKey as Hex | undefined
+      )?.toLowerCase();
+      const amount = log.args.amount as bigint | undefined;
       if (!paragraphKey || amount === undefined) continue;
-      const idx = keyByIndex.get(paragraphKey.toLowerCase());
+
+      const bk = byKey[paragraphKey] ?? { count: 0, total: "0" };
+      byKey[paragraphKey] = {
+        count: bk.count + 1,
+        total: (BigInt(bk.total) + amount).toString(),
+      };
+
+      const idx = keyByIndex.get(paragraphKey);
       if (idx === undefined) continue; // tip on a previous body version
       const key = String(idx);
-      const cur = paragraphStats[key] ?? { count: 0, total: "0" };
-      paragraphStats[key] = {
+      const cur = paragraphs[key] ?? { count: 0, total: "0" };
+      paragraphs[key] = {
         count: cur.count + 1,
         total: (BigInt(cur.total) + amount).toString(),
       };
@@ -173,16 +157,17 @@ export async function GET(
       {
         articleId,
         chainId,
-        paragraphs: paragraphStats,
+        paragraphs,
+        byKey,
         latestBlock: latestBlock.toString(),
       },
       {
         status: 200,
         headers: {
           ...CORS_HEADERS,
-          // 30s public cache — saves round-trips on hot articles
-          // without sacrificing meaningful freshness.
-          "Cache-Control": "public, s-maxage=30, stale-while-revalidate=60",
+          // 60s shared cache + SWR; the full-history scan is heavier so a
+          // slightly longer CDN window keeps embeds cheap.
+          "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120",
         },
       },
     );
