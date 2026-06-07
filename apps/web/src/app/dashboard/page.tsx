@@ -4,6 +4,7 @@ import { formatUnits } from "viem";
 import { useAccount } from "wagmi";
 
 import { ConnectPrompt } from "@/components/connect-prompt";
+import { PageHeader } from "@/components/page-header";
 import { ActivityFeed } from "@/components/dashboard/ActivityFeed";
 import { ClaimCard } from "@/components/dashboard/ClaimCard";
 import { ProfileEditor } from "@/components/dashboard/ProfileEditor";
@@ -24,14 +25,15 @@ export default function DashboardPage() {
 
   return (
     <main className="container mx-auto max-w-5xl space-y-6 px-4 py-10">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Dashboard</h1>
-        {address && (
-          <p className="mt-1 text-xs text-muted-foreground">
-            {address}
-          </p>
-        )}
-      </div>
+      <PageHeader
+        eyebrow="Dashboard"
+        title="Your earnings"
+        subtitle={
+          address ? (
+            <span className="font-mono text-xs">{address}</span>
+          ) : undefined
+        }
+      />
 
       {!isConnected ? (
         <ConnectPrompt

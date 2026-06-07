@@ -117,6 +117,17 @@ export default function RootLayout({
             </a>
             <WalletProvider>
               <Navbar />
+              {/* Machine-print registration frame — fixed viewport corners,
+                  shown on every page for a consistent editorial signature. */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none fixed inset-4 z-[60] hidden md:block"
+              >
+                <span className="absolute left-0 top-0 h-4 w-4 border-l border-t border-primary/40" />
+                <span className="absolute right-0 top-0 h-4 w-4 border-r border-t border-primary/40" />
+                <span className="absolute bottom-0 left-0 h-4 w-4 border-b border-l border-primary/40" />
+                <span className="absolute bottom-0 right-0 h-4 w-4 border-b border-r border-primary/40" />
+              </div>
               {/* Per-page components render their own <main> landmark; this
                   wrapper is just the skip-link target + flex spacer. */}
               <div id="main" tabIndex={-1} className="flex-1 outline-none">
