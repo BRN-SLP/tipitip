@@ -71,7 +71,7 @@ export function TipAmountSelector({ value, onChange }: TipAmountSelectorProps) {
           // min-h-11 enforces a 44px touch target (WCAG 2.5.5 AAA).
           // Critical on mobile where MiniPay users tap with a thumb;
           // the previous ~28 px chips were a fat-finger trap.
-          className={`inline-flex min-h-11 items-center justify-center rounded px-3 py-2 transition-colors ${
+          className={`inline-flex min-h-11 items-center justify-center rounded px-3 py-2 transition-[transform,background-color,color] active:scale-95 motion-reduce:transition-none motion-reduce:active:scale-100 ${
             value === preset
               ? "bg-foreground text-background"
               : "text-foreground/70 hover:bg-muted"
