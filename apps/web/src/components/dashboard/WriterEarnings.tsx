@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { formatUnits } from "viem";
 
 import {
@@ -11,33 +11,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useProtocolFee } from "@/hooks/useProtocolFee";
-
-interface ParagraphDTO {
-  index: number;
-  snippet: string;
-  total: string;
-  count: number;
-}
-
-interface ArticleDTO {
-  articleId: string;
-  slug: string;
-  blockNumber: string;
-  total: string;
-  count: number;
-  supporters: number;
-  paragraphs: ParagraphDTO[];
-}
-
-interface EarningsResponse {
-  chainId: number;
-  author: string;
-  totals: { earned: string; tips: number; supporters: number; articles: number };
-  articles: ArticleDTO[];
-  capped: { shown: number; total: number } | null;
-}
-
-type LoadState = "loading" | "error" | "done";
+import type {
+  ArticleDTO,
+  EarningsResponse,
+  EarningsState,
+} from "@/hooks/useWriterEarningsApi";
 
 /** Format a cUSD wei string for display, trimming trailing zeros. */
 function cusd(wei: string): string {
@@ -50,34 +28,17 @@ const TOP_PARAGRAPHS = 5;
 
 /**
  * W1 — full-history writer earnings: total tipped, and per-article which
- * paragraph earns most. Reads the server aggregation at
- * `/api/writer/[address]/earnings` (client RPC can't scan full history).
+ * paragraph earns most. Renders the full-history aggregation provided by
+ * `useWriterEarningsApi` (client RPC can't scan full history).
  */
-export function WriterEarnings({ address }: { address: `0x${string}` }) {
-  const [data, setData] = useState<EarningsResponse | null>(null);
-  const [state, setState] = useState<LoadState>("loading");
+export function WriterEarnings({
+  data,
+  state,
+}: {
+  data: EarningsResponse | null;
+  state: EarningsState;
+}) {
   const { feeBps, feePct } = useProtocolFee();
-
-  useEffect(() => {
-    let cancelled = false;
-    setState("loading");
-    (async () => {
-      try {
-        const res = await fetch(`/api/writer/${address}/earnings`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const json = (await res.json()) as EarningsResponse;
-        if (!cancelled) {
-          setData(json);
-          setState("done");
-        }
-      } catch {
-        if (!cancelled) setState("error");
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [address]);
 
   return (
     <Card>
