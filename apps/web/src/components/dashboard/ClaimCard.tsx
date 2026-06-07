@@ -69,6 +69,7 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
       toast.success("Tips claimed", {
         id: toastId,
         description: "Funds are on their way to your wallet.",
+        icon: <Heart className="h-4 w-4 fill-primary text-primary" />,
       });
       try {
         await onClaimed();

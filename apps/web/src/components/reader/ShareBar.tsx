@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import { Check, Copy, MessageCircle, Send, Share2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -66,6 +67,7 @@ const SHARE_TARGETS: ShareTarget[] = [
  * MiniPay's webview has been observed to deny it).
  */
 export function ShareBar({ url, title }: ShareBarProps) {
+  const reduced = useReducedMotion();
   const [copied, setCopied] = useState(false);
   const [supportsNativeShare, setSupportsNativeShare] = useState(false);
 
@@ -148,7 +150,13 @@ export function ShareBar({ url, title }: ShareBarProps) {
         onClick={copyLink}
       >
         {copied ? (
-          <Check className="h-4 w-4 text-primary" />
+          <motion.span
+            initial={reduced ? false : { scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "spring", stiffness: 500, damping: 18 }}
+          >
+            <Check className="h-4 w-4 text-primary" />
+          </motion.span>
         ) : (
           <Copy className="h-4 w-4" />
         )}

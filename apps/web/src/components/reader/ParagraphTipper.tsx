@@ -38,6 +38,7 @@ export function ParagraphTipper({
   const reducedMotion = useReducedMotion();
   const [optimisticBump, setOptimisticBump] = useState(0);
   const [pulse, setPulse] = useState(false);
+  const [burstId, setBurstId] = useState(0);
   const [linkCopied, setLinkCopied] = useState(false);
 
   const anchorId = `p-${paragraphIndex}`;
@@ -64,6 +65,7 @@ export function ParagraphTipper({
     if (busy || disabled) return;
     setOptimisticBump((n) => n + 1);
     setPulse(true);
+    setBurstId((n) => n + 1);
     try {
       await onTip(paragraphKey, amountWei);
     } catch {
@@ -115,6 +117,7 @@ export function ParagraphTipper({
         <ReactMarkdown>{text}</ReactMarkdown>
       </div>
       <div className="mt-1 flex items-center gap-2 text-xs">
+        <span className="relative inline-flex">
         <button
           type="button"
           onClick={handleClick}
@@ -147,6 +150,26 @@ export function ParagraphTipper({
             </motion.span>
           )}
         </button>
+        {!reducedMotion && burstId > 0 && (
+          <span
+            key={burstId}
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 flex items-center justify-center"
+          >
+            {[0, 1, 2].map((i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0.9, y: 0, x: 0, scale: 0.7 }}
+                animate={{ opacity: 0, y: -26, x: (i - 1) * 9, scale: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.05 }}
+                className="absolute"
+              >
+                <Heart className="h-3 w-3 fill-primary text-primary" />
+              </motion.span>
+            ))}
+          </span>
+        )}
+        </span>
         <span
           className="text-muted-foreground"
           aria-live="polite"
