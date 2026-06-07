@@ -109,9 +109,9 @@ export function ParagraphTipper({
           : "hover:bg-muted/30"
       } scroll-mt-24`}
     >
-      <article className="prose prose-sm max-w-none dark:prose-invert">
+      <div className="prose prose-sm max-w-none dark:prose-invert">
         <ReactMarkdown>{text}</ReactMarkdown>
-      </article>
+      </div>
       <div className="mt-1 flex items-center gap-2 text-xs">
         <button
           type="button"

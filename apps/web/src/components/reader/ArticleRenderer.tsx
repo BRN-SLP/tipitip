@@ -77,7 +77,7 @@ export function ArticleRenderer({ articleId, body }: ArticleRendererProps) {
         </div>
       </div>
 
-      <div className="space-y-3">
+      <article className="space-y-3">
         {indexed.map(({ text, index, paragraphKey }) => (
           <ParagraphTipper
             key={`${index}-${paragraphKey}`}
@@ -101,7 +101,7 @@ export function ArticleRenderer({ articleId, body }: ArticleRendererProps) {
             disabled={!isConnected || loading}
           />
         ))}
-      </div>
+      </article>
     </div>
   );
 }

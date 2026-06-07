@@ -85,6 +85,7 @@ export function TagInput({ value, onChange, disabled }: TagInputProps) {
         ))}
         {!atCap && (
           <input
+            id="tags-input"
             type="text"
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
