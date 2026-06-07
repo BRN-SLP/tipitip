@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { createElement, useCallback, useState } from "react";
+import { Heart } from "lucide-react";
 import { toast } from "sonner";
 import {
   useAccount,
@@ -129,6 +130,10 @@ export function useTipParagraph(articleId: Hex | undefined): TipParagraphResult 
         toast.success("Tip delivered", {
           id: toastId,
           description: "Author's balance has been updated.",
+          icon: createElement(Heart, {
+            className: "h-4 w-4 fill-primary text-primary",
+            "aria-hidden": "true",
+          }),
         });
       } catch (err: unknown) {
         const message =

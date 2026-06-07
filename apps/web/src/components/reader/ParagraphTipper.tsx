@@ -1,6 +1,7 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
+import { motion, useReducedMotion } from "framer-motion";
 import { Check, Heart, Link2, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { formatUnits, type Hex } from "viem";
@@ -34,6 +35,7 @@ export function ParagraphTipper({
   busy,
   disabled,
 }: ParagraphTipperProps) {
+  const reducedMotion = useReducedMotion();
   const [optimisticBump, setOptimisticBump] = useState(0);
   const [pulse, setPulse] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
@@ -122,8 +124,8 @@ export function ParagraphTipper({
           // 44 px hit target (WCAG 2.5.5 AAA). MiniPay users tap with
           // a thumb on small screens; the previous 28 px button was
           // a fat-finger miss waiting to happen.
-          className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-input bg-background transition-all motion-reduce:transition-none ${
-            pulse ? "scale-125 border-primary motion-reduce:scale-100" : ""
+          className={`inline-flex h-11 w-11 items-center justify-center rounded-full border bg-background transition-colors motion-reduce:transition-none ${
+            pulse ? "border-primary" : "border-input"
           } hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50`}
         >
           {busy ? (
@@ -132,12 +134,17 @@ export function ParagraphTipper({
               className="h-4 w-4 animate-spin motion-reduce:animate-none"
             />
           ) : (
-            <Heart
-              aria-hidden="true"
-              className={`h-4 w-4 ${
-                count > 0 ? "fill-primary text-primary" : "text-foreground/70"
-              }`}
-            />
+            <motion.span
+              animate={pulse && !reducedMotion ? { scale: 1.35 } : { scale: 1 }}
+              transition={{ type: "spring", stiffness: 500, damping: 14 }}
+            >
+              <Heart
+                aria-hidden="true"
+                className={`h-4 w-4 ${
+                  count > 0 ? "fill-primary text-primary" : "text-foreground/70"
+                }`}
+              />
+            </motion.span>
           )}
         </button>
         <span
@@ -147,7 +154,16 @@ export function ParagraphTipper({
         >
           <span aria-hidden="true" className="inline-flex items-center gap-1">
             <Heart className="h-3 w-3 fill-current" />
-            {count} • ${formatUnits(total, 18)}
+            <motion.span
+              key={count}
+              initial={reducedMotion ? false : { y: -4, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.2 }}
+              className="inline-block tabular-nums"
+            >
+              {count}
+            </motion.span>{" "}
+            • ${formatUnits(total, 18)}
           </span>
         </span>
         {/* Per-paragraph deep link — fades in on hover (or always-visible
