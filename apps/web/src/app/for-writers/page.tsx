@@ -7,7 +7,6 @@ import {
   Globe,
   Heart,
   PenLine,
-  Sparkles,
   Wallet,
 } from "lucide-react";
 
@@ -61,8 +60,8 @@ export default function ForWritersPage() {
         />
         <div className="container mx-auto max-w-5xl px-4 py-16 md:py-24">
           <RevealOnScroll>
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
-              <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
+              <span aria-hidden="true">¶</span>
               For writers
             </span>
           </RevealOnScroll>
@@ -109,7 +108,7 @@ export default function ForWritersPage() {
       <section className="border-y bg-secondary/40">
         <div className="container mx-auto max-w-5xl px-4 py-16">
           <RevealOnScroll>
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-primary">
               Why per-paragraph
             </p>
           </RevealOnScroll>
@@ -163,7 +162,7 @@ export default function ForWritersPage() {
         <div className="grid gap-10 md:grid-cols-[1fr_1.3fr]">
           <RevealOnScroll>
             <div>
-              <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+              <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-primary">
                 Drop it in
               </p>
               <h2 className="font-serif text-3xl font-semibold leading-tight md:text-4xl">
@@ -246,7 +245,7 @@ export default function MyArticle() {
       <section className="border-t bg-secondary/40">
         <div className="container mx-auto max-w-5xl px-4 py-20">
           <RevealOnScroll>
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-primary">
               What this looks like
             </p>
           </RevealOnScroll>

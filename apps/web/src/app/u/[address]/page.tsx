@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { formatUnits, getAddress, isAddress } from "viem";
 
+import { PageHeader } from "@/components/page-header";
 import { RevealOnScroll } from "@/components/hero/RevealOnScroll";
 import { displayName as ensDisplay, resolveEnsName } from "@/lib/ens";
 import { getProfile } from "@/lib/profile";
@@ -91,7 +92,7 @@ export default async function WriterProfilePage({ params }: PageProps) {
   if (!profile?.isPublic) {
     return (
       <main className="container mx-auto max-w-3xl px-4 py-24 text-center">
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-primary">
           Writer
         </p>
         <h1 className="mt-3 font-serif text-3xl font-semibold">{truncated}</h1>
@@ -119,15 +120,11 @@ export default async function WriterProfilePage({ params }: PageProps) {
   return (
     <main className="container mx-auto max-w-3xl px-4 py-16">
       <RevealOnScroll>
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-          Writer
-        </p>
-        <h1 className="mt-2 font-serif text-4xl font-semibold leading-tight">
-          {name}
-        </h1>
-        <p className="mt-1 font-mono text-xs text-muted-foreground">
-          {truncated}
-        </p>
+        <PageHeader
+          eyebrow="Writer"
+          title={name}
+          subtitle={<span className="font-mono text-xs">{truncated}</span>}
+        />
         {profile.bio && (
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
             {profile.bio}
