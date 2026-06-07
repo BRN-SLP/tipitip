@@ -74,8 +74,8 @@ const loadWriterEarnings = unstable_cache(
         eventName: "ArticleRegistered",
         args: { author },
       }),
-      // Full-history Claimed scan. The client dashboard hook only looks back
-      // ~500k blocks (~29 days), so it under-reports "Lifetime claimed" for any
+      // Full-history Claimed scan. A recent-window client scan (~500k blocks,
+      // ~6 days at Celo's ~1s blocks) under-reports "Lifetime claimed" for any
       // writer who claimed earlier; this server scan covers the whole history
       // and reconciles with the gross "earned" total below.
       fetchAllEvents({
