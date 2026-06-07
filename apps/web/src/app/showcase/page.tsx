@@ -54,7 +54,7 @@ export default function ShowcasePage() {
               </>
             );
             const cls =
-              "block rounded-lg border border-border bg-card/40 p-4 transition-colors hover:border-primary/40";
+              "block rounded-lg border border-border bg-card/40 p-4 transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0";
             return (
               <li key={site.name}>
                 {site.external ? (
