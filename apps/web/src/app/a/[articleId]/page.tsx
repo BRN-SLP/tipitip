@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { ArticleRenderer } from "@/components/reader/ArticleRenderer";
 import { ShareBar } from "@/components/reader/ShareBar";
 import { bytes32HexRegex, extractTitleAndExcerpt } from "@/lib/articles";
-import { getArticleMetadata } from "@/lib/blob";
+import { getArticleBodyUrl, getArticleMetadata } from "@/lib/blob";
 
 export const dynamic = "force-dynamic";
 
@@ -191,15 +191,11 @@ async function canonicalUrl(path: string): Promise<string> {
 }
 
 async function fetchArticle(articleId: string): Promise<string | null> {
-  const reqHeaders = await headers();
-  const host = reqHeaders.get("host");
-  const protocol =
-    reqHeaders.get("x-forwarded-proto") ??
-    (host?.startsWith("localhost") ? "http" : "https");
-  const base = `${protocol}://${host}`;
-  const res = await fetch(`${base}/api/articles/${articleId}`, {
-    next: { revalidate: 60 },
-  });
+  // Read the body blob directly instead of self-fetching /api/articles/[id]
+  // — one fewer serverless hop on the reader's hot path.
+  const url = await getArticleBodyUrl(articleId as `0x${string}`);
+  if (!url) return null;
+  const res = await fetch(url, { next: { revalidate: 60 } });
   if (!res.ok) return null;
   return res.text();
 }
