@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { BookOpen, PenLine } from "lucide-react";
+import { formatUnits } from "viem";
 
+import { CountUp } from "@/components/count-up";
 import { HeroDemo } from "@/components/hero/HeroDemo";
 import { LedgerSection } from "@/components/landing/LedgerSection";
 import { WhyTipiTip } from "@/components/landing/WhyTipiTip";
@@ -85,22 +87,34 @@ export default async function Home() {
               </Button>
             </div>
 
-            {/* Traction. Static for now (verifiable on Celoscan); a
-                follow-up can wire these to the on-chain aggregation. */}
-            <dl className="flex gap-8 border-t border-dashed pt-6">
-              <div>
-                <dt className="font-mono text-2xl font-semibold tabular-nums text-foreground">10,725</dt>
-                <dd className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">cUSD tipped</dd>
-              </div>
-              <div>
-                <dt className="font-mono text-2xl font-semibold tabular-nums text-foreground">760+</dt>
-                <dd className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">writers paid</dd>
-              </div>
-              <div>
-                <dt className="font-mono text-2xl font-semibold tabular-nums text-foreground">12,381</dt>
-                <dd className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">on-chain tips</dd>
-              </div>
-            </dl>
+            {/* Live traction, from the same full-history scan that feeds the
+                ledger below (hidden until there is on-chain data, so an RPC
+                hiccup never renders zeros). */}
+            {board.totals.tips > 0 && (
+              <dl className="flex gap-8 border-t border-dashed pt-6">
+                <div>
+                  <dt className="font-mono text-2xl font-semibold tabular-nums text-foreground">
+                    <CountUp
+                      value={Number(formatUnits(BigInt(board.totals.tipped), 18))}
+                      decimals={2}
+                    />
+                  </dt>
+                  <dd className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">cUSD tipped</dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-2xl font-semibold tabular-nums text-foreground">
+                    <CountUp value={board.totals.supporters} />
+                  </dt>
+                  <dd className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">supporters</dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-2xl font-semibold tabular-nums text-foreground">
+                    <CountUp value={board.totals.tips} />
+                  </dt>
+                  <dd className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">on-chain tips</dd>
+                </div>
+              </dl>
+            )}
           </div>
 
           {/* Right - tippable-article demo */}
