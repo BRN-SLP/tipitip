@@ -55,8 +55,8 @@ export default async function EmbedPage() {
         />
         <div className="container mx-auto max-w-5xl px-4 py-16 md:py-24">
           <RevealOnScroll>
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
-              <Package className="h-3.5 w-3.5" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 font-mono text-[11px] font-medium tracking-[0.16em] text-primary">
+              <span aria-hidden="true">¶</span>
               @tipitip/embed
             </span>
           </RevealOnScroll>
@@ -101,7 +101,7 @@ export default async function EmbedPage() {
       <section>
         <div className="container mx-auto max-w-5xl px-4 py-16">
           <RevealOnScroll>
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-primary">
               Three entries, one balance
             </p>
           </RevealOnScroll>
@@ -160,7 +160,7 @@ export default async function EmbedPage() {
       <section id="playground">
         <div className="container mx-auto max-w-5xl px-4 py-16">
           <RevealOnScroll>
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-primary">
               Playground
             </p>
           </RevealOnScroll>
@@ -177,7 +177,7 @@ export default async function EmbedPage() {
       <section>
         <div className="container mx-auto max-w-5xl px-4 py-16">
           <RevealOnScroll>
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-primary">
               API reference
             </p>
           </RevealOnScroll>
@@ -239,7 +239,7 @@ export default async function EmbedPage() {
       <section>
         <div className="container mx-auto max-w-5xl px-4 py-16">
           <RevealOnScroll>
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-primary">
               Theming
             </p>
           </RevealOnScroll>

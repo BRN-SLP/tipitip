@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
+import { PageHeader } from "@/components/page-header";
 import { RevealOnScroll } from "@/components/hero/RevealOnScroll";
 import { Button } from "@/components/ui/button";
 import { SHOWCASE_SITES } from "@/lib/showcase";
@@ -20,17 +21,17 @@ export default function ShowcasePage() {
   return (
     <main className="container mx-auto max-w-4xl px-4 py-16">
       <RevealOnScroll>
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-          Powered by TipiTip
-        </p>
-        <h1 className="mt-2 font-serif text-4xl font-semibold leading-tight">
-          Sites tipping by the paragraph
-        </h1>
-        <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-          The <code className="font-mono text-sm">@tipitip/embed</code> SDK
-          turns any blog into a tip surface: readers reward the exact line that
-          landed, in sub-cent cUSD on Celo. Here is who is using it.
-        </p>
+        <PageHeader
+          eyebrow="Powered by TipiTip"
+          title="Sites tipping by the paragraph"
+          subtitle={
+            <>
+              The <code className="font-mono text-sm">@tipitip/embed</code> SDK
+              turns any blog into a tip surface: readers reward the exact line
+              that landed, in sub-cent cUSD on Celo. Here is who is using it.
+            </>
+          }
+        />
       </RevealOnScroll>
 
       <RevealOnScroll delay={0.06}>
