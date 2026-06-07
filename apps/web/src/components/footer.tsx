@@ -1,9 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { useChainId } from "wagmi";
-import { celo, celoSepolia } from "wagmi/chains";
 
+import { NetworkBadge } from "@/components/network-badge";
 import { TipiTipLogo } from "@/components/tipitip-logo";
 import { MANIFESTO } from "@/lib/manifesto";
 
@@ -77,14 +74,6 @@ function FootColumn({
 }
 
 export function Footer() {
-  const chainId = useChainId();
-  const networkLabel =
-    chainId === celo.id
-      ? { name: "Celo Mainnet", color: "bg-emerald-500" }
-      : chainId === celoSepolia.id
-        ? { name: "Celo Sepolia", color: "bg-amber-500" }
-        : { name: "Unsupported chain", color: "bg-rose-500" };
-
   return (
     <footer className="border-t bg-background/60 backdrop-blur-md">
       <div className="container mx-auto max-w-screen-2xl px-4 py-12">
@@ -117,13 +106,7 @@ export function Footer() {
             v{VERSION}
             {COMMIT_SHA ? ` · ${COMMIT_SHA}` : ""} · MIT
           </span>
-          <span className="inline-flex items-center gap-2">
-            <span
-              aria-hidden="true"
-              className={`h-2 w-2 rounded-full ${networkLabel.color}`}
-            />
-            {networkLabel.name}
-          </span>
+          <NetworkBadge />
         </div>
       </div>
     </footer>
