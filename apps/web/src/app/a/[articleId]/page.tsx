@@ -80,6 +80,7 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: { canonical: `/a/${articleId}` },
     openGraph: {
       title: `${title} · TipiTip`,
       description,
@@ -124,6 +125,19 @@ export default async function ArticlePage({ params }: PageProps) {
 
   return (
     <main className="container mx-auto max-w-3xl px-4 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: title,
+            url: articleUrl,
+            mainEntityOfPage: articleUrl,
+            image: `${articleUrl}/og`,
+          }),
+        }}
+      />
       <div className="mb-6 flex items-center justify-between gap-4">
         <Link
           href="/"
