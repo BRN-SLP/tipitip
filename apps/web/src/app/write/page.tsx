@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useAccount, useChainId, useWriteContract } from "wagmi";
@@ -151,6 +152,17 @@ export default function WriterPage() {
       <Card>
         <CardHeader>
           <CardTitle>Write an article</CardTitle>
+          <p className="mt-1.5 text-sm text-muted-foreground">
+            New to TipiTip? Tips start once you share the link, a 2.5% protocol
+            fee applies, and you claim earnings from your Dashboard —{" "}
+            <Link
+              href="/for-writers"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              see For writers
+            </Link>
+            .
+          </p>
         </CardHeader>
         <CardContent className="space-y-6">
           {!isConnected ? (
