@@ -54,7 +54,7 @@ export default function DashboardPage() {
             />
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Lifetime claimed</CardTitle>
+                <CardTitle className="text-lg">Lifetime claimed (net)</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-semibold tracking-tight">
