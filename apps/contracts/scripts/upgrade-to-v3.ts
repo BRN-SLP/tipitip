@@ -35,6 +35,15 @@ async function main() {
       `  deployer = ${deployer.address}\n`,
   );
 
+  // The live proxy's current impl (TipJarV2) may not be in the local
+  // .openzeppelin manifest, so register it (idempotent) before upgrading.
+  const TipJarV2 = await ethers.getContractFactory("TipJarV2");
+  try {
+    await upgrades.forceImport(proxy, TipJarV2, { kind: "uups" });
+  } catch {
+    // Already registered, or import not needed; upgradeProxy still validates.
+  }
+
   const TipJarV3 = await ethers.getContractFactory("TipJarV3");
   const upgraded = await upgrades.upgradeProxy(proxy, TipJarV3, {
     kind: "uups",
