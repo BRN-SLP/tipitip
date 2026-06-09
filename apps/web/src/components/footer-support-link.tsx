@@ -9,9 +9,9 @@ import { getTipJarAddress, tipJarAbi } from "@/lib/contracts";
 /**
  * Inconspicuous footer entry point to the on-chain support section.
  *
- * Mirrors the landing SupportOnChain auto-activation: the uniqueSupporters
- * read reverts on the pre-V3 implementation, so the link stays hidden until
- * the support upgrade is live, then quietly points readers at #support.
+ * Mirrors the SupportOnChain auto-activation: the uniqueSupporters read
+ * reverts on the pre-V3 implementation, so the link stays hidden until the
+ * support upgrade is live, then quietly points readers at the /support page.
  */
 export function FooterSupportLink() {
   const chainId = useChainId();
@@ -36,7 +36,7 @@ export function FooterSupportLink() {
 
   return (
     <Link
-      href="/#support"
+      href="/support"
       className="link-underline inline-flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground"
     >
       <Heart aria-hidden="true" className="h-3 w-3 fill-primary text-primary" />
