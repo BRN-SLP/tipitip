@@ -1,4 +1,9 @@
 {
+  "accountAssociation": {
+    "header": "eyJmaWQiOjIxNzM5MiwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDRmYmU4QTg2MjNmNGVDNTYzMkU2YzM3Y2YzQUMwYWMzNGI3ZDE2REIifQ",
+    "payload": "eyJkb21haW4iOiJ0aXBpdGlwLXNhYmxlLnZlcmNlbC5hcHAifQ",
+    "signature": "Rz7z9geQokbbITfIUxUGQgto5jLW9NrQJg6/JT7Fen5LeW5d14420FR8lL2wVMtoXVvU+hxSK6qJUPUrA9wJIhs="
+  },
   "miniapp": {
     "version": "1",
     "name": "TipiTip",
