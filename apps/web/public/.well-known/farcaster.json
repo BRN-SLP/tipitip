@@ -6,7 +6,7 @@
     "description": "Tap a heart under any paragraph to send the writer a sub-cent cUSD tip on Celo. Pay per sentence, not per article.",
     "iconUrl": "https://tipitip-sable.vercel.app/logo-1024.png",
     "homeUrl": "https://tipitip-sable.vercel.app",
-    "splashImageUrl": "https://tipitip-sable.vercel.app/logo-512.png",
+    "splashImageUrl": "https://tipitip-sable.vercel.app/logo-200.png",
     "splashBackgroundColor": "#0b1220",
     "heroImageUrl": "https://tipitip-sable.vercel.app/og.png",
     "tagline": "Reward the line that landed",
@@ -14,7 +14,6 @@
     "tags": ["writing", "tipping", "celo", "cusd", "creators"],
     "ogTitle": "TipiTip",
     "ogDescription": "Per-paragraph cUSD tipping on Celo.",
-    "ogImageUrl": "https://tipitip-sable.vercel.app/og.png",
-    "requiredChains": ["eip155:42220"]
+    "ogImageUrl": "https://tipitip-sable.vercel.app/og.png"
   }
 }
