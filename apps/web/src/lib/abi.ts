@@ -50,6 +50,40 @@ export const tipJarAbi = [
     outputs: [{ name: "", type: "uint16" }],
   },
   {
+    // V3 (on-chain support upgrade): record a free, gas-only endorsement with an
+    // optional short message. Reverts on the pre-upgrade implementation.
+    type: "function",
+    name: "support",
+    stateMutability: "nonpayable",
+    inputs: [{ name: "message", type: "string" }],
+    outputs: [],
+  },
+  {
+    // V3: distinct wallets that have ever supported. Reverts pre-upgrade;
+    // callers treat a revert as "support not live yet".
+    type: "function",
+    name: "uniqueSupporters",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    // V3: total support signals (counts repeat supports).
+    type: "function",
+    name: "supportCount",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    // V3: whether an address has ever recorded support.
+    type: "function",
+    name: "hasSupported",
+    stateMutability: "view",
+    inputs: [{ name: "", type: "address" }],
+    outputs: [{ name: "", type: "bool" }],
+  },
+  {
     type: "function",
     name: "articleAuthor",
     stateMutability: "view",
@@ -91,6 +125,16 @@ export const tipJarAbi = [
     inputs: [
       { name: "author", type: "address", indexed: true },
       { name: "amount", type: "uint256", indexed: false },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "Supported",
+    inputs: [
+      { name: "supporter", type: "address", indexed: true },
+      { name: "message", type: "string", indexed: false },
+      { name: "at", type: "uint256", indexed: false },
     ],
     anonymous: false,
   },
