@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { FooterSupportLink } from "@/components/footer-support-link";
 import { NetworkBadge } from "@/components/network-badge";
 import { TipiTipLogo } from "@/components/tipitip-logo";
 import { MANIFESTO } from "@/lib/manifesto";
@@ -106,6 +107,7 @@ export function Footer() {
             v{VERSION}
             {COMMIT_SHA ? ` · ${COMMIT_SHA}` : ""} · MIT
           </span>
+          <FooterSupportLink />
           <NetworkBadge />
         </div>
       </div>
