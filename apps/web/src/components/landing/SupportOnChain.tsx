@@ -130,7 +130,7 @@ export function SupportOnChain() {
   const signals = total !== undefined ? Number(total) : 0;
 
   return (
-    <section className="border-t bg-primary/[0.03]">
+    <section id="support" className="scroll-mt-20 border-t bg-primary/[0.03]">
       <div className="container mx-auto max-w-3xl px-4 py-20 text-center md:py-24">
         <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
           <span aria-hidden="true">¶</span> Back the project
