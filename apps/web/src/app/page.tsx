@@ -6,6 +6,7 @@ import { CountUp } from "@/components/count-up";
 import { HeroDemo } from "@/components/hero/HeroDemo";
 import { RevealOnScroll } from "@/components/hero/RevealOnScroll";
 import { LedgerSection } from "@/components/landing/LedgerSection";
+import { SupportOnChain } from "@/components/landing/SupportOnChain";
 import { WhyTipiTip } from "@/components/landing/WhyTipiTip";
 import { Button } from "@/components/ui/button";
 import { getLeaderboard } from "@/lib/leaderboard";
@@ -149,6 +150,9 @@ export default async function Home() {
 
       {/* THIS WEEK'S LEDGER — real most-tipped paragraphs */}
       <LedgerSection paragraphs={board.topParagraphs.slice(0, 4)} />
+
+      {/* ON-CHAIN SUPPORT — free, gas-only endorsement (auto-shows post-upgrade) */}
+      <SupportOnChain />
 
       {/* CTA BAND */}
       <section className="border-t">
