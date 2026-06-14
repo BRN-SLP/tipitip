@@ -2,7 +2,7 @@ import { unstable_cache } from "next/cache";
 import { NextResponse } from "next/server";
 import { getAddress, isAddress, type Hex } from "viem";
 
-import { getArticleBodyUrl } from "@/lib/blob";
+import { loadArticleBody } from "@/lib/article-body";
 import { fetchAllEvents, getActiveChainId } from "@/lib/chain-logs";
 import { ADDRESSES, type SupportedChainId } from "@/lib/contracts";
 import { aggregateArticleEarnings } from "@/lib/tip-aggregation";
@@ -124,7 +124,7 @@ const loadWriterEarnings = unstable_cache(
             eventName: "Tipped",
             args: { articleId: a.articleId },
           }),
-          loadBody(a.articleId),
+          loadArticleBody(a.articleId),
         ]);
 
         for (const l of tippedLogs) {
@@ -215,19 +215,5 @@ export async function GET(
       { error: `Failed to read on-chain events: ${message}` },
       { status: 502 },
     );
-  }
-}
-
-/** Fetch an article body from Blob; returns null when missing (paragraph
- *  breakdown is then skipped but the article still lists its totals). */
-async function loadBody(articleId: string): Promise<string | null> {
-  try {
-    const url = await getArticleBodyUrl(articleId);
-    if (!url) return null;
-    const res = await fetch(url, { next: { revalidate: 60 } });
-    if (!res.ok) return null;
-    return await res.text();
-  } catch {
-    return null;
   }
 }

@@ -2,7 +2,7 @@ import { unstable_cache } from "next/cache";
 import { NextResponse } from "next/server";
 import { getAddress, isAddress, type Hex } from "viem";
 
-import { getArticleBodyUrl } from "@/lib/blob";
+import { loadArticleBody } from "@/lib/article-body";
 import {
   buildClient,
   fetchAllEvents,
@@ -71,7 +71,7 @@ const loadWriterActivity = unstable_cache(
             eventName: "Tipped",
             args: { articleId: a.articleId },
           }),
-          loadBody(a.articleId),
+          loadArticleBody(a.articleId),
         ]);
         const keyMap = body ? paragraphIndexByKey(a.articleId, body) : null;
         return tipped
@@ -168,18 +168,5 @@ export async function GET(
       { error: `Failed to read on-chain events: ${message}` },
       { status: 502 },
     );
-  }
-}
-
-/** Fetch an article body from Blob; null when missing (snippet omitted). */
-async function loadBody(articleId: string): Promise<string | null> {
-  try {
-    const url = await getArticleBodyUrl(articleId);
-    if (!url) return null;
-    const res = await fetch(url, { next: { revalidate: 60 } });
-    if (!res.ok) return null;
-    return await res.text();
-  } catch {
-    return null;
   }
 }
