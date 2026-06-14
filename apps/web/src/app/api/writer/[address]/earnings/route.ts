@@ -1,10 +1,10 @@
 import { unstable_cache } from "next/cache";
 import { NextResponse } from "next/server";
-import { getAddress, isAddress, type Hex } from "viem";
+import { type Hex } from "viem";
 
 import { loadArticleBody } from "@/lib/article-body";
-import { fetchAllEvents, getActiveChainId } from "@/lib/chain-logs";
-import { ADDRESSES, type SupportedChainId } from "@/lib/contracts";
+import { fetchAllEvents } from "@/lib/chain-logs";
+import { resolveWriterRoute } from "@/lib/writer-route";
 import { aggregateArticleEarnings } from "@/lib/tip-aggregation";
 
 /**
@@ -175,28 +175,9 @@ export async function GET(
   { params }: { params: Promise<{ address: string }> },
 ): Promise<NextResponse> {
   const { address } = await params;
-  if (!isAddress(address)) {
-    return NextResponse.json(
-      { error: "address must be a valid 0x address" },
-      { status: 400 },
-    );
-  }
-  const author = getAddress(address);
-
-  const chainId = getActiveChainId();
-  if (chainId === null) {
-    return NextResponse.json(
-      { error: "no TipJar contract configured for any supported chain" },
-      { status: 503 },
-    );
-  }
-  const tipJar = ADDRESSES[chainId as SupportedChainId]?.tipJar;
-  if (!tipJar) {
-    return NextResponse.json(
-      { error: `TipJar address not configured for chainId=${chainId}` },
-      { status: 503 },
-    );
-  }
+  const resolved = resolveWriterRoute(address);
+  if (!resolved.ok) return resolved.response;
+  const { author, chainId, tipJar } = resolved;
 
   try {
     const payload = await loadWriterEarnings(author, chainId, tipJar);
