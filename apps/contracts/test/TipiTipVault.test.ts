@@ -162,6 +162,41 @@ describe("TipiTipVault", () => {
       const { bob, vaultAs } = await loadFixture(deployVault);
       await expectRevert((await vaultAs(bob)).write.claim());
     });
+
+    it("rejects allocating to the vault itself", async () => {
+      const { owner, alice, vault, vaultAs } = await loadFixture(deployVault);
+      await (await vaultAs(alice)).write.donate([TEN]);
+      await expectRevert(
+        (await vaultAs(owner)).write.allocate([vault.address, TEN]),
+      );
+    });
+
+    it("lets the owner deallocate, returning funds to the pool", async () => {
+      const { owner, alice, bob, vault, vaultAs } =
+        await loadFixture(deployVault);
+      await (await vaultAs(alice)).write.donate([TEN]);
+      const four = parseUnits("4", 18);
+      await (await vaultAs(owner)).write.allocate([bob.account.address, four]);
+      await (await vaultAs(owner)).write.deallocate([bob.account.address, four]);
+      expect(await vault.read.totalAllocated()).to.equal(0n);
+      expect(await vault.read.unallocatedBalance()).to.equal(TEN);
+      await expectRevert((await vaultAs(bob)).write.claim());
+    });
+
+    it("rejects deallocating more than is allocated", async () => {
+      const { owner, alice, bob, vaultAs } = await loadFixture(deployVault);
+      await (await vaultAs(alice)).write.donate([TEN]);
+      await (await vaultAs(owner)).write.allocate([
+        bob.account.address,
+        parseUnits("4", 18),
+      ]);
+      await expectRevert(
+        (await vaultAs(owner)).write.deallocate([
+          bob.account.address,
+          parseUnits("5", 18),
+        ]),
+      );
+    });
   });
 
   describe("withdraw", () => {
