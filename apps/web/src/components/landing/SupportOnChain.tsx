@@ -87,6 +87,10 @@ export function SupportOnChain() {
         abi: tipJarAbi,
         functionName: "support",
         args: [message.trim()],
+        // support() writes three cold storage slots on a first-time call; with
+        // the cUSD feeCurrency path this needs ~147k gas. Pin a safe ceiling so
+        // wallet gas estimation cannot under-provision and revert with OOG.
+        gas: 200_000n,
         ...feeOverride,
       });
       await publicClient.waitForTransactionReceipt({ hash: tx });
