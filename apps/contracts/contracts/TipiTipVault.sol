@@ -4,6 +4,7 @@ pragma solidity ^0.8.28;
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {Ownable2Step} from "@openzeppelin/contracts/access/Ownable2Step.sol";
 import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 /// @dev Minimal view of TipJar used to pull this vault's accrued protocol fee.
@@ -23,7 +24,8 @@ interface ITipJar {
 ///      and easier to audit than behind an upgrade key. Reentrancy guards and
 ///      SafeERC20 throughout. The owner can only ever withdraw UN-allocated
 ///      funds, so balances already promised to claimers cannot be swept.
-contract TipiTipVault is Ownable, ReentrancyGuard {
+///      Ownable2Step so a mistyped owner transfer cannot orphan the treasury.
+contract TipiTipVault is Ownable2Step, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
     /// @notice The cUSD token this vault holds.
@@ -42,6 +44,7 @@ contract TipiTipVault is Ownable, ReentrancyGuard {
     event Donated(address indexed donor, uint256 amount);
     event FeesSwept(uint256 amount);
     event Allocated(address indexed recipient, uint256 amount);
+    event Deallocated(address indexed recipient, uint256 amount);
     event Claimed(address indexed recipient, uint256 amount);
     event Withdrawn(address indexed to, uint256 amount);
 
@@ -49,6 +52,8 @@ contract TipiTipVault is Ownable, ReentrancyGuard {
     error ZeroAddress();
     error NothingToClaim();
     error InsufficientUnallocated();
+    error InsufficientAllocation();
+    error NothingToSweep();
 
     /// @param cusd_   cUSD token address.
     /// @param tipJar_ TipJar proxy whose fee this vault will sweep.
@@ -73,13 +78,20 @@ contract TipiTipVault is Ownable, ReentrancyGuard {
         uint256 balanceBefore = cusd.balanceOf(address(this));
         ITipJar(tipJar).claimEarnings();
         uint256 swept = cusd.balanceOf(address(this)) - balanceBefore;
+        if (swept == 0) revert NothingToSweep();
         emit FeesSwept(swept);
     }
 
     /// @notice Owner allocates a claimable reward to `recipient` out of the
     ///         currently un-allocated balance.
-    function allocate(address recipient, uint256 amount) external onlyOwner {
-        if (recipient == address(0)) revert ZeroAddress();
+    function allocate(address recipient, uint256 amount)
+        external
+        onlyOwner
+        nonReentrant
+    {
+        if (recipient == address(0) || recipient == address(this)) {
+            revert ZeroAddress();
+        }
         if (amount == 0) revert ZeroAmount();
         if (cusd.balanceOf(address(this)) - totalAllocated < amount) {
             revert InsufficientUnallocated();
@@ -87,6 +99,17 @@ contract TipiTipVault is Ownable, ReentrancyGuard {
         claimable[recipient] += amount;
         totalAllocated += amount;
         emit Allocated(recipient, amount);
+    }
+
+    /// @notice Owner cancels part or all of a recipient's pending allocation,
+    ///         returning it to the un-allocated pool. Lets the owner correct a
+    ///         wrong recipient or amount before it is claimed.
+    function deallocate(address recipient, uint256 amount) external onlyOwner {
+        if (amount == 0) revert ZeroAmount();
+        if (claimable[recipient] < amount) revert InsufficientAllocation();
+        claimable[recipient] -= amount;
+        totalAllocated -= amount;
+        emit Deallocated(recipient, amount);
     }
 
     /// @notice Recipient pulls their allocated rewards.
