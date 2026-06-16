@@ -31,5 +31,13 @@
       "forWriters": "Para escritores",
       "showcase": "Galería"
     }
+  },
+  "theme": {
+    "toLight": "Cambiar a tema claro",
+    "toDark": "Cambiar a tema oscuro",
+    "toggle": "Alternar tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "label": "Tema"
   }
 }
