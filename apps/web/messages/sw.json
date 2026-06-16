@@ -19,5 +19,17 @@
       "npm": "npm @tipitip/embed",
       "github": "GitHub"
     }
+  },
+  "nav": {
+    "toggleMenu": "Geuza menyu",
+    "menuTitle": "Menyu ya urambazaji",
+    "links": {
+      "read": "Soma",
+      "leaderboard": "Ubao wa viongozi",
+      "write": "Andika",
+      "dashboard": "Dashibodi",
+      "forWriters": "Kwa waandishi",
+      "showcase": "Onyesho"
+    }
   }
 }
