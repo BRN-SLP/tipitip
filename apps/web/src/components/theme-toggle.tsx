@@ -1,6 +1,7 @@
 "use client";
 
 import { Contrast } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -17,6 +18,7 @@ import { Button } from "@/components/ui/button";
  */
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
+  const t = useTranslations("theme");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -32,17 +34,11 @@ export function ThemeToggle() {
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       disabled={!mounted}
-      aria-label={
-        mounted
-          ? isDark
-            ? "Switch to light theme"
-            : "Switch to dark theme"
-          : "Toggle theme"
-      }
+      aria-label={mounted ? (isDark ? t("toLight") : t("toDark")) : t("toggle")}
       className="gap-1.5 rounded-lg font-mono text-xs font-normal text-muted-foreground hover:text-foreground"
     >
       <Contrast className="h-3.5 w-3.5" aria-hidden="true" />
-      {mounted ? (isDark ? "Light" : "Dark") : "Theme"}
+      {mounted ? (isDark ? t("light") : t("dark")) : t("label")}
     </Button>
   );
 }
