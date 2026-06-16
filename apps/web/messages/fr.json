@@ -39,5 +39,10 @@
     "light": "Clair",
     "dark": "Sombre",
     "label": "Thème"
+  },
+  "network": {
+    "mainnet": "Celo Mainnet",
+    "sepolia": "Celo Sepolia",
+    "unsupported": "Réseau non pris en charge"
   }
 }
