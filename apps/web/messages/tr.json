@@ -39,5 +39,10 @@
     "light": "Açık",
     "dark": "Koyu",
     "label": "Tema"
+  },
+  "network": {
+    "mainnet": "Celo Mainnet",
+    "sepolia": "Celo Sepolia",
+    "unsupported": "Desteklenmeyen ağ"
   }
 }
