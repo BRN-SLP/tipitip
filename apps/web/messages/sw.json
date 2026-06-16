@@ -39,5 +39,10 @@
     "light": "Nyepesi",
     "dark": "Giza",
     "label": "Mandhari"
+  },
+  "network": {
+    "mainnet": "Celo Mainnet",
+    "sepolia": "Celo Sepolia",
+    "unsupported": "Mtandao usiotumika"
   }
 }
