@@ -19,5 +19,17 @@
       "npm": "npm @tipitip/embed",
       "github": "GitHub"
     }
+  },
+  "nav": {
+    "toggleMenu": "Перемкнути меню",
+    "menuTitle": "Навігаційне меню",
+    "links": {
+      "read": "Читати",
+      "leaderboard": "Рейтинг",
+      "write": "Писати",
+      "dashboard": "Панель",
+      "forWriters": "Для авторів",
+      "showcase": "Вітрина"
+    }
   }
 }
