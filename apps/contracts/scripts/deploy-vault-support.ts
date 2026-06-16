@@ -15,8 +15,9 @@
  *
  * Required env vars:
  *   PRIVATE_KEY     Hex deployer key for the target network.
- *   CUSD_ADDRESS    Optional override; mainnet falls back to KNOWN_CUSD.
- *   TIPJAR_ADDRESS  Optional override; mainnet falls back to KNOWN_TIPJAR.
+ *   CUSD_ADDRESS    Fallback only for chains not in KNOWN_CUSD. Mainnet and
+ *                   sepolia are known, so the env cannot override them.
+ *   TIPJAR_ADDRESS  Fallback only for chains not in KNOWN_TIPJAR.
  *
  * Usage:
  *   pnpm hardhat run scripts/deploy-vault-support.ts --network celo-sepolia
@@ -28,11 +29,15 @@ import hre from "hardhat";
 const KNOWN_CUSD: Record<number, string> = {
   // Celo Mainnet
   42220: "0x765DE816845861e75A25fCA122bb6898B8B1282a",
+  // Celo Sepolia
+  11142220: "0x970746Dc45A60125924e478cC4dDBce54c5F2a68",
 };
 
 const KNOWN_TIPJAR: Record<number, string> = {
   // Celo Mainnet TipJar UUPS proxy
   42220: "0x73E89882fF0c550111E5b4b5A1967582bddA9cB8",
+  // Celo Sepolia TipJar UUPS proxy
+  11142220: "0xDB11f15D8d6A94AdF63Bd760B1AAE130379983b8",
 };
 
 async function main() {
@@ -40,9 +45,12 @@ async function main() {
   const [deployer] = await ethers.getSigners();
   const chainId = Number((await ethers.provider.getNetwork()).chainId);
 
-  const cUSD = process.env.CUSD_ADDRESS?.trim() || KNOWN_CUSD[chainId] || "";
+  // Known chains are authoritative, so a stale CUSD_ADDRESS or TIPJAR_ADDRESS
+  // left in a testnet .env can never override the canonical mainnet addresses.
+  // The env is only a fallback for chains not listed in the KNOWN maps.
+  const cUSD = KNOWN_CUSD[chainId] || process.env.CUSD_ADDRESS?.trim() || "";
   const tipJar =
-    process.env.TIPJAR_ADDRESS?.trim() || KNOWN_TIPJAR[chainId] || "";
+    KNOWN_TIPJAR[chainId] || process.env.TIPJAR_ADDRESS?.trim() || "";
   if (!cUSD) {
     throw new Error(
       `No cUSD address for chainId=${chainId}. Set CUSD_ADDRESS or extend KNOWN_CUSD.`,
