@@ -1,5 +1,23 @@
 {
   "common": {
     "skipToContent": "Vai al contenuto"
+  },
+  "footer": {
+    "tagline1": "Manda mance agli autori per paragrafo.",
+    "tagline2": "Micro-mance in cUSD · pronto per MiniPay · 2,5% di commissione di protocollo",
+    "tagline3": "Costruito su Celo.",
+    "colProduct": "Prodotto",
+    "colLearn": "Impara",
+    "colBuild": "Sviluppa",
+    "links": {
+      "write": "Scrivi",
+      "leaderboard": "Classifica",
+      "showcase": "Vetrina",
+      "embed": "Incorpora",
+      "forWriters": "Per autori",
+      "manifesto": "Il manifesto",
+      "npm": "npm @tipitip/embed",
+      "github": "GitHub"
+    }
   }
 }
