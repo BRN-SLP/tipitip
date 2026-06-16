@@ -4,20 +4,19 @@ import Link from "next/link";
 import { Heart } from "lucide-react";
 import { useChainId, useReadContract } from "wagmi";
 
-import { getTipJarAddress, tipJarAbi } from "@/lib/contracts";
+import { getSupportAddress, supportContractAbi } from "@/lib/contracts";
 
 /**
- * Inconspicuous footer entry point to the on-chain support section.
+ * Inconspicuous footer entry point to the support and donate section.
  *
- * Mirrors the SupportOnChain auto-activation: the uniqueSupporters read
- * reverts on the pre-V3 implementation, so the link stays hidden until the
- * support upgrade is live, then quietly points readers at the /support page.
+ * Hides until the standalone Support contract address is configured, then
+ * quietly points readers at the /support page.
  */
 export function FooterSupportLink() {
   const chainId = useChainId();
-  const tipJarAddress = (() => {
+  const supportAddress = (() => {
     try {
-      return getTipJarAddress(chainId);
+      return getSupportAddress(chainId);
     } catch {
       return undefined;
     }
@@ -25,13 +24,13 @@ export function FooterSupportLink() {
 
   const { data: unique, isError } = useReadContract({
     chainId,
-    address: tipJarAddress,
-    abi: tipJarAbi,
+    address: supportAddress,
+    abi: supportContractAbi,
     functionName: "uniqueSupporters",
-    query: { enabled: !!tipJarAddress },
+    query: { enabled: !!supportAddress },
   });
 
-  // Pre-upgrade contract: the read reverts. Stay hidden until support() is live.
+  if (!supportAddress) return null;
   if (unique === undefined && isError) return null;
 
   return (
@@ -40,7 +39,7 @@ export function FooterSupportLink() {
       className="link-underline inline-flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground"
     >
       <Heart aria-hidden="true" className="h-3 w-3 fill-primary text-primary" />
-      Support on-chain
+      Support &amp; Donate
     </Link>
   );
 }

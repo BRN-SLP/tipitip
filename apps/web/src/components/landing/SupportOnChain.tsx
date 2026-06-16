@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import { Heart } from "lucide-react";
 import { toast } from "sonner";
+import { parseUnits } from "viem";
 import {
   useAccount,
   useChainId,
@@ -14,22 +15,28 @@ import {
 import { CountUp } from "@/components/count-up";
 import { ConnectButton } from "@/components/connect-button";
 import { Button } from "@/components/ui/button";
-import { getTipJarAddress, tipJarAbi } from "@/lib/contracts";
+import {
+  getSupportAddress,
+  getVaultAddress,
+  getCUSDAddress,
+  supportContractAbi,
+  vaultAbi,
+  erc20Abi,
+} from "@/lib/contracts";
 import { useFeeCurrencyOverride } from "@/hooks/useFeeCurrencyOverride";
 
 /** Matches the contract's MAX_SUPPORT_MESSAGE_BYTES. */
 const MAX_MESSAGE = 280;
 
 /**
- * On-chain support / endorsement surface.
+ * Back-the-project surface with two direct actions:
  *
- * Lets anyone record a free (gas-only) "I back TipiTip" signal on the TipJar
- * contract, optionally with a short message. Moves no funds — it is a public
- * supporter counter, not a payment.
+ *  - Support on-chain: a free (gas-only) endorsement recorded on the standalone
+ *    TipiTipSupport counter. Moves no funds.
+ *  - Donate: an optional cUSD donation sent straight to the TipiTipVault
+ *    treasury (approve the vault, then donate).
  *
- * Auto-activating: the `uniqueSupporters` read reverts on the pre-V3
- * implementation, so the whole section stays hidden until the on-chain support
- * upgrade is live, then appears on its own with zero config.
+ * The section hides itself until the Support contract address is configured.
  */
 export function SupportOnChain() {
   const chainId = useChainId();
@@ -37,15 +44,19 @@ export function SupportOnChain() {
   const publicClient = usePublicClient({ chainId });
   const feeOverride = useFeeCurrencyOverride();
   const [message, setMessage] = useState("");
+  const [amount, setAmount] = useState("");
   const [busy, setBusy] = useState(false);
 
-  const tipJarAddress = (() => {
+  const resolve = (fn: (id: number) => `0x${string}`): `0x${string}` | undefined => {
     try {
-      return getTipJarAddress(chainId);
+      return fn(chainId);
     } catch {
       return undefined;
     }
-  })();
+  };
+  const supportAddress = resolve(getSupportAddress);
+  const vaultAddress = resolve(getVaultAddress);
+  const cusdAddress = resolve(getCUSDAddress);
 
   const {
     data: unique,
@@ -53,42 +64,49 @@ export function SupportOnChain() {
     refetch: refetchUnique,
   } = useReadContract({
     chainId,
-    address: tipJarAddress,
-    abi: tipJarAbi,
+    address: supportAddress,
+    abi: supportContractAbi,
     functionName: "uniqueSupporters",
-    query: { enabled: !!tipJarAddress },
+    query: { enabled: !!supportAddress },
   });
   const { data: total, refetch: refetchTotal } = useReadContract({
     chainId,
-    address: tipJarAddress,
-    abi: tipJarAbi,
+    address: supportAddress,
+    abi: supportContractAbi,
     functionName: "supportCount",
-    query: { enabled: !!tipJarAddress },
+    query: { enabled: !!supportAddress },
   });
   const { data: alreadySupported, refetch: refetchHas } = useReadContract({
     chainId,
-    address: tipJarAddress,
-    abi: tipJarAbi,
+    address: supportAddress,
+    abi: supportContractAbi,
     functionName: "hasSupported",
     args: address ? [address] : undefined,
-    query: { enabled: !!tipJarAddress && !!address },
+    query: { enabled: !!supportAddress && !!address },
+  });
+  const { data: allowance, refetch: refetchAllowance } = useReadContract({
+    chainId,
+    address: cusdAddress,
+    abi: erc20Abi,
+    functionName: "allowance",
+    args: address && vaultAddress ? [address, vaultAddress] : undefined,
+    query: { enabled: !!cusdAddress && !!address && !!vaultAddress },
   });
 
   const { writeContractAsync } = useWriteContract();
 
   const onSupport = useCallback(async () => {
-    if (!tipJarAddress || !publicClient) return;
+    if (!supportAddress || !publicClient) return;
     setBusy(true);
     const toastId = toast.loading("Recording your support…");
     try {
       const tx = await writeContractAsync({
         chainId,
-        address: tipJarAddress,
-        abi: tipJarAbi,
+        address: supportAddress,
+        abi: supportContractAbi,
         functionName: "support",
         args: [message.trim()],
-        // support() writes three cold storage slots on a first-time call; with
-        // the cUSD feeCurrency path this needs ~147k gas. Pin a safe ceiling so
+        // First-time support writes cold storage slots; pin a safe ceiling so
         // wallet gas estimation cannot under-provision and revert with OOG.
         gas: 200_000n,
         ...feeOverride,
@@ -116,7 +134,7 @@ export function SupportOnChain() {
       setBusy(false);
     }
   }, [
-    tipJarAddress,
+    supportAddress,
     publicClient,
     writeContractAsync,
     chainId,
@@ -127,11 +145,78 @@ export function SupportOnChain() {
     refetchHas,
   ]);
 
-  // Pre-upgrade contract: the read reverts. Stay hidden until support() is live.
+  const onDonate = useCallback(async () => {
+    if (!vaultAddress || !cusdAddress || !publicClient) return;
+    let amountWei: bigint;
+    try {
+      amountWei = parseUnits(amount.trim(), 18);
+    } catch {
+      toast.error("Enter a valid amount");
+      return;
+    }
+    if (amountWei <= 0n) {
+      toast.error("Enter an amount greater than zero");
+      return;
+    }
+    setBusy(true);
+    const toastId = toast.loading("Preparing your donation…");
+    try {
+      if ((allowance ?? 0n) < amountWei) {
+        toast.loading("Approve cUSD for the donation…", { id: toastId });
+        const approveTx = await writeContractAsync({
+          chainId,
+          address: cusdAddress,
+          abi: erc20Abi,
+          functionName: "approve",
+          args: [vaultAddress, amountWei],
+          ...feeOverride,
+        });
+        await publicClient.waitForTransactionReceipt({ hash: approveTx });
+        await refetchAllowance();
+      }
+      toast.loading("Sending your donation…", { id: toastId });
+      const tx = await writeContractAsync({
+        chainId,
+        address: vaultAddress,
+        abi: vaultAbi,
+        functionName: "donate",
+        args: [amountWei],
+        // donate pulls cUSD (cold transferFrom) plus an event; pin a ceiling.
+        gas: 250_000n,
+        ...feeOverride,
+      });
+      await publicClient.waitForTransactionReceipt({ hash: tx });
+      toast.success("Donation sent to the project treasury", {
+        id: toastId,
+        description: "Thank you for supporting TipiTip.",
+      });
+      setAmount("");
+    } catch (err: unknown) {
+      const m =
+        err instanceof Error ? err.message.split("\n")[0] : "transaction failed";
+      toast.error("Couldn't send donation", { id: toastId, description: m });
+    } finally {
+      setBusy(false);
+    }
+  }, [
+    vaultAddress,
+    cusdAddress,
+    publicClient,
+    writeContractAsync,
+    chainId,
+    amount,
+    allowance,
+    feeOverride,
+    refetchAllowance,
+  ]);
+
+  // Hide until the Support contract is configured (or its read reverts).
+  if (!supportAddress) return null;
   if (unique === undefined && isError) return null;
 
   const supporters = unique !== undefined ? Number(unique) : 0;
   const signals = total !== undefined ? Number(total) : 0;
+  const canDonate = !!vaultAddress && !!cusdAddress;
 
   return (
     <section id="support" className="scroll-mt-20 border-t bg-primary/[0.03]">
@@ -145,7 +230,7 @@ export function SupportOnChain() {
         <p className="mx-auto mt-4 max-w-md text-muted-foreground">
           Sign one transaction to record your support for TipiTip on Celo. It
           costs only network fees, moves no funds, and leaves a permanent,
-          public vote of confidence — optionally with a message.
+          public vote of confidence, optionally with a message.
         </p>
 
         <div className="mt-7 inline-flex items-baseline gap-2 font-mono tabular-nums">
@@ -187,27 +272,58 @@ export function SupportOnChain() {
               disabled={busy}
               className="shadow-sm shadow-primary/20"
             >
-              <Heart
-                aria-hidden="true"
-                className="mr-2 h-4 w-4 fill-current"
-              />
+              <Heart aria-hidden="true" className="mr-2 h-4 w-4 fill-current" />
               {busy
-                ? "Recording…"
+                ? "Working…"
                 : alreadySupported
                   ? "Support again"
                   : "Support on-chain"}
             </Button>
             {alreadySupported && !busy && (
               <p className="text-xs text-muted-foreground">
-                You&rsquo;ve already shown support — thank you.
+                You&rsquo;ve already shown support, thank you.
               </p>
+            )}
+
+            {canDonate && (
+              <div className="mt-2 border-t pt-5 text-left">
+                <p className="text-center text-sm text-muted-foreground">
+                  Or donate cUSD straight to the project treasury.
+                </p>
+                <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+                  <div className="relative flex-1">
+                    <input
+                      value={amount}
+                      onChange={(e) =>
+                        setAmount(e.target.value.replace(/[^0-9.]/g, ""))
+                      }
+                      inputMode="decimal"
+                      placeholder="Amount"
+                      aria-label="Donation amount in cUSD"
+                      disabled={busy}
+                      className="w-full rounded-md border border-input bg-background px-3 py-2 pr-14 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    />
+                    <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 font-mono text-[10px] text-muted-foreground">
+                      cUSD
+                    </span>
+                  </div>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    onClick={onDonate}
+                    disabled={busy || !amount}
+                  >
+                    Donate
+                  </Button>
+                </div>
+              </div>
             )}
           </div>
         ) : (
           <div className="mt-8 flex flex-col items-center gap-2">
             <ConnectButton />
             <p className="text-xs text-muted-foreground">
-              Connect a Celo wallet to record your support.
+              Connect a Celo wallet to support or donate.
             </p>
           </div>
         )}
