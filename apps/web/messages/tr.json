@@ -31,5 +31,13 @@
       "forWriters": "Yazarlar için",
       "showcase": "Vitrin"
     }
+  },
+  "theme": {
+    "toLight": "Açık temaya geç",
+    "toDark": "Koyu temaya geç",
+    "toggle": "Temayı değiştir",
+    "light": "Açık",
+    "dark": "Koyu",
+    "label": "Tema"
   }
 }
