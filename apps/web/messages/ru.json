@@ -39,5 +39,10 @@
     "light": "Светлая",
     "dark": "Тёмная",
     "label": "Тема"
+  },
+  "network": {
+    "mainnet": "Celo Mainnet",
+    "sepolia": "Celo Sepolia",
+    "unsupported": "Неподдерживаемая сеть"
   }
 }
