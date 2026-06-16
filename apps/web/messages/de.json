@@ -1,5 +1,23 @@
 {
   "common": {
     "skipToContent": "Zum Inhalt springen"
+  },
+  "footer": {
+    "tagline1": "Gib Autoren pro Absatz Trinkgeld.",
+    "tagline2": "cUSD-Mikro-Trinkgelder · MiniPay-bereit · 2,5% Protokollgebühr",
+    "tagline3": "Auf Celo gebaut.",
+    "colProduct": "Produkt",
+    "colLearn": "Lernen",
+    "colBuild": "Entwickeln",
+    "links": {
+      "write": "Schreiben",
+      "leaderboard": "Bestenliste",
+      "showcase": "Schaufenster",
+      "embed": "Einbetten",
+      "forWriters": "Für Autoren",
+      "manifesto": "Das Manifest",
+      "npm": "npm @tipitip/embed",
+      "github": "GitHub"
+    }
   }
 }
