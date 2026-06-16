@@ -2,7 +2,20 @@
  * Supported UI locales. English is the source and default; add a catalog
  * under apps/web/messages and extend this list to add a language.
  */
-export const locales = ["en", "es", "fr", "pt"] as const;
+export const locales = [
+  "en",
+  "es",
+  "fr",
+  "pt",
+  "de",
+  "it",
+  "nl",
+  "pl",
+  "uk",
+  "tr",
+  "ru",
+  "sw",
+] as const;
 
 export type Locale = (typeof locales)[number];
 
@@ -14,6 +27,14 @@ export const localeNames: Record<Locale, string> = {
   es: "Español",
   fr: "Français",
   pt: "Português",
+  de: "Deutsch",
+  it: "Italiano",
+  nl: "Nederlands",
+  pl: "Polski",
+  uk: "Українська",
+  tr: "Türkçe",
+  ru: "Русский",
+  sw: "Kiswahili",
 };
 
 /** Narrow an arbitrary cookie value to a supported Locale. */
