@@ -10,8 +10,8 @@
  * The deployer becomes the Vault owner (Ownable2Step). Deploy with the wallet
  * you want to own the treasury, ideally the same owner as the TipJar proxy.
  *
- * Deploy order matters: the Vault is deployed first, then the Support contract
- * is wired to it. Both addresses are immutable once set.
+ * The Vault takes cUSD and the TipJar proxy and is immutable once set. The
+ * Support contract is independent and takes no constructor args.
  *
  * Required env vars:
  *   PRIVATE_KEY     Hex deployer key for the target network.
@@ -68,7 +68,7 @@ async function main() {
   console.log(`✓ TipiTipVault:   ${vaultAddress}`);
 
   const Support = await ethers.getContractFactory("TipiTipSupport");
-  const support = await Support.deploy(cUSD, vaultAddress);
+  const support = await Support.deploy();
   await support.waitForDeployment();
   const supportAddress = await support.getAddress();
   console.log(`✓ TipiTipSupport: ${supportAddress}\n`);
@@ -78,7 +78,7 @@ async function main() {
     `  pnpm hardhat verify --network ${network.name} ${vaultAddress} ${cUSD} ${tipJar}`,
   );
   console.log(
-    `  pnpm hardhat verify --network ${network.name} ${supportAddress} ${cUSD} ${vaultAddress}\n`,
+    `  pnpm hardhat verify --network ${network.name} ${supportAddress}\n`,
   );
 
   console.log("Then, as the TipJar owner, route the protocol fee to the vault:");
