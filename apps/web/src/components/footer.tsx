@@ -78,9 +78,9 @@ export function Footer() {
   return (
     <footer className="border-t bg-background/60 backdrop-blur-md">
       <div className="container mx-auto max-w-6xl px-4 py-10">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-9 sm:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-x-10">
+        <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
           {/* brand */}
-          <div className="col-span-2 max-w-sm sm:col-span-3 lg:col-span-1">
+          <div className="max-w-xs">
             <TipiTipLogo className="text-[22px] text-foreground" />
             <p className="mt-4 font-mono text-xs leading-relaxed text-muted-foreground">
               Tip writers per paragraph.
@@ -90,9 +90,12 @@ export function Footer() {
             </p>
           </div>
 
-          {COLUMNS.map((c) => (
-            <FootColumn key={c.title} title={c.title} links={c.links} />
-          ))}
+          {/* link columns, grouped */}
+          <div className="grid grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-3 sm:gap-x-14">
+            {COLUMNS.map((c) => (
+              <FootColumn key={c.title} title={c.title} links={c.links} />
+            ))}
+          </div>
         </div>
 
         {/* meta row */}
