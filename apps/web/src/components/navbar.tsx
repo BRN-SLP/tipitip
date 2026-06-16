@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useTranslations } from "next-intl"
 import { Menu } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -16,16 +17,17 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { TipiTipLogo } from "@/components/tipitip-logo"
 
 const navLinks = [
-  { name: "Read", href: "/read" },
-  { name: "Leaderboard", href: "/leaderboard" },
-  { name: "Write", href: "/write" },
-  { name: "Dashboard", href: "/dashboard" },
-  { name: "For writers", href: "/for-writers" },
-  { name: "Showcase", href: "/showcase" },
+  { key: "read", href: "/read" },
+  { key: "leaderboard", href: "/leaderboard" },
+  { key: "write", href: "/write" },
+  { key: "dashboard", href: "/dashboard" },
+  { key: "forWriters", href: "/for-writers" },
+  { key: "showcase", href: "/showcase" },
 ] as const
 
 export function Navbar() {
   const pathname = usePathname()
+  const t = useTranslations("nav")
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
@@ -40,11 +42,11 @@ export function Navbar() {
                   shadcn's default size="icon" is 36px. */}
               <Button variant="ghost" size="icon" className="h-11 w-11 md:hidden">
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
+                <span className="sr-only">{t("toggleMenu")}</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-80">
-              <SheetTitle className="sr-only">Navigation menu</SheetTitle>
+              <SheetTitle className="sr-only">{t("menuTitle")}</SheetTitle>
               <div className="mb-8 flex items-center text-foreground text-[30px]">
                 <TipiTipLogo />
               </div>
@@ -58,7 +60,7 @@ export function Navbar() {
                       pathname === link.href ? "text-foreground" : "text-foreground/70"
                     }`}
                   >
-                    {link.name}
+                    {t(`links.${link.key}`)}
                   </Link>
                 ))}
                 <div className="mt-6 flex items-center gap-2 border-t pt-6">
@@ -89,7 +91,7 @@ export function Navbar() {
                 pathname === link.href ? "text-foreground" : "text-foreground/70"
               }`}
             >
-              {link.name}
+              {t(`links.${link.key}`)}
             </Link>
           ))}
         </nav>
