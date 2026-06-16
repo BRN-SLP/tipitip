@@ -77,32 +77,26 @@ function FootColumn({
 export function Footer() {
   return (
     <footer className="border-t bg-background/60 backdrop-blur-md">
-      <div className="container mx-auto max-w-screen-2xl px-4 py-12">
-        <div className="flex flex-col gap-10 md:flex-row md:justify-between">
+      <div className="container mx-auto max-w-6xl px-4 py-10">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-9 sm:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-x-10">
           {/* brand */}
-          <div className="max-w-xs">
-            <div className="text-foreground">
-              <TipiTipLogo className="text-[22px]" />
-            </div>
+          <div className="col-span-2 max-w-sm sm:col-span-3 lg:col-span-1">
+            <TipiTipLogo className="text-[22px] text-foreground" />
             <p className="mt-4 font-mono text-xs leading-relaxed text-muted-foreground">
               Tip writers per paragraph.
-              <br />
-              cUSD micro-tips · MiniPay-ready · 2.5% protocol fee
-              <br />
-              Built on Celo.
+            </p>
+            <p className="mt-1.5 font-mono text-[11px] leading-relaxed text-muted-foreground/75">
+              cUSD micro-tips · MiniPay-ready · 2.5% protocol fee · Built on Celo.
             </p>
           </div>
 
-          {/* link columns */}
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
-            {COLUMNS.map((c) => (
-              <FootColumn key={c.title} title={c.title} links={c.links} />
-            ))}
-          </div>
+          {COLUMNS.map((c) => (
+            <FootColumn key={c.title} title={c.title} links={c.links} />
+          ))}
         </div>
 
         {/* meta row */}
-        <div className="mt-10 flex flex-col gap-3 border-t border-dashed pt-6 font-mono text-[11px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-9 flex flex-col gap-3 border-t border-dashed pt-5 font-mono text-[11px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <span>
             v{VERSION}
             {COMMIT_SHA ? ` · ${COMMIT_SHA}` : ""} · MIT
