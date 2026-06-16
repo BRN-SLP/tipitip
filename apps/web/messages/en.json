@@ -31,5 +31,13 @@
       "forWriters": "For writers",
       "showcase": "Showcase"
     }
+  },
+  "theme": {
+    "toLight": "Switch to light theme",
+    "toDark": "Switch to dark theme",
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "label": "Theme"
   }
 }
