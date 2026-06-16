@@ -1,5 +1,23 @@
 {
   "common": {
     "skipToContent": "Перейти до вмісту"
+  },
+  "footer": {
+    "tagline1": "Залишайте авторам чайові за абзац.",
+    "tagline2": "Мікрочайові в cUSD · готово для MiniPay · 2,5% комісії протоколу",
+    "tagline3": "Створено на Celo.",
+    "colProduct": "Продукт",
+    "colLearn": "Навчання",
+    "colBuild": "Розробка",
+    "links": {
+      "write": "Писати",
+      "leaderboard": "Рейтинг",
+      "showcase": "Вітрина",
+      "embed": "Вбудувати",
+      "forWriters": "Для авторів",
+      "manifesto": "Маніфест",
+      "npm": "npm @tipitip/embed",
+      "github": "GitHub"
+    }
   }
 }
