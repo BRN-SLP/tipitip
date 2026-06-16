@@ -1,5 +1,23 @@
 {
   "common": {
     "skipToContent": "Saltar al contenido"
+  },
+  "footer": {
+    "tagline1": "Da propinas a escritores por párrafo.",
+    "tagline2": "Micro-propinas en cUSD · compatible con MiniPay · 2.5% de comisión",
+    "tagline3": "Hecho en Celo.",
+    "colProduct": "Producto",
+    "colLearn": "Aprender",
+    "colBuild": "Construir",
+    "links": {
+      "write": "Escribir",
+      "leaderboard": "Clasificación",
+      "showcase": "Galería",
+      "embed": "Insertar",
+      "forWriters": "Para escritores",
+      "manifesto": "El manifiesto",
+      "npm": "npm @tipitip/embed",
+      "github": "GitHub"
+    }
   }
 }
