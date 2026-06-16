@@ -39,5 +39,10 @@
     "light": "Claro",
     "dark": "Oscuro",
     "label": "Tema"
+  },
+  "network": {
+    "mainnet": "Celo Mainnet",
+    "sepolia": "Celo Sepolia",
+    "unsupported": "Red no compatible"
   }
 }
