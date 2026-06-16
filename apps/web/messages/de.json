@@ -39,5 +39,10 @@
     "light": "Hell",
     "dark": "Dunkel",
     "label": "Thema"
+  },
+  "network": {
+    "mainnet": "Celo Mainnet",
+    "sepolia": "Celo Sepolia",
+    "unsupported": "Nicht unterstütztes Netzwerk"
   }
 }
