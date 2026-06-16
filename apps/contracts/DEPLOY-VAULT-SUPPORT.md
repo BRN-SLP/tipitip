@@ -1,7 +1,13 @@
 # Deploy and wiring runbook: TipiTipVault and TipiTipSupport
 
-Status: contracts written, 19 hardhat tests green, security-reviewed. NOT deployed.
+Status: contracts written, 17 hardhat tests green, security-reviewed. NOT deployed.
 This is the checklist to take them live without missing a step.
+
+Design: TipJar (existing) takes paragraph tips and routes its 2.5% fee to the
+Vault. TipiTipSupport is a free, fund-less on-chain endorsement counter.
+TipiTipVault is the treasury: it holds the 2.5% fee plus direct donations. The
+`/support` page gets two direct buttons, "Support on-chain" (Support contract)
+and "Donate" (Vault contract), so each contract gets its own transactions.
 
 ## 0. Decide before anything
 
@@ -16,24 +22,22 @@ This is the checklist to take them live without missing a step.
 
 ## 1. Dry-run on Sepolia first (strongly recommended)
 
-Mainnet is one-shot for the immutable wiring, so rehearse the whole flow on testnet:
+Mainnet is one-shot for the Vault wiring, so rehearse the whole flow on testnet:
 
 - [ ] Deploy/reuse a test TipJar, then
       `pnpm hardhat run scripts/deploy-vault-support.ts --network celo-sepolia`.
 - [ ] `setTreasury(vault)` on the test TipJar; tip; `sweepFees()`; confirm cUSD
       lands in the vault.
-- [ ] `support()`; `supportWithDonation()` with a small amount; confirm the
-      donation lands in the vault.
-- [ ] `allocate()` to a second wallet; `claim()` from it; confirm payout and that
-      `withdraw()` cannot touch the allocated amount.
+- [ ] `support()` on the Support contract; confirm the counters move.
+- [ ] `donate()` to the vault with a small amount; confirm it lands.
 
 ## 2. Deploy to mainnet
 
 - [ ] `pnpm hardhat run scripts/deploy-vault-support.ts --network celo`
 - [ ] Record the printed Vault and Support addresses.
-- [ ] Verify both (commands printed by the script, constructor args included):
+- [ ] Verify both (commands printed by the script):
   - `pnpm hardhat verify --network celo <vault> <cUSD> <tipJar>`
-  - `pnpm hardhat verify --network celo <support> <cUSD> <vault>`
+  - `pnpm hardhat verify --network celo <support>`
 
 ## 3. Route the fee (deliberate, separate tx)
 
@@ -54,44 +58,46 @@ Touchpoints (from the codebase recon):
       must be redeployed with these set.
 - [ ] `apps/web/src/lib/abi.ts` - add `supportContractAbi` and `vaultAbi`
       (`as const`).
-- [ ] `apps/web/src/components/landing/SupportOnChain.tsx` - switch the address
-      from `getTipJarAddress` to `getSupportAddress` and the abi from `tipJarAbi`
-      to `supportContractAbi`. Add an optional donation amount: if it is greater
-      than zero, `approve(<support>, amount)` then
-      `supportWithDonation(message, amount)` with `gas: 250_000n` plus
-      `...feeOverride`; otherwise `support(message)` with `gas: 200_000n` plus
-      `...feeOverride`.
-- [ ] `apps/web/src/components/footer-support-link.tsx` - point its
-      `uniqueSupporters` read at the Support contract.
-- [ ] Later: a Vault claim card modeled on `dashboard/ClaimCard.tsx`, reading
-      `claimable(address)` then calling `claim()`.
+- [ ] `apps/web/src/components/landing/SupportOnChain.tsx` - two direct actions:
+      "Support on-chain" calls `support(message)` on the Support contract
+      (`gas: 200_000n` plus `...feeOverride`); "Donate" calls
+      `vault.donate(amount)` after `approve(<vault>, amount)` on cUSD
+      (`gas: 250_000n` plus `...feeOverride`). Counters read from the Support
+      contract.
+- [ ] `apps/web/src/components/footer-support-link.tsx` - relabel to
+      "Support & Donate" and point its `uniqueSupporters` read at the Support
+      contract.
+- [ ] Later (rewards are parked): a Vault claim card modeled on
+      `dashboard/ClaimCard.tsx`, reading `claimable(address)` then `claim()`.
 
-Approve target: for `supportWithDonation` the supporter approves the **Support**
-contract (it runs `transferFrom(supporter -> vault)`). A direct `vault.donate()`
-would instead need approval to the **Vault**. Route v1 donations through Support
-and approve Support.
+Approve target: the "Donate" button calls `vault.donate()`, so the donor approves
+the **Vault** for cUSD. The Support contract never touches funds, so "Support
+on-chain" needs no approval.
 
 ## 5. Get 10+ real wallets per contract
 
 Deploying does not score; real usage does. Each contract counts only past 10
 unique transacting wallets.
 
-- Support: a visible "support us / chip in" call to action (today it is a quiet
-  footer link). Wallets come from supporters and small donors.
-- Vault: wallets come from donors (via Support) and reward claimers. Fund small,
-  real rewards with `allocate()` to real writers and early supporters so they
-  `claim()` (real people, real claims, never Sybil).
+- Support: the free "Support on-chain" button (gas only). Easiest to grow, since
+  it asks for no money. Ask the Celo/Farcaster audience to back the project.
+- Vault: the "Donate" button (direct `vault.donate()`) plus direct sponsor
+  donations. The fee arrives via `sweepFees()`, which is only one or two wallets,
+  so the donate button is what brings distinct wallets to the Vault.
+- Rewards/claim are parked for later; when used, `allocate()` to real users so
+  they `claim()` adds claimer wallets too (real people, never Sybil).
 
 ## Gotchas
 
-1. Immutable: `Vault.tipJar` and `Support.vault` are fixed at deploy. Order (Vault
-   then Support) and address correctness are one-shot; wrong means redeploy.
+1. Immutable: `Vault.tipJar` is fixed at deploy and the Vault needs cUSD plus the
+   TipJar proxy. The Support contract takes no args and is independent, so order
+   does not matter for it. Wrong Vault args mean redeploy.
 2. Deployer becomes the Vault owner; mind which key you deploy from.
-3. One canonical support path: fully switch the button to the Support contract; do
-   not leave `TipJar.support` live in the UI, or wallets split across contracts
-   and neither clears the 10 bar.
+3. Two buttons, two contracts: "Support on-chain" hits the Support contract,
+   "Donate" hits the Vault. Do not also leave `TipJar.support` live in the UI, or
+   support wallets split across two contracts and neither clears the 10 bar.
 4. Every write needs `...feeOverride` (MiniPay) and an explicit gas for
-   support/donation, to avoid out-of-gas.
+   support/donate, to avoid out-of-gas.
 5. Counter note: the new Support counters start at zero, but the old TipJar support
    count is near zero anyway, and the homepage "supporters" number is unique
    tippers (Tipped events on TipJar), which this change does not affect.
