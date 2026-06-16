@@ -1,5 +1,23 @@
 {
   "common": {
     "skipToContent": "İçeriğe geç"
+  },
+  "footer": {
+    "tagline1": "Yazarlara paragraf başına bahşiş verin.",
+    "tagline2": "cUSD mikro bahşişleri · MiniPay uyumlu · %2,5 protokol ücreti",
+    "tagline3": "Celo üzerine kuruldu.",
+    "colProduct": "Ürün",
+    "colLearn": "Öğren",
+    "colBuild": "Geliştir",
+    "links": {
+      "write": "Yaz",
+      "leaderboard": "Lider tablosu",
+      "showcase": "Vitrin",
+      "embed": "Göm",
+      "forWriters": "Yazarlar için",
+      "manifesto": "Manifesto",
+      "npm": "npm @tipitip/embed",
+      "github": "GitHub"
+    }
   }
 }
