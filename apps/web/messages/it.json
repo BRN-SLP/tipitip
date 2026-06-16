@@ -31,5 +31,13 @@
       "forWriters": "Per autori",
       "showcase": "Vetrina"
     }
+  },
+  "theme": {
+    "toLight": "Passa al tema chiaro",
+    "toDark": "Passa al tema scuro",
+    "toggle": "Cambia tema",
+    "light": "Chiaro",
+    "dark": "Scuro",
+    "label": "Tema"
   }
 }
