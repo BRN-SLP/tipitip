@@ -19,5 +19,17 @@
       "npm": "npm @tipitip/embed",
       "github": "GitHub"
     }
+  },
+  "nav": {
+    "toggleMenu": "Alternar menú",
+    "menuTitle": "Menú de navegación",
+    "links": {
+      "read": "Leer",
+      "leaderboard": "Clasificación",
+      "write": "Escribir",
+      "dashboard": "Panel",
+      "forWriters": "Para escritores",
+      "showcase": "Galería"
+    }
   }
 }
