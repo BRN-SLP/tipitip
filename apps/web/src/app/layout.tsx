@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import { IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale } from 'next-intl/server';
+
 import { Footer } from '@/components/footer';
 import { FrameReady } from '@/components/frame/FrameReady';
 import { Navbar } from '@/components/navbar';
@@ -98,14 +101,15 @@ export const viewport: Viewport = {
   colorScheme: 'dark light',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = await getLocale();
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${plexSans.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >
@@ -120,6 +124,7 @@ export default function RootLayout({
             inside an iframe sandbox, this still resolves first. */}
         <FrameReady />
         {/* Navbar is included on all pages */}
+        <NextIntlClientProvider>
         <ThemeProvider>
           <div className="relative flex min-h-screen flex-col">
             <a
@@ -151,6 +156,7 @@ export default function RootLayout({
             </WalletProvider>
           </div>
         </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

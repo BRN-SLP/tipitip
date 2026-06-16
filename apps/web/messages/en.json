@@ -1,0 +1,23 @@
+{
+  "common": {
+    "skipToContent": "Skip to content"
+  },
+  "footer": {
+    "tagline1": "Tip writers per paragraph.",
+    "tagline2": "cUSD micro-tips · MiniPay-ready · 2.5% protocol fee",
+    "tagline3": "Built on Celo.",
+    "colProduct": "Product",
+    "colLearn": "Learn",
+    "colBuild": "Build",
+    "links": {
+      "write": "Write",
+      "leaderboard": "Leaderboard",
+      "showcase": "Showcase",
+      "embed": "Embed",
+      "forWriters": "For writers",
+      "manifesto": "The manifesto",
+      "npm": "npm @tipitip/embed",
+      "github": "GitHub"
+    }
+  }
+}
