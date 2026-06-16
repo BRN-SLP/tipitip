@@ -1,5 +1,23 @@
 {
   "common": {
     "skipToContent": "Rukia hadi kwa yaliyomo"
+  },
+  "footer": {
+    "tagline1": "Wapatie waandishi bakshishi kwa kila aya.",
+    "tagline2": "Bakshishi ndogo za cUSD · tayari kwa MiniPay · ada ya protokoli 2.5%",
+    "tagline3": "Imejengwa kwenye Celo.",
+    "colProduct": "Bidhaa",
+    "colLearn": "Jifunze",
+    "colBuild": "Jenga",
+    "links": {
+      "write": "Andika",
+      "leaderboard": "Ubao wa viongozi",
+      "showcase": "Onyesho",
+      "embed": "Pachika",
+      "forWriters": "Kwa waandishi",
+      "manifesto": "Ilani",
+      "npm": "npm @tipitip/embed",
+      "github": "GitHub"
+    }
   }
 }
