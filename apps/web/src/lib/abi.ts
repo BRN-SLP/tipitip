@@ -177,3 +177,86 @@ export const erc20Abi = [
     outputs: [{ name: "", type: "uint8" }],
   },
 ] as const;
+
+/** ABI for the standalone TipiTipSupport endorsement counter (no funds). */
+export const supportContractAbi = [
+  {
+    type: "function",
+    name: "support",
+    stateMutability: "nonpayable",
+    inputs: [{ name: "message", type: "string" }],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "uniqueSupporters",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "supportCount",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "hasSupported",
+    stateMutability: "view",
+    inputs: [{ name: "", type: "address" }],
+    outputs: [{ name: "", type: "bool" }],
+  },
+  {
+    type: "event",
+    name: "Supported",
+    inputs: [
+      { name: "supporter", type: "address", indexed: true },
+      { name: "message", type: "string", indexed: false },
+      { name: "at", type: "uint256", indexed: false },
+    ],
+    anonymous: false,
+  },
+] as const;
+
+/** ABI for the TipiTipVault treasury (donate now; claim is parked for later). */
+export const vaultAbi = [
+  {
+    type: "function",
+    name: "donate",
+    stateMutability: "nonpayable",
+    inputs: [{ name: "amount", type: "uint256" }],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "claimable",
+    stateMutability: "view",
+    inputs: [{ name: "", type: "address" }],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "unallocatedBalance",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "claim",
+    stateMutability: "nonpayable",
+    inputs: [],
+    outputs: [],
+  },
+  {
+    type: "event",
+    name: "Donated",
+    inputs: [
+      { name: "donor", type: "address", indexed: true },
+      { name: "amount", type: "uint256", indexed: false },
+    ],
+    anonymous: false,
+  },
+] as const;
