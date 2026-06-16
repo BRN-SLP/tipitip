@@ -19,5 +19,17 @@
       "npm": "npm @tipitip/embed",
       "github": "GitHub"
     }
+  },
+  "nav": {
+    "toggleMenu": "Menüyü aç/kapat",
+    "menuTitle": "Gezinme menüsü",
+    "links": {
+      "read": "Oku",
+      "leaderboard": "Lider tablosu",
+      "write": "Yaz",
+      "dashboard": "Panel",
+      "forWriters": "Yazarlar için",
+      "showcase": "Vitrin"
+    }
   }
 }
