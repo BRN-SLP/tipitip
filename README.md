@@ -3,7 +3,9 @@
 > **Tip the paragraph, not the post.** Per-paragraph cUSD micro-tipping for writers on Celo. Readers anywhere tip in cUSD, straight to the writer.
 
 🟢 **Live (Celo Mainnet):** https://tipitip-sable.vercel.app
+
 🔵 **Mainnet TipJar proxy:** [`0x73E89882fF0c550111E5b4b5A1967582bddA9cB8`](https://celoscan.io/address/0x73E89882fF0c550111E5b4b5A1967582bddA9cB8)
+
 🧪 **Sepolia TipJar proxy:** [`0xDB11f15D8d6A94AdF63Bd760B1AAE130379983b8`](https://celo-sepolia.blockscout.com/address/0xDB11f15D8d6A94AdF63Bd760B1AAE130379983b8)
 
 ---
