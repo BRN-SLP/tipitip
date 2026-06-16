@@ -23,9 +23,9 @@ export const ADDRESSES: Record<
       undefined) as Address,
     cUSD: "0x765DE816845861e75A25fCA122bb6898B8B1282a",
     support: (process.env.NEXT_PUBLIC_SUPPORT_ADDRESS_MAINNET ||
-      undefined) as Address,
+      "0x295aD16766eA47dfe5108f3BF529C9414dEd3008") as Address,
     vault: (process.env.NEXT_PUBLIC_VAULT_ADDRESS_MAINNET ||
-      undefined) as Address,
+      "0xE25B1C521C5B0Df4dD5C9a22986CA95053f5880E") as Address,
   },
   [celoSepolia.id]: {
     tipJar: (process.env.NEXT_PUBLIC_TIPJAR_ADDRESS_SEPOLIA ||
