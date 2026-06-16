@@ -1,0 +1,23 @@
+{
+  "common": {
+    "skipToContent": "Aller au contenu"
+  },
+  "footer": {
+    "tagline1": "Donnez des pourboires aux auteurs par paragraphe.",
+    "tagline2": "Micro-pourboires en cUSD · compatible MiniPay · 2,5% de frais de protocole",
+    "tagline3": "Conçu sur Celo.",
+    "colProduct": "Produit",
+    "colLearn": "Apprendre",
+    "colBuild": "Développer",
+    "links": {
+      "write": "Écrire",
+      "leaderboard": "Classement",
+      "showcase": "Vitrine",
+      "embed": "Intégrer",
+      "forWriters": "Pour les auteurs",
+      "manifesto": "Le manifeste",
+      "npm": "npm @tipitip/embed",
+      "github": "GitHub"
+    }
+  }
+}
