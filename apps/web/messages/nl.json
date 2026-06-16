@@ -31,5 +31,13 @@
       "forWriters": "Voor schrijvers",
       "showcase": "Showcase"
     }
+  },
+  "theme": {
+    "toLight": "Schakel naar licht thema",
+    "toDark": "Schakel naar donker thema",
+    "toggle": "Thema schakelen",
+    "light": "Licht",
+    "dark": "Donker",
+    "label": "Thema"
   }
 }
