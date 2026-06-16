@@ -1,5 +1,23 @@
 {
   "common": {
     "skipToContent": "Naar inhoud springen"
+  },
+  "footer": {
+    "tagline1": "Geef schrijvers een fooi per alinea.",
+    "tagline2": "cUSD-microfooien · klaar voor MiniPay · 2,5% protocolkosten",
+    "tagline3": "Gebouwd op Celo.",
+    "colProduct": "Product",
+    "colLearn": "Leren",
+    "colBuild": "Bouwen",
+    "links": {
+      "write": "Schrijven",
+      "leaderboard": "Ranglijst",
+      "showcase": "Showcase",
+      "embed": "Insluiten",
+      "forWriters": "Voor schrijvers",
+      "manifesto": "Het manifest",
+      "npm": "npm @tipitip/embed",
+      "github": "GitHub"
+    }
   }
 }
