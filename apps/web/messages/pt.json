@@ -1,0 +1,23 @@
+{
+  "common": {
+    "skipToContent": "Ir para o conteúdo"
+  },
+  "footer": {
+    "tagline1": "Dê gorjetas a escritores por parágrafo.",
+    "tagline2": "Microgorjetas em cUSD · compatível com MiniPay · 2,5% de taxa de protocolo",
+    "tagline3": "Feito na Celo.",
+    "colProduct": "Produto",
+    "colLearn": "Aprender",
+    "colBuild": "Construir",
+    "links": {
+      "write": "Escrever",
+      "leaderboard": "Classificação",
+      "showcase": "Vitrine",
+      "embed": "Incorporar",
+      "forWriters": "Para escritores",
+      "manifesto": "O manifesto",
+      "npm": "npm @tipitip/embed",
+      "github": "GitHub"
+    }
+  }
+}
