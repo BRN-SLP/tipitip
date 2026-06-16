@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { FooterSupportLink } from "@/components/footer-support-link";
+import { LocaleSwitcher } from "@/components/locale-switcher";
 import { NetworkBadge } from "@/components/network-badge";
 import { TipiTipLogo } from "@/components/tipitip-logo";
 import { MANIFESTO } from "@/lib/manifesto";
@@ -109,6 +110,7 @@ export function Footer() {
           </span>
           <FooterSupportLink />
           <NetworkBadge />
+          <LocaleSwitcher />
         </div>
       </div>
     </footer>
