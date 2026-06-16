@@ -31,5 +31,13 @@
       "forWriters": "Für Autoren",
       "showcase": "Schaufenster"
     }
+  },
+  "theme": {
+    "toLight": "Zum hellen Thema wechseln",
+    "toDark": "Zum dunklen Thema wechseln",
+    "toggle": "Thema umschalten",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "label": "Thema"
   }
 }
