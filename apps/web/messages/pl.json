@@ -39,5 +39,10 @@
     "light": "Jasny",
     "dark": "Ciemny",
     "label": "Motyw"
+  },
+  "network": {
+    "mainnet": "Celo Mainnet",
+    "sepolia": "Celo Sepolia",
+    "unsupported": "Nieobsługiwana sieć"
   }
 }
