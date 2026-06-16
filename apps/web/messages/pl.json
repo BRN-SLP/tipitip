@@ -1,5 +1,23 @@
 {
   "common": {
     "skipToContent": "Przejdź do treści"
+  },
+  "footer": {
+    "tagline1": "Dawaj autorom napiwki za akapit.",
+    "tagline2": "Mikronapiwki w cUSD · gotowe na MiniPay · 2,5% opłaty protokołu",
+    "tagline3": "Zbudowano na Celo.",
+    "colProduct": "Produkt",
+    "colLearn": "Ucz się",
+    "colBuild": "Twórz",
+    "links": {
+      "write": "Pisz",
+      "leaderboard": "Ranking",
+      "showcase": "Galeria",
+      "embed": "Osadź",
+      "forWriters": "Dla autorów",
+      "manifesto": "Manifest",
+      "npm": "npm @tipitip/embed",
+      "github": "GitHub"
+    }
   }
 }
