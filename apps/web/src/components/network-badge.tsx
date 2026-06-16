@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useChainId } from "wagmi";
 import { celo, celoSepolia } from "wagmi/chains";
 
@@ -10,12 +11,13 @@ import { celo, celoSepolia } from "wagmi/chains";
  */
 export function NetworkBadge() {
   const chainId = useChainId();
+  const t = useTranslations("network");
   const label =
     chainId === celo.id
-      ? { name: "Celo Mainnet", color: "bg-emerald-500" }
+      ? { name: t("mainnet"), color: "bg-emerald-500" }
       : chainId === celoSepolia.id
-        ? { name: "Celo Sepolia", color: "bg-amber-500" }
-        : { name: "Unsupported chain", color: "bg-rose-500" };
+        ? { name: t("sepolia"), color: "bg-amber-500" }
+        : { name: t("unsupported"), color: "bg-rose-500" };
 
   return (
     <span className="inline-flex items-center gap-2">

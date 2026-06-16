@@ -39,5 +39,10 @@
     "light": "Light",
     "dark": "Dark",
     "label": "Theme"
+  },
+  "network": {
+    "mainnet": "Celo Mainnet",
+    "sepolia": "Celo Sepolia",
+    "unsupported": "Unsupported chain"
   }
 }
