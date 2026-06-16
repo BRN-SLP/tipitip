@@ -31,5 +31,13 @@
       "forWriters": "Kwa waandishi",
       "showcase": "Onyesho"
     }
+  },
+  "theme": {
+    "toLight": "Badilisha hadi mandhari nyepesi",
+    "toDark": "Badilisha hadi mandhari giza",
+    "toggle": "Geuza mandhari",
+    "light": "Nyepesi",
+    "dark": "Giza",
+    "label": "Mandhari"
   }
 }
