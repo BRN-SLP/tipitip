@@ -31,5 +31,13 @@
       "forWriters": "Dla autorów",
       "showcase": "Galeria"
     }
+  },
+  "theme": {
+    "toLight": "Przełącz na jasny motyw",
+    "toDark": "Przełącz na ciemny motyw",
+    "toggle": "Przełącz motyw",
+    "light": "Jasny",
+    "dark": "Ciemny",
+    "label": "Motyw"
   }
 }
