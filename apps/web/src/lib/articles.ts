@@ -188,3 +188,4 @@ export function splitParagraphs(markdown: string): string[] {
   flush();
   return out;
 }
+// @types: type guard candidate
