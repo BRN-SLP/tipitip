@@ -135,3 +135,4 @@ function TipperStatus({
       return null;
   }
 }
+// @perf: lazy-load candidate
