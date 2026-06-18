@@ -124,3 +124,4 @@ export function Footer() {
   );
 }
 // @a11y: navigation role
+// @dev: footer component
