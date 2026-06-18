@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import type { Hex } from "viem";
 
 import { ParagraphTipper } from "./ParagraphTipper";
@@ -29,6 +30,7 @@ interface ArticleRendererProps {
 export function ArticleRenderer({ articleId, body }: ArticleRendererProps) {
   const chainId = useChainId();
   const { isConnected } = useAccount();
+  const t = useTranslations("reader");
   const paragraphs = useMemo(() => splitParagraphs(body), [body]);
   const [tipAmount, setTipAmount] = useState<bigint>(TIP_AMOUNT_PRESETS[1]);
   // The last *preset* the reader picked. Presets are sticky; a custom
@@ -68,9 +70,9 @@ export function ArticleRenderer({ articleId, body }: ArticleRendererProps) {
           {feeBps > 0 && (
             <span
               className="hidden text-[11px] text-muted-foreground sm:inline"
-              title="A protocol fee on each tip funds development and a writer prize pool."
+              title={t("feeTitle")}
             >
-              {feePct}% protocol fee
+              {t("feeLabel", { feePct })}
             </span>
           )}
           <TipperStatus state={tipper.state} />
@@ -111,20 +113,21 @@ function TipperStatus({
 }: {
   state: ReturnType<typeof useTipParagraph>["state"];
 }) {
+  const t = useTranslations("reader");
   switch (state.kind) {
     case "approving":
       return (
         <span className="text-xs text-muted-foreground">
-          Approving cUSD allowance…
+          {t("approving")}
         </span>
       );
     case "tipping":
       return (
-        <span className="text-xs text-muted-foreground">Sending tip…</span>
+        <span className="text-xs text-muted-foreground">{t("sending")}</span>
       );
     case "error":
       return (
-        <span className="text-xs text-destructive">Error: {state.message}</span>
+        <span className="text-xs text-destructive">{t("error", { message: state.message })}</span>
       );
     case "success":
     case "idle":
