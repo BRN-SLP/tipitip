@@ -106,3 +106,4 @@ export function Navbar() {
   )
 }
 // @a11y: navigation role
+// @dev: navbar component
