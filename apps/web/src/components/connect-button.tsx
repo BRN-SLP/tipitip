@@ -3,6 +3,7 @@
 import { ConnectButton as RainbowKitConnectButton } from "@rainbow-me/rainbowkit";
 import { motion } from "framer-motion";
 import { AlertTriangle, Heart, Wallet } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 /**
@@ -23,6 +24,7 @@ import { useEffect, useState } from "react";
  */
 export function ConnectButton() {
   const [isMinipay, setIsMinipay] = useState(false);
+  const t = useTranslations("connectButton");
 
   useEffect(() => {
     const eth = (window as { ethereum?: { isMiniPay?: boolean } }).ethereum;
@@ -66,7 +68,7 @@ export function ConnectButton() {
                       aria-hidden="true"
                       className="h-3.5 w-3.5 fill-current transition-transform group-hover:scale-110"
                     />
-                    <span className="font-medium">Connect</span>
+                    <span className="font-medium">{t("connect")}</span>
                   </motion.button>
                 );
               }
@@ -81,7 +83,7 @@ export function ConnectButton() {
                     className="inline-flex min-h-11 items-center gap-2 rounded-md border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-sm font-medium text-amber-700 dark:text-amber-300"
                   >
                     <AlertTriangle aria-hidden="true" className="h-3.5 w-3.5" />
-                    <span>Wrong network</span>
+                    <span>{t("wrongNetwork")}</span>
                   </motion.button>
                 );
               }
@@ -93,7 +95,7 @@ export function ConnectButton() {
                     onClick={openChainModal}
                     whileTap={{ scale: 0.96 }}
                     className="inline-flex items-center gap-2 border-r border-primary/15 px-3 py-1.5 text-foreground/80 transition hover:bg-primary/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                    aria-label={`Switch network (current: ${chain.name})`}
+                    aria-label={t("switchNetwork", { network: chain.name ?? "" })}
                   >
                     {chain.hasIcon && chain.iconUrl ? (
                       <span
@@ -124,7 +126,7 @@ export function ConnectButton() {
                     onClick={openAccountModal}
                     whileTap={{ scale: 0.96 }}
                     className="inline-flex items-center gap-2 px-3 py-1.5 text-foreground transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                    aria-label="Account details"
+                    aria-label={t("account")}
                   >
                     <Wallet aria-hidden="true" className="h-3.5 w-3.5 text-primary" />
                     <span className="font-medium">
