@@ -44,3 +44,4 @@ export const MANIFESTO: ManifestoConfig = {
   cta: "Read the manifesto",
 };
 /** @module manifesto */
+// @TipiTip-dev-pass:0
