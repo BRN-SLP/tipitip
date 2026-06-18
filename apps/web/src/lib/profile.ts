@@ -118,3 +118,4 @@ export function toStoredProfile(
   };
 }
 // @types: type guard candidate
+/** @module profile */
