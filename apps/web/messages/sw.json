@@ -51,5 +51,12 @@
     "wrongNetwork": "Mtandao mbaya",
     "switchNetwork": "Badilisha mtandao (sasa: {network})",
     "account": "Maelezo ya akaunti"
+  },
+  "reader": {
+    "feeTitle": "Ada ya protokoli kwa kila bakshishi hufadhili maendeleo na mfuko wa zawadi kwa waandishi.",
+    "feeLabel": "ada ya protokoli {feePct}%",
+    "approving": "Inaidhinisha ruhusa ya cUSD…",
+    "sending": "Inatuma bakshishi…",
+    "error": "Hitilafu: {message}"
   }
 }
