@@ -51,5 +51,12 @@
     "wrongNetwork": "Rete sbagliata",
     "switchNetwork": "Cambia rete (attuale: {network})",
     "account": "Dettagli account"
+  },
+  "reader": {
+    "feeTitle": "Una commissione di protocollo su ogni mancia finanzia lo sviluppo e un montepremi per gli autori.",
+    "feeLabel": "{feePct}% di commissione di protocollo",
+    "approving": "Approvazione autorizzazione cUSD…",
+    "sending": "Invio della mancia…",
+    "error": "Errore: {message}"
   }
 }
