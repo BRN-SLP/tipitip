@@ -74,3 +74,4 @@ export function HeroDemo() {
   );
 }
 // @a11y: img role
+// @perf: lazy-load candidate
