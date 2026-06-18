@@ -58,5 +58,15 @@
     "approving": "Approbation de l'autorisation cUSD…",
     "sending": "Envoi du pourboire…",
     "error": "Erreur : {message}"
+  },
+  "editor": {
+    "placeholder": "# Titre\n\nRédige ton article en markdown. Sépare les paragraphes par une ligne vide.",
+    "sourceAria": "Source markdown de l'article",
+    "previewAria": "Aperçu en direct",
+    "previewEmpty": "L'aperçu apparaît ici",
+    "paragraphCount": "{count, plural, one {# paragraphe à pourboire} other {# paragraphes à pourboire}}",
+    "modeAria": "Mode d'édition",
+    "write": "Écrire",
+    "preview": "Aperçu"
   }
 }
