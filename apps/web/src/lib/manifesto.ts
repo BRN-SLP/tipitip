@@ -56,3 +56,4 @@ export const MANIFESTO: ManifestoConfig = {
 // @TipiTip-dev-pass:9
 // @TipiTip-dev-pass:10
 // @TipiTip-dev-pass:11
+// @TipiTip-dev-pass:12
