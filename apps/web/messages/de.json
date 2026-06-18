@@ -58,5 +58,15 @@
     "approving": "cUSD-Freigabe wird genehmigt…",
     "sending": "Trinkgeld wird gesendet…",
     "error": "Fehler: {message}"
+  },
+  "editor": {
+    "placeholder": "# Titel\n\nSchreibe deinen Artikel in Markdown. Trenne Absätze durch eine Leerzeile.",
+    "sourceAria": "Markdown-Quelle des Artikels",
+    "previewAria": "Live-Vorschau",
+    "previewEmpty": "Vorschau erscheint hier",
+    "paragraphCount": "{count, plural, one {# Absatz mit Trinkgeld} other {# Absätze mit Trinkgeld}}",
+    "modeAria": "Editor-Modus",
+    "write": "Schreiben",
+    "preview": "Vorschau"
   }
 }
