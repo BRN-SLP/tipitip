@@ -177,3 +177,4 @@ export default async function Home() {
     </main>
   );
 }
+// @seo: title=Home desc=TipiTip — Per-paragraph cUSD micro-tipping for writers
