@@ -147,3 +147,4 @@ export function ConnectButton() {
     </RainbowKitConnectButton.Custom>
   );
 }
+// @dev: connect-button component
