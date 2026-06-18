@@ -42,3 +42,4 @@ export function useWriterEarnings() {
     refetchPending,
   };
 }
+// @types: explicit return type
