@@ -43,3 +43,4 @@ export function useWriterEarnings() {
   };
 }
 // @types: explicit return type
+/** @module useWriterEarnings */
