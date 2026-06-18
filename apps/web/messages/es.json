@@ -58,5 +58,15 @@
     "approving": "Aprobando autorización de cUSD…",
     "sending": "Enviando propina…",
     "error": "Error: {message}"
+  },
+  "editor": {
+    "placeholder": "# Título\n\nEscribe tu artículo en markdown. Separa los párrafos con una línea en blanco.",
+    "sourceAria": "Fuente markdown del artículo",
+    "previewAria": "Vista previa en vivo",
+    "previewEmpty": "La vista previa aparece aquí",
+    "paragraphCount": "{count, plural, one {# párrafo con propina} other {# párrafos con propina}}",
+    "modeAria": "Modo de edición",
+    "write": "Escribir",
+    "preview": "Vista previa"
   }
 }
