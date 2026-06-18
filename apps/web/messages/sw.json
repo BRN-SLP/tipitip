@@ -18,7 +18,8 @@
       "manifesto": "Ilani",
       "npm": "npm @tipitip/embed",
       "github": "GitHub"
-    }
+    },
+    "supportDonate": "Unga mkono na changia"
   },
   "nav": {
     "toggleMenu": "Geuza menyu",
