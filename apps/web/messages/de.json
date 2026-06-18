@@ -51,5 +51,12 @@
     "wrongNetwork": "Falsches Netzwerk",
     "switchNetwork": "Netzwerk wechseln (aktuell: {network})",
     "account": "Kontodetails"
+  },
+  "reader": {
+    "feeTitle": "Eine Protokollgebühr auf jedes Trinkgeld finanziert die Entwicklung und einen Preispool für Autoren.",
+    "feeLabel": "{feePct}% Protokollgebühr",
+    "approving": "cUSD-Freigabe wird genehmigt…",
+    "sending": "Trinkgeld wird gesendet…",
+    "error": "Fehler: {message}"
   }
 }
