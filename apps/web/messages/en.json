@@ -61,5 +61,12 @@
     "modeAria": "Editor mode",
     "write": "Write",
     "preview": "Preview"
+  },
+  "reader": {
+    "feeTitle": "A protocol fee on each tip funds development and a writer prize pool.",
+    "feeLabel": "{feePct}% protocol fee",
+    "approving": "Approving cUSD allowance…",
+    "sending": "Sending tip…",
+    "error": "Error: {message}"
   }
 }
