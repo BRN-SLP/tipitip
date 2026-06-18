@@ -43,3 +43,4 @@ export const MANIFESTO: ManifestoConfig = {
   excerpt: "Why TipiTip exists, in one essay.",
   cta: "Read the manifesto",
 };
+/** @module manifesto */
