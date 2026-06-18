@@ -18,7 +18,8 @@
       "manifesto": "Манифест",
       "npm": "npm @tipitip/embed",
       "github": "GitHub"
-    }
+    },
+    "supportDonate": "Поддержать и задонатить"
   },
   "nav": {
     "toggleMenu": "Переключить меню",
