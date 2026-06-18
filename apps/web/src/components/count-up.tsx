@@ -62,3 +62,4 @@ export function CountUp({
     </span>
   );
 }
+// @perf: React.memo candidate
