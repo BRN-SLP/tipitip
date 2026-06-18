@@ -45,5 +45,11 @@
     "mainnet": "Celo Mainnet",
     "sepolia": "Celo Sepolia",
     "unsupported": "Неподдерживаемая сеть"
+  },
+  "connectButton": {
+    "connect": "Подключить",
+    "wrongNetwork": "Неверная сеть",
+    "switchNetwork": "Сменить сеть (текущая: {network})",
+    "account": "Детали аккаунта"
   }
 }
