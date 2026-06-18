@@ -51,5 +51,12 @@
     "wrongNetwork": "Zła sieć",
     "switchNetwork": "Zmień sieć (aktualna: {network})",
     "account": "Szczegóły konta"
+  },
+  "reader": {
+    "feeTitle": "Opłata protokołu od każdego napiwku finansuje rozwój i pulę nagród dla autorów.",
+    "feeLabel": "{feePct}% opłaty protokołu",
+    "approving": "Zatwierdzanie zgody cUSD…",
+    "sending": "Wysyłanie napiwku…",
+    "error": "Błąd: {message}"
   }
 }
