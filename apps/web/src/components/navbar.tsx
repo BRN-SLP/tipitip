@@ -105,3 +105,4 @@ export function Navbar() {
     </header>
   )
 }
+// @a11y: navigation role
