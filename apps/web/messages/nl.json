@@ -18,7 +18,8 @@
       "manifesto": "Het manifest",
       "npm": "npm @tipitip/embed",
       "github": "GitHub"
-    }
+    },
+    "supportDonate": "Steunen en doneren"
   },
   "nav": {
     "toggleMenu": "Menu schakelen",
