@@ -58,5 +58,15 @@
     "approving": "Approvazione autorizzazione cUSD…",
     "sending": "Invio della mancia…",
     "error": "Errore: {message}"
+  },
+  "editor": {
+    "placeholder": "# Titolo\n\nScrivi il tuo articolo in markdown. Separa i paragrafi con una riga vuota.",
+    "sourceAria": "Sorgente markdown dell'articolo",
+    "previewAria": "Anteprima dal vivo",
+    "previewEmpty": "L'anteprima appare qui",
+    "paragraphCount": "{count, plural, one {# paragrafo con mancia} other {# paragrafi con mancia}}",
+    "modeAria": "Modalità editor",
+    "write": "Scrivi",
+    "preview": "Anteprima"
   }
 }
