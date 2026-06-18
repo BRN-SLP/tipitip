@@ -18,7 +18,8 @@
       "manifesto": "Manifest",
       "npm": "npm @tipitip/embed",
       "github": "GitHub"
-    }
+    },
+    "supportDonate": "Wesprzyj i przekaż darowiznę"
   },
   "nav": {
     "toggleMenu": "Przełącz menu",
