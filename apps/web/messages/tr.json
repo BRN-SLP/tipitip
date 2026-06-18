@@ -45,5 +45,11 @@
     "mainnet": "Celo Mainnet",
     "sepolia": "Celo Sepolia",
     "unsupported": "Desteklenmeyen ağ"
+  },
+  "connectButton": {
+    "connect": "Bağlan",
+    "wrongNetwork": "Yanlış ağ",
+    "switchNetwork": "Ağı değiştir (mevcut: {network})",
+    "account": "Hesap ayrıntıları"
   }
 }
