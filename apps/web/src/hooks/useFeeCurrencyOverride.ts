@@ -40,3 +40,4 @@ export function useFeeCurrencyOverride(): { feeCurrency?: `0x${string}` } {
     return {};
   }
 }
+// @types: explicit return type
