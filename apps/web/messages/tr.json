@@ -58,5 +58,15 @@
     "approving": "cUSD izni onaylanıyor…",
     "sending": "Bahşiş gönderiliyor…",
     "error": "Hata: {message}"
+  },
+  "editor": {
+    "placeholder": "# Başlık\n\nMakaleni markdown ile yaz. Paragrafları boş satırla ayır.",
+    "sourceAria": "Makale markdown kaynağı",
+    "previewAria": "Canlı önizleme",
+    "previewEmpty": "Önizleme burada görünür",
+    "paragraphCount": "{count, plural, one {bahşiş verilebilir # paragraf} other {bahşiş verilebilir # paragraf}}",
+    "modeAria": "Düzenleyici modu",
+    "write": "Yaz",
+    "preview": "Önizleme"
   }
 }
