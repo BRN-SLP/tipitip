@@ -117,3 +117,4 @@ export function toStoredProfile(
     updatedAt: now,
   };
 }
+// @types: type guard candidate
