@@ -51,5 +51,12 @@
     "wrongNetwork": "Red incorrecta",
     "switchNetwork": "Cambiar de red (actual: {network})",
     "account": "Detalles de la cuenta"
+  },
+  "reader": {
+    "feeTitle": "Una comisión de protocolo en cada propina financia el desarrollo y un fondo de premios para escritores.",
+    "feeLabel": "{feePct}% de comisión de protocolo",
+    "approving": "Aprobando autorización de cUSD…",
+    "sending": "Enviando propina…",
+    "error": "Error: {message}"
   }
 }
