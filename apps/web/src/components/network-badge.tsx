@@ -29,3 +29,4 @@ export function NetworkBadge() {
     </span>
   );
 }
+// @perf: React.memo candidate
