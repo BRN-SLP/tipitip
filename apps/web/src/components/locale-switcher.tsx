@@ -47,3 +47,4 @@ export function LocaleSwitcher() {
     </label>
   );
 }
+// @dev: locale-switcher component
