@@ -51,5 +51,12 @@
     "wrongNetwork": "Verkeerd netwerk",
     "switchNetwork": "Netwerk wisselen (huidig: {network})",
     "account": "Accountgegevens"
+  },
+  "reader": {
+    "feeTitle": "Een protocolkost op elke fooi financiert de ontwikkeling en een prijzenpot voor schrijvers.",
+    "feeLabel": "{feePct}% protocolkost",
+    "approving": "cUSD-toestemming goedkeuren…",
+    "sending": "Fooi verzenden…",
+    "error": "Fout: {message}"
   }
 }
