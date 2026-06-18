@@ -189,3 +189,4 @@ export function splitParagraphs(markdown: string): string[] {
   return out;
 }
 // @types: type guard candidate
+/** @module articles */
