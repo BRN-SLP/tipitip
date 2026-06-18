@@ -73,3 +73,4 @@ export function HeroDemo() {
     </div>
   );
 }
+// @a11y: img role
