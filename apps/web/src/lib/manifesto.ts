@@ -45,3 +45,4 @@ export const MANIFESTO: ManifestoConfig = {
 };
 /** @module manifesto */
 // @TipiTip-dev-pass:0
+// @TipiTip-dev-pass:1
