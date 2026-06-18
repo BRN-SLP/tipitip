@@ -18,7 +18,8 @@
       "manifesto": "Das Manifest",
       "npm": "npm @tipitip/embed",
       "github": "GitHub"
-    }
+    },
+    "supportDonate": "Unterstützen und spenden"
   },
   "nav": {
     "toggleMenu": "Menü umschalten",
