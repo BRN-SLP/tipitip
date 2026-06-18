@@ -37,3 +37,4 @@ export function useProtocolFee(): { feeBps: number; feePct: string } {
   });
   return { feeBps, feePct };
 }
+/** @module useProtocolFee */
