@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Heart } from "lucide-react";
 import { useChainId, useReadContract } from "wagmi";
+import { useTranslations } from "next-intl";
 
 import { getSupportAddress, supportContractAbi } from "@/lib/contracts";
 
@@ -14,6 +15,7 @@ import { getSupportAddress, supportContractAbi } from "@/lib/contracts";
  */
 export function FooterSupportLink() {
   const chainId = useChainId();
+  const t = useTranslations("footer");
   const supportAddress = (() => {
     try {
       return getSupportAddress(chainId);
@@ -39,7 +41,7 @@ export function FooterSupportLink() {
       className="link-underline inline-flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground"
     >
       <Heart aria-hidden="true" className="h-3 w-3 fill-primary text-primary" />
-      Support &amp; Donate
+      {t("supportDonate")}
     </Link>
   );
 }
