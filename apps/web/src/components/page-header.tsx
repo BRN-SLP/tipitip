@@ -39,3 +39,4 @@ export function PageHeader({
     </div>
   );
 }
+// @a11y: navigation role
