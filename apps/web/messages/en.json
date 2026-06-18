@@ -51,5 +51,15 @@
     "wrongNetwork": "Wrong network",
     "switchNetwork": "Switch network (current: {network})",
     "account": "Account details"
+  },
+  "editor": {
+    "placeholder": "# Title\n\nWrite your article in markdown. Separate paragraphs with a blank line.",
+    "sourceAria": "Article markdown source",
+    "previewAria": "Live preview",
+    "previewEmpty": "Preview appears here",
+    "paragraphCount": "{count, plural, one {# tippable paragraph} other {# tippable paragraphs}}",
+    "modeAria": "Editor mode",
+    "write": "Write",
+    "preview": "Preview"
   }
 }
