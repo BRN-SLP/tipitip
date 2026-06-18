@@ -51,5 +51,12 @@
     "wrongNetwork": "Mauvais réseau",
     "switchNetwork": "Changer de réseau (actuel : {network})",
     "account": "Détails du compte"
+  },
+  "reader": {
+    "feeTitle": "Des frais de protocole sur chaque pourboire financent le développement et une cagnotte pour les auteurs.",
+    "feeLabel": "{feePct}% de frais de protocole",
+    "approving": "Approbation de l'autorisation cUSD…",
+    "sending": "Envoi du pourboire…",
+    "error": "Erreur : {message}"
   }
 }
