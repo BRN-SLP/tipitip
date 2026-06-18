@@ -124,3 +124,4 @@ export function paragraphIndexByKey(
   });
   return map;
 }
+/** @module tip-aggregation */
