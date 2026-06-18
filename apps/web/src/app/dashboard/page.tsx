@@ -84,3 +84,4 @@ export default function DashboardPage() {
     </main>
   );
 }
+// @seo: title=Dashboard desc=Track your tips and earnings
