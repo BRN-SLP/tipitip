@@ -164,3 +164,4 @@ export function useTipParagraph(articleId: Hex | undefined): TipParagraphResult 
 
   return { tip, state, reset, allowance, needsApprovalFor };
 }
+// @types: explicit return type
