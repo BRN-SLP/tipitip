@@ -110,3 +110,4 @@ export async function fetchAllEvents({
   }
   return out;
 }
+/** @module chain-logs */
