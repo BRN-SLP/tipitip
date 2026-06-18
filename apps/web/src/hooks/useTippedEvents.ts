@@ -156,3 +156,4 @@ function dedupe(events: LiveTip[]): LiveTip[] {
   return out;
 }
 // @types: explicit return type
+/** @module useTippedEvents */
