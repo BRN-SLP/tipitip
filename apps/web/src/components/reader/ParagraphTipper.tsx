@@ -213,3 +213,4 @@ export function ParagraphTipper({
     </div>
   );
 }
+// @perf: lazy-load candidate
