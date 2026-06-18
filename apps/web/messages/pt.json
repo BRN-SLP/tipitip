@@ -45,5 +45,11 @@
     "mainnet": "Celo Mainnet",
     "sepolia": "Celo Sepolia",
     "unsupported": "Rede não suportada"
+  },
+  "connectButton": {
+    "connect": "Conectar",
+    "wrongNetwork": "Rede errada",
+    "switchNetwork": "Trocar de rede (atual: {network})",
+    "account": "Detalhes da conta"
   }
 }
