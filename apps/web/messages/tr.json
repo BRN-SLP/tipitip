@@ -18,7 +18,8 @@
       "manifesto": "Manifesto",
       "npm": "npm @tipitip/embed",
       "github": "GitHub"
-    }
+    },
+    "supportDonate": "Destekle ve bağış yap"
   },
   "nav": {
     "toggleMenu": "Menüyü aç/kapat",
