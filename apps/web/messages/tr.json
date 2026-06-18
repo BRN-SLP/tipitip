@@ -51,5 +51,12 @@
     "wrongNetwork": "Yanlış ağ",
     "switchNetwork": "Ağı değiştir (mevcut: {network})",
     "account": "Hesap ayrıntıları"
+  },
+  "reader": {
+    "feeTitle": "Her bahşişteki protokol ücreti, geliştirmeyi ve yazarlar için bir ödül havuzunu finanse eder.",
+    "feeLabel": "%{feePct} protokol ücreti",
+    "approving": "cUSD izni onaylanıyor…",
+    "sending": "Bahşiş gönderiliyor…",
+    "error": "Hata: {message}"
   }
 }
