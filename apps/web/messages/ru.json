@@ -58,5 +58,15 @@
     "approving": "Подтверждение разрешения cUSD…",
     "sending": "Отправка чаевых…",
     "error": "Ошибка: {message}"
+  },
+  "editor": {
+    "placeholder": "# Заголовок\n\nНапиши свою статью в markdown. Разделяй абзацы пустой строкой.",
+    "sourceAria": "Markdown-исходник статьи",
+    "previewAria": "Предпросмотр вживую",
+    "previewEmpty": "Предпросмотр появится здесь",
+    "paragraphCount": "{count, plural, one {# абзац с чаевыми} few {# абзаца с чаевыми} many {# абзацев с чаевыми} other {# абзаца с чаевыми}}",
+    "modeAria": "Режим редактора",
+    "write": "Писать",
+    "preview": "Предпросмотр"
   }
 }
