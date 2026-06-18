@@ -58,5 +58,15 @@
     "approving": "Zatwierdzanie zgody cUSD…",
     "sending": "Wysyłanie napiwku…",
     "error": "Błąd: {message}"
+  },
+  "editor": {
+    "placeholder": "# Tytuł\n\nNapisz artykuł w markdown. Oddzielaj akapity pustą linią.",
+    "sourceAria": "Źródło markdown artykułu",
+    "previewAria": "Podgląd na żywo",
+    "previewEmpty": "Podgląd pojawi się tutaj",
+    "paragraphCount": "{count, plural, one {# akapit z napiwkiem} few {# akapity z napiwkiem} many {# akapitów z napiwkiem} other {# akapitu z napiwkiem}}",
+    "modeAria": "Tryb edytora",
+    "write": "Pisz",
+    "preview": "Podgląd"
   }
 }
