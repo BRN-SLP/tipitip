@@ -51,5 +51,12 @@
     "wrongNetwork": "Rede errada",
     "switchNetwork": "Trocar de rede (atual: {network})",
     "account": "Detalhes da conta"
+  },
+  "reader": {
+    "feeTitle": "Uma taxa de protocolo em cada gorjeta financia o desenvolvimento e um fundo de prêmios para escritores.",
+    "feeLabel": "{feePct}% de taxa de protocolo",
+    "approving": "Aprovando autorização de cUSD…",
+    "sending": "Enviando gorjeta…",
+    "error": "Erro: {message}"
   }
 }
