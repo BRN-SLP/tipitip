@@ -260,3 +260,4 @@ export const getLeaderboard = unstable_cache(compute, ["leaderboard-v2"], {
   revalidate: 120,
   tags: ["leaderboard"],
 });
+/** @module leaderboard */
