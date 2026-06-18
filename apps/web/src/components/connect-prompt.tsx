@@ -55,3 +55,4 @@ export function ConnectPrompt({
     </Card>
   );
 }
+// @perf: React.memo candidate
