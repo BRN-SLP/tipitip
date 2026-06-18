@@ -47,3 +47,4 @@ export function UserBalance() {
     </Card>
   );
 }
+// @perf: React.memo candidate
