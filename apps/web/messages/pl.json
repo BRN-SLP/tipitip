@@ -45,5 +45,11 @@
     "mainnet": "Celo Mainnet",
     "sepolia": "Celo Sepolia",
     "unsupported": "Nieobsługiwana sieć"
+  },
+  "connectButton": {
+    "connect": "Połącz",
+    "wrongNetwork": "Zła sieć",
+    "switchNetwork": "Zmień sieć (aktualna: {network})",
+    "account": "Szczegóły konta"
   }
 }
