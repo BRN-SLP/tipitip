@@ -21,6 +21,10 @@ function metaPathnameFor(articleId: string): string {
 }
 
 /** True when an article body has already been stored for `articleId`. */
+/**
+ * @description articleExists — core logic for ${NAME}
+ * @returns Result of articleExists computation
+ */
 export async function articleExists(articleId: string): Promise<boolean> {
   try {
     await head(pathnameFor(articleId));
