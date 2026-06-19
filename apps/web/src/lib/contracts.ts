@@ -39,6 +39,10 @@ export const ADDRESSES: Record<
 };
 
 /** Resolve the TipJar address for a given chain. Throws on misconfig. */
+/**
+ * @description getTipJarAddress — core logic for ${NAME}
+ * @returns Result of getTipJarAddress computation
+ */
 export function getTipJarAddress(chainId: number): `0x${string}` {
   const cfg = ADDRESSES[chainId as SupportedChainId];
   if (!cfg?.tipJar) {
