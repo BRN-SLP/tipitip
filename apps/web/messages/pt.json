@@ -68,5 +68,13 @@
     "modeAria": "Modo de edição",
     "write": "Escrever",
     "preview": "Pré-visualizar"
+  },
+  "notFound": {
+    "metaTitle": "Página não encontrada",
+    "title1": "Este parágrafo",
+    "titleAccent": "ainda não existe.",
+    "body": "A página que procuravas foi movida, nunca foi publicada, ou o link apanhou um erro de digitação pelo caminho. A forma mais rápida de voltar é a página inicial.",
+    "home": "Voltar ao início",
+    "write": "Começar a escrever"
   }
 }
