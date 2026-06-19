@@ -68,5 +68,13 @@
     "modeAria": "Tryb edytora",
     "write": "Pisz",
     "preview": "Podgląd"
+  },
+  "notFound": {
+    "metaTitle": "Nie znaleziono strony",
+    "title1": "Ten akapit",
+    "titleAccent": "jeszcze nie istnieje.",
+    "body": "Strona, której szukałeś, została przeniesiona, nigdy nie opublikowana, albo link złapał literówkę po drodze. Najszybciej wrócisz przez stronę główną.",
+    "home": "Powrót na stronę główną",
+    "write": "Zacznij pisać"
   }
 }
