@@ -68,5 +68,13 @@
     "modeAria": "Düzenleyici modu",
     "write": "Yaz",
     "preview": "Önizleme"
+  },
+  "notFound": {
+    "metaTitle": "Sayfa bulunamadı",
+    "title1": "Bu paragraf",
+    "titleAccent": "henüz mevcut değil.",
+    "body": "Aradığın sayfa taşınmış, hiç yayımlanmamış ya da bağlantı yolda bir yazım hatası kapmış olabilir. Geri dönmenin en hızlı yolu ana sayfa.",
+    "home": "Ana sayfaya dön",
+    "write": "Yazmaya başla"
   }
 }
