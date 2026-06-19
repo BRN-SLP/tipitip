@@ -68,5 +68,13 @@
     "modeAria": "Editormodus",
     "write": "Schrijven",
     "preview": "Voorbeeld"
+  },
+  "notFound": {
+    "metaTitle": "Pagina niet gevonden",
+    "title1": "Deze alinea",
+    "titleAccent": "bestaat nog niet.",
+    "body": "De pagina die je zocht is verplaatst, nooit gepubliceerd, of de link pikte onderweg een typfout op. De snelste weg terug is de startpagina.",
+    "home": "Terug naar start",
+    "write": "Beginnen met schrijven"
   }
 }
