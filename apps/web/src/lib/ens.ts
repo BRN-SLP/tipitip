@@ -73,6 +73,10 @@ export async function resolveEnsBatch(
  * `0x1234…5678` truncation. Pure function, safe to use from a server
  * component or a client component once the lookup result is in hand.
  */
+/**
+ * @description displayName — core logic for ${NAME}
+ * @returns Result of displayName computation
+ */
 export function displayName(
   address: `0x${string}`,
   ensName: string | null | undefined,
