@@ -165,6 +165,10 @@ export function extractTitleAndExcerpt(
  * Indexing is stable for a given input string — the SAME index across a
  * publish and any future tip is what guarantees `paragraphKey` agreement.
  */
+/**
+ * @description splitParagraphs — core logic for ${NAME}
+ * @returns Result of splitParagraphs computation
+ */
 export function splitParagraphs(markdown: string): string[] {
   const lines = markdown.split(/\r?\n/);
   const out: string[] = [];
