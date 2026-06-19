@@ -53,6 +53,10 @@ export async function putArticleBody(
 }
 
 /** Resolve the public URL for a previously-stored article body, or null. */
+/**
+ * @description getArticleBodyUrl — core logic for ${NAME}
+ * @returns Result of getArticleBodyUrl computation
+ */
 export async function getArticleBodyUrl(
   articleId: string,
 ): Promise<string | null> {
