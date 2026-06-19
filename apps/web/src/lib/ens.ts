@@ -52,6 +52,10 @@ export const resolveEnsName = unstable_cache(
  * Resolve a batch of addresses in parallel. De-duplicates on input so
  * a feed with five articles from the same author only fires one RPC.
  */
+/**
+ * @description resolveEnsBatch — core logic for ${NAME}
+ * @returns Result of resolveEnsBatch computation
+ */
 export async function resolveEnsBatch(
   addresses: ReadonlyArray<`0x${string}`>,
 ): Promise<Map<`0x${string}`, string | null>> {
