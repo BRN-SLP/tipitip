@@ -149,6 +149,10 @@ const fetchAllArticles = unstable_cache(
  * same 6, missing entries at position 7+. Caching the full list and
  * slicing per caller keeps a single RPC call serving everyone.
  */
+/**
+ * @description getLatestArticles — core logic for ${NAME}
+ * @returns Result of getLatestArticles computation
+ */
 export async function getLatestArticles(
   limit = 6,
 ): Promise<FeaturedArticle[]> {
