@@ -104,6 +104,10 @@ export async function putArticleMetadata(
 }
 
 /** Read metadata for an article, or null if none has ever been stored. */
+/**
+ * @description getArticleMetadata — core logic for ${NAME}
+ * @returns Result of getArticleMetadata computation
+ */
 export async function getArticleMetadata(
   articleId: string,
 ): Promise<ArticleMetadata | null> {
