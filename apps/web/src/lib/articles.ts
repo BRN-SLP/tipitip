@@ -71,6 +71,10 @@ export type PublishArticleInput = z.infer<typeof publishArticleSchema>;
  * Used by both the /write client and the /api/articles server so the
  * stored set matches what the writer expects on the article page.
  */
+/**
+ * @description normalizeTags — core logic for ${NAME}
+ * @returns Result of normalizeTags computation
+ */
 export function normalizeTags(input: string[] | string): string[] {
   const list = Array.isArray(input)
     ? input
