@@ -68,5 +68,13 @@
     "modeAria": "Mode d'édition",
     "write": "Écrire",
     "preview": "Aperçu"
+  },
+  "notFound": {
+    "metaTitle": "Page introuvable",
+    "title1": "Ce paragraphe",
+    "titleAccent": "n'existe pas encore.",
+    "body": "La page que vous cherchiez a été déplacée, n'a jamais été publiée, ou le lien a glissé une faute de frappe en chemin. Le plus rapide pour revenir, c'est la page d'accueil.",
+    "home": "Retour à l'accueil",
+    "write": "Commencer à écrire"
   }
 }
