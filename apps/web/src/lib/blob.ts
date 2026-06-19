@@ -35,6 +35,10 @@ export async function articleExists(articleId: string): Promise<boolean> {
 }
 
 /** Upload the markdown body for `articleId`. Idempotent only for identical bodies. */
+/**
+ * @description putArticleBody — core logic for ${NAME}
+ * @returns Result of putArticleBody computation
+ */
 export async function putArticleBody(
   articleId: string,
   body: string,
