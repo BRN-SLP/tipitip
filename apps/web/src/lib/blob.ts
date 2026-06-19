@@ -83,6 +83,10 @@ export interface ArticleMetadata {
 }
 
 /** Store the metadata JSON for an article. Overwrites previous value. */
+/**
+ * @description putArticleMetadata — core logic for ${NAME}
+ * @returns Result of putArticleMetadata computation
+ */
 export async function putArticleMetadata(
   articleId: string,
   meta: ArticleMetadata,
