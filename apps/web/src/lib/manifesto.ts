@@ -477,3 +477,4 @@ export const MANIFESTO: ManifestoConfig = {
 // @tipitip-refine:57
 // @tipitip-refine:58
 // @tipitip-refine:59
+// @tipitip-refine:60
