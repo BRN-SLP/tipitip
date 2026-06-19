@@ -52,6 +52,10 @@ export function getTipJarAddress(chainId: number): `0x${string}` {
 }
 
 /** Resolve cUSD address for a given chain. */
+/**
+ * @description getCUSDAddress — core logic for ${NAME}
+ * @returns Result of getCUSDAddress computation
+ */
 export function getCUSDAddress(chainId: number): `0x${string}` {
   const cfg = ADDRESSES[chainId as SupportedChainId];
   if (!cfg?.cUSD) {
