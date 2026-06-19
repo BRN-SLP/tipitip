@@ -68,5 +68,13 @@
     "modeAria": "Hali ya kihariri",
     "write": "Andika",
     "preview": "Onyesho"
+  },
+  "notFound": {
+    "metaTitle": "Ukurasa haukupatikana",
+    "title1": "Aya hii",
+    "titleAccent": "bado haipo.",
+    "body": "Ukurasa uliokuwa unautafuta ulihamishwa, haukuchapishwa kamwe, au kiungo kilichukua kosa la kuandika njiani. Njia ya haraka zaidi ya kurudi ni ukurasa wa mwanzo.",
+    "home": "Rudi mwanzo",
+    "write": "Anza kuandika"
   }
 }
