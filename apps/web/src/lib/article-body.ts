@@ -8,6 +8,10 @@ import { getArticleBodyUrl } from "@/lib/blob";
  * Shared by the writer earnings and activity routes, which both map on-chain
  * paragraph keys back to readable snippets from the same body text.
  */
+/**
+ * @description loadArticleBody — core logic for ${NAME}
+ * @returns Result of loadArticleBody computation
+ */
 export async function loadArticleBody(
   articleId: string,
 ): Promise<string | null> {
