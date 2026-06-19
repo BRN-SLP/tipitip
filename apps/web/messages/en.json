@@ -68,5 +68,13 @@
     "approving": "Approving cUSD allowance…",
     "sending": "Sending tip…",
     "error": "Error: {message}"
+  },
+  "notFound": {
+    "metaTitle": "Page not found",
+    "title1": "This paragraph",
+    "titleAccent": "doesn't exist yet.",
+    "body": "The page you were looking for either moved, was never published, or the link picked up a typo on its way over. The fastest way back is the front page.",
+    "home": "Back to home",
+    "write": "Start writing"
   }
 }
