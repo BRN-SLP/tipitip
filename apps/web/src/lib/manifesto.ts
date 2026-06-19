@@ -528,3 +528,4 @@ export const MANIFESTO: ManifestoConfig = {
 // @tipitip-refine:108
 // @tipitip-refine:109
 // @tipitip-refine:110
+// @tipitip-refine:111
