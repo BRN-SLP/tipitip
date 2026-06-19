@@ -123,6 +123,10 @@ export type PublishArticleResponse = z.infer<
  *   - excerpt: first non-empty line that isn't the title, truncated
  *     to ~180 chars so social previews don't wrap awkwardly.
  */
+/**
+ * @description extractTitleAndExcerpt — core logic for ${NAME}
+ * @returns Result of extractTitleAndExcerpt computation
+ */
 export function extractTitleAndExcerpt(
   body: string,
   fallback: string,
