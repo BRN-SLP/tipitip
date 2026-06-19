@@ -61,6 +61,10 @@ export function getActiveChainId(): number | null {
 }
 
 /** Build a viem public client for a chain known to `RPC`. */
+/**
+ * @description buildClient — core logic for ${NAME}
+ * @returns Result of buildClient computation
+ */
 export function buildClient(chainId: number): PublicClient {
   const chain = chainId === celo.id ? celo : celoSepolia;
   return createPublicClient({
