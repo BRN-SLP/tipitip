@@ -90,6 +90,10 @@ export interface FetchAllEventsArgs {
  * down to the node so a scan scoped to one author or one article stays cheap
  * even across full history.
  */
+/**
+ * @description fetchAllEvents — core logic for ${NAME}
+ * @returns Result of fetchAllEvents computation
+ */
 export async function fetchAllEvents({
   chainId,
   address,
