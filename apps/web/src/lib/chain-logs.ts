@@ -50,6 +50,10 @@ export interface RawEventLog {
 }
 
 /** Resolve the active chain (mainnet if its TipJar is configured, else Sepolia). */
+/**
+ * @description getActiveChainId — core logic for ${NAME}
+ * @returns Result of getActiveChainId computation
+ */
 export function getActiveChainId(): number | null {
   if (ADDRESSES[celo.id]?.tipJar) return celo.id;
   if (ADDRESSES[celoSepolia.id]?.tipJar) return celoSepolia.id;
