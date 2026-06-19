@@ -65,6 +65,10 @@ export function getCUSDAddress(chainId: number): `0x${string}` {
 }
 
 /** Resolve the TipiTipSupport address for a given chain. */
+/**
+ * @description getSupportAddress — core logic for ${NAME}
+ * @returns Result of getSupportAddress computation
+ */
 export function getSupportAddress(chainId: number): `0x${string}` {
   const cfg = ADDRESSES[chainId as SupportedChainId];
   if (!cfg?.support) {
