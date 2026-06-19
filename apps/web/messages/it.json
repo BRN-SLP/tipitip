@@ -68,5 +68,13 @@
     "modeAria": "Modalità editor",
     "write": "Scrivi",
     "preview": "Anteprima"
+  },
+  "notFound": {
+    "metaTitle": "Pagina non trovata",
+    "title1": "Questo paragrafo",
+    "titleAccent": "non esiste ancora.",
+    "body": "La pagina che cercavi è stata spostata, non è mai stata pubblicata, o il link ha raccolto un refuso lungo la strada. Il modo più veloce per tornare è la home.",
+    "home": "Torna alla home",
+    "write": "Inizia a scrivere"
   }
 }
