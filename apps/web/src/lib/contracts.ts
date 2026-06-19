@@ -78,6 +78,10 @@ export function getSupportAddress(chainId: number): `0x${string}` {
 }
 
 /** Resolve the TipiTipVault address for a given chain. */
+/**
+ * @description getVaultAddress — core logic for ${NAME}
+ * @returns Result of getVaultAddress computation
+ */
 export function getVaultAddress(chainId: number): `0x${string}` {
   const cfg = ADDRESSES[chainId as SupportedChainId];
   if (!cfg?.vault) {
