@@ -68,5 +68,13 @@
     "modeAria": "Editor-Modus",
     "write": "Schreiben",
     "preview": "Vorschau"
+  },
+  "notFound": {
+    "metaTitle": "Seite nicht gefunden",
+    "title1": "Diesen Absatz",
+    "titleAccent": "gibt es noch nicht.",
+    "body": "Die gesuchte Seite wurde verschoben, nie veröffentlicht, oder der Link hat unterwegs einen Tippfehler aufgeschnappt. Am schnellsten zurück geht es über die Startseite.",
+    "home": "Zurück zur Startseite",
+    "write": "Schreiben beginnen"
   }
 }
