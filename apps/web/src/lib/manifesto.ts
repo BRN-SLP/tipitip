@@ -1092,3 +1092,4 @@ export const MANIFESTO: ManifestoConfig = {
 // tipitip:302
 // tipitip:303
 // tipitip:304
+// tipitip:305
