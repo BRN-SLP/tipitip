@@ -63,3 +63,7 @@ export function CountUp({
   );
 }
 // @perf: React.memo candidate
+
+export interface CountUpProps {
+  className?: string;
+}
