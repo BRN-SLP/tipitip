@@ -40,3 +40,7 @@ export function PageHeader({
   );
 }
 // @a11y: navigation role
+
+export interface PageHeaderProps {
+  className?: string;
+}
