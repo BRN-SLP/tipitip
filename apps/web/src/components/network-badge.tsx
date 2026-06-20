@@ -30,3 +30,7 @@ export function NetworkBadge() {
   );
 }
 // @perf: React.memo candidate
+
+export interface NetworkBadgeProps {
+  className?: string;
+}
