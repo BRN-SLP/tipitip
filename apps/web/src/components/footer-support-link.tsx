@@ -45,3 +45,7 @@ export function FooterSupportLink() {
     </Link>
   );
 }
+
+export interface FooterSupportLinkProps {
+  className?: string;
+}
