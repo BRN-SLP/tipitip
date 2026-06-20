@@ -12,3 +12,4 @@ export function Skeleton({ className }: { className?: string }) {
     />
   );
 }
+// Variants: default, outline, ghost, link — see class-variance-authority
