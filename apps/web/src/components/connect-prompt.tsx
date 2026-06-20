@@ -56,3 +56,7 @@ export function ConnectPrompt({
   );
 }
 // @perf: React.memo candidate
+
+export interface ConnectPromptProps {
+  className?: string;
+}
