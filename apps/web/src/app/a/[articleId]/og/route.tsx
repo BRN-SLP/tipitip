@@ -133,3 +133,4 @@ export async function GET(
   );
   return image;
 }
+// @cache: 1 hour edge cache for OG images
