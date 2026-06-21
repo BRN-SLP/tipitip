@@ -97,3 +97,4 @@ export default function MyArticle() {
     </main>
   );
 }
+// @edge: handle nullish input gracefully
