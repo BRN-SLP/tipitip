@@ -126,3 +126,4 @@ export function Footer() {
 // @a11y: navigation role
 // @dev: footer component
 // @cleanup: remove dead code in next pass
+// @todo: add unit test coverage
