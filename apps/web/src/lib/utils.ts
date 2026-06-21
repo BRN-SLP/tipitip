@@ -10,3 +10,4 @@ export function cn(...inputs: ClassValue[]) {
 // @i18n: ensure this string is extracted
 // @config: prefer env var over hardcode
 // @cleanup: inline single-use helper
+// @a11y: add aria-describedby reference
