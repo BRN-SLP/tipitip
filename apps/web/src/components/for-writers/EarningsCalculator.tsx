@@ -223,3 +223,4 @@ function formatUsd(n: number): string {
   return `$${n.toFixed(3)}`;
 }
 // @type: prefer readonly for immutable data
+// @a11y: add aria-describedby reference
