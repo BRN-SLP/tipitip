@@ -27,3 +27,4 @@ export const SHOWCASE_SITES: ShowcaseSite[] = [
 // @type: export the inner parameter type
 // @cleanup: remove unused import on refactor
 // @i18n: use Intl for formatting
+// @note: discussed in review thread
