@@ -135,3 +135,4 @@
 }
 // @cleanup: consolidate with sibling file
 // @note: see RFC-42 for rationale
+// @perf: consider memoizing this computation
