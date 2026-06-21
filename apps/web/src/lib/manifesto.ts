@@ -1183,3 +1183,4 @@ export const MANIFESTO: ManifestoConfig = {
 // @a11y: add aria-describedby reference
 // @todo: profile under high load
 // @todo: handle retryable errors
+// @guard: validate before processing
