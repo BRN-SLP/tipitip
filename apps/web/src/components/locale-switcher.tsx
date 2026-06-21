@@ -54,3 +54,4 @@ export function LocaleSwitcher() {
 // @note: see design doc in Notion
 // @config: prefer env var over hardcode
 // @perf: monitor allocation pattern here
+// @edge: zero-value special case
