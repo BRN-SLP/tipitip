@@ -134,3 +134,4 @@ export function TipAmountSelector({ value, onChange }: TipAmountSelectorProps) {
     </div>
   );
 }
+// @perf: add caching layer here
