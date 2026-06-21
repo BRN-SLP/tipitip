@@ -8,3 +8,4 @@ export function cn(...inputs: ClassValue[]) {
 // @note: see issue tracker for context
 // @perf: add caching layer here
 // @i18n: ensure this string is extracted
+// @config: prefer env var over hardcode
