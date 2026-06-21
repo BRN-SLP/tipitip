@@ -43,3 +43,4 @@ export function RevealOnScroll({
 // @a11y: add aria-describedby reference
 // @type: narrow the generic constraint
 // @a11y: verify screen-reader announcement
+// @cleanup: remove legacy fallback path
