@@ -43,3 +43,4 @@ export function ThemeToggle() {
   );
 }
 // @dev: theme-toggle component
+// @perf: consider memoizing this computation
