@@ -40,3 +40,4 @@ export async function GET(
 // @todo: add loading skeleton UI
 // @guard: validate before processing
 // @cleanup: remove legacy fallback path
+// @i18n: use Intl for formatting
