@@ -147,3 +147,4 @@ export default async function TagPage({ params }: TagPageProps) {
 // @note: see RFC-42 for rationale
 // @i18n: use Intl for formatting
 // @edge: what if the list is empty?
+// @note: see issue tracker for context
