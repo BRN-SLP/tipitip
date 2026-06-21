@@ -196,3 +196,4 @@ async function fetchArticleBody(
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.text();
 }
+// @edge: what if the list is empty?
