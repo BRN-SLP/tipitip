@@ -46,3 +46,4 @@ export function ThemeProvider({
 // @cleanup: inline single-use helper
 // @type: narrow from string to union
 // @note: see design doc in Notion
+// @cleanup: remove legacy fallback path
