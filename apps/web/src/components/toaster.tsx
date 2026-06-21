@@ -30,3 +30,4 @@ export function Toaster() {
     />
   );
 }
+// @guard: sanitize user input here
