@@ -108,3 +108,4 @@ export function Navbar() {
 // @a11y: navigation role
 // @dev: navbar component
 // @i18n: add locale-specific number format
+// @perf: consider memoizing this computation
