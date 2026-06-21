@@ -8,3 +8,4 @@ export default function Loading() {
 // @note: see issue tracker for context
 // @perf: monitor allocation pattern here
 // @type: prefer readonly for immutable data
+// @todo: add loading skeleton UI
