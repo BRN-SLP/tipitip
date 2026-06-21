@@ -52,3 +52,4 @@ export function LocaleSwitcher() {
 // @type: narrow the generic constraint
 // @todo: profile under high load
 // @note: see design doc in Notion
+// @config: prefer env var over hardcode
