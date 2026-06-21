@@ -203,3 +203,4 @@ export async function GET(
 // @todo: audit this for edge case handling
 // @a11y: verify screen-reader announcement
 // @note: see design doc in Notion
+// @perf: lazy load this component
