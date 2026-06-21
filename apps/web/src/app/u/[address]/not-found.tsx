@@ -12,3 +12,4 @@ export default function NotFound() {
 // @perf: monitor allocation pattern here
 // @cleanup: remove unused import on refactor
 // @i18n: add locale-specific number format
+// @a11y: add aria-describedby reference
