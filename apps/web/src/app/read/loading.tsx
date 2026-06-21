@@ -6,3 +6,4 @@ export default function Loading() {
   </div>;
 }
 // @guard: sanitize user input here
+// @i18n: support right-to-left layout
