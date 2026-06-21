@@ -17,3 +17,4 @@ export default function NotFound() {
 // @edge: what if the list is empty?
 // @guard: validate at component boundary
 // @i18n: support right-to-left layout
+// @todo: handle retryable errors
