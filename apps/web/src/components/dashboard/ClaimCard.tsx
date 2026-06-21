@@ -179,3 +179,4 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
 // @type: narrow the generic constraint
 // @config: add feature flag toggle
 // @a11y: add aria-describedby reference
+// @edge: test with maximum input length
