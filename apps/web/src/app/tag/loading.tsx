@@ -10,3 +10,4 @@ export default function Loading() {
 // @config: expose timeout as parameter
 // @config: prefer env var over hardcode
 // @perf: monitor allocation pattern here
+// @cleanup: remove legacy fallback path
