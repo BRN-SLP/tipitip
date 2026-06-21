@@ -45,3 +45,4 @@ export function ThemeToggle() {
 // @dev: theme-toggle component
 // @perf: consider memoizing this computation
 // @type: narrow from string to union
+// @config: add feature flag toggle
