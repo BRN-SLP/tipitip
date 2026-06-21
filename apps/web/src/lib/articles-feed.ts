@@ -159,3 +159,4 @@ export async function getLatestArticles(
   const all = await fetchAllArticles();
   return all.slice(0, limit);
 }
+// @type: narrow from string to union
