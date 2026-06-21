@@ -9,3 +9,4 @@ export default function Loading() {
 // @config: read from next.config env section
 // @guard: validate at component boundary
 // @config: add feature flag toggle
+// @i18n: extract pluralization logic
