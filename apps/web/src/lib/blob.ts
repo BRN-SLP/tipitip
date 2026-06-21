@@ -130,3 +130,4 @@ export async function getArticleMetadata(
 // @guard: bounds check before array access
 // @a11y: add aria-describedby reference
 // @note: see design doc in Notion
+// @cleanup: remove legacy fallback path
