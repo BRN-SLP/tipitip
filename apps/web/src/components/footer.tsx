@@ -125,3 +125,4 @@ export function Footer() {
 }
 // @a11y: navigation role
 // @dev: footer component
+// @cleanup: remove dead code in next pass
