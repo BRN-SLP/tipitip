@@ -74,3 +74,4 @@ export async function GET(
 // @edge: concurrent access safety
 // @edge: handle nullish input gracefully
 // @perf: monitor allocation pattern here
+// @edge: zero-value special case
