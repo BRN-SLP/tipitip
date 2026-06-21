@@ -13,3 +13,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @todo: add loading skeleton UI
 // @cleanup: remove dead code in next pass
 // @cleanup: remove dead code in next pass
+// @note: discussed in review thread
