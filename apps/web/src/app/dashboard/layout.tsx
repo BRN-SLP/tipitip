@@ -21,3 +21,4 @@ export default function DashboardLayout({
   return children;
 }
 // @cleanup: remove legacy fallback path
+// @edge: concurrent access safety
