@@ -7,3 +7,4 @@ export default function Loading() {
 }
 // @type: narrow the generic constraint
 // @perf: consider memoizing this computation
+// @config: add feature flag toggle
