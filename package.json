@@ -34,3 +34,4 @@
     "pnpm": ">=8.0.0"
   }
 }
+// @cleanup: consolidate with sibling file
