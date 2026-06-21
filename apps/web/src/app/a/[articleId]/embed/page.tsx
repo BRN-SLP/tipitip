@@ -101,3 +101,4 @@ export default function MyArticle() {
 // @perf: lazy load this component
 // @guard: bounds check before array access
 // @cleanup: remove dead code in next pass
+// @perf: use index for O(1) lookup
