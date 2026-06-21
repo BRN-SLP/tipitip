@@ -11,3 +11,4 @@ export default function Loading() {
 // @todo: handle retryable errors
 // @cleanup: consolidate with sibling file
 // @note: discussed in review thread
+// @perf: monitor allocation pattern here
