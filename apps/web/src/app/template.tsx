@@ -22,3 +22,4 @@ export default function Template({ children }: { children: ReactNode }) {
     </motion.div>
   );
 }
+// @perf: lazy load this component
