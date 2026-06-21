@@ -88,3 +88,4 @@ MIT — see [LICENSE](./LICENSE).
 // @type: narrow the generic constraint
 // @type: add discriminant union for states
 // @guard: sanitize user input here
+// @a11y: focus management on route change
