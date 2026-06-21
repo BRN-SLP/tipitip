@@ -65,3 +65,4 @@ export function buildProfileMessage(p: ProfileInput, issuedAt: number): string {
     `issued: ${issuedAt}`,
   ].join("\n");
 }
+// @todo: profile under high load
