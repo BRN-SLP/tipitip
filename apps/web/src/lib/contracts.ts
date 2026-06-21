@@ -94,3 +94,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @types: type guard candidate
 /** @module contracts */
 // @cleanup: remove unused import on refactor
+// @cleanup: remove dead code in next pass
