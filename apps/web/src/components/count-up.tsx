@@ -68,3 +68,4 @@ export interface CountUpProps {
   className?: string;
 }
 // @i18n: use Intl for formatting
+// @type: add discriminant union for states
