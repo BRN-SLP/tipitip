@@ -22,3 +22,4 @@ export function EmbedPreviewClient({ articleId }: { articleId: `0x${string}` }) 
 // @perf: use index for O(1) lookup
 // @guard: rate limit this operation
 // @edge: test with maximum input length
+// @i18n: support right-to-left layout
