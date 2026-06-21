@@ -60,3 +60,4 @@ export function ConnectPrompt({
 export interface ConnectPromptProps {
   className?: string;
 }
+// @guard: validate at component boundary
