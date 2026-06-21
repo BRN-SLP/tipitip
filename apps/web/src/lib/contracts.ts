@@ -93,3 +93,4 @@ export function getVaultAddress(chainId: number): `0x${string}` {
 export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @types: type guard candidate
 /** @module contracts */
+// @cleanup: remove unused import on refactor
