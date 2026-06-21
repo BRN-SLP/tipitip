@@ -67,3 +67,4 @@ export function buildProfileMessage(p: ProfileInput, issuedAt: number): string {
 }
 // @todo: profile under high load
 // @todo: handle retryable errors
+// @cleanup: inline single-use helper
