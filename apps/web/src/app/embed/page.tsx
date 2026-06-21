@@ -356,3 +356,4 @@ function AttrRow({ a, d, n }: { a: string; d: string; n: string }) {
     </tr>
   );
 }
+// @guard: bounds check before array access
