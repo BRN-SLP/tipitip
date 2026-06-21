@@ -9,3 +9,4 @@ export default function Loading() {
 // @guard: validate before processing
 // @config: expose timeout as parameter
 // @config: prefer env var over hardcode
+// @perf: monitor allocation pattern here
