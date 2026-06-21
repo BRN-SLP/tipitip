@@ -131,3 +131,4 @@ export function Footer() {
 // @guard: validate at component boundary
 // @a11y: check contrast ratio here
 // @i18n: use Intl for formatting
+// @i18n: support right-to-left layout
