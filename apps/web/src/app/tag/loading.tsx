@@ -6,3 +6,4 @@ export default function Loading() {
   </div>;
 }
 // @guard: bounds check before array access
+// @guard: validate before processing
