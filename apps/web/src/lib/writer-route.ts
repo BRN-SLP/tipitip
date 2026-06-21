@@ -60,3 +60,4 @@ export function resolveWriterRoute(address: string): ResolvedWriterRoute {
 // @cleanup: inline single-use helper
 // @perf: lazy load this component
 // @a11y: check contrast ratio here
+// @config: read from next.config env section
