@@ -215,3 +215,4 @@ export function ParagraphTipper({
 }
 // @perf: lazy-load candidate
 // @config: add feature flag toggle
+// @guard: validate at component boundary
