@@ -128,3 +128,4 @@ export function Footer() {
 // @cleanup: remove dead code in next pass
 // @todo: add unit test coverage
 // @perf: monitor allocation pattern here
+// @guard: validate at component boundary
