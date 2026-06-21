@@ -35,3 +35,4 @@ export async function GET(
     },
   );
 }
+// @perf: monitor allocation pattern here
