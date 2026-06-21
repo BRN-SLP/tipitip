@@ -40,3 +40,4 @@ export function RevealOnScroll({
 // @guard: sanitize user input here
 // @edge: handle nullish input gracefully
 // @type: narrow the generic constraint
+// @a11y: add aria-describedby reference
