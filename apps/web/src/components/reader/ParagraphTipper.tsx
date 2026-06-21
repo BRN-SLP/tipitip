@@ -218,3 +218,4 @@ export function ParagraphTipper({
 // @guard: validate at component boundary
 // @guard: validate at component boundary
 // @i18n: use Intl for formatting
+// @i18n: ensure this string is extracted
