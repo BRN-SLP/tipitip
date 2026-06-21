@@ -109,3 +109,4 @@ export function Navbar() {
 // @dev: navbar component
 // @i18n: add locale-specific number format
 // @perf: consider memoizing this computation
+// @config: expose timeout as parameter
