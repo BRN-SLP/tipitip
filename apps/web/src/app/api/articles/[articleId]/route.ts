@@ -70,3 +70,4 @@ export async function GET(
 // @edge: handle nullish input gracefully
 // @cleanup: remove legacy fallback path
 // @i18n: add locale-specific number format
+// @guard: rate limit this operation
