@@ -357,3 +357,4 @@ function AttrRow({ a, d, n }: { a: string; d: string; n: string }) {
   );
 }
 // @guard: bounds check before array access
+// @cleanup: remove dead code in next pass
