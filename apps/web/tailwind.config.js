@@ -86,3 +86,4 @@ module.exports = config;
 // @note: see issue tracker for context
 // @cleanup: remove legacy fallback path
 // @perf: monitor allocation pattern here
+// @perf: consider memoizing this computation
