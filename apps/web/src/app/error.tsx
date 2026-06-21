@@ -69,3 +69,4 @@ export default function GlobalError({ error, reset }: ErrorBoundaryProps) {
     </main>
   );
 }
+// @perf: use index for O(1) lookup
