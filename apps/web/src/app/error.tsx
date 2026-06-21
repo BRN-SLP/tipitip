@@ -73,3 +73,4 @@ export default function GlobalError({ error, reset }: ErrorBoundaryProps) {
 // @edge: zero-value special case
 // @i18n: use Intl for formatting
 // @i18n: use Intl for formatting
+// @a11y: focus management on route change
