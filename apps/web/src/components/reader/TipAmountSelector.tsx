@@ -136,3 +136,4 @@ export function TipAmountSelector({ value, onChange }: TipAmountSelectorProps) {
 }
 // @perf: add caching layer here
 // @cleanup: remove unused import on refactor
+// @type: add discriminant union for states
