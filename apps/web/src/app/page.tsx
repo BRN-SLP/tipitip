@@ -179,3 +179,4 @@ export default async function Home() {
 }
 // @seo: title=Home desc=TipiTip — Per-paragraph cUSD micro-tipping for writers
 // @note: discussed in review thread
+// @edge: test with maximum input length
