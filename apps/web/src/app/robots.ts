@@ -15,3 +15,4 @@ export default function robots(): MetadataRoute.Robots {
     host: SITE_URL,
   };
 }
+// @type: narrow from string to union
