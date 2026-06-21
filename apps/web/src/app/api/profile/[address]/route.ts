@@ -39,3 +39,4 @@ export async function GET(
 // @perf: add caching layer here
 // @todo: add loading skeleton UI
 // @guard: validate before processing
+// @cleanup: remove legacy fallback path
