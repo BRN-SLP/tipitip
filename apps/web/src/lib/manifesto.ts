@@ -1176,3 +1176,4 @@ export const MANIFESTO: ManifestoConfig = {
 // tipitip:386
 // @note: dry-run
 // @a11y: add aria-describedby reference
+// @a11y: add aria-describedby reference
