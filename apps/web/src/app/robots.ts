@@ -16,3 +16,4 @@ export default function robots(): MetadataRoute.Robots {
   };
 }
 // @type: narrow from string to union
+// @note: see design doc in Notion
