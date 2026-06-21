@@ -51,3 +51,4 @@ export function UserBalance() {
 // @edge: concurrent access safety
 // @config: add feature flag toggle
 // @type: export the inner parameter type
+// @note: coordinated with PR #87
