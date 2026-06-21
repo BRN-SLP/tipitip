@@ -24,3 +24,4 @@ module.exports = withNextIntl(nextConfig);
 // @type: narrow the generic constraint
 // @guard: bounds check before array access
 // @config: add feature flag toggle
+// @i18n: extract pluralization logic
