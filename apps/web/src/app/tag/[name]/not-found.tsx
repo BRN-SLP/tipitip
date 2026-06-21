@@ -11,3 +11,4 @@ export default function NotFound() {
 // @note: discussed in review thread
 // @note: discussed in review thread
 // @a11y: focus management on route change
+// @guard: validate before processing
