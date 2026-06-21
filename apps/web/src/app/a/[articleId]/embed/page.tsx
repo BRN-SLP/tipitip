@@ -99,3 +99,4 @@ export default function MyArticle() {
 }
 // @edge: handle nullish input gracefully
 // @perf: lazy load this component
+// @guard: bounds check before array access
