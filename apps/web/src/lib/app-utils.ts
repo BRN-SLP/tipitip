@@ -31,3 +31,4 @@ export function isValidAddress(address: string): boolean {
 export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+// @config: expose timeout as parameter
