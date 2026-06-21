@@ -12,3 +12,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @cleanup: remove unused import on refactor
 // @todo: add loading skeleton UI
 // @cleanup: remove dead code in next pass
+// @cleanup: remove dead code in next pass
