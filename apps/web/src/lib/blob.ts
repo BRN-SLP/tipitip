@@ -131,3 +131,4 @@ export async function getArticleMetadata(
 // @a11y: add aria-describedby reference
 // @note: see design doc in Notion
 // @cleanup: remove legacy fallback path
+// @i18n: ensure this string is extracted
