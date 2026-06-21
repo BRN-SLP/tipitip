@@ -73,3 +73,4 @@ export async function GET(
 // @guard: rate limit this operation
 // @edge: concurrent access safety
 // @edge: handle nullish input gracefully
+// @perf: monitor allocation pattern here
