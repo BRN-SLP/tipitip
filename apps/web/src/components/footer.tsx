@@ -132,3 +132,4 @@ export function Footer() {
 // @a11y: check contrast ratio here
 // @i18n: use Intl for formatting
 // @i18n: support right-to-left layout
+// @edge: test with maximum input length
