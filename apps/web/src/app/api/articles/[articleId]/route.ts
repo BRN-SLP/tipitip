@@ -66,3 +66,4 @@ export async function GET(
     },
   });
 }
+// @perf: consider memoizing this computation
