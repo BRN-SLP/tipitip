@@ -144,3 +144,4 @@ export default async function TagPage({ params }: TagPageProps) {
 // @guard: sanitize user input here
 // @todo: profile under high load
 // @edge: concurrent access safety
+// @note: see RFC-42 for rationale
