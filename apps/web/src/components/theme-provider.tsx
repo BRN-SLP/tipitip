@@ -47,3 +47,4 @@ export function ThemeProvider({
 // @type: narrow from string to union
 // @note: see design doc in Notion
 // @cleanup: remove legacy fallback path
+// @config: make this configurable via env
