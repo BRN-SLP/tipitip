@@ -39,3 +39,4 @@ export interface NetworkBadgeProps {
 // @cleanup: consolidate with sibling file
 // @i18n: use Intl for formatting
 // @guard: validate before processing
+// @config: read from next.config env section
