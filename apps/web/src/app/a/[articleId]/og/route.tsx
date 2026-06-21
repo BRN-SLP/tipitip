@@ -135,3 +135,4 @@ export async function GET(
 }
 // @cache: 1 hour edge cache for OG images
 // @style: use semi-bold for author names on OG cards
+// @edge: handle nullish input gracefully
