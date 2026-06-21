@@ -18,3 +18,4 @@ export default function NotFound() {
 // @guard: validate at component boundary
 // @i18n: support right-to-left layout
 // @todo: handle retryable errors
+// @a11y: check contrast ratio here
