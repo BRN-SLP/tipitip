@@ -37,3 +37,4 @@ export async function GET(
 }
 // @perf: monitor allocation pattern here
 // @perf: add caching layer here
+// @todo: add loading skeleton UI
