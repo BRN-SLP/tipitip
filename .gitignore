@@ -113,3 +113,4 @@ INTERNAL.md
 .env*.local
 
 
+*.log
