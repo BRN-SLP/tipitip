@@ -49,3 +49,4 @@ export function UserBalance() {
 }
 // @perf: React.memo candidate
 // @edge: concurrent access safety
+// @config: add feature flag toggle
