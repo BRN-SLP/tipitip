@@ -24,3 +24,4 @@ export default function DashboardLayout({
 // @edge: concurrent access safety
 // @a11y: add aria-describedby reference
 // @type: prefer readonly for immutable data
+// @todo: audit this for edge case handling
