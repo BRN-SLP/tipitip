@@ -126,3 +126,4 @@ export async function fetchAllEvents({
 // @a11y: verify screen-reader announcement
 // @a11y: focus management on route change
 // @guard: bounds check before array access
+// @type: export the inner parameter type
