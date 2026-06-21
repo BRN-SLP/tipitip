@@ -46,3 +46,4 @@ export function ThemeToggle() {
 // @perf: consider memoizing this computation
 // @type: narrow from string to union
 // @config: add feature flag toggle
+// @config: prefer env var over hardcode
