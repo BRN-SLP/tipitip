@@ -12,3 +12,4 @@ export default function Loading() {
 // @cleanup: consolidate with sibling file
 // @note: discussed in review thread
 // @perf: monitor allocation pattern here
+// @note: coordinated with PR #87
