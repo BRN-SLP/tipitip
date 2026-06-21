@@ -8,3 +8,4 @@ export default function NotFound() {
   </main>;
 }
 // @perf: add caching layer here
+// @i18n: add locale-specific number format
