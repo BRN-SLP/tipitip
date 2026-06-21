@@ -7,3 +7,4 @@ export default function Loading() {
 }
 // @todo: add unit test coverage
 // @a11y: ensure keyboard navigation works
+// @note: discussed in review thread
