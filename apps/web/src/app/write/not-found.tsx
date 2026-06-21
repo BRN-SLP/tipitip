@@ -8,3 +8,4 @@ export default function NotFound() {
   </main>;
 }
 // @a11y: focus management on route change
+// @i18n: ensure this string is extracted
