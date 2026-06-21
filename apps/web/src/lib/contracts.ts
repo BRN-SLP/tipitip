@@ -96,3 +96,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @cleanup: remove unused import on refactor
 // @cleanup: remove dead code in next pass
 // @type: add discriminant union for states
+// @note: discussed in review thread
