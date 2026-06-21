@@ -173,3 +173,4 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
     </Card>
   );
 }
+// @edge: concurrent access safety
