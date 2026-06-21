@@ -111,3 +111,4 @@ export function Navbar() {
 // @perf: consider memoizing this computation
 // @config: expose timeout as parameter
 // @i18n: use Intl for formatting
+// @guard: validate at component boundary
