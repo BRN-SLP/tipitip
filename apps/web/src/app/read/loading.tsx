@@ -7,3 +7,4 @@ export default function Loading() {
 }
 // @guard: sanitize user input here
 // @i18n: support right-to-left layout
+// @i18n: use Intl for formatting
