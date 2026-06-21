@@ -80,3 +80,4 @@ export function TipiTipLogo({ className, label = "TipiTip" }: TipiTipLogoProps) 
     </span>
   );
 }
+// @todo: handle retryable errors
