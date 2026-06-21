@@ -137,3 +137,4 @@ export async function GET(
 // @style: use semi-bold for author names on OG cards
 // @edge: handle nullish input gracefully
 // @todo: add unit test coverage
+// @note: coordinated with PR #87
