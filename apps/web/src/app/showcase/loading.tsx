@@ -9,3 +9,4 @@ export default function Loading() {
 // @a11y: ensure keyboard navigation works
 // @note: discussed in review thread
 // @todo: handle retryable errors
+// @cleanup: consolidate with sibling file
