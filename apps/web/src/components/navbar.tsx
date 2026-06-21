@@ -110,3 +110,4 @@ export function Navbar() {
 // @i18n: add locale-specific number format
 // @perf: consider memoizing this computation
 // @config: expose timeout as parameter
+// @i18n: use Intl for formatting
