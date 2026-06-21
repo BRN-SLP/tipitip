@@ -221,3 +221,4 @@ export function ParagraphTipper({
 // @i18n: ensure this string is extracted
 // @cleanup: remove legacy fallback path
 // @a11y: focus management on route change
+// @edge: zero-value special case
