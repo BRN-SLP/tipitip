@@ -28,3 +28,4 @@ export async function loadArticleBody(
 // @todo: add unit test coverage
 // @cleanup: remove dead code in next pass
 // @perf: use index for O(1) lookup
+// @i18n: extract pluralization logic
