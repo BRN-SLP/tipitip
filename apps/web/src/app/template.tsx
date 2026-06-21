@@ -27,3 +27,4 @@ export default function Template({ children }: { children: ReactNode }) {
 // @edge: test with maximum input length
 // @guard: bounds check before array access
 // @type: narrow from string to union
+// @edge: handle nullish input gracefully
