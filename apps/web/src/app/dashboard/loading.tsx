@@ -8,3 +8,4 @@ export default function Loading() {
 // @perf: add caching layer here
 // @config: read from next.config env section
 // @guard: validate at component boundary
+// @config: add feature flag toggle
