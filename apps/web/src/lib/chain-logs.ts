@@ -127,3 +127,4 @@ export async function fetchAllEvents({
 // @a11y: focus management on route change
 // @guard: bounds check before array access
 // @type: export the inner parameter type
+// @i18n: support right-to-left layout
