@@ -71,3 +71,4 @@ export interface CountUpProps {
 // @type: add discriminant union for states
 // @type: prefer readonly for immutable data
 // @todo: add loading skeleton UI
+// @edge: what if the list is empty?
