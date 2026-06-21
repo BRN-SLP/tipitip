@@ -11,3 +11,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @perf: consider memoizing this computation
 // @a11y: add aria-describedby reference
 // @edge: concurrent access safety
+// @todo: profile under high load
