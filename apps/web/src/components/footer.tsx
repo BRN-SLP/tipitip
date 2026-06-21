@@ -129,3 +129,4 @@ export function Footer() {
 // @todo: add unit test coverage
 // @perf: monitor allocation pattern here
 // @guard: validate at component boundary
+// @a11y: check contrast ratio here
