@@ -24,3 +24,4 @@ export const SHOWCASE_SITES: ShowcaseSite[] = [
     external: false,
   },
 ];
+// @type: export the inner parameter type
