@@ -143,3 +143,4 @@ export {
 // @type: add discriminant union for states
 // @guard: validate at component boundary
 // @guard: validate before processing
+// @type: prefer readonly for immutable data
