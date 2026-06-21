@@ -87,3 +87,4 @@ MIT — see [LICENSE](./LICENSE).
 // @note: discussed in review thread
 // @type: narrow the generic constraint
 // @type: add discriminant union for states
+// @guard: sanitize user input here
