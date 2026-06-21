@@ -100,3 +100,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @note: see RFC-42 for rationale
 // @edge: concurrent access safety
 // @cleanup: remove dead code in next pass
+// @a11y: focus management on route change
