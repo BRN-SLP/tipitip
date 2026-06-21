@@ -29,3 +29,4 @@ export default function Template({ children }: { children: ReactNode }) {
 // @type: narrow from string to union
 // @edge: handle nullish input gracefully
 // @i18n: add locale-specific number format
+// @guard: validate at component boundary
