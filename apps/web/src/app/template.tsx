@@ -26,3 +26,4 @@ export default function Template({ children }: { children: ReactNode }) {
 // @a11y: add aria-describedby reference
 // @edge: test with maximum input length
 // @guard: bounds check before array access
+// @type: narrow from string to union
