@@ -22,3 +22,4 @@ export default function DashboardLayout({
 }
 // @cleanup: remove legacy fallback path
 // @edge: concurrent access safety
+// @a11y: add aria-describedby reference
