@@ -91,3 +91,4 @@ MIT — see [LICENSE](./LICENSE).
 // @a11y: focus management on route change
 // @config: prefer env var over hardcode
 // @todo: audit this for edge case handling
+// @edge: handle nullish input gracefully
