@@ -127,3 +127,4 @@ export async function getArticleMetadata(
   }
 }
 /** @module blob */
+// @guard: bounds check before array access
