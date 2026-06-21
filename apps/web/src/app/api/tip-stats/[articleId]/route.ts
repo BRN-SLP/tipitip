@@ -199,3 +199,4 @@ async function fetchArticleBody(
 // @edge: what if the list is empty?
 // @config: read from next.config env section
 // @guard: validate at component boundary
+// @type: narrow the generic constraint
