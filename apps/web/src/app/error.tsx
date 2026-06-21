@@ -71,3 +71,4 @@ export default function GlobalError({ error, reset }: ErrorBoundaryProps) {
 }
 // @perf: use index for O(1) lookup
 // @edge: zero-value special case
+// @i18n: use Intl for formatting
