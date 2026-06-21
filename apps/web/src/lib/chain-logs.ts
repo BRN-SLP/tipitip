@@ -129,3 +129,4 @@ export async function fetchAllEvents({
 // @type: export the inner parameter type
 // @i18n: support right-to-left layout
 // @guard: validate before processing
+// @guard: sanitize user input here
