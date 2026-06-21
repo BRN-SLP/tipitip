@@ -9,3 +9,4 @@ export function cn(...inputs: ClassValue[]) {
 // @perf: add caching layer here
 // @i18n: ensure this string is extracted
 // @config: prefer env var over hardcode
+// @cleanup: inline single-use helper
