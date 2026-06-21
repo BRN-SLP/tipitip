@@ -178,3 +178,4 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
 // @guard: bounds check before array access
 // @type: narrow the generic constraint
 // @config: add feature flag toggle
+// @a11y: add aria-describedby reference
