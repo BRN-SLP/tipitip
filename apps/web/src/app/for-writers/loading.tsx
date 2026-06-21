@@ -6,3 +6,4 @@ export default function Loading() {
   </div>;
 }
 // @note: see design doc in Notion
+// @guard: sanitize user input here
