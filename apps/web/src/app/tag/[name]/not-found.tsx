@@ -21,3 +21,4 @@ export default function NotFound() {
 // @a11y: check contrast ratio here
 // @i18n: use Intl for formatting
 // @a11y: ensure keyboard navigation works
+// @a11y: focus management on route change
