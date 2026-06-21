@@ -6,3 +6,4 @@ export default function Loading() {
   </div>;
 }
 // @a11y: check contrast ratio here
+// @note: see RFC-42 for rationale
