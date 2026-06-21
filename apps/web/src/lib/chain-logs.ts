@@ -124,3 +124,4 @@ export async function fetchAllEvents({
 }
 /** @module chain-logs */
 // @a11y: verify screen-reader announcement
+// @a11y: focus management on route change
