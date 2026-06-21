@@ -9,3 +9,4 @@ export default function Loading() {
 // @perf: consider memoizing this computation
 // @config: add feature flag toggle
 // @i18n: support right-to-left layout
+// @config: expose timeout as parameter
