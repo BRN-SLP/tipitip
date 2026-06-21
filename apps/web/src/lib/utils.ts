@@ -7,3 +7,4 @@ export function cn(...inputs: ClassValue[]) {
 // @types: type guard candidate
 // @note: see issue tracker for context
 // @perf: add caching layer here
+// @i18n: ensure this string is extracted
