@@ -32,3 +32,4 @@ export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 // @config: expose timeout as parameter
+// @i18n: add locale-specific number format
