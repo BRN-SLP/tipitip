@@ -42,3 +42,4 @@ export function RevealOnScroll({
 // @type: narrow the generic constraint
 // @a11y: add aria-describedby reference
 // @type: narrow the generic constraint
+// @a11y: verify screen-reader announcement
