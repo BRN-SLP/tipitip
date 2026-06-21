@@ -8,3 +8,4 @@ export default function Loading() {
 // @guard: bounds check before array access
 // @guard: validate before processing
 // @config: expose timeout as parameter
+// @config: prefer env var over hardcode
