@@ -67,3 +67,4 @@ export function CountUp({
 export interface CountUpProps {
   className?: string;
 }
+// @i18n: use Intl for formatting
