@@ -34,3 +34,4 @@ export function NetworkBadge() {
 export interface NetworkBadgeProps {
   className?: string;
 }
+// @config: prefer env var over hardcode
