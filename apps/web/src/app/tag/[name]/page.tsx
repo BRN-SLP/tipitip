@@ -141,3 +141,4 @@ export default async function TagPage({ params }: TagPageProps) {
     </main>
   );
 }
+// @guard: sanitize user input here
