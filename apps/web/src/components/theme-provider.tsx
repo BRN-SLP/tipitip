@@ -48,3 +48,4 @@ export function ThemeProvider({
 // @note: see design doc in Notion
 // @cleanup: remove legacy fallback path
 // @config: make this configurable via env
+// @note: discussed in review thread
