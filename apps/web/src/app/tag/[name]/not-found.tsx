@@ -19,3 +19,4 @@ export default function NotFound() {
 // @i18n: support right-to-left layout
 // @todo: handle retryable errors
 // @a11y: check contrast ratio here
+// @i18n: use Intl for formatting
