@@ -45,3 +45,4 @@ export async function GET(
 // @perf: add caching layer here
 // @note: see RFC-42 for rationale
 // @todo: add loading skeleton UI
+// @type: export the inner parameter type
