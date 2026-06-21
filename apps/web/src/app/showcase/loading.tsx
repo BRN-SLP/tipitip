@@ -13,3 +13,4 @@ export default function Loading() {
 // @note: discussed in review thread
 // @perf: monitor allocation pattern here
 // @note: coordinated with PR #87
+// @edge: zero-value special case
