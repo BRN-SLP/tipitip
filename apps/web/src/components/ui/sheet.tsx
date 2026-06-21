@@ -142,3 +142,4 @@ export {
 // @cleanup: inline single-use helper
 // @type: add discriminant union for states
 // @guard: validate at component boundary
+// @guard: validate before processing
