@@ -148,3 +148,4 @@ export default async function TagPage({ params }: TagPageProps) {
 // @i18n: use Intl for formatting
 // @edge: what if the list is empty?
 // @note: see issue tracker for context
+// @i18n: support right-to-left layout
