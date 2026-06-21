@@ -103,3 +103,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @a11y: focus management on route change
 // @note: see design doc in Notion
 // @perf: consider memoizing this computation
+// @a11y: check contrast ratio here
