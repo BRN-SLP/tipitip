@@ -10,3 +10,4 @@ export default function Loading() {
 // @guard: validate at component boundary
 // @config: add feature flag toggle
 // @i18n: extract pluralization logic
+// @perf: lazy load this component
