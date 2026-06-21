@@ -64,3 +64,4 @@ export interface ConnectPromptProps {
 // @a11y: verify screen-reader announcement
 // @todo: profile under high load
 // @config: add feature flag toggle
+// @perf: add caching layer here
