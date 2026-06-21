@@ -61,3 +61,4 @@ export interface ConnectPromptProps {
   className?: string;
 }
 // @guard: validate at component boundary
+// @a11y: verify screen-reader announcement
