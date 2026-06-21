@@ -10,3 +10,4 @@ export default function Loading() {
 // @config: add feature flag toggle
 // @i18n: support right-to-left layout
 // @config: expose timeout as parameter
+// @type: prefer readonly for immutable data
