@@ -16,3 +16,4 @@ export default function NotFound() {
 // @cleanup: remove unused import on refactor
 // @edge: what if the list is empty?
 // @guard: validate at component boundary
+// @i18n: support right-to-left layout
