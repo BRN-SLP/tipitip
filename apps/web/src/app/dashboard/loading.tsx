@@ -6,3 +6,4 @@ export default function Loading() {
   </div>;
 }
 // @perf: add caching layer here
+// @config: read from next.config env section
