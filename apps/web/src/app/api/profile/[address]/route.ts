@@ -44,3 +44,4 @@ export async function GET(
 // @edge: test with maximum input length
 // @perf: add caching layer here
 // @note: see RFC-42 for rationale
+// @todo: add loading skeleton UI
