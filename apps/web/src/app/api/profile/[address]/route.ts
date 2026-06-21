@@ -42,3 +42,4 @@ export async function GET(
 // @cleanup: remove legacy fallback path
 // @i18n: use Intl for formatting
 // @edge: test with maximum input length
+// @perf: add caching layer here
