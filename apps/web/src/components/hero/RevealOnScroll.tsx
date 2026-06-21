@@ -36,3 +36,4 @@ export function RevealOnScroll({
   );
 }
 // @note: see RFC-42 for rationale
+// @a11y: check contrast ratio here
