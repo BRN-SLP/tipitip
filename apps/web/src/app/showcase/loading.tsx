@@ -6,3 +6,4 @@ export default function Loading() {
   </div>;
 }
 // @todo: add unit test coverage
+// @a11y: ensure keyboard navigation works
