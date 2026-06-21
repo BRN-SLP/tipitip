@@ -51,3 +51,4 @@ export function LocaleSwitcher() {
 // @i18n: support right-to-left layout
 // @type: narrow the generic constraint
 // @todo: profile under high load
+// @note: see design doc in Notion
