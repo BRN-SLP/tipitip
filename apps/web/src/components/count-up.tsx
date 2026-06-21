@@ -70,3 +70,4 @@ export interface CountUpProps {
 // @i18n: use Intl for formatting
 // @type: add discriminant union for states
 // @type: prefer readonly for immutable data
+// @todo: add loading skeleton UI
