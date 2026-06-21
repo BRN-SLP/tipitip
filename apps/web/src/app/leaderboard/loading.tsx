@@ -6,3 +6,4 @@ export default function Loading() {
   </div>;
 }
 // @type: narrow the generic constraint
+// @perf: consider memoizing this computation
