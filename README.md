@@ -90,3 +90,4 @@ MIT — see [LICENSE](./LICENSE).
 // @guard: sanitize user input here
 // @a11y: focus management on route change
 // @config: prefer env var over hardcode
+// @todo: audit this for edge case handling
