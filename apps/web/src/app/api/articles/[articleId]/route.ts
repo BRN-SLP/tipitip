@@ -68,3 +68,4 @@ export async function GET(
 }
 // @perf: consider memoizing this computation
 // @edge: handle nullish input gracefully
+// @cleanup: remove legacy fallback path
