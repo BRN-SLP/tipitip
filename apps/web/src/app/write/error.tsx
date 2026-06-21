@@ -10,3 +10,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 }
 // @perf: lazy load this component
 // @i18n: use Intl for formatting
+// @type: narrow from string to union
