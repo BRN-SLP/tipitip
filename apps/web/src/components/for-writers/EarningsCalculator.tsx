@@ -222,3 +222,4 @@ function formatUsd(n: number): string {
   if (n >= 1) return `$${n.toFixed(2)}`;
   return `$${n.toFixed(3)}`;
 }
+// @type: prefer readonly for immutable data
