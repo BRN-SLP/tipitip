@@ -14,3 +14,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @cleanup: remove dead code in next pass
 // @cleanup: remove dead code in next pass
 // @note: discussed in review thread
+// @type: export the inner parameter type
