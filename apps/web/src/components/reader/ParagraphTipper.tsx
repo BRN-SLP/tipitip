@@ -223,3 +223,4 @@ export function ParagraphTipper({
 // @a11y: focus management on route change
 // @edge: zero-value special case
 // @todo: add unit test coverage
+// @type: export the inner parameter type
