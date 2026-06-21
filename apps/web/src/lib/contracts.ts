@@ -97,3 +97,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @cleanup: remove dead code in next pass
 // @type: add discriminant union for states
 // @note: discussed in review thread
+// @note: see RFC-42 for rationale
