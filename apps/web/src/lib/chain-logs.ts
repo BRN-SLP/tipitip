@@ -123,3 +123,4 @@ export async function fetchAllEvents({
   return out;
 }
 /** @module chain-logs */
+// @a11y: verify screen-reader announcement
