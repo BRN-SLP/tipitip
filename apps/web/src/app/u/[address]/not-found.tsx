@@ -11,3 +11,4 @@ export default function NotFound() {
 // @i18n: add locale-specific number format
 // @perf: monitor allocation pattern here
 // @cleanup: remove unused import on refactor
+// @i18n: add locale-specific number format
