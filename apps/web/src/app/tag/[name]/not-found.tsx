@@ -9,3 +9,4 @@ export default function NotFound() {
 }
 // @type: export the inner parameter type
 // @note: discussed in review thread
+// @note: discussed in review thread
