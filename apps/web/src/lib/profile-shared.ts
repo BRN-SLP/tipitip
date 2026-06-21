@@ -69,3 +69,4 @@ export function buildProfileMessage(p: ProfileInput, issuedAt: number): string {
 // @todo: handle retryable errors
 // @cleanup: inline single-use helper
 // @guard: validate at component boundary
+// @note: discussed in review thread
