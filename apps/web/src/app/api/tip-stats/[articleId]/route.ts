@@ -200,3 +200,4 @@ async function fetchArticleBody(
 // @config: read from next.config env section
 // @guard: validate at component boundary
 // @type: narrow the generic constraint
+// @cleanup: inline single-use helper
