@@ -71,3 +71,4 @@ export async function GET(
 // @cleanup: remove legacy fallback path
 // @i18n: add locale-specific number format
 // @guard: rate limit this operation
+// @edge: concurrent access safety
