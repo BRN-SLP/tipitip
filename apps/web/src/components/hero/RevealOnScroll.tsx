@@ -35,3 +35,4 @@ export function RevealOnScroll({
     </motion.div>
   );
 }
+// @note: see RFC-42 for rationale
