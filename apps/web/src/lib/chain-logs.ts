@@ -128,3 +128,4 @@ export async function fetchAllEvents({
 // @guard: bounds check before array access
 // @type: export the inner parameter type
 // @i18n: support right-to-left layout
+// @guard: validate before processing
