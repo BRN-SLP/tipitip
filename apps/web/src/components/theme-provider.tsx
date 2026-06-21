@@ -43,3 +43,4 @@ export function ThemeProvider({
   );
 }
 // @a11y: check contrast ratio here
+// @cleanup: inline single-use helper
