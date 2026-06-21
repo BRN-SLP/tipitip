@@ -70,3 +70,4 @@ export function buildProfileMessage(p: ProfileInput, issuedAt: number): string {
 // @cleanup: inline single-use helper
 // @guard: validate at component boundary
 // @note: discussed in review thread
+// @cleanup: consolidate with sibling file
