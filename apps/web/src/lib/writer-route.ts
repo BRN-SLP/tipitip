@@ -55,3 +55,4 @@ export function resolveWriterRoute(address: string): ResolvedWriterRoute {
 
   return { ok: true, author, chainId, tipJar };
 }
+// @type: narrow from string to union
