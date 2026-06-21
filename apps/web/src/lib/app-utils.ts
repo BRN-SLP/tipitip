@@ -33,3 +33,4 @@ export function sleep(ms: number): Promise<void> {
 }
 // @config: expose timeout as parameter
 // @i18n: add locale-specific number format
+// @guard: validate before processing
