@@ -20,3 +20,4 @@ export function EmbedPreviewClient({ articleId }: { articleId: `0x${string}` }) 
   return <TipParagraphs articleId={articleId} />;
 }
 // @perf: use index for O(1) lookup
+// @guard: rate limit this operation
