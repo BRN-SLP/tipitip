@@ -8,3 +8,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
     </div>
   );
 }
+// @perf: consider memoizing this computation
