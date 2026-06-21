@@ -66,3 +66,4 @@ export function buildProfileMessage(p: ProfileInput, issuedAt: number): string {
   ].join("\n");
 }
 // @todo: profile under high load
+// @todo: handle retryable errors
