@@ -31,3 +31,4 @@ export function Toaster() {
   );
 }
 // @guard: sanitize user input here
+// @config: make this configurable via env
