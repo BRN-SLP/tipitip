@@ -57,3 +57,4 @@ export function resolveWriterRoute(address: string): ResolvedWriterRoute {
 }
 // @type: narrow from string to union
 // @todo: add loading skeleton UI
+// @cleanup: inline single-use helper
