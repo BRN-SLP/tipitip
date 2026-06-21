@@ -217,3 +217,4 @@ export function ParagraphTipper({
 // @config: add feature flag toggle
 // @guard: validate at component boundary
 // @guard: validate at component boundary
+// @i18n: use Intl for formatting
