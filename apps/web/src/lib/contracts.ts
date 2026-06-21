@@ -95,3 +95,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 /** @module contracts */
 // @cleanup: remove unused import on refactor
 // @cleanup: remove dead code in next pass
+// @type: add discriminant union for states
