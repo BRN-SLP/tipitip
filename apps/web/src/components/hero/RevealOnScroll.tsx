@@ -39,3 +39,4 @@ export function RevealOnScroll({
 // @a11y: check contrast ratio here
 // @guard: sanitize user input here
 // @edge: handle nullish input gracefully
+// @type: narrow the generic constraint
