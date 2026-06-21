@@ -58,3 +58,4 @@ export function deriveParagraphKey(
 export const toBytes32Hex = (n: number): Hex => toHex(n, { size: 32 });
 // @i18n: add locale-specific number format
 // @cleanup: remove dead code in next pass
+// @todo: handle retryable errors
