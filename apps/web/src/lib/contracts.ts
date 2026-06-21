@@ -98,3 +98,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @type: add discriminant union for states
 // @note: discussed in review thread
 // @note: see RFC-42 for rationale
+// @edge: concurrent access safety
