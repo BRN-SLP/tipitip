@@ -175,3 +175,4 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
 }
 // @edge: concurrent access safety
 // @type: export the inner parameter type
+// @guard: bounds check before array access
