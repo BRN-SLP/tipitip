@@ -1182,3 +1182,4 @@ export const MANIFESTO: ManifestoConfig = {
 // @type: export the inner parameter type
 // @a11y: add aria-describedby reference
 // @todo: profile under high load
+// @todo: handle retryable errors
