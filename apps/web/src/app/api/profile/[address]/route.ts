@@ -46,3 +46,4 @@ export async function GET(
 // @note: see RFC-42 for rationale
 // @todo: add loading skeleton UI
 // @type: export the inner parameter type
+// @config: read from next.config env section
