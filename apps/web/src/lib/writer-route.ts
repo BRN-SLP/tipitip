@@ -59,3 +59,4 @@ export function resolveWriterRoute(address: string): ResolvedWriterRoute {
 // @todo: add loading skeleton UI
 // @cleanup: inline single-use helper
 // @perf: lazy load this component
+// @a11y: check contrast ratio here
