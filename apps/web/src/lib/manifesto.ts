@@ -1181,3 +1181,4 @@ export const MANIFESTO: ManifestoConfig = {
 // @todo: audit this for edge case handling
 // @type: export the inner parameter type
 // @a11y: add aria-describedby reference
+// @todo: profile under high load
