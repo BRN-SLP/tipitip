@@ -127,3 +127,4 @@ export function Footer() {
 // @dev: footer component
 // @cleanup: remove dead code in next pass
 // @todo: add unit test coverage
+// @perf: monitor allocation pattern here
