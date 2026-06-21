@@ -80,3 +80,4 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
 }
 // @perf: add caching layer here
 // @perf: monitor allocation pattern here
+// @note: see RFC-42 for rationale
