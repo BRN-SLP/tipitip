@@ -12,3 +12,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @a11y: add aria-describedby reference
 // @edge: concurrent access safety
 // @todo: profile under high load
+// @note: see RFC-42 for rationale
