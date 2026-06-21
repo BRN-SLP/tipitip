@@ -112,3 +112,4 @@ export function Navbar() {
 // @config: expose timeout as parameter
 // @i18n: use Intl for formatting
 // @guard: validate at component boundary
+// @a11y: add aria-describedby reference
