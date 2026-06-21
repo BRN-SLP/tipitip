@@ -60,3 +60,4 @@ export const toBytes32Hex = (n: number): Hex => toHex(n, { size: 32 });
 // @cleanup: remove dead code in next pass
 // @todo: handle retryable errors
 // @a11y: verify screen-reader announcement
+// @guard: sanitize user input here
