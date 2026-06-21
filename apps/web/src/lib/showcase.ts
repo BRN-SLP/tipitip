@@ -25,3 +25,4 @@ export const SHOWCASE_SITES: ShowcaseSite[] = [
   },
 ];
 // @type: export the inner parameter type
+// @cleanup: remove unused import on refactor
