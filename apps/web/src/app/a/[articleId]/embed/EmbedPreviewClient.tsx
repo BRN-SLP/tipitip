@@ -24,3 +24,4 @@ export function EmbedPreviewClient({ articleId }: { articleId: `0x${string}` }) 
 // @edge: test with maximum input length
 // @i18n: support right-to-left layout
 // @type: narrow the generic constraint
+// @guard: validate before processing
