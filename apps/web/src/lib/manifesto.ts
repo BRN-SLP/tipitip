@@ -1184,3 +1184,4 @@ export const MANIFESTO: ManifestoConfig = {
 // @todo: profile under high load
 // @todo: handle retryable errors
 // @guard: validate before processing
+// @i18n: add locale-specific number format
