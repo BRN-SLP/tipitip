@@ -72,3 +72,4 @@ export interface CountUpProps {
 // @type: prefer readonly for immutable data
 // @todo: add loading skeleton UI
 // @edge: what if the list is empty?
+// @config: expose timeout as parameter
