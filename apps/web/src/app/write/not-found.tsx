@@ -10,3 +10,4 @@ export default function NotFound() {
 // @a11y: focus management on route change
 // @i18n: ensure this string is extracted
 // @guard: validate before processing
+// @note: see RFC-42 for rationale
