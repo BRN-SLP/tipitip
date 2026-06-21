@@ -180,3 +180,4 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
 // @config: add feature flag toggle
 // @a11y: add aria-describedby reference
 // @edge: test with maximum input length
+// @type: narrow from string to union
