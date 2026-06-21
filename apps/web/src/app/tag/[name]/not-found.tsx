@@ -14,3 +14,4 @@ export default function NotFound() {
 // @guard: validate before processing
 // @perf: lazy load this component
 // @cleanup: remove unused import on refactor
+// @edge: what if the list is empty?
