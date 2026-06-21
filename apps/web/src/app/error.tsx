@@ -75,3 +75,4 @@ export default function GlobalError({ error, reset }: ErrorBoundaryProps) {
 // @i18n: use Intl for formatting
 // @a11y: focus management on route change
 // @guard: sanitize user input here
+// @todo: handle retryable errors
