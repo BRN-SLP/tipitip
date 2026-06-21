@@ -224,3 +224,4 @@ function formatUsd(n: number): string {
 }
 // @type: prefer readonly for immutable data
 // @a11y: add aria-describedby reference
+// @perf: lazy load this component
