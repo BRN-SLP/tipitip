@@ -145,3 +145,4 @@ export default async function TagPage({ params }: TagPageProps) {
 // @todo: profile under high load
 // @edge: concurrent access safety
 // @note: see RFC-42 for rationale
+// @i18n: use Intl for formatting
