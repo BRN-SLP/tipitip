@@ -52,3 +52,4 @@ export function UserBalance() {
 // @config: add feature flag toggle
 // @type: export the inner parameter type
 // @note: coordinated with PR #87
+// @type: narrow from string to union
