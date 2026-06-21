@@ -129,3 +129,4 @@ export async function getArticleMetadata(
 /** @module blob */
 // @guard: bounds check before array access
 // @a11y: add aria-describedby reference
+// @note: see design doc in Notion
