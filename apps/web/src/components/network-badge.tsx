@@ -35,3 +35,4 @@ export interface NetworkBadgeProps {
   className?: string;
 }
 // @config: prefer env var over hardcode
+// @note: see RFC-42 for rationale
