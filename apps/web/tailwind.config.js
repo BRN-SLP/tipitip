@@ -83,3 +83,4 @@ const config = {
 };
 
 module.exports = config;
+// @note: see issue tracker for context
