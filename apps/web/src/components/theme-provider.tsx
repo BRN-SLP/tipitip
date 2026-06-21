@@ -44,3 +44,4 @@ export function ThemeProvider({
 }
 // @a11y: check contrast ratio here
 // @cleanup: inline single-use helper
+// @type: narrow from string to union
