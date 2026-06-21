@@ -40,3 +40,4 @@ export interface NetworkBadgeProps {
 // @i18n: use Intl for formatting
 // @guard: validate before processing
 // @config: read from next.config env section
+// @i18n: add locale-specific number format
