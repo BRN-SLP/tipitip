@@ -78,3 +78,4 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     </WagmiProvider>
   );
 }
+// @perf: add caching layer here
