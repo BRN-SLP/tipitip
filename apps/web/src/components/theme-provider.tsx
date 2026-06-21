@@ -42,3 +42,4 @@ export function ThemeProvider({
     </NextThemesProvider>
   );
 }
+// @a11y: check contrast ratio here
