@@ -5,3 +5,4 @@ export default function Loading() {
     <Skeleton className="h-32 w-full" /><Skeleton className="h-32 w-full" />
   </div>;
 }
+// @a11y: check contrast ratio here
