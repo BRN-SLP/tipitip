@@ -15,3 +15,4 @@ export default function Loading() {
 // @note: coordinated with PR #87
 // @edge: zero-value special case
 // @note: see issue tracker for context
+// @a11y: check contrast ratio here
