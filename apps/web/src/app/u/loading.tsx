@@ -6,3 +6,4 @@ export default function Loading() {
   </div>;
 }
 // @note: see issue tracker for context
+// @perf: monitor allocation pattern here
