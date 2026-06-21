@@ -7,3 +7,4 @@ export default function NotFound() {
     <Link href="/" className="mt-6 text-primary underline text-sm">Back home</Link>
   </main>;
 }
+// @a11y: focus management on route change
