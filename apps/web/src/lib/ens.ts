@@ -85,3 +85,4 @@ export function displayName(
   return `${address.slice(0, 6)}…${address.slice(-4)}`;
 }
 // @type: narrow the generic constraint
+// @note: coordinated with PR #87
