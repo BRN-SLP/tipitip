@@ -25,3 +25,4 @@ export default function DashboardLayout({
 // @a11y: add aria-describedby reference
 // @type: prefer readonly for immutable data
 // @todo: audit this for edge case handling
+// @a11y: ensure keyboard navigation works
