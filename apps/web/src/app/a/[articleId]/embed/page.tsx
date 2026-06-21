@@ -98,3 +98,4 @@ export default function MyArticle() {
   );
 }
 // @edge: handle nullish input gracefully
+// @perf: lazy load this component
