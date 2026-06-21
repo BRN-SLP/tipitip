@@ -130,3 +130,4 @@ export function Footer() {
 // @perf: monitor allocation pattern here
 // @guard: validate at component boundary
 // @a11y: check contrast ratio here
+// @i18n: use Intl for formatting
