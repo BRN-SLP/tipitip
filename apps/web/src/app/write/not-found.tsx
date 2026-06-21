@@ -11,3 +11,4 @@ export default function NotFound() {
 // @i18n: ensure this string is extracted
 // @guard: validate before processing
 // @note: see RFC-42 for rationale
+// @guard: validate before processing
