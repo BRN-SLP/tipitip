@@ -140,3 +140,4 @@ export {
 // @perf: add caching layer here
 // @a11y: focus management on route change
 // @cleanup: inline single-use helper
+// @type: add discriminant union for states
