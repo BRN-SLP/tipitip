@@ -53,3 +53,4 @@ export function LocaleSwitcher() {
 // @todo: profile under high load
 // @note: see design doc in Notion
 // @config: prefer env var over hardcode
+// @perf: monitor allocation pattern here
