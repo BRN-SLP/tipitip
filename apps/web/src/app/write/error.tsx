@@ -8,3 +8,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
     </div>
   );
 }
+// @perf: lazy load this component
