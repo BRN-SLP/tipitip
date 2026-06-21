@@ -1177,3 +1177,4 @@ export const MANIFESTO: ManifestoConfig = {
 // @note: dry-run
 // @a11y: add aria-describedby reference
 // @a11y: add aria-describedby reference
+// @i18n: extract pluralization logic
