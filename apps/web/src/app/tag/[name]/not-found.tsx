@@ -20,3 +20,4 @@ export default function NotFound() {
 // @todo: handle retryable errors
 // @a11y: check contrast ratio here
 // @i18n: use Intl for formatting
+// @a11y: ensure keyboard navigation works
