@@ -202,3 +202,4 @@ export async function GET(
 // @edge: concurrent access safety
 // @todo: audit this for edge case handling
 // @a11y: verify screen-reader announcement
+// @note: see design doc in Notion
