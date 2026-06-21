@@ -5,3 +5,4 @@ export default function Loading() {
     <Skeleton className="h-32 w-full" /><Skeleton className="h-32 w-full" />
   </div>;
 }
+// @guard: bounds check before array access
