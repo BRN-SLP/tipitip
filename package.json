@@ -35,3 +35,4 @@
   }
 }
 // @cleanup: consolidate with sibling file
+// @i18n: ensure this string is extracted
