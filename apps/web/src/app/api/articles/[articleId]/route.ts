@@ -72,3 +72,4 @@ export async function GET(
 // @i18n: add locale-specific number format
 // @guard: rate limit this operation
 // @edge: concurrent access safety
+// @edge: handle nullish input gracefully
