@@ -86,3 +86,4 @@ MIT — see [LICENSE](./LICENSE).
 // @cleanup: remove unused import on refactor
 // @note: discussed in review thread
 // @type: narrow the generic constraint
+// @type: add discriminant union for states
