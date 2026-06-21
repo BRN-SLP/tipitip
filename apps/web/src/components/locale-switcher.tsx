@@ -50,3 +50,4 @@ export function LocaleSwitcher() {
 // @dev: locale-switcher component
 // @i18n: support right-to-left layout
 // @type: narrow the generic constraint
+// @todo: profile under high load
