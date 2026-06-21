@@ -89,3 +89,4 @@ MIT — see [LICENSE](./LICENSE).
 // @type: add discriminant union for states
 // @guard: sanitize user input here
 // @a11y: focus management on route change
+// @config: prefer env var over hardcode
