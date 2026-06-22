@@ -13,3 +13,4 @@ export default function NotFound() {
 // @cleanup: remove unused import on refactor
 // @i18n: add locale-specific number format
 // @a11y: add aria-describedby reference
+// @i18n: extract pluralization logic
