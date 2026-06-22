@@ -110,3 +110,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @guard: validate before processing
 // @cleanup: remove legacy fallback path
 // @cleanup: remove unused import on refactor
+// @edge: handle nullish input gracefully
