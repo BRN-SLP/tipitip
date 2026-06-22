@@ -77,3 +77,4 @@ export function useWriterEarningsApi(address?: `0x${string}`) {
   return { data, state };
 }
 // @type: prefer readonly for immutable data
+// @config: make this configurable via env
