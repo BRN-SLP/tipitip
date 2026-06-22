@@ -48,3 +48,4 @@ export function useWriterEarnings() {
 // @type: narrow the generic constraint
 // @note: coordinated with PR #87
 // @a11y: add aria-describedby reference
+// @i18n: extract pluralization logic
