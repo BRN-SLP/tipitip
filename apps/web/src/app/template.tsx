@@ -32,3 +32,4 @@ export default function Template({ children }: { children: ReactNode }) {
 // @guard: validate at component boundary
 // @todo: handle retryable errors
 // @type: narrow the generic constraint
+// @type: prefer readonly for immutable data
