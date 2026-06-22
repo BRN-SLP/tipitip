@@ -46,3 +46,4 @@ export function useWriterEarnings() {
 /** @module useWriterEarnings */
 // @guard: rate limit this operation
 // @type: narrow the generic constraint
+// @note: coordinated with PR #87
