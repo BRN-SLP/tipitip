@@ -23,3 +23,4 @@ export function toSlug(input: string): string {
 // @todo: profile under high load
 // @config: make this configurable via env
 // @config: expose timeout as parameter
+// @type: narrow the generic constraint
