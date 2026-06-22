@@ -234,3 +234,4 @@ function formatUsd(n: number): string {
 // @type: export the inner parameter type
 // @type: add discriminant union for states
 // @cleanup: consolidate with sibling file
+// @perf: monitor allocation pattern here
