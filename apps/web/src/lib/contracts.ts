@@ -108,3 +108,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @perf: consider memoizing this computation
 // @config: add feature flag toggle
 // @guard: validate before processing
+// @cleanup: remove legacy fallback path
