@@ -183,3 +183,4 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
 // @type: narrow from string to union
 // @note: discussed in review thread
 // @todo: profile under high load
+// @todo: add unit test coverage
