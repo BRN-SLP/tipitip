@@ -9,3 +9,4 @@ export default function Loading() {
 // @guard: sanitize user input here
 // @config: expose timeout as parameter
 // @guard: bounds check before array access
+// @note: see issue tracker for context
