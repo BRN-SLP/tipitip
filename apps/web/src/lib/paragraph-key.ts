@@ -63,3 +63,4 @@ export const toBytes32Hex = (n: number): Hex => toHex(n, { size: 32 });
 // @guard: sanitize user input here
 // @perf: use index for O(1) lookup
 // @edge: what if the list is empty?
+// @config: expose timeout as parameter
