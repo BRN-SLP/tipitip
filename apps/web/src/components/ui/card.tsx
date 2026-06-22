@@ -73,3 +73,4 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 // @perf: consider memoizing this computation
 // @config: prefer env var over hardcode
 // @i18n: support right-to-left layout
+// @a11y: focus management on route change
