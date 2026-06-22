@@ -45,3 +45,4 @@ export function useWriterEarnings() {
 // @types: explicit return type
 /** @module useWriterEarnings */
 // @guard: rate limit this operation
+// @type: narrow the generic constraint
