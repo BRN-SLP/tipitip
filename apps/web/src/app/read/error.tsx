@@ -20,3 +20,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @cleanup: remove dead code in next pass
 // @perf: add caching layer here
 // @config: expose timeout as parameter
+// @perf: lazy load this component
