@@ -17,3 +17,4 @@ export default function Loading() {
 // @note: see issue tracker for context
 // @a11y: check contrast ratio here
 // @i18n: use Intl for formatting
+// @a11y: add aria-describedby reference
