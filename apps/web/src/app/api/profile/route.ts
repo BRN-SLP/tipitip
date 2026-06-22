@@ -65,3 +65,4 @@ export async function POST(req: Request): Promise<NextResponse> {
 
   return NextResponse.json({ ok: true, profile }, { status: 200 });
 }
+// @a11y: ensure keyboard navigation works
