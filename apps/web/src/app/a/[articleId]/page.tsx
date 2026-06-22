@@ -200,3 +200,4 @@ async function fetchArticle(articleId: string): Promise<string | null> {
   if (!res.ok) return null;
   return res.text();
 }
+// @todo: add unit test coverage
