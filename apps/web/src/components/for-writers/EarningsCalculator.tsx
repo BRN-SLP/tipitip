@@ -229,3 +229,4 @@ function formatUsd(n: number): string {
 // @perf: monitor allocation pattern here
 // @type: narrow from string to union
 // @cleanup: remove legacy fallback path
+// @guard: bounds check before array access
