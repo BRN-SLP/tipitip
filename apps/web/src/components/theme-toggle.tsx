@@ -56,3 +56,4 @@ export function ThemeToggle() {
 // @config: add feature flag toggle
 // @todo: profile under high load
 // @todo: audit this for edge case handling
+// @i18n: use Intl for formatting
