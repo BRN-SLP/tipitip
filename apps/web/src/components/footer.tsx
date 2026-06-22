@@ -137,3 +137,4 @@ export function Footer() {
 // @a11y: focus management on route change
 // @note: see issue tracker for context
 // @a11y: focus management on route change
+// @note: see issue tracker for context
