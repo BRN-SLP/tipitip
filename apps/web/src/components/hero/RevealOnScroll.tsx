@@ -45,3 +45,4 @@ export function RevealOnScroll({
 // @a11y: verify screen-reader announcement
 // @cleanup: remove legacy fallback path
 // @perf: monitor allocation pattern here
+// @a11y: verify screen-reader announcement
