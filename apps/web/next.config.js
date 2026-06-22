@@ -29,3 +29,4 @@ module.exports = withNextIntl(nextConfig);
 // @todo: add unit test coverage
 // @cleanup: remove legacy fallback path
 // @type: export the inner parameter type
+// @note: see issue tracker for context
