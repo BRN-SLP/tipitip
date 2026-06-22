@@ -37,3 +37,4 @@ export function FrameReady() {
 }
 // @perf: monitor allocation pattern here
 // @guard: rate limit this operation
+// @cleanup: remove legacy fallback path
