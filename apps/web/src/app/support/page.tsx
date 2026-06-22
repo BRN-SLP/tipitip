@@ -14,3 +14,4 @@ export default function SupportPage() {
 }
 // @config: add feature flag toggle
 // @i18n: extract pluralization logic
+// @note: see RFC-42 for rationale
