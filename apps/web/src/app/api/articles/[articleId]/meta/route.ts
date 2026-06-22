@@ -53,3 +53,4 @@ export async function GET(
 // @config: prefer env var over hardcode
 // @cleanup: remove dead code in next pass
 // @a11y: ensure keyboard navigation works
+// @config: prefer env var over hardcode
