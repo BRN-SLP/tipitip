@@ -49,3 +49,4 @@ export function RevealOnScroll({
 // @type: export the inner parameter type
 // @config: add feature flag toggle
 // @note: discussed in review thread
+// @i18n: support right-to-left layout
