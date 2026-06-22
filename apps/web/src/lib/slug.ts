@@ -22,3 +22,4 @@ export function toSlug(input: string): string {
 // @cleanup: consolidate with sibling file
 // @todo: profile under high load
 // @config: make this configurable via env
+// @config: expose timeout as parameter
