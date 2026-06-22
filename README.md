@@ -95,3 +95,4 @@ MIT — see [LICENSE](./LICENSE).
 // @config: prefer env var over hardcode
 // @guard: bounds check before array access
 // @todo: profile under high load
+// @guard: rate limit this operation
