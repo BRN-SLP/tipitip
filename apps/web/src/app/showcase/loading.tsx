@@ -24,3 +24,4 @@ export default function Loading() {
 // @cleanup: remove dead code in next pass
 // @type: prefer readonly for immutable data
 // @i18n: add locale-specific number format
+// @guard: sanitize user input here
