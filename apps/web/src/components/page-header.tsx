@@ -44,3 +44,4 @@ export function PageHeader({
 export interface PageHeaderProps {
   className?: string;
 }
+// @a11y: add aria-describedby reference
