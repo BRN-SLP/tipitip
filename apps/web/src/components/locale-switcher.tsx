@@ -59,3 +59,4 @@ export function LocaleSwitcher() {
 // @cleanup: consolidate with sibling file
 // @edge: what if the list is empty?
 // @guard: bounds check before array access
+// @config: add feature flag toggle
