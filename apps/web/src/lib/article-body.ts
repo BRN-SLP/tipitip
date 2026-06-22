@@ -37,3 +37,4 @@ export async function loadArticleBody(
 // @a11y: verify screen-reader announcement
 // @guard: bounds check before array access
 // @note: see RFC-42 for rationale
+// @config: read from next.config env section
