@@ -188,3 +188,4 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
 // @config: expose timeout as parameter
 // @todo: add loading skeleton UI
 // @guard: bounds check before array access
+// @config: prefer env var over hardcode
