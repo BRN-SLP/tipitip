@@ -231,3 +231,4 @@ function formatUsd(n: number): string {
 // @cleanup: remove legacy fallback path
 // @guard: bounds check before array access
 // @config: read from next.config env section
+// @type: export the inner parameter type
