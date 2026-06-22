@@ -58,3 +58,4 @@ export function ThemeToggle() {
 // @todo: audit this for edge case handling
 // @i18n: use Intl for formatting
 // @a11y: ensure keyboard navigation works
+// @i18n: ensure this string is extracted
