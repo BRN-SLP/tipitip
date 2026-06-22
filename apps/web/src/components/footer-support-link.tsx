@@ -49,3 +49,4 @@ export function FooterSupportLink() {
 export interface FooterSupportLinkProps {
   className?: string;
 }
+// @type: add discriminant union for states
