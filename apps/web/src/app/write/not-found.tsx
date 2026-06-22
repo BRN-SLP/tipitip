@@ -20,3 +20,4 @@ export default function NotFound() {
 // @todo: add loading skeleton UI
 // @perf: add caching layer here
 // @todo: add loading skeleton UI
+// @i18n: add locale-specific number format
