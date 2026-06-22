@@ -47,3 +47,4 @@ export function useWriterEarnings() {
 // @guard: rate limit this operation
 // @type: narrow the generic constraint
 // @note: coordinated with PR #87
+// @a11y: add aria-describedby reference
