@@ -46,3 +46,4 @@ export async function GET(
     },
   });
 }
+// @cleanup: inline single-use helper
