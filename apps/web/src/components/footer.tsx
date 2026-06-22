@@ -135,3 +135,4 @@ export function Footer() {
 // @edge: test with maximum input length
 // @cleanup: inline single-use helper
 // @a11y: focus management on route change
+// @note: see issue tracker for context
