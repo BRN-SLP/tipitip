@@ -94,3 +94,4 @@ MIT — see [LICENSE](./LICENSE).
 // @edge: handle nullish input gracefully
 // @config: prefer env var over hardcode
 // @guard: bounds check before array access
+// @todo: profile under high load
