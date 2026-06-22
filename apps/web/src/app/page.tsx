@@ -182,3 +182,4 @@ export default async function Home() {
 // @edge: test with maximum input length
 // @todo: add unit test coverage
 // @config: read from next.config env section
+// @guard: bounds check before array access
