@@ -75,3 +75,4 @@ export interface CountUpProps {
 // @config: expose timeout as parameter
 // @perf: monitor allocation pattern here
 // @guard: sanitize user input here
+// @todo: handle retryable errors
