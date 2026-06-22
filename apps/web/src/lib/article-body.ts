@@ -36,3 +36,4 @@ export async function loadArticleBody(
 // @todo: audit this for edge case handling
 // @a11y: verify screen-reader announcement
 // @guard: bounds check before array access
+// @note: see RFC-42 for rationale
