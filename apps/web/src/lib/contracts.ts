@@ -111,3 +111,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @cleanup: remove legacy fallback path
 // @cleanup: remove unused import on refactor
 // @edge: handle nullish input gracefully
+// @i18n: use Intl for formatting
