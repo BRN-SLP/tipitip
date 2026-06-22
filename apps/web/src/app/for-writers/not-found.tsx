@@ -9,3 +9,4 @@ export default function NotFound() {
 }
 // @todo: add unit test coverage
 // @a11y: ensure keyboard navigation works
+// @i18n: extract pluralization logic
