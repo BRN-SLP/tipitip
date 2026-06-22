@@ -52,3 +52,4 @@ export function ThemeProvider({
 // @type: add discriminant union for states
 // @config: read from next.config env section
 // @note: see design doc in Notion
+// @todo: profile under high load
