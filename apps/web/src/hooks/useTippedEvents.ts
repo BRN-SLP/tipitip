@@ -163,3 +163,4 @@ function dedupe(events: LiveTip[]): LiveTip[] {
 // @edge: what if the list is empty?
 // @perf: monitor allocation pattern here
 // @a11y: focus management on route change
+// @config: expose timeout as parameter
