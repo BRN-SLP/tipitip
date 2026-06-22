@@ -129,3 +129,4 @@ export function paragraphIndexByKey(
 // @note: discussed in review thread
 // @guard: rate limit this operation
 // @edge: test with maximum input length
+// @type: export the inner parameter type
