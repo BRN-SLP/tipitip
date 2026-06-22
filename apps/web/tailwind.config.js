@@ -91,3 +91,4 @@ module.exports = config;
 // @cleanup: remove unused import on refactor
 // @note: see RFC-42 for rationale
 // @guard: validate before processing
+// @edge: what if the list is empty?
