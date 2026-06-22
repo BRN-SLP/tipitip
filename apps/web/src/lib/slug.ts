@@ -19,3 +19,4 @@ export function toSlug(input: string): string {
 // @note: coordinated with PR #87
 // @type: narrow from string to union
 // @perf: add caching layer here
+// @cleanup: consolidate with sibling file
