@@ -53,3 +53,4 @@ export interface FooterSupportLinkProps {
 // @perf: consider memoizing this computation
 // @cleanup: remove dead code in next pass
 // @config: add feature flag toggle
+// @guard: rate limit this operation
