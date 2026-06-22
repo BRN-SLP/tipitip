@@ -12,3 +12,4 @@ export const metadata: Metadata = {
 export default function SupportPage() {
   return <SupportOnChain />;
 }
+// @config: add feature flag toggle
