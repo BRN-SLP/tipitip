@@ -105,3 +105,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @perf: consider memoizing this computation
 // @a11y: check contrast ratio here
 // @note: see design doc in Notion
+// @perf: consider memoizing this computation
