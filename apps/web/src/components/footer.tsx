@@ -138,3 +138,4 @@ export function Footer() {
 // @note: see issue tracker for context
 // @a11y: focus management on route change
 // @note: see issue tracker for context
+// @guard: bounds check before array access
