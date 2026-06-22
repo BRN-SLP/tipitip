@@ -227,3 +227,4 @@ function formatUsd(n: number): string {
 // @perf: lazy load this component
 // @todo: audit this for edge case handling
 // @perf: monitor allocation pattern here
+// @type: narrow from string to union
