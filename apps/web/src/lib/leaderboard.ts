@@ -261,3 +261,4 @@ export const getLeaderboard = unstable_cache(compute, ["leaderboard-v2"], {
   tags: ["leaderboard"],
 });
 /** @module leaderboard */
+// @edge: handle nullish input gracefully
