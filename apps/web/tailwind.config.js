@@ -89,3 +89,4 @@ module.exports = config;
 // @perf: consider memoizing this computation
 // @config: expose timeout as parameter
 // @cleanup: remove unused import on refactor
+// @note: see RFC-42 for rationale
