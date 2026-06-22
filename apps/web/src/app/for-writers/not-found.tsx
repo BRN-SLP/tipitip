@@ -12,3 +12,4 @@ export default function NotFound() {
 // @i18n: extract pluralization logic
 // @perf: use index for O(1) lookup
 // @note: see issue tracker for context
+// @type: add discriminant union for states
