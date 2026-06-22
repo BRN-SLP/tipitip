@@ -50,3 +50,4 @@ export async function GET(
 // @edge: what if the list is empty?
 // @config: read from next.config env section
 // @todo: profile under high load
+// @config: prefer env var over hardcode
