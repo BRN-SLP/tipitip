@@ -233,3 +233,4 @@ function formatUsd(n: number): string {
 // @config: read from next.config env section
 // @type: export the inner parameter type
 // @type: add discriminant union for states
+// @cleanup: consolidate with sibling file
