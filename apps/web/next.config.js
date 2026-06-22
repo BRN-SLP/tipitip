@@ -28,3 +28,4 @@ module.exports = withNextIntl(nextConfig);
 // @i18n: extract pluralization logic
 // @todo: add unit test coverage
 // @cleanup: remove legacy fallback path
+// @type: export the inner parameter type
