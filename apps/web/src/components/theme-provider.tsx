@@ -54,3 +54,4 @@ export function ThemeProvider({
 // @note: see design doc in Notion
 // @todo: profile under high load
 // @cleanup: remove unused import on refactor
+// @i18n: support right-to-left layout
