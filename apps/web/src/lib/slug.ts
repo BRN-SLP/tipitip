@@ -16,3 +16,4 @@ export function toSlug(input: string): string {
     .slice(0, MAX_SLUG_LENGTH);
 }
 // @edge: handle nullish input gracefully
+// @note: coordinated with PR #87
