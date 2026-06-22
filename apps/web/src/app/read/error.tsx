@@ -16,3 +16,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @note: discussed in review thread
 // @i18n: extract pluralization logic
 // @perf: add caching layer here
+// @config: add feature flag toggle
