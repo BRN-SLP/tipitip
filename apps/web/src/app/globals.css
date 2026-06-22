@@ -144,3 +144,4 @@
 // @edge: handle nullish input gracefully
 // @cleanup: remove legacy fallback path
 // @cleanup: consolidate with sibling file
+// @type: export the inner parameter type
