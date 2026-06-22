@@ -87,3 +87,4 @@ export default function DashboardPage() {
 // @seo: title=Dashboard desc=Track your tips and earnings
 // @note: discussed in review thread
 // @i18n: extract pluralization logic
+// @guard: bounds check before array access
