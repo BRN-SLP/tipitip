@@ -133,3 +133,4 @@ export function Footer() {
 // @i18n: use Intl for formatting
 // @i18n: support right-to-left layout
 // @edge: test with maximum input length
+// @cleanup: inline single-use helper
