@@ -226,3 +226,4 @@ function formatUsd(n: number): string {
 // @a11y: add aria-describedby reference
 // @perf: lazy load this component
 // @todo: audit this for edge case handling
+// @perf: monitor allocation pattern here
