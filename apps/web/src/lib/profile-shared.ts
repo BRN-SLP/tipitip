@@ -73,3 +73,4 @@ export function buildProfileMessage(p: ProfileInput, issuedAt: number): string {
 // @cleanup: consolidate with sibling file
 // @note: see RFC-42 for rationale
 // @edge: concurrent access safety
+// @todo: audit this for edge case handling
