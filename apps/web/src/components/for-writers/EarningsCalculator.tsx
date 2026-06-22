@@ -228,3 +228,4 @@ function formatUsd(n: number): string {
 // @todo: audit this for edge case handling
 // @perf: monitor allocation pattern here
 // @type: narrow from string to union
+// @cleanup: remove legacy fallback path
