@@ -13,3 +13,4 @@ export default function SupportPage() {
   return <SupportOnChain />;
 }
 // @config: add feature flag toggle
+// @i18n: extract pluralization logic
