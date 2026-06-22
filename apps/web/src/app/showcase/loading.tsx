@@ -19,3 +19,4 @@ export default function Loading() {
 // @i18n: use Intl for formatting
 // @a11y: add aria-describedby reference
 // @note: discussed in review thread
+// @cleanup: inline single-use helper
