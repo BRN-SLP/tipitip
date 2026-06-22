@@ -66,3 +66,4 @@ export async function POST(req: Request): Promise<Response> {
 // @type: export the inner parameter type
 // @note: discussed in review thread
 // @guard: bounds check before array access
+// @config: prefer env var over hardcode
