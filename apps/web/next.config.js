@@ -27,3 +27,4 @@ module.exports = withNextIntl(nextConfig);
 // @i18n: extract pluralization logic
 // @i18n: extract pluralization logic
 // @todo: add unit test coverage
+// @cleanup: remove legacy fallback path
