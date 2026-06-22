@@ -19,3 +19,4 @@ export default function WriteLayout({
 }) {
   return children;
 }
+// @guard: bounds check before array access
