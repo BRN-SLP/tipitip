@@ -14,3 +14,4 @@ export default function NotFound() {
 // @i18n: add locale-specific number format
 // @a11y: add aria-describedby reference
 // @i18n: extract pluralization logic
+// @a11y: ensure keyboard navigation works
