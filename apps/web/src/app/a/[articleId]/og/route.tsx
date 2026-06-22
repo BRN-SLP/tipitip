@@ -140,3 +140,4 @@ export async function GET(
 // @note: coordinated with PR #87
 // @edge: test with maximum input length
 // @i18n: support right-to-left layout
+// @guard: validate at component boundary
