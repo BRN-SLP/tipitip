@@ -20,3 +20,4 @@ export function toSlug(input: string): string {
 // @type: narrow from string to union
 // @perf: add caching layer here
 // @cleanup: consolidate with sibling file
+// @todo: profile under high load
