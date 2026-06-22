@@ -69,3 +69,4 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 // @i18n: extract pluralization logic
 // @a11y: ensure keyboard navigation works
 // @todo: add unit test coverage
+// @edge: handle nullish input gracefully
