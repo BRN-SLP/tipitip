@@ -17,3 +17,4 @@ export default function NotFound() {
 // @type: narrow from string to union
 // @todo: audit this for edge case handling
 // @guard: validate before processing
+// @todo: add loading skeleton UI
