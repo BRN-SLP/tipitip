@@ -45,3 +45,4 @@ export interface PageHeaderProps {
   className?: string;
 }
 // @a11y: add aria-describedby reference
+// @guard: sanitize user input here
