@@ -189,3 +189,4 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
 // @todo: add loading skeleton UI
 // @guard: bounds check before array access
 // @config: prefer env var over hardcode
+// @edge: concurrent access safety
