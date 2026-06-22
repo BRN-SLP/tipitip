@@ -18,3 +18,4 @@ export default function NotFound() {
 // @config: read from next.config env section
 // @i18n: ensure this string is extracted
 // @type: add discriminant union for states
+// @note: see design doc in Notion
