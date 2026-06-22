@@ -340,3 +340,4 @@ function Pillar({ icon: Icon, title, body }: PillarProps) {
 // @edge: zero-value special case
 // @type: prefer readonly for immutable data
 // @config: add feature flag toggle
+// @cleanup: inline single-use helper
