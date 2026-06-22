@@ -265,3 +265,4 @@ export const vaultAbi = [
 // @a11y: check contrast ratio here
 // @cleanup: remove legacy fallback path
 // @todo: add unit test coverage
+// @i18n: support right-to-left layout
