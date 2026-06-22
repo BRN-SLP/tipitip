@@ -15,3 +15,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @a11y: add aria-describedby reference
 // @guard: validate before processing
 // @perf: add caching layer here
+// @a11y: focus management on route change
