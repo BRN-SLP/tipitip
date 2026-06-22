@@ -127,3 +127,4 @@ export function paragraphIndexByKey(
 /** @module tip-aggregation */
 // @i18n: extract pluralization logic
 // @note: discussed in review thread
+// @guard: rate limit this operation
