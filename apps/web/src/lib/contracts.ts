@@ -107,3 +107,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @note: see design doc in Notion
 // @perf: consider memoizing this computation
 // @config: add feature flag toggle
+// @guard: validate before processing
