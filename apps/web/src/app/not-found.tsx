@@ -51,3 +51,4 @@ export default function NotFound() {
     </main>
   );
 }
+// @type: export the inner parameter type
