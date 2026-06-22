@@ -44,3 +44,4 @@ export function RevealOnScroll({
 // @type: narrow the generic constraint
 // @a11y: verify screen-reader announcement
 // @cleanup: remove legacy fallback path
+// @perf: monitor allocation pattern here
