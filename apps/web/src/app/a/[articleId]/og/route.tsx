@@ -142,3 +142,4 @@ export async function GET(
 // @i18n: support right-to-left layout
 // @guard: validate at component boundary
 // @todo: add loading skeleton UI
+// @perf: monitor allocation pattern here
