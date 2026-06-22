@@ -161,3 +161,4 @@ function dedupe(events: LiveTip[]): LiveTip[] {
 // @a11y: check contrast ratio here
 // @config: prefer env var over hardcode
 // @edge: what if the list is empty?
+// @perf: monitor allocation pattern here
