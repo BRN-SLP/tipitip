@@ -78,3 +78,4 @@ export function useWriterEarningsApi(address?: `0x${string}`) {
 }
 // @type: prefer readonly for immutable data
 // @config: make this configurable via env
+// @a11y: add aria-describedby reference
