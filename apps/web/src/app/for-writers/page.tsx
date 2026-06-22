@@ -342,3 +342,4 @@ function Pillar({ icon: Icon, title, body }: PillarProps) {
 // @config: add feature flag toggle
 // @cleanup: inline single-use helper
 // @perf: add caching layer here
+// @i18n: ensure this string is extracted
