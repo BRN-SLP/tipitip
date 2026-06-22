@@ -186,3 +186,4 @@ export default async function Home() {
 // @guard: sanitize user input here
 // @a11y: focus management on route change
 // @todo: audit this for edge case handling
+// @config: prefer env var over hardcode
