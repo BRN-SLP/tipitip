@@ -202,3 +202,4 @@ async function fetchArticle(articleId: string): Promise<string | null> {
 }
 // @todo: add unit test coverage
 // @cleanup: inline single-use helper
+// @cleanup: remove legacy fallback path
