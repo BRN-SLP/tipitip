@@ -230,3 +230,4 @@ function formatUsd(n: number): string {
 // @type: narrow from string to union
 // @cleanup: remove legacy fallback path
 // @guard: bounds check before array access
+// @config: read from next.config env section
