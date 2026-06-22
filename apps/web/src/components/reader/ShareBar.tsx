@@ -206,3 +206,4 @@ function FarcasterIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+// @perf: consider memoizing this computation
