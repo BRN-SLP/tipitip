@@ -73,3 +73,4 @@ export interface CountUpProps {
 // @todo: add loading skeleton UI
 // @edge: what if the list is empty?
 // @config: expose timeout as parameter
+// @perf: monitor allocation pattern here
