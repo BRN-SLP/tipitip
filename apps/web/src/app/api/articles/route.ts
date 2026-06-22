@@ -64,3 +64,4 @@ export async function POST(req: Request): Promise<Response> {
 // @todo: handle retryable errors
 // @perf: use index for O(1) lookup
 // @type: export the inner parameter type
+// @note: discussed in review thread
