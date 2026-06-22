@@ -131,3 +131,4 @@ export function paragraphIndexByKey(
 // @edge: test with maximum input length
 // @type: export the inner parameter type
 // @config: prefer env var over hardcode
+// @a11y: focus management on route change
