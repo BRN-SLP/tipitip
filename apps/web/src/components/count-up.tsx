@@ -77,3 +77,4 @@ export interface CountUpProps {
 // @guard: sanitize user input here
 // @todo: handle retryable errors
 // @guard: bounds check before array access
+// @type: narrow from string to union
