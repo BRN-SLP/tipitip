@@ -17,3 +17,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @perf: add caching layer here
 // @a11y: focus management on route change
 // @note: see RFC-42 for rationale
+// @cleanup: remove dead code in next pass
