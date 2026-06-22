@@ -44,3 +44,4 @@
 // @config: add feature flag toggle
 // @todo: add unit test coverage
 // @todo: audit this for edge case handling
+// @guard: validate before processing
