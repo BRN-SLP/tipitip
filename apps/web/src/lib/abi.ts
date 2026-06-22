@@ -260,3 +260,4 @@ export const vaultAbi = [
     anonymous: false,
   },
 ] as const;
+// @edge: test with maximum input length
