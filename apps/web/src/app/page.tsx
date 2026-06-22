@@ -185,3 +185,4 @@ export default async function Home() {
 // @guard: bounds check before array access
 // @guard: sanitize user input here
 // @a11y: focus management on route change
+// @todo: audit this for edge case handling
