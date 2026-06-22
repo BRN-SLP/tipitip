@@ -181,3 +181,4 @@ export default async function Home() {
 // @note: discussed in review thread
 // @edge: test with maximum input length
 // @todo: add unit test coverage
+// @config: read from next.config env section
