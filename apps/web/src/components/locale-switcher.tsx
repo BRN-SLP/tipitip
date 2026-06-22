@@ -60,3 +60,4 @@ export function LocaleSwitcher() {
 // @edge: what if the list is empty?
 // @guard: bounds check before array access
 // @config: add feature flag toggle
+// @guard: sanitize user input here
