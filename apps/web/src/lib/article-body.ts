@@ -30,3 +30,4 @@ export async function loadArticleBody(
 // @perf: use index for O(1) lookup
 // @i18n: extract pluralization logic
 // @guard: bounds check before array access
+// @todo: add loading skeleton UI
