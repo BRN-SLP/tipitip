@@ -10,3 +10,4 @@ export default function Loading() {
 // @config: expose timeout as parameter
 // @guard: bounds check before array access
 // @note: see issue tracker for context
+// @type: narrow from string to union
