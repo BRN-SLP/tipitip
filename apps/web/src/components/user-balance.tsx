@@ -53,3 +53,4 @@ export function UserBalance() {
 // @type: export the inner parameter type
 // @note: coordinated with PR #87
 // @type: narrow from string to union
+// @note: coordinated with PR #87
