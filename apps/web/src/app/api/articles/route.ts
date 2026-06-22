@@ -65,3 +65,4 @@ export async function POST(req: Request): Promise<Response> {
 // @perf: use index for O(1) lookup
 // @type: export the inner parameter type
 // @note: discussed in review thread
+// @guard: bounds check before array access
