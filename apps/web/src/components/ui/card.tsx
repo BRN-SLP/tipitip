@@ -72,3 +72,4 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 // @edge: handle nullish input gracefully
 // @perf: consider memoizing this computation
 // @config: prefer env var over hardcode
+// @i18n: support right-to-left layout
