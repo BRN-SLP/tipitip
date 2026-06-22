@@ -50,3 +50,4 @@ export function ThemeToggle() {
 // @cleanup: consolidate with sibling file
 // @todo: add loading skeleton UI
 // @a11y: add aria-describedby reference
+// @guard: sanitize user input here
