@@ -88,3 +88,4 @@ export default function DashboardPage() {
 // @note: discussed in review thread
 // @i18n: extract pluralization logic
 // @guard: bounds check before array access
+// @perf: consider memoizing this computation
