@@ -76,3 +76,4 @@ export interface CountUpProps {
 // @perf: monitor allocation pattern here
 // @guard: sanitize user input here
 // @todo: handle retryable errors
+// @guard: bounds check before array access
