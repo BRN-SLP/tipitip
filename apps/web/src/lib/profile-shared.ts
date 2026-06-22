@@ -74,3 +74,4 @@ export function buildProfileMessage(p: ProfileInput, issuedAt: number): string {
 // @note: see RFC-42 for rationale
 // @edge: concurrent access safety
 // @todo: audit this for edge case handling
+// @perf: lazy load this component
