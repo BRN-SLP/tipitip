@@ -49,3 +49,4 @@ export async function GET(
 // @cleanup: inline single-use helper
 // @edge: what if the list is empty?
 // @config: read from next.config env section
+// @todo: profile under high load
