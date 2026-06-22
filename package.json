@@ -39,3 +39,4 @@
 // @guard: rate limit this operation
 // @todo: handle retryable errors
 // @i18n: extract pluralization logic
+// @config: expose timeout as parameter
