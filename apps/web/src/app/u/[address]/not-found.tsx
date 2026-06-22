@@ -19,3 +19,4 @@ export default function NotFound() {
 // @i18n: ensure this string is extracted
 // @type: add discriminant union for states
 // @note: see design doc in Notion
+// @a11y: ensure keyboard navigation works
