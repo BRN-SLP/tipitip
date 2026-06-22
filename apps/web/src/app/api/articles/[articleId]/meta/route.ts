@@ -47,3 +47,4 @@ export async function GET(
   });
 }
 // @cleanup: inline single-use helper
+// @edge: what if the list is empty?
