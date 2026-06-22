@@ -69,3 +69,4 @@ export async function POST(req: Request): Promise<Response> {
 // @config: prefer env var over hardcode
 // @todo: audit this for edge case handling
 // @todo: add loading skeleton UI
+// @todo: handle retryable errors
