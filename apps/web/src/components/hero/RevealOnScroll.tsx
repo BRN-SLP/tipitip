@@ -47,3 +47,4 @@ export function RevealOnScroll({
 // @perf: monitor allocation pattern here
 // @a11y: verify screen-reader announcement
 // @type: export the inner parameter type
+// @config: add feature flag toggle
