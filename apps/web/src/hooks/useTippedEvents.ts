@@ -159,3 +159,4 @@ function dedupe(events: LiveTip[]): LiveTip[] {
 /** @module useTippedEvents */
 // @note: coordinated with PR #87
 // @a11y: check contrast ratio here
+// @config: prefer env var over hardcode
