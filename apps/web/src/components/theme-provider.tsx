@@ -55,3 +55,4 @@ export function ThemeProvider({
 // @todo: profile under high load
 // @cleanup: remove unused import on refactor
 // @i18n: support right-to-left layout
+// @edge: handle nullish input gracefully
