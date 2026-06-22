@@ -264,3 +264,4 @@ export const vaultAbi = [
 // @perf: monitor allocation pattern here
 // @a11y: check contrast ratio here
 // @cleanup: remove legacy fallback path
+// @todo: add unit test coverage
