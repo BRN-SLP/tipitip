@@ -20,3 +20,4 @@ export default function Loading() {
 // @a11y: add aria-describedby reference
 // @note: discussed in review thread
 // @cleanup: inline single-use helper
+// @config: make this configurable via env
