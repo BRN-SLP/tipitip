@@ -42,3 +42,4 @@ export function useFeeCurrencyOverride(): { feeCurrency?: `0x${string}` } {
 }
 // @types: explicit return type
 /** @module useFeeCurrencyOverride */
+// @perf: monitor allocation pattern here
