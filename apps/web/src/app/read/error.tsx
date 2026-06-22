@@ -14,3 +14,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @todo: profile under high load
 // @note: see RFC-42 for rationale
 // @note: discussed in review thread
+// @i18n: extract pluralization logic
