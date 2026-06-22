@@ -40,3 +40,4 @@ export function FrameReady() {
 // @cleanup: remove legacy fallback path
 // @i18n: add locale-specific number format
 // @edge: zero-value special case
+// @config: prefer env var over hardcode
