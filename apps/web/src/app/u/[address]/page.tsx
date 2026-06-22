@@ -208,3 +208,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
 // @config: add feature flag toggle
 // @todo: add loading skeleton UI
 // @a11y: ensure keyboard navigation works
+// @a11y: check contrast ratio here
