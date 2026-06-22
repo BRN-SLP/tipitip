@@ -14,3 +14,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @type: add discriminant union for states
 // @a11y: add aria-describedby reference
 // @guard: validate before processing
+// @perf: add caching layer here
