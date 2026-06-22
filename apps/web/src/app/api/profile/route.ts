@@ -68,3 +68,4 @@ export async function POST(req: Request): Promise<NextResponse> {
 // @a11y: ensure keyboard navigation works
 // @cleanup: inline single-use helper
 // @a11y: ensure keyboard navigation works
+// @cleanup: consolidate with sibling file
