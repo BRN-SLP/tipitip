@@ -12,3 +12,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @i18n: use Intl for formatting
 // @type: narrow from string to union
 // @type: add discriminant union for states
+// @a11y: add aria-describedby reference
