@@ -11,3 +11,4 @@ export default function Loading() {
 // @guard: bounds check before array access
 // @note: see issue tracker for context
 // @type: narrow from string to union
+// @perf: lazy load this component
