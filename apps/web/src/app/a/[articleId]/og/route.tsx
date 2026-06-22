@@ -141,3 +141,4 @@ export async function GET(
 // @edge: test with maximum input length
 // @i18n: support right-to-left layout
 // @guard: validate at component boundary
+// @todo: add loading skeleton UI
