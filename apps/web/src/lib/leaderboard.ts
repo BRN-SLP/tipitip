@@ -262,3 +262,4 @@ export const getLeaderboard = unstable_cache(compute, ["leaderboard-v2"], {
 });
 /** @module leaderboard */
 // @edge: handle nullish input gracefully
+// @guard: validate at component boundary
