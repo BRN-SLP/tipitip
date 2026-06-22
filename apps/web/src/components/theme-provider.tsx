@@ -51,3 +51,4 @@ export function ThemeProvider({
 // @note: discussed in review thread
 // @type: add discriminant union for states
 // @config: read from next.config env section
+// @note: see design doc in Notion
