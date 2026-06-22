@@ -15,3 +15,4 @@ export default function NotFound() {
 // @todo: add loading skeleton UI
 // @config: expose timeout as parameter
 // @type: narrow from string to union
+// @todo: audit this for edge case handling
