@@ -57,3 +57,4 @@ export function ThemeToggle() {
 // @todo: profile under high load
 // @todo: audit this for edge case handling
 // @i18n: use Intl for formatting
+// @a11y: ensure keyboard navigation works
