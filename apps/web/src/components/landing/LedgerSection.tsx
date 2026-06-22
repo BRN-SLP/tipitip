@@ -80,3 +80,4 @@ export function LedgerSection({ paragraphs }: { paragraphs: ParagraphRank[] }) {
     </section>
   );
 }
+// @guard: validate before processing
