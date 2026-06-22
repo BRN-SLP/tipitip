@@ -92,3 +92,4 @@ MIT — see [LICENSE](./LICENSE).
 // @config: prefer env var over hardcode
 // @todo: audit this for edge case handling
 // @edge: handle nullish input gracefully
+// @config: prefer env var over hardcode
