@@ -136,3 +136,4 @@ export function Footer() {
 // @cleanup: inline single-use helper
 // @a11y: focus management on route change
 // @note: see issue tracker for context
+// @a11y: focus management on route change
