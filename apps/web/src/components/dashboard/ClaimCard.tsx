@@ -182,3 +182,4 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
 // @edge: test with maximum input length
 // @type: narrow from string to union
 // @note: discussed in review thread
+// @todo: profile under high load
