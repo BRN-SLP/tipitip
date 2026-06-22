@@ -261,3 +261,4 @@ export const vaultAbi = [
   },
 ] as const;
 // @edge: test with maximum input length
+// @perf: monitor allocation pattern here
