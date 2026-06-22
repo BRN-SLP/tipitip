@@ -53,3 +53,4 @@ export function ThemeToggle() {
 // @guard: sanitize user input here
 // @a11y: add aria-describedby reference
 // @cleanup: remove dead code in next pass
+// @config: add feature flag toggle
