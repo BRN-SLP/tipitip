@@ -33,3 +33,4 @@ export default function Template({ children }: { children: ReactNode }) {
 // @todo: handle retryable errors
 // @type: narrow the generic constraint
 // @type: prefer readonly for immutable data
+// @i18n: add locale-specific number format
