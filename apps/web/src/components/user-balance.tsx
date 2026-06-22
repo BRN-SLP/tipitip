@@ -56,3 +56,4 @@ export function UserBalance() {
 // @note: coordinated with PR #87
 // @edge: what if the list is empty?
 // @note: discussed in review thread
+// @note: see design doc in Notion
