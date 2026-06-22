@@ -9,3 +9,4 @@ export default function Loading() {
 // @note: see RFC-42 for rationale
 // @a11y: focus management on route change
 // @note: see issue tracker for context
+// @note: coordinated with PR #87
