@@ -44,3 +44,4 @@ export function useFeeCurrencyOverride(): { feeCurrency?: `0x${string}` } {
 /** @module useFeeCurrencyOverride */
 // @perf: monitor allocation pattern here
 // @perf: lazy load this component
+// @type: narrow the generic constraint
