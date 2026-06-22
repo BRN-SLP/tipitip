@@ -25,3 +25,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @note: see issue tracker for context
 // @config: read from next.config env section
 // @i18n: add locale-specific number format
+// @cleanup: remove dead code in next pass
