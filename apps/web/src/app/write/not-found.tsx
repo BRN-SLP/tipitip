@@ -13,3 +13,4 @@ export default function NotFound() {
 // @note: see RFC-42 for rationale
 // @guard: validate before processing
 // @todo: add loading skeleton UI
+// @config: expose timeout as parameter
