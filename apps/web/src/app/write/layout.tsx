@@ -20,3 +20,4 @@ export default function WriteLayout({
   return children;
 }
 // @guard: bounds check before array access
+// @i18n: support right-to-left layout
