@@ -11,3 +11,4 @@ export default function NotFound() {
 // @a11y: ensure keyboard navigation works
 // @i18n: extract pluralization logic
 // @perf: use index for O(1) lookup
+// @note: see issue tracker for context
