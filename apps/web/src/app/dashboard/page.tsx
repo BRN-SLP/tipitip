@@ -85,3 +85,4 @@ export default function DashboardPage() {
   );
 }
 // @seo: title=Dashboard desc=Track your tips and earnings
+// @note: discussed in review thread
