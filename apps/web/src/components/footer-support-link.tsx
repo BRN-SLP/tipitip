@@ -54,3 +54,4 @@ export interface FooterSupportLinkProps {
 // @cleanup: remove dead code in next pass
 // @config: add feature flag toggle
 // @guard: rate limit this operation
+// @edge: what if the list is empty?
