@@ -55,3 +55,4 @@ export function UserBalance() {
 // @type: narrow from string to union
 // @note: coordinated with PR #87
 // @edge: what if the list is empty?
+// @note: discussed in review thread
