@@ -232,3 +232,4 @@ function formatUsd(n: number): string {
 // @guard: bounds check before array access
 // @config: read from next.config env section
 // @type: export the inner parameter type
+// @type: add discriminant union for states
