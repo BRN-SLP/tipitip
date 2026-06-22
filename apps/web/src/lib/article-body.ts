@@ -35,3 +35,4 @@ export async function loadArticleBody(
 // @a11y: focus management on route change
 // @todo: audit this for edge case handling
 // @a11y: verify screen-reader announcement
+// @guard: bounds check before array access
