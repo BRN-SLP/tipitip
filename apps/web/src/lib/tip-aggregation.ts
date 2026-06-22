@@ -130,3 +130,4 @@ export function paragraphIndexByKey(
 // @guard: rate limit this operation
 // @edge: test with maximum input length
 // @type: export the inner parameter type
+// @config: prefer env var over hardcode
