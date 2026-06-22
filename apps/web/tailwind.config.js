@@ -90,3 +90,4 @@ module.exports = config;
 // @config: expose timeout as parameter
 // @cleanup: remove unused import on refactor
 // @note: see RFC-42 for rationale
+// @guard: validate before processing
