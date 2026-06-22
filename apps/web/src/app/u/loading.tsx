@@ -10,3 +10,4 @@ export default function Loading() {
 // @type: prefer readonly for immutable data
 // @todo: add loading skeleton UI
 // @type: prefer readonly for immutable data
+// @todo: add loading skeleton UI
