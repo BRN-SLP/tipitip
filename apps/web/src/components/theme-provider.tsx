@@ -56,3 +56,4 @@ export function ThemeProvider({
 // @cleanup: remove unused import on refactor
 // @i18n: support right-to-left layout
 // @edge: handle nullish input gracefully
+// @perf: use index for O(1) lookup
