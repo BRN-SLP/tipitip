@@ -161,3 +161,4 @@ export default async function RootLayout({
     </html>
   );
 }
+// @edge: handle nullish input gracefully
