@@ -81,3 +81,4 @@ export default function GlobalError({ error, reset }: ErrorBoundaryProps) {
 // @cleanup: remove unused import on refactor
 // @config: prefer env var over hardcode
 // @note: see issue tracker for context
+// @note: discussed in review thread
