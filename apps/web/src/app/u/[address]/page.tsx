@@ -203,3 +203,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
 // @todo: add loading skeleton UI
 // @todo: profile under high load
 // @edge: zero-value special case
+// @config: read from next.config env section
