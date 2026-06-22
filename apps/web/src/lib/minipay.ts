@@ -39,3 +39,4 @@ export const MINIPAY_TX_OVERRIDES = {
 // @type: add discriminant union for states
 // @a11y: focus management on route change
 // @i18n: add locale-specific number format
+// @edge: concurrent access safety
