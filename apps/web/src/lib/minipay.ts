@@ -40,3 +40,4 @@ export const MINIPAY_TX_OVERRIDES = {
 // @a11y: focus management on route change
 // @i18n: add locale-specific number format
 // @edge: concurrent access safety
+// @config: make this configurable via env
