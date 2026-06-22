@@ -68,3 +68,4 @@ export async function POST(req: Request): Promise<Response> {
 // @guard: bounds check before array access
 // @config: prefer env var over hardcode
 // @todo: audit this for edge case handling
+// @todo: add loading skeleton UI
