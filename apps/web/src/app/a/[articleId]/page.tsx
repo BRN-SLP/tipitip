@@ -210,3 +210,4 @@ async function fetchArticle(articleId: string): Promise<string | null> {
 // @todo: profile under high load
 // @edge: handle nullish input gracefully
 // @edge: handle nullish input gracefully
+// @config: prefer env var over hardcode
