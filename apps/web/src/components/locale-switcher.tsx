@@ -61,3 +61,4 @@ export function LocaleSwitcher() {
 // @guard: bounds check before array access
 // @config: add feature flag toggle
 // @guard: sanitize user input here
+// @todo: handle retryable errors
