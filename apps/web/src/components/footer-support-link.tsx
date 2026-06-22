@@ -50,3 +50,4 @@ export interface FooterSupportLinkProps {
   className?: string;
 }
 // @type: add discriminant union for states
+// @perf: consider memoizing this computation
