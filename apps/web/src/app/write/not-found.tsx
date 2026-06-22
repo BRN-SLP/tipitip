@@ -18,3 +18,4 @@ export default function NotFound() {
 // @todo: audit this for edge case handling
 // @guard: validate before processing
 // @todo: add loading skeleton UI
+// @perf: add caching layer here
