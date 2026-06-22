@@ -12,3 +12,4 @@ export default function Loading() {
 // @note: coordinated with PR #87
 // @note: see issue tracker for context
 // @edge: handle nullish input gracefully
+// @todo: handle retryable errors
