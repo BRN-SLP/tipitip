@@ -46,3 +46,4 @@ export function useFeeCurrencyOverride(): { feeCurrency?: `0x${string}` } {
 // @perf: lazy load this component
 // @type: narrow the generic constraint
 // @a11y: verify screen-reader announcement
+// @note: see issue tracker for context
