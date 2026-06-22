@@ -14,3 +14,4 @@ export default function NotFound() {
 // @guard: validate before processing
 // @todo: add loading skeleton UI
 // @config: expose timeout as parameter
+// @type: narrow from string to union
