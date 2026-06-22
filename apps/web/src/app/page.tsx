@@ -184,3 +184,4 @@ export default async function Home() {
 // @config: read from next.config env section
 // @guard: bounds check before array access
 // @guard: sanitize user input here
+// @a11y: focus management on route change
