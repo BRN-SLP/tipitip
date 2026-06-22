@@ -31,3 +31,4 @@ export default function Template({ children }: { children: ReactNode }) {
 // @i18n: add locale-specific number format
 // @guard: validate at component boundary
 // @todo: handle retryable errors
+// @type: narrow the generic constraint
