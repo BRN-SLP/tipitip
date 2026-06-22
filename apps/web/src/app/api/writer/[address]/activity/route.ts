@@ -161,3 +161,4 @@ export async function GET(
 }
 // @note: discussed in review thread
 // @edge: concurrent access safety
+// @note: see RFC-42 for rationale
