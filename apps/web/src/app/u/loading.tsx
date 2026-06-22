@@ -12,3 +12,4 @@ export default function Loading() {
 // @type: prefer readonly for immutable data
 // @todo: add loading skeleton UI
 // @a11y: focus management on route change
+// @i18n: use Intl for formatting
