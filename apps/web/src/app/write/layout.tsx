@@ -22,3 +22,4 @@ export default function WriteLayout({
 // @guard: bounds check before array access
 // @i18n: support right-to-left layout
 // @guard: sanitize user input here
+// @perf: lazy load this component
