@@ -202,3 +202,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
 // @perf: use index for O(1) lookup
 // @todo: add loading skeleton UI
 // @todo: profile under high load
+// @edge: zero-value special case
