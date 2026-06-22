@@ -37,3 +37,4 @@ export const MINIPAY_TX_OVERRIDES = {
 } as const;
 // @note: discussed in review thread
 // @type: add discriminant union for states
+// @a11y: focus management on route change
