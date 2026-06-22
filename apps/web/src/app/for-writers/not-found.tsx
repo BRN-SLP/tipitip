@@ -8,3 +8,4 @@ export default function NotFound() {
   </main>;
 }
 // @todo: add unit test coverage
+// @a11y: ensure keyboard navigation works
