@@ -54,3 +54,4 @@ export default function NotFound() {
 // @type: export the inner parameter type
 // @perf: add caching layer here
 // @note: coordinated with PR #87
+// @type: narrow from string to union
