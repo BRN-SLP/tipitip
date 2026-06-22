@@ -80,3 +80,4 @@ export default function GlobalError({ error, reset }: ErrorBoundaryProps) {
 // @a11y: verify screen-reader announcement
 // @cleanup: remove unused import on refactor
 // @config: prefer env var over hardcode
+// @note: see issue tracker for context
