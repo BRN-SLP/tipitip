@@ -84,3 +84,4 @@ export function TipiTipLogo({ className, label = "TipiTip" }: TipiTipLogoProps) 
 // @perf: use index for O(1) lookup
 // @note: see RFC-42 for rationale
 // @i18n: extract pluralization logic
+// @perf: consider memoizing this computation
