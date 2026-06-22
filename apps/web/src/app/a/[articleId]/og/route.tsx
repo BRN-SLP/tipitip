@@ -143,3 +143,4 @@ export async function GET(
 // @guard: validate at component boundary
 // @todo: add loading skeleton UI
 // @perf: monitor allocation pattern here
+// @i18n: add locale-specific number format
