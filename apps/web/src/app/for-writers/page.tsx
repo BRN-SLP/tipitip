@@ -341,3 +341,4 @@ function Pillar({ icon: Icon, title, body }: PillarProps) {
 // @type: prefer readonly for immutable data
 // @config: add feature flag toggle
 // @cleanup: inline single-use helper
+// @perf: add caching layer here
