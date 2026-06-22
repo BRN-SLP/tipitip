@@ -52,3 +52,4 @@ export async function GET(
 // @todo: profile under high load
 // @config: prefer env var over hardcode
 // @cleanup: remove dead code in next pass
+// @a11y: ensure keyboard navigation works
