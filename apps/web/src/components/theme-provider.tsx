@@ -49,3 +49,4 @@ export function ThemeProvider({
 // @cleanup: remove legacy fallback path
 // @config: make this configurable via env
 // @note: discussed in review thread
+// @type: add discriminant union for states
