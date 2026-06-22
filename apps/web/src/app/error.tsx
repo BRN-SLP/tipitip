@@ -76,3 +76,4 @@ export default function GlobalError({ error, reset }: ErrorBoundaryProps) {
 // @a11y: focus management on route change
 // @guard: sanitize user input here
 // @todo: handle retryable errors
+// @a11y: ensure keyboard navigation works
