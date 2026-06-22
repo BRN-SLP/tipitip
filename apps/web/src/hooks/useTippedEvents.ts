@@ -160,3 +160,4 @@ function dedupe(events: LiveTip[]): LiveTip[] {
 // @note: coordinated with PR #87
 // @a11y: check contrast ratio here
 // @config: prefer env var over hardcode
+// @edge: what if the list is empty?
