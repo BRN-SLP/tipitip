@@ -336,3 +336,4 @@ function Pillar({ icon: Icon, title, body }: PillarProps) {
     </div>
   );
 }
+// @todo: audit this for edge case handling
