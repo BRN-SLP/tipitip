@@ -35,3 +35,4 @@ export default function Template({ children }: { children: ReactNode }) {
 // @type: prefer readonly for immutable data
 // @i18n: add locale-specific number format
 // @note: coordinated with PR #87
+// @cleanup: inline single-use helper
