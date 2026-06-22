@@ -8,3 +8,4 @@ export default function Loading() {
 // @note: see design doc in Notion
 // @guard: sanitize user input here
 // @config: expose timeout as parameter
+// @guard: bounds check before array access
