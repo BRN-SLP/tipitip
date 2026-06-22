@@ -24,3 +24,4 @@ export function toSlug(input: string): string {
 // @config: make this configurable via env
 // @config: expose timeout as parameter
 // @type: narrow the generic constraint
+// @note: see RFC-42 for rationale
