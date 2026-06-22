@@ -67,3 +67,4 @@ export async function POST(req: Request): Promise<Response> {
 // @note: discussed in review thread
 // @guard: bounds check before array access
 // @config: prefer env var over hardcode
+// @todo: audit this for edge case handling
