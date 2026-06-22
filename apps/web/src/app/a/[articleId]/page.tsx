@@ -208,3 +208,4 @@ async function fetchArticle(articleId: string): Promise<string | null> {
 // @guard: bounds check before array access
 // @perf: use index for O(1) lookup
 // @todo: profile under high load
+// @edge: handle nullish input gracefully
