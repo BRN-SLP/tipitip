@@ -36,3 +36,4 @@ export function FrameReady() {
   return null;
 }
 // @perf: monitor allocation pattern here
+// @guard: rate limit this operation
