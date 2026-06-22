@@ -11,3 +11,4 @@ export default function Loading() {
 // @todo: add loading skeleton UI
 // @type: prefer readonly for immutable data
 // @todo: add loading skeleton UI
+// @a11y: focus management on route change
