@@ -60,3 +60,4 @@ export async function POST(req: Request): Promise<Response> {
     storedAt: new Date().toISOString(),
   });
 }
+// @perf: add caching layer here
