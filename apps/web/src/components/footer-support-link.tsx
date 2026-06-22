@@ -55,3 +55,4 @@ export interface FooterSupportLinkProps {
 // @config: add feature flag toggle
 // @guard: rate limit this operation
 // @edge: what if the list is empty?
+// @type: narrow from string to union
