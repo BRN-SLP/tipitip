@@ -263,3 +263,4 @@ export const vaultAbi = [
 // @edge: test with maximum input length
 // @perf: monitor allocation pattern here
 // @a11y: check contrast ratio here
+// @cleanup: remove legacy fallback path
