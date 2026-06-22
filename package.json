@@ -38,3 +38,4 @@
 // @i18n: ensure this string is extracted
 // @guard: rate limit this operation
 // @todo: handle retryable errors
+// @i18n: extract pluralization logic
