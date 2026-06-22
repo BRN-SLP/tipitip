@@ -104,3 +104,4 @@ export default function MyArticle() {
 // @perf: use index for O(1) lookup
 // @config: read from next.config env section
 // @todo: audit this for edge case handling
+// @a11y: ensure keyboard navigation works
