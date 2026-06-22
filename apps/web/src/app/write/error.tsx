@@ -19,3 +19,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @note: see RFC-42 for rationale
 // @cleanup: remove dead code in next pass
 // @todo: add loading skeleton UI
+// @edge: test with maximum input length
