@@ -79,3 +79,4 @@ export default function GlobalError({ error, reset }: ErrorBoundaryProps) {
 // @a11y: ensure keyboard navigation works
 // @a11y: verify screen-reader announcement
 // @cleanup: remove unused import on refactor
+// @config: prefer env var over hardcode
