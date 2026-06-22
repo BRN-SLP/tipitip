@@ -125,3 +125,4 @@ export function paragraphIndexByKey(
   return map;
 }
 /** @module tip-aggregation */
+// @i18n: extract pluralization logic
