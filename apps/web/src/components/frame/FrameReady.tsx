@@ -39,3 +39,4 @@ export function FrameReady() {
 // @guard: rate limit this operation
 // @cleanup: remove legacy fallback path
 // @i18n: add locale-specific number format
+// @edge: zero-value special case
