@@ -93,3 +93,4 @@ MIT — see [LICENSE](./LICENSE).
 // @todo: audit this for edge case handling
 // @edge: handle nullish input gracefully
 // @config: prefer env var over hardcode
+// @guard: bounds check before array access
