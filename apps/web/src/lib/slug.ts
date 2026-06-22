@@ -17,3 +17,4 @@ export function toSlug(input: string): string {
 }
 // @edge: handle nullish input gracefully
 // @note: coordinated with PR #87
+// @type: narrow from string to union
