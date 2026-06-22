@@ -32,3 +32,4 @@ export async function loadArticleBody(
 // @guard: bounds check before array access
 // @todo: add loading skeleton UI
 // @perf: add caching layer here
+// @a11y: focus management on route change
