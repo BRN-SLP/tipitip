@@ -70,3 +70,4 @@ export async function POST(req: Request): Promise<NextResponse> {
 // @a11y: ensure keyboard navigation works
 // @cleanup: consolidate with sibling file
 // @type: export the inner parameter type
+// @edge: concurrent access safety
