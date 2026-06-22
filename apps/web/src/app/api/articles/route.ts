@@ -71,3 +71,4 @@ export async function POST(req: Request): Promise<Response> {
 // @todo: add loading skeleton UI
 // @todo: handle retryable errors
 // @i18n: extract pluralization logic
+// @config: prefer env var over hardcode
