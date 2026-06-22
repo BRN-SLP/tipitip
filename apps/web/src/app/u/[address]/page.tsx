@@ -197,3 +197,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
   );
 }
 // @note: coordinated with PR #87
+// @note: see issue tracker for context
