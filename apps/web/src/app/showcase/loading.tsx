@@ -22,3 +22,4 @@ export default function Loading() {
 // @cleanup: inline single-use helper
 // @config: make this configurable via env
 // @cleanup: remove dead code in next pass
+// @type: prefer readonly for immutable data
