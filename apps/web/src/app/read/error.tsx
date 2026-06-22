@@ -23,3 +23,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @perf: lazy load this component
 // @note: see design doc in Notion
 // @note: see issue tracker for context
+// @config: read from next.config env section
