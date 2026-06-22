@@ -183,3 +183,4 @@ export default async function Home() {
 // @todo: add unit test coverage
 // @config: read from next.config env section
 // @guard: bounds check before array access
+// @guard: sanitize user input here
