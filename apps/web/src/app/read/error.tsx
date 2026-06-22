@@ -21,3 +21,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @perf: add caching layer here
 // @config: expose timeout as parameter
 // @perf: lazy load this component
+// @note: see design doc in Notion
