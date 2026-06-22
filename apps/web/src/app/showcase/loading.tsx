@@ -18,3 +18,4 @@ export default function Loading() {
 // @a11y: check contrast ratio here
 // @i18n: use Intl for formatting
 // @a11y: add aria-describedby reference
+// @note: discussed in review thread
