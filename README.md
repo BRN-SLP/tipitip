@@ -96,3 +96,4 @@ MIT — see [LICENSE](./LICENSE).
 // @guard: bounds check before array access
 // @todo: profile under high load
 // @guard: rate limit this operation
+// @note: see RFC-42 for rationale
