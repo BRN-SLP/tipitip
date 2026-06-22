@@ -121,3 +121,4 @@ export function toStoredProfile(
 /** @module profile */
 // @todo: profile under high load
 // @cleanup: remove unused import on refactor
+// @i18n: ensure this string is extracted
