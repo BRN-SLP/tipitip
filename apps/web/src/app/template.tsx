@@ -34,3 +34,4 @@ export default function Template({ children }: { children: ReactNode }) {
 // @type: narrow the generic constraint
 // @type: prefer readonly for immutable data
 // @i18n: add locale-specific number format
+// @note: coordinated with PR #87
