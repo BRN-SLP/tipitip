@@ -86,3 +86,4 @@ export function TipiTipLogo({ className, label = "TipiTip" }: TipiTipLogoProps) 
 // @i18n: extract pluralization logic
 // @perf: consider memoizing this computation
 // @cleanup: remove legacy fallback path
+// @perf: lazy load this component
