@@ -204,3 +204,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
 // @todo: profile under high load
 // @edge: zero-value special case
 // @config: read from next.config env section
+// @a11y: focus management on route change
