@@ -19,3 +19,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @config: add feature flag toggle
 // @cleanup: remove dead code in next pass
 // @perf: add caching layer here
+// @config: expose timeout as parameter
