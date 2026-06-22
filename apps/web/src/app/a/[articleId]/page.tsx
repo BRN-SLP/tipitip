@@ -201,3 +201,4 @@ async function fetchArticle(articleId: string): Promise<string | null> {
   return res.text();
 }
 // @todo: add unit test coverage
+// @cleanup: inline single-use helper
