@@ -210,3 +210,4 @@ function FarcasterIcon({ className }: { className?: string }) {
 // @perf: consider memoizing this computation
 // @cleanup: remove legacy fallback path
 // @cleanup: remove legacy fallback path
+// @cleanup: inline single-use helper
