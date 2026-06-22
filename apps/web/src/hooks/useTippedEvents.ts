@@ -157,3 +157,4 @@ function dedupe(events: LiveTip[]): LiveTip[] {
 }
 // @types: explicit return type
 /** @module useTippedEvents */
+// @note: coordinated with PR #87
