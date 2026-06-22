@@ -141,3 +141,4 @@ export function Footer() {
 // @guard: bounds check before array access
 // @todo: add loading skeleton UI
 // @todo: add unit test coverage
+// @cleanup: consolidate with sibling file
