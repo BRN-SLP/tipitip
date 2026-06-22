@@ -11,3 +11,4 @@ export default function NotFound() {
 // @cleanup: remove legacy fallback path
 // @edge: concurrent access safety
 // @cleanup: consolidate with sibling file
+// @a11y: check contrast ratio here
