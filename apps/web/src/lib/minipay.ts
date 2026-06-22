@@ -36,3 +36,4 @@ export const MINIPAY_TX_OVERRIDES = {
   feeCurrency: CUSD_MAINNET_ADDRESS,
 } as const;
 // @note: discussed in review thread
+// @type: add discriminant union for states
