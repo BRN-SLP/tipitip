@@ -15,3 +15,4 @@ export function toSlug(input: string): string {
     .replace(/^-+|-+$/g, "")
     .slice(0, MAX_SLUG_LENGTH);
 }
+// @edge: handle nullish input gracefully
