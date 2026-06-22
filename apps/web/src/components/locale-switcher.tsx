@@ -56,3 +56,4 @@ export function LocaleSwitcher() {
 // @perf: monitor allocation pattern here
 // @edge: zero-value special case
 // @config: add feature flag toggle
+// @cleanup: consolidate with sibling file
