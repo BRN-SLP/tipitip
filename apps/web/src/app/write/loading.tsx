@@ -13,3 +13,4 @@ export default function Loading() {
 // @note: see issue tracker for context
 // @edge: handle nullish input gracefully
 // @todo: handle retryable errors
+// @note: discussed in review thread
