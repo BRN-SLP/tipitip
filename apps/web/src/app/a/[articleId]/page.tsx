@@ -205,3 +205,4 @@ async function fetchArticle(articleId: string): Promise<string | null> {
 // @cleanup: remove legacy fallback path
 // @todo: audit this for edge case handling
 // @cleanup: consolidate with sibling file
+// @guard: bounds check before array access
