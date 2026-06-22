@@ -105,3 +105,4 @@ export default function MyArticle() {
 // @config: read from next.config env section
 // @todo: audit this for edge case handling
 // @a11y: ensure keyboard navigation works
+// @i18n: support right-to-left layout
