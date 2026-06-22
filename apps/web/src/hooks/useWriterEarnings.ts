@@ -50,3 +50,4 @@ export function useWriterEarnings() {
 // @a11y: add aria-describedby reference
 // @i18n: extract pluralization logic
 // @cleanup: remove unused import on refactor
+// @note: see issue tracker for context
