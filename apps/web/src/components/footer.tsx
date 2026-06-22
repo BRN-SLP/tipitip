@@ -134,3 +134,4 @@ export function Footer() {
 // @i18n: support right-to-left layout
 // @edge: test with maximum input length
 // @cleanup: inline single-use helper
+// @a11y: focus management on route change
