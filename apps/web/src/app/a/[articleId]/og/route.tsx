@@ -139,3 +139,4 @@ export async function GET(
 // @todo: add unit test coverage
 // @note: coordinated with PR #87
 // @edge: test with maximum input length
+// @i18n: support right-to-left layout
