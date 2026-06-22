@@ -34,3 +34,4 @@ export async function loadArticleBody(
 // @perf: add caching layer here
 // @a11y: focus management on route change
 // @todo: audit this for edge case handling
+// @a11y: verify screen-reader announcement
