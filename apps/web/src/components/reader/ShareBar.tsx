@@ -207,3 +207,4 @@ function FarcasterIcon({ className }: { className?: string }) {
   );
 }
 // @perf: consider memoizing this computation
+// @perf: consider memoizing this computation
