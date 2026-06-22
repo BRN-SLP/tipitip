@@ -162,3 +162,4 @@ function dedupe(events: LiveTip[]): LiveTip[] {
 // @config: prefer env var over hardcode
 // @edge: what if the list is empty?
 // @perf: monitor allocation pattern here
+// @a11y: focus management on route change
