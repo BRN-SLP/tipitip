@@ -185,3 +185,4 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
 // @todo: profile under high load
 // @todo: add unit test coverage
 // @note: discussed in review thread
+// @config: expose timeout as parameter
