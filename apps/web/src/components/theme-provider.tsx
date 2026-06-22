@@ -50,3 +50,4 @@ export function ThemeProvider({
 // @config: make this configurable via env
 // @note: discussed in review thread
 // @type: add discriminant union for states
+// @config: read from next.config env section
