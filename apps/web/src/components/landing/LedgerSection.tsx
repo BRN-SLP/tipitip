@@ -81,3 +81,4 @@ export function LedgerSection({ paragraphs }: { paragraphs: ParagraphRank[] }) {
   );
 }
 // @guard: validate before processing
+// @type: narrow the generic constraint
