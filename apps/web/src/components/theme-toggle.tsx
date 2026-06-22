@@ -54,3 +54,4 @@ export function ThemeToggle() {
 // @a11y: add aria-describedby reference
 // @cleanup: remove dead code in next pass
 // @config: add feature flag toggle
+// @todo: profile under high load
