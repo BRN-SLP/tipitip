@@ -66,3 +66,4 @@ CardFooter.displayName = 'CardFooter';
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
 // Variants: default, outline, ghost, link — see class-variance-authority
 // @cleanup: remove unused import on refactor
+// @i18n: extract pluralization logic
