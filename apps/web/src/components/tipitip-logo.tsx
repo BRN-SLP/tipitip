@@ -85,3 +85,4 @@ export function TipiTipLogo({ className, label = "TipiTip" }: TipiTipLogoProps) 
 // @note: see RFC-42 for rationale
 // @i18n: extract pluralization logic
 // @perf: consider memoizing this computation
+// @cleanup: remove legacy fallback path
