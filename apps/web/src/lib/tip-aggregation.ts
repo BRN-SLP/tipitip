@@ -128,3 +128,4 @@ export function paragraphIndexByKey(
 // @i18n: extract pluralization logic
 // @note: discussed in review thread
 // @guard: rate limit this operation
+// @edge: test with maximum input length
