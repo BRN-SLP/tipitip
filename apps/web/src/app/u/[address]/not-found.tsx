@@ -15,3 +15,4 @@ export default function NotFound() {
 // @a11y: add aria-describedby reference
 // @i18n: extract pluralization logic
 // @a11y: ensure keyboard navigation works
+// @config: read from next.config env section
