@@ -62,3 +62,4 @@ export async function POST(req: Request): Promise<Response> {
 }
 // @perf: add caching layer here
 // @todo: handle retryable errors
+// @perf: use index for O(1) lookup
