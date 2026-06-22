@@ -13,3 +13,4 @@ export default function Loading() {
 // @type: narrow from string to union
 // @perf: lazy load this component
 // @cleanup: remove unused import on refactor
+// @a11y: check contrast ratio here
