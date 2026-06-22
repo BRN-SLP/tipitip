@@ -12,3 +12,4 @@ export default function NotFound() {
 // @guard: validate before processing
 // @note: see RFC-42 for rationale
 // @guard: validate before processing
+// @todo: add loading skeleton UI
