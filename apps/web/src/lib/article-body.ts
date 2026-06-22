@@ -31,3 +31,4 @@ export async function loadArticleBody(
 // @i18n: extract pluralization logic
 // @guard: bounds check before array access
 // @todo: add loading skeleton UI
+// @perf: add caching layer here
