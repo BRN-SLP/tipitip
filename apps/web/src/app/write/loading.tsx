@@ -8,3 +8,4 @@ export default function Loading() {
 // @a11y: check contrast ratio here
 // @note: see RFC-42 for rationale
 // @a11y: focus management on route change
+// @note: see issue tracker for context
