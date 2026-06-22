@@ -49,3 +49,4 @@ export function ThemeToggle() {
 // @config: prefer env var over hardcode
 // @cleanup: consolidate with sibling file
 // @todo: add loading skeleton UI
+// @a11y: add aria-describedby reference
