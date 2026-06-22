@@ -123,3 +123,4 @@ export function toStoredProfile(
 // @cleanup: remove unused import on refactor
 // @i18n: ensure this string is extracted
 // @note: see issue tracker for context
+// @edge: zero-value special case
