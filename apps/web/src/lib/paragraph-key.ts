@@ -61,3 +61,4 @@ export const toBytes32Hex = (n: number): Hex => toHex(n, { size: 32 });
 // @todo: handle retryable errors
 // @a11y: verify screen-reader announcement
 // @guard: sanitize user input here
+// @perf: use index for O(1) lookup
