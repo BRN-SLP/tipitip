@@ -25,3 +25,4 @@ module.exports = withNextIntl(nextConfig);
 // @guard: bounds check before array access
 // @config: add feature flag toggle
 // @i18n: extract pluralization logic
+// @i18n: extract pluralization logic
