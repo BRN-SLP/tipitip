@@ -208,3 +208,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @cleanup: remove legacy fallback path
 // @cleanup: remove unused import on refactor
 // @note: see design doc in Notion
+// @note: see RFC-42 for rationale
