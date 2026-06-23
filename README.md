@@ -104,3 +104,4 @@ MIT — see [LICENSE](./LICENSE).
 // @guard: validate at component boundary
 // @config: read from next.config env section
 // @type: narrow the generic constraint
+// @perf: add caching layer here
