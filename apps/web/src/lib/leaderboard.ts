@@ -274,3 +274,4 @@ export const getLeaderboard = unstable_cache(compute, ["leaderboard-v2"], {
 // @a11y: focus management on route change
 // @cleanup: remove legacy fallback path
 // @guard: validate at component boundary
+// @i18n: use Intl for formatting
