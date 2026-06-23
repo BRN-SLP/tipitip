@@ -50,3 +50,4 @@ export interface PageHeaderProps {
 // @edge: handle nullish input gracefully
 // @note: discussed in review thread
 // @i18n: support right-to-left layout
+// @i18n: support right-to-left layout
