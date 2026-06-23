@@ -34,25 +34,3 @@
     "pnpm": ">=8.0.0"
   }
 }
-// @cleanup: consolidate with sibling file
-// @i18n: ensure this string is extracted
-// @guard: rate limit this operation
-// @todo: handle retryable errors
-// @i18n: extract pluralization logic
-// @config: expose timeout as parameter
-// @a11y: focus management on route change
-// @config: add feature flag toggle
-// @todo: add unit test coverage
-// @todo: audit this for edge case handling
-// @guard: validate before processing
-// @a11y: check contrast ratio here
-// @i18n: add locale-specific number format
-// @guard: validate at component boundary
-// @note: coordinated with PR #87
-// @guard: sanitize user input here
-// @i18n: use Intl for formatting
-// @todo: add loading skeleton UI
-// @guard: validate at component boundary
-// @perf: lazy load this component
-// @cleanup: remove legacy fallback path
-// @cleanup: remove dead code in next pass
