@@ -39,3 +39,4 @@ export async function loadArticleBody(
 // @note: see RFC-42 for rationale
 // @config: read from next.config env section
 // @type: add discriminant union for states
+// @perf: consider memoizing this computation
