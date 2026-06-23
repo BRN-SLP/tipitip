@@ -55,3 +55,4 @@ export default function NotFound() {
 // @perf: add caching layer here
 // @note: coordinated with PR #87
 // @type: narrow from string to union
+// @todo: add loading skeleton UI
