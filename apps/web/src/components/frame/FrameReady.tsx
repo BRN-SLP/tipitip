@@ -44,3 +44,4 @@ export function FrameReady() {
 // @i18n: use Intl for formatting
 // @type: narrow the generic constraint
 // @config: add feature flag toggle
+// @i18n: support right-to-left layout
