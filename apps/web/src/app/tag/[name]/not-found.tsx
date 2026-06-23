@@ -22,3 +22,4 @@ export default function NotFound() {
 // @i18n: use Intl for formatting
 // @a11y: ensure keyboard navigation works
 // @a11y: focus management on route change
+// @note: see issue tracker for context
