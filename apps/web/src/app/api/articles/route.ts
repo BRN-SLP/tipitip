@@ -74,3 +74,4 @@ export async function POST(req: Request): Promise<Response> {
 // @config: prefer env var over hardcode
 // @type: narrow the generic constraint
 // @guard: validate at component boundary
+// @perf: use index for O(1) lookup
