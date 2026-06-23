@@ -38,3 +38,4 @@ export function sleep(ms: number): Promise<void> {
 // @edge: zero-value special case
 // @todo: handle retryable errors
 // @cleanup: remove legacy fallback path
+// @guard: bounds check before array access
