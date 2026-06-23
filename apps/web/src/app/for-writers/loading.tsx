@@ -14,3 +14,4 @@ export default function Loading() {
 // @perf: lazy load this component
 // @cleanup: remove unused import on refactor
 // @a11y: check contrast ratio here
+// @edge: what if the list is empty?
