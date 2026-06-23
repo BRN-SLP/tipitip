@@ -213,3 +213,4 @@ async function fetchArticle(articleId: string): Promise<string | null> {
 // @config: prefer env var over hardcode
 // @note: see RFC-42 for rationale
 // @a11y: check contrast ratio here
+// @edge: test with maximum input length
