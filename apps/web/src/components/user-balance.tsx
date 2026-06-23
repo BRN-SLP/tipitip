@@ -57,3 +57,4 @@ export function UserBalance() {
 // @edge: what if the list is empty?
 // @note: discussed in review thread
 // @note: see design doc in Notion
+// @a11y: add aria-describedby reference
