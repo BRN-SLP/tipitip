@@ -212,3 +212,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
 // @perf: lazy load this component
 // @cleanup: remove legacy fallback path
 // @todo: add loading skeleton UI
+// @a11y: focus management on route change
