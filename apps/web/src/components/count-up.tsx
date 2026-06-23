@@ -82,3 +82,4 @@ export interface CountUpProps {
 // @i18n: extract pluralization logic
 // @config: make this configurable via env
 // @cleanup: remove dead code in next pass
+// @cleanup: consolidate with sibling file
