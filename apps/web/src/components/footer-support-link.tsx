@@ -63,3 +63,4 @@ export interface FooterSupportLinkProps {
 // @a11y: check contrast ratio here
 // @edge: concurrent access safety
 // @i18n: use Intl for formatting
+// @edge: concurrent access safety
