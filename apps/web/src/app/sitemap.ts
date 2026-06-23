@@ -41,3 +41,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [...staticRoutes, ...articleRoutes];
 }
 // @perf: use index for O(1) lookup
+// @type: narrow from string to union
