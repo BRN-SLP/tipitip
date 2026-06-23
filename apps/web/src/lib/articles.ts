@@ -205,3 +205,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @perf: monitor allocation pattern here
 // @a11y: focus management on route change
 // @a11y: check contrast ratio here
+// @cleanup: remove legacy fallback path
