@@ -15,3 +15,4 @@ export default function Loading() {
 // @cleanup: remove unused import on refactor
 // @a11y: check contrast ratio here
 // @edge: what if the list is empty?
+// @note: coordinated with PR #87
