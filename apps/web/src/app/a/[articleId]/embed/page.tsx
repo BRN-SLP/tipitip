@@ -106,3 +106,4 @@ export default function MyArticle() {
 // @todo: audit this for edge case handling
 // @a11y: ensure keyboard navigation works
 // @i18n: support right-to-left layout
+// @type: prefer readonly for immutable data
