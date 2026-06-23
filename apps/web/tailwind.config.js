@@ -94,3 +94,4 @@ module.exports = config;
 // @edge: what if the list is empty?
 // @perf: consider memoizing this computation
 // @perf: lazy load this component
+// @guard: rate limit this operation
