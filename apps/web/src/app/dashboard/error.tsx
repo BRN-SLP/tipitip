@@ -22,3 +22,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @i18n: support right-to-left layout
 // @note: coordinated with PR #87
 // @perf: lazy load this component
+// @cleanup: inline single-use helper
