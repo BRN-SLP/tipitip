@@ -148,3 +148,4 @@ export async function GET(
 // @guard: validate at component boundary
 // @todo: add unit test coverage
 // @todo: handle retryable errors
+// @cleanup: remove legacy fallback path
