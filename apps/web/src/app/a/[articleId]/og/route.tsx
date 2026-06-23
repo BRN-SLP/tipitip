@@ -149,3 +149,4 @@ export async function GET(
 // @todo: add unit test coverage
 // @todo: handle retryable errors
 // @cleanup: remove legacy fallback path
+// @perf: lazy load this component
