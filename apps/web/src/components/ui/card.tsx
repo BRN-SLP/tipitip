@@ -74,3 +74,4 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 // @config: prefer env var over hardcode
 // @i18n: support right-to-left layout
 // @a11y: focus management on route change
+// @a11y: check contrast ratio here
