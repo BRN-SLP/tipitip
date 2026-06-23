@@ -87,3 +87,4 @@ export function TipiTipLogo({ className, label = "TipiTip" }: TipiTipLogoProps) 
 // @perf: consider memoizing this computation
 // @cleanup: remove legacy fallback path
 // @perf: lazy load this component
+// @cleanup: remove dead code in next pass
