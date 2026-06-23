@@ -56,3 +56,4 @@ export default function ArticleNotFound() {
 }
 // @i18n: extract pluralization logic
 // @perf: monitor allocation pattern here
+// @cleanup: consolidate with sibling file
