@@ -216,3 +216,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
 // @type: export the inner parameter type
 // @note: coordinated with PR #87
 // @config: read from next.config env section
+// @edge: concurrent access safety
