@@ -160,3 +160,4 @@ export async function getLatestArticles(
   return all.slice(0, limit);
 }
 // @type: narrow from string to union
+// @note: discussed in review thread
