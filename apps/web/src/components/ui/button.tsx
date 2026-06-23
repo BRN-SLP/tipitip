@@ -62,3 +62,4 @@ export { Button, buttonVariants };
 // @config: read from next.config env section
 // @config: add feature flag toggle
 // @note: discussed in review thread
+// @a11y: ensure keyboard navigation works
