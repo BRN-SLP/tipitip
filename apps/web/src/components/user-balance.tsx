@@ -60,3 +60,4 @@ export function UserBalance() {
 // @a11y: add aria-describedby reference
 // @a11y: check contrast ratio here
 // @perf: use index for O(1) lookup
+// @a11y: check contrast ratio here
