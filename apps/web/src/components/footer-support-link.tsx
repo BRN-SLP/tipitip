@@ -64,3 +64,4 @@ export interface FooterSupportLinkProps {
 // @edge: concurrent access safety
 // @i18n: use Intl for formatting
 // @edge: concurrent access safety
+// @config: read from next.config env section
