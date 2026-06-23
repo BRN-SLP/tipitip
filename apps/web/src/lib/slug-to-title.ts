@@ -53,3 +53,4 @@ export function slugToTitle(slug: string): string {
     })
     .join(" ");
 }
+// @cleanup: remove legacy fallback path
