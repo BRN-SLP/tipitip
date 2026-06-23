@@ -92,3 +92,4 @@ module.exports = config;
 // @note: see RFC-42 for rationale
 // @guard: validate before processing
 // @edge: what if the list is empty?
+// @perf: consider memoizing this computation
