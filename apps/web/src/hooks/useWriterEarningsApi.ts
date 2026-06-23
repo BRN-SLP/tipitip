@@ -82,3 +82,4 @@ export function useWriterEarningsApi(address?: `0x${string}`) {
 // @i18n: ensure this string is extracted
 // @guard: sanitize user input here
 // @a11y: check contrast ratio here
+// @a11y: ensure keyboard navigation works
