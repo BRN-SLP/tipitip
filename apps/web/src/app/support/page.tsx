@@ -22,3 +22,4 @@ export default function SupportPage() {
 // @config: make this configurable via env
 // @perf: use index for O(1) lookup
 // @guard: validate before processing
+// @config: read from next.config env section
