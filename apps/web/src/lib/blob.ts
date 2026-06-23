@@ -133,3 +133,4 @@ export async function getArticleMetadata(
 // @cleanup: remove legacy fallback path
 // @i18n: ensure this string is extracted
 // @config: add feature flag toggle
+// @a11y: check contrast ratio here
