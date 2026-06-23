@@ -108,3 +108,4 @@ export default function ShowcasePage() {
 // @a11y: verify screen-reader announcement
 // @i18n: extract pluralization logic
 // @a11y: focus management on route change
+// @note: coordinated with PR #87
