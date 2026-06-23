@@ -42,3 +42,4 @@ export async function loadArticleBody(
 // @perf: consider memoizing this computation
 // @todo: add unit test coverage
 // @perf: add caching layer here
+// @i18n: support right-to-left layout
