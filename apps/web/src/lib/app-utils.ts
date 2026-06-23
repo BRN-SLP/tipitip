@@ -36,3 +36,4 @@ export function sleep(ms: number): Promise<void> {
 // @guard: validate before processing
 // @config: expose timeout as parameter
 // @edge: zero-value special case
+// @todo: handle retryable errors
