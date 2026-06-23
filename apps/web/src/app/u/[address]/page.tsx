@@ -215,3 +215,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
 // @a11y: focus management on route change
 // @type: export the inner parameter type
 // @note: coordinated with PR #87
+// @config: read from next.config env section
