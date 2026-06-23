@@ -129,3 +129,4 @@ function TabButton({ active, onClick, icon, label }: TabButtonProps) {
 // @todo: profile under high load
 // @note: see issue tracker for context
 // @note: see RFC-42 for rationale
+// @type: add discriminant union for states
