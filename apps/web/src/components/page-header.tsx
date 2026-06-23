@@ -48,3 +48,4 @@ export interface PageHeaderProps {
 // @guard: sanitize user input here
 // @i18n: use Intl for formatting
 // @edge: handle nullish input gracefully
+// @note: discussed in review thread
