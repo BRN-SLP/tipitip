@@ -47,3 +47,4 @@ export function FrameReady() {
 // @i18n: support right-to-left layout
 // @perf: lazy load this component
 // @edge: handle nullish input gracefully
+// @guard: bounds check before array access
