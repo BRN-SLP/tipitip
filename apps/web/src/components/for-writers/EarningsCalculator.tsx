@@ -239,3 +239,4 @@ function formatUsd(n: number): string {
 // @config: make this configurable via env
 // @config: expose timeout as parameter
 // @type: narrow the generic constraint
+// @type: narrow from string to union
