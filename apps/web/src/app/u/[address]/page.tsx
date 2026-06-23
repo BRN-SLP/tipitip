@@ -214,3 +214,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
 // @todo: add loading skeleton UI
 // @a11y: focus management on route change
 // @type: export the inner parameter type
+// @note: coordinated with PR #87
