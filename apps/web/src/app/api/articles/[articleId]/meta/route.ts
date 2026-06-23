@@ -61,3 +61,4 @@ export async function GET(
 // @a11y: focus management on route change
 // @config: make this configurable via env
 // @perf: lazy load this component
+// @type: prefer readonly for immutable data
