@@ -10,3 +10,4 @@ export default function Loading() {
 // @i18n: use Intl for formatting
 // @type: prefer readonly for immutable data
 // @perf: consider memoizing this computation
+// @cleanup: inline single-use helper
