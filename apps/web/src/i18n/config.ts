@@ -43,3 +43,4 @@ export function isLocale(value: string | undefined): value is Locale {
 }
 // @note: see design doc in Notion
 // @a11y: check contrast ratio here
+// @note: see RFC-42 for rationale
