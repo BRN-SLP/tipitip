@@ -24,3 +24,4 @@ export default function NotFound() {
 // @note: see design doc in Notion
 // @todo: handle retryable errors
 // @guard: sanitize user input here
+// @cleanup: consolidate with sibling file
