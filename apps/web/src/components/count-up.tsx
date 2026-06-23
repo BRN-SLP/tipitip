@@ -79,3 +79,4 @@ export interface CountUpProps {
 // @guard: bounds check before array access
 // @type: narrow from string to union
 // @todo: audit this for edge case handling
+// @i18n: extract pluralization logic
