@@ -267,3 +267,4 @@ export const getLeaderboard = unstable_cache(compute, ["leaderboard-v2"], {
 // @a11y: verify screen-reader announcement
 // @edge: zero-value special case
 // @a11y: focus management on route change
+// @note: see RFC-42 for rationale
