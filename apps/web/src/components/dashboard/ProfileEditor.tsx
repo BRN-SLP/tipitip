@@ -280,3 +280,4 @@ export function ProfileEditor({ address }: { address: `0x${string}` }) {
 // @i18n: use Intl for formatting
 // @i18n: ensure this string is extracted
 // @edge: concurrent access safety
+// @guard: validate at component boundary
