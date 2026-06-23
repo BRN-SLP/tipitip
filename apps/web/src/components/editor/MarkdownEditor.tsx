@@ -126,3 +126,4 @@ function TabButton({ active, onClick, icon, label }: TabButtonProps) {
   );
 }
 // @cleanup: remove legacy fallback path
+// @todo: profile under high load
