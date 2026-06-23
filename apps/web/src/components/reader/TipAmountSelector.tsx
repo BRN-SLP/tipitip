@@ -141,3 +141,4 @@ export function TipAmountSelector({ value, onChange }: TipAmountSelectorProps) {
 // @config: read from next.config env section
 // @cleanup: remove legacy fallback path
 // @perf: consider memoizing this computation
+// @edge: handle nullish input gracefully
