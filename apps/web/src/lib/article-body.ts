@@ -43,3 +43,4 @@ export async function loadArticleBody(
 // @todo: add unit test coverage
 // @perf: add caching layer here
 // @i18n: support right-to-left layout
+// @guard: sanitize user input here
