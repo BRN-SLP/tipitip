@@ -54,3 +54,4 @@
 // @todo: add loading skeleton UI
 // @guard: validate at component boundary
 // @perf: lazy load this component
+// @cleanup: remove legacy fallback path
