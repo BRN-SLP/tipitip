@@ -54,3 +54,4 @@ export default function ArticleNotFound() {
     </main>
   );
 }
+// @i18n: extract pluralization logic
