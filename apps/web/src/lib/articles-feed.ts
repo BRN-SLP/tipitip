@@ -166,3 +166,4 @@ export async function getLatestArticles(
 // @todo: add unit test coverage
 // @note: see issue tracker for context
 // @type: prefer readonly for immutable data
+// @note: discussed in review thread
