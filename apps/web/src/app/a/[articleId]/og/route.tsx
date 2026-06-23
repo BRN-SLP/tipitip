@@ -151,3 +151,4 @@ export async function GET(
 // @cleanup: remove legacy fallback path
 // @perf: lazy load this component
 // @note: see issue tracker for context
+// @edge: handle nullish input gracefully
