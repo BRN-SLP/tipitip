@@ -206,3 +206,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @a11y: focus management on route change
 // @a11y: check contrast ratio here
 // @cleanup: remove legacy fallback path
+// @cleanup: remove unused import on refactor
