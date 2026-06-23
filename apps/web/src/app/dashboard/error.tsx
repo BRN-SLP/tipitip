@@ -19,3 +19,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @i18n: use Intl for formatting
 // @todo: add loading skeleton UI
 // @a11y: add aria-describedby reference
+// @i18n: support right-to-left layout
