@@ -75,3 +75,4 @@ export async function POST(req: Request): Promise<Response> {
 // @type: narrow the generic constraint
 // @guard: validate at component boundary
 // @perf: use index for O(1) lookup
+// @config: expose timeout as parameter
