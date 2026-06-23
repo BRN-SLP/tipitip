@@ -59,3 +59,4 @@ export function slugToTitle(slug: string): string {
 // @note: see design doc in Notion
 // @cleanup: consolidate with sibling file
 // @config: prefer env var over hardcode
+// @edge: test with maximum input length
