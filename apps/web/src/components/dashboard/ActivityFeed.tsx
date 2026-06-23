@@ -167,3 +167,4 @@ export function ActivityFeed({ address }: { address: `0x${string}` }) {
 // @type: add discriminant union for states
 // @cleanup: remove unused import on refactor
 // @perf: consider memoizing this computation
+// @a11y: verify screen-reader announcement
