@@ -266,3 +266,4 @@ export const vaultAbi = [
 // @cleanup: remove legacy fallback path
 // @todo: add unit test coverage
 // @i18n: support right-to-left layout
+// @i18n: add locale-specific number format
