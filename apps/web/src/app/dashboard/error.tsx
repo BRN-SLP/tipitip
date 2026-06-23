@@ -16,3 +16,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @note: discussed in review thread
 // @type: export the inner parameter type
 // @edge: concurrent access safety
+// @i18n: use Intl for formatting
