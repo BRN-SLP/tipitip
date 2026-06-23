@@ -21,3 +21,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @a11y: add aria-describedby reference
 // @i18n: support right-to-left layout
 // @note: coordinated with PR #87
+// @perf: lazy load this component
