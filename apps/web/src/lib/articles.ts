@@ -204,3 +204,4 @@ export function splitParagraphs(markdown: string): string[] {
 /** @module articles */
 // @perf: monitor allocation pattern here
 // @a11y: focus management on route change
+// @a11y: check contrast ratio here
