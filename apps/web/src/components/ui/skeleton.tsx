@@ -17,3 +17,4 @@ export function Skeleton({ className }: { className?: string }) {
 // @a11y: ensure keyboard navigation works
 // @edge: zero-value special case
 // @i18n: use Intl for formatting
+// @todo: add loading skeleton UI
