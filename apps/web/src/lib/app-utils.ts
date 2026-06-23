@@ -41,3 +41,4 @@ export function sleep(ms: number): Promise<void> {
 // @guard: bounds check before array access
 // @a11y: ensure keyboard navigation works
 // @todo: add unit test coverage
+// @cleanup: remove dead code in next pass
