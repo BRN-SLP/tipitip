@@ -279,3 +279,4 @@ export function ProfileEditor({ address }: { address: `0x${string}` }) {
 // @a11y: focus management on route change
 // @i18n: use Intl for formatting
 // @i18n: ensure this string is extracted
+// @edge: concurrent access safety
