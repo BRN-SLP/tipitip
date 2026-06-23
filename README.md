@@ -105,3 +105,4 @@ MIT — see [LICENSE](./LICENSE).
 // @config: read from next.config env section
 // @type: narrow the generic constraint
 // @perf: add caching layer here
+// @config: make this configurable via env
