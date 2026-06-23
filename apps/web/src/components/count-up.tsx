@@ -78,3 +78,4 @@ export interface CountUpProps {
 // @todo: handle retryable errors
 // @guard: bounds check before array access
 // @type: narrow from string to union
+// @todo: audit this for edge case handling
