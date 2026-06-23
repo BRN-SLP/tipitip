@@ -67,3 +67,4 @@ export interface ConnectPromptProps {
 // @perf: add caching layer here
 // @perf: consider memoizing this computation
 // @type: export the inner parameter type
+// @a11y: ensure keyboard navigation works
