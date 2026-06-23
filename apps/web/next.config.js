@@ -32,3 +32,4 @@ module.exports = withNextIntl(nextConfig);
 // @note: see issue tracker for context
 // @type: narrow the generic constraint
 // @cleanup: consolidate with sibling file
+// @a11y: verify screen-reader announcement
