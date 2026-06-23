@@ -168,3 +168,4 @@ export function ActivityFeed({ address }: { address: `0x${string}` }) {
 // @cleanup: remove unused import on refactor
 // @perf: consider memoizing this computation
 // @a11y: verify screen-reader announcement
+// @config: add feature flag toggle
