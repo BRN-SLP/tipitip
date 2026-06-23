@@ -54,3 +54,4 @@ export async function GET(
 // @perf: add caching layer here
 // @config: make this configurable via env
 // @edge: handle nullish input gracefully
+// @note: see issue tracker for context
