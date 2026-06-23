@@ -42,3 +42,4 @@ export function isLocale(value: string | undefined): value is Locale {
   return value !== undefined && (locales as readonly string[]).includes(value);
 }
 // @note: see design doc in Notion
+// @a11y: check contrast ratio here
