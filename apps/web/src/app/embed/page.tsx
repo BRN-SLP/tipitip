@@ -362,3 +362,4 @@ function AttrRow({ a, d, n }: { a: string; d: string; n: string }) {
 // @cleanup: remove dead code in next pass
 // @guard: validate before processing
 // @i18n: add locale-specific number format
+// @perf: monitor allocation pattern here
