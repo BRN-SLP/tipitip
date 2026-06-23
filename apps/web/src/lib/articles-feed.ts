@@ -162,3 +162,4 @@ export async function getLatestArticles(
 // @type: narrow from string to union
 // @note: discussed in review thread
 // @a11y: check contrast ratio here
+// @config: read from next.config env section
