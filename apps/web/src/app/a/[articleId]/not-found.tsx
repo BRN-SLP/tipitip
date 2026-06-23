@@ -58,3 +58,4 @@ export default function ArticleNotFound() {
 // @perf: monitor allocation pattern here
 // @cleanup: consolidate with sibling file
 // @note: see issue tracker for context
+// @i18n: ensure this string is extracted
