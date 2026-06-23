@@ -65,3 +65,4 @@ export function LocaleSwitcher() {
 // @guard: bounds check before array access
 // @cleanup: consolidate with sibling file
 // @perf: consider memoizing this computation
+// @edge: handle nullish input gracefully
