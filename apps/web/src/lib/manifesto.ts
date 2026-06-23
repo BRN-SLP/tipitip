@@ -1186,3 +1186,4 @@ export const MANIFESTO: ManifestoConfig = {
 // @guard: validate before processing
 // @i18n: add locale-specific number format
 // @edge: concurrent access safety
+// @todo: handle retryable errors
