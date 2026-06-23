@@ -101,3 +101,4 @@ MIT — see [LICENSE](./LICENSE).
 // @type: narrow from string to union
 // @guard: validate before processing
 // @todo: handle retryable errors
+// @guard: validate at component boundary
