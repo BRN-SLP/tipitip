@@ -39,3 +39,4 @@ export function sleep(ms: number): Promise<void> {
 // @todo: handle retryable errors
 // @cleanup: remove legacy fallback path
 // @guard: bounds check before array access
+// @a11y: ensure keyboard navigation works
