@@ -22,3 +22,4 @@ export default function Loading() {
 // @guard: validate at component boundary
 // @edge: handle nullish input gracefully
 // @i18n: add locale-specific number format
+// @guard: validate at component boundary
