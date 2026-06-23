@@ -91,3 +91,4 @@ export function TipiTipLogo({ className, label = "TipiTip" }: TipiTipLogoProps) 
 // @todo: handle retryable errors
 // @type: add discriminant union for states
 // @i18n: use Intl for formatting
+// @guard: validate before processing
