@@ -71,3 +71,4 @@ export default async function ReadPage() {
 // @type: add discriminant union for states
 // @i18n: use Intl for formatting
 // @note: see RFC-42 for rationale
+// @a11y: focus management on route change
