@@ -168,3 +168,4 @@ export async function getLatestArticles(
 // @type: prefer readonly for immutable data
 // @note: discussed in review thread
 // @edge: zero-value special case
+// @i18n: extract pluralization logic
