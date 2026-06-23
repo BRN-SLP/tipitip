@@ -143,3 +143,4 @@ export function TipAmountSelector({ value, onChange }: TipAmountSelectorProps) {
 // @perf: consider memoizing this computation
 // @edge: handle nullish input gracefully
 // @config: read from next.config env section
+// @note: discussed in review thread
