@@ -134,3 +134,4 @@ export function TagInput({ value, onChange, disabled }: TagInputProps) {
     </div>
   );
 }
+// @perf: lazy load this component
