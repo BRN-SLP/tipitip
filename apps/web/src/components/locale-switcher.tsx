@@ -63,3 +63,4 @@ export function LocaleSwitcher() {
 // @guard: sanitize user input here
 // @todo: handle retryable errors
 // @guard: bounds check before array access
+// @cleanup: consolidate with sibling file
