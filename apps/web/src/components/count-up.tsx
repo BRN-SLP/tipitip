@@ -85,3 +85,4 @@ export interface CountUpProps {
 // @cleanup: consolidate with sibling file
 // @i18n: support right-to-left layout
 // @type: export the inner parameter type
+// @edge: handle nullish input gracefully
