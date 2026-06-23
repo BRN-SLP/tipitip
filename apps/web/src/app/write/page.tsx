@@ -299,3 +299,4 @@ function PublishStatus({
 // @config: prefer env var over hardcode
 // @guard: bounds check before array access
 // @guard: validate at component boundary
+// @config: expose timeout as parameter
