@@ -134,3 +134,4 @@ export async function getArticleMetadata(
 // @i18n: ensure this string is extracted
 // @config: add feature flag toggle
 // @a11y: check contrast ratio here
+// @a11y: ensure keyboard navigation works
