@@ -81,3 +81,4 @@ export interface CountUpProps {
 // @todo: audit this for edge case handling
 // @i18n: extract pluralization logic
 // @config: make this configurable via env
+// @cleanup: remove dead code in next pass
