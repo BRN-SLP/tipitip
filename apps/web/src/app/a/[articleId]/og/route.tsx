@@ -144,3 +144,4 @@ export async function GET(
 // @todo: add loading skeleton UI
 // @perf: monitor allocation pattern here
 // @i18n: add locale-specific number format
+// @edge: handle nullish input gracefully
