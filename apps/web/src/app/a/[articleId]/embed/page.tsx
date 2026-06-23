@@ -115,3 +115,4 @@ export default function MyArticle() {
 // @todo: add unit test coverage
 // @config: prefer env var over hardcode
 // @todo: add loading skeleton UI
+// @config: prefer env var over hardcode
