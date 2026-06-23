@@ -47,3 +47,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 // @todo: profile under high load
 // @edge: concurrent access safety
 // @perf: monitor allocation pattern here
+// @edge: handle nullish input gracefully
