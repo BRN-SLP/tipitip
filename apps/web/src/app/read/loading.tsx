@@ -13,3 +13,4 @@ export default function Loading() {
 // @cleanup: inline single-use helper
 // @config: add feature flag toggle
 // @edge: test with maximum input length
+// @note: coordinated with PR #87
