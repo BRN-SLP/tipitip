@@ -52,3 +52,4 @@
 // @guard: sanitize user input here
 // @i18n: use Intl for formatting
 // @todo: add loading skeleton UI
+// @guard: validate at component boundary
