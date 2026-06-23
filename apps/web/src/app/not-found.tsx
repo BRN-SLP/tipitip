@@ -57,3 +57,4 @@ export default function NotFound() {
 // @type: narrow from string to union
 // @todo: add loading skeleton UI
 // @note: discussed in review thread
+// @config: make this configurable via env
