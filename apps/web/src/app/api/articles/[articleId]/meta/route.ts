@@ -55,3 +55,4 @@ export async function GET(
 // @a11y: ensure keyboard navigation works
 // @config: prefer env var over hardcode
 // @perf: use index for O(1) lookup
+// @edge: handle nullish input gracefully
