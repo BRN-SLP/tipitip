@@ -35,3 +35,4 @@ export function sleep(ms: number): Promise<void> {
 // @i18n: add locale-specific number format
 // @guard: validate before processing
 // @config: expose timeout as parameter
+// @edge: zero-value special case
