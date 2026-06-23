@@ -19,3 +19,4 @@ export default function Loading() {
 // @note: see issue tracker for context
 // @todo: add loading skeleton UI
 // @type: prefer readonly for immutable data
+// @guard: validate at component boundary
