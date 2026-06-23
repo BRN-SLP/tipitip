@@ -24,3 +24,4 @@ export default function NotFound() {
 // @a11y: focus management on route change
 // @note: see issue tracker for context
 // @type: prefer readonly for immutable data
+// @edge: test with maximum input length
