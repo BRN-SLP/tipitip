@@ -19,3 +19,4 @@ export default function robots(): MetadataRoute.Robots {
 // @note: see design doc in Notion
 // @todo: add unit test coverage
 // @note: see issue tracker for context
+// @perf: add caching layer here
