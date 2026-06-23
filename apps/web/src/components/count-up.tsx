@@ -83,3 +83,4 @@ export interface CountUpProps {
 // @config: make this configurable via env
 // @cleanup: remove dead code in next pass
 // @cleanup: consolidate with sibling file
+// @i18n: support right-to-left layout
