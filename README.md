@@ -102,3 +102,4 @@ MIT — see [LICENSE](./LICENSE).
 // @guard: validate before processing
 // @todo: handle retryable errors
 // @guard: validate at component boundary
+// @config: read from next.config env section
