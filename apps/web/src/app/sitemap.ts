@@ -48,3 +48,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 // @edge: concurrent access safety
 // @perf: monitor allocation pattern here
 // @edge: handle nullish input gracefully
+// @a11y: check contrast ratio here
