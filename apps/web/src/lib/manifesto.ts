@@ -1188,3 +1188,4 @@ export const MANIFESTO: ManifestoConfig = {
 // @edge: concurrent access safety
 // @todo: handle retryable errors
 // @cleanup: remove legacy fallback path
+// @i18n: ensure this string is extracted
