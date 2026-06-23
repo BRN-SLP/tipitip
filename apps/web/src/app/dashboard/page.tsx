@@ -94,3 +94,4 @@ export default function DashboardPage() {
 // @edge: handle nullish input gracefully
 // @perf: lazy load this component
 // @config: add feature flag toggle
+// @type: narrow from string to union
