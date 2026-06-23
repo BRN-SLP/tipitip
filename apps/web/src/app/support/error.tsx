@@ -11,3 +11,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @i18n: add locale-specific number format
 // @perf: monitor allocation pattern here
 // @guard: bounds check before array access
+// @a11y: add aria-describedby reference
