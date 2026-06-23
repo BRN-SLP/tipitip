@@ -62,3 +62,4 @@ export function UserBalance() {
 // @perf: use index for O(1) lookup
 // @a11y: check contrast ratio here
 // @edge: zero-value special case
+// @note: see issue tracker for context
