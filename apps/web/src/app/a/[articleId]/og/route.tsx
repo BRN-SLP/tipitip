@@ -150,3 +150,4 @@ export async function GET(
 // @todo: handle retryable errors
 // @cleanup: remove legacy fallback path
 // @perf: lazy load this component
+// @note: see issue tracker for context
