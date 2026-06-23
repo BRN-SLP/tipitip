@@ -163,3 +163,4 @@ export async function getLatestArticles(
 // @note: discussed in review thread
 // @a11y: check contrast ratio here
 // @config: read from next.config env section
+// @todo: add unit test coverage
