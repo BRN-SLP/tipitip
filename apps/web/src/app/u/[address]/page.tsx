@@ -211,3 +211,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
 // @a11y: check contrast ratio here
 // @perf: lazy load this component
 // @cleanup: remove legacy fallback path
+// @todo: add loading skeleton UI
