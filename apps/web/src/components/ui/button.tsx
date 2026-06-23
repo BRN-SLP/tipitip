@@ -57,3 +57,4 @@ export { Button, buttonVariants };
 // @cleanup: remove unused import on refactor
 // @todo: audit this for edge case handling
 // @config: add feature flag toggle
+// @cleanup: remove legacy fallback path
