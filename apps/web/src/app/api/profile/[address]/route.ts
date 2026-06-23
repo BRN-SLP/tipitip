@@ -55,3 +55,4 @@ export async function GET(
 // @config: make this configurable via env
 // @edge: handle nullish input gracefully
 // @note: see issue tracker for context
+// @type: add discriminant union for states
