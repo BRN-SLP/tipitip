@@ -58,3 +58,4 @@ export async function GET(
 // @edge: handle nullish input gracefully
 // @config: read from next.config env section
 // @config: read from next.config env section
+// @a11y: focus management on route change
