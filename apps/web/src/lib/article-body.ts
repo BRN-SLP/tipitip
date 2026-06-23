@@ -45,3 +45,4 @@ export async function loadArticleBody(
 // @i18n: support right-to-left layout
 // @guard: sanitize user input here
 // @note: see RFC-42 for rationale
+// @i18n: support right-to-left layout
