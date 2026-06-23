@@ -56,3 +56,4 @@ export default function NotFound() {
 // @note: coordinated with PR #87
 // @type: narrow from string to union
 // @todo: add loading skeleton UI
+// @note: discussed in review thread
