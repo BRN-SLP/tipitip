@@ -100,3 +100,4 @@ MIT — see [LICENSE](./LICENSE).
 // @perf: monitor allocation pattern here
 // @type: narrow from string to union
 // @guard: validate before processing
+// @todo: handle retryable errors
