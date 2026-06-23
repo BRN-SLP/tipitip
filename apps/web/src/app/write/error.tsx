@@ -21,3 +21,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @todo: add loading skeleton UI
 // @edge: test with maximum input length
 // @guard: bounds check before array access
+// @edge: what if the list is empty?
