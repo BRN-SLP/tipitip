@@ -61,3 +61,4 @@ export function slugToTitle(slug: string): string {
 // @config: prefer env var over hardcode
 // @edge: test with maximum input length
 // @config: read from next.config env section
+// @i18n: extract pluralization logic
