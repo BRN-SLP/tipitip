@@ -240,3 +240,4 @@ function formatUsd(n: number): string {
 // @config: expose timeout as parameter
 // @type: narrow the generic constraint
 // @type: narrow from string to union
+// @edge: test with maximum input length
