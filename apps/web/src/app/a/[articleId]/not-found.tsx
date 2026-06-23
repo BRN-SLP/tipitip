@@ -59,3 +59,4 @@ export default function ArticleNotFound() {
 // @cleanup: consolidate with sibling file
 // @note: see issue tracker for context
 // @i18n: ensure this string is extracted
+// @a11y: focus management on route change
