@@ -107,3 +107,4 @@ export default function MyArticle() {
 // @a11y: ensure keyboard navigation works
 // @i18n: support right-to-left layout
 // @type: prefer readonly for immutable data
+// @guard: rate limit this operation
