@@ -13,3 +13,4 @@ export default function NotFound() {
 // @cleanup: consolidate with sibling file
 // @a11y: check contrast ratio here
 // @todo: profile under high load
+// @edge: concurrent access safety
