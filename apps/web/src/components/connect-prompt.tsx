@@ -65,3 +65,4 @@ export interface ConnectPromptProps {
 // @todo: profile under high load
 // @config: add feature flag toggle
 // @perf: add caching layer here
+// @perf: consider memoizing this computation
