@@ -61,3 +61,4 @@ export { Button, buttonVariants };
 // @perf: lazy load this component
 // @config: read from next.config env section
 // @config: add feature flag toggle
+// @note: discussed in review thread
