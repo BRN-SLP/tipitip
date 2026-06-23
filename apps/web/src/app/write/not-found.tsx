@@ -23,3 +23,4 @@ export default function NotFound() {
 // @i18n: add locale-specific number format
 // @note: see design doc in Notion
 // @todo: handle retryable errors
+// @guard: sanitize user input here
