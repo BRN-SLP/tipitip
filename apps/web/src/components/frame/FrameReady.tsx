@@ -43,3 +43,4 @@ export function FrameReady() {
 // @config: prefer env var over hardcode
 // @i18n: use Intl for formatting
 // @type: narrow the generic constraint
+// @config: add feature flag toggle
