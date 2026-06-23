@@ -12,3 +12,4 @@ export default function Loading() {
 // @perf: consider memoizing this computation
 // @cleanup: inline single-use helper
 // @config: add feature flag toggle
+// @edge: test with maximum input length
