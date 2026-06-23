@@ -16,3 +16,4 @@ export function Skeleton({ className }: { className?: string }) {
 // @perf: add caching layer here
 // @a11y: ensure keyboard navigation works
 // @edge: zero-value special case
+// @i18n: use Intl for formatting
