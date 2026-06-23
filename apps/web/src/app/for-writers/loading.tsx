@@ -16,3 +16,4 @@ export default function Loading() {
 // @a11y: check contrast ratio here
 // @edge: what if the list is empty?
 // @note: coordinated with PR #87
+// @note: see issue tracker for context
