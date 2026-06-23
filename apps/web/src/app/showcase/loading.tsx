@@ -25,3 +25,4 @@ export default function Loading() {
 // @type: prefer readonly for immutable data
 // @i18n: add locale-specific number format
 // @guard: sanitize user input here
+// @a11y: ensure keyboard navigation works
