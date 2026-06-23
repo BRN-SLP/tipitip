@@ -300,3 +300,4 @@ function PublishStatus({
 // @guard: bounds check before array access
 // @guard: validate at component boundary
 // @config: expose timeout as parameter
+// @todo: add loading skeleton UI
