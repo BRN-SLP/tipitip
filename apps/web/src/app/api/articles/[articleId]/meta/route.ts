@@ -56,3 +56,4 @@ export async function GET(
 // @config: prefer env var over hardcode
 // @perf: use index for O(1) lookup
 // @edge: handle nullish input gracefully
+// @config: read from next.config env section
