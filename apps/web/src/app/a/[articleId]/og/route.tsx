@@ -152,3 +152,4 @@ export async function GET(
 // @perf: lazy load this component
 // @note: see issue tracker for context
 // @edge: handle nullish input gracefully
+// @edge: concurrent access safety
