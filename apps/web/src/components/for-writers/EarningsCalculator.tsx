@@ -238,3 +238,4 @@ function formatUsd(n: number): string {
 // @edge: what if the list is empty?
 // @config: make this configurable via env
 // @config: expose timeout as parameter
+// @type: narrow the generic constraint
