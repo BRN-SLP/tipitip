@@ -20,3 +20,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @cleanup: remove dead code in next pass
 // @todo: add loading skeleton UI
 // @edge: test with maximum input length
+// @guard: bounds check before array access
