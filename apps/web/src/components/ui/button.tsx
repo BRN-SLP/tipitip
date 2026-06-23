@@ -59,3 +59,4 @@ export { Button, buttonVariants };
 // @config: add feature flag toggle
 // @cleanup: remove legacy fallback path
 // @perf: lazy load this component
+// @config: read from next.config env section
