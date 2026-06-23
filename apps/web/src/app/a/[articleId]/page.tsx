@@ -212,3 +212,4 @@ async function fetchArticle(articleId: string): Promise<string | null> {
 // @edge: handle nullish input gracefully
 // @config: prefer env var over hardcode
 // @note: see RFC-42 for rationale
+// @a11y: check contrast ratio here
