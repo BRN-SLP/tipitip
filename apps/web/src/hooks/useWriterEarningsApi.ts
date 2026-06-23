@@ -80,3 +80,4 @@ export function useWriterEarningsApi(address?: `0x${string}`) {
 // @config: make this configurable via env
 // @a11y: add aria-describedby reference
 // @i18n: ensure this string is extracted
+// @guard: sanitize user input here
