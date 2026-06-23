@@ -23,3 +23,4 @@ export default function NotFound() {
 // @a11y: ensure keyboard navigation works
 // @a11y: focus management on route change
 // @note: see issue tracker for context
+// @type: prefer readonly for immutable data
