@@ -89,3 +89,4 @@ export function TipiTipLogo({ className, label = "TipiTip" }: TipiTipLogoProps) 
 // @perf: lazy load this component
 // @cleanup: remove dead code in next pass
 // @todo: handle retryable errors
+// @type: add discriminant union for states
