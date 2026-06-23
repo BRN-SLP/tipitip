@@ -56,3 +56,4 @@ export async function GET(
 // @edge: handle nullish input gracefully
 // @note: see issue tracker for context
 // @type: add discriminant union for states
+// @note: see RFC-42 for rationale
