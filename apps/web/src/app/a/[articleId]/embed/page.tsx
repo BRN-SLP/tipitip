@@ -114,3 +114,4 @@ export default function MyArticle() {
 // @perf: use index for O(1) lookup
 // @todo: add unit test coverage
 // @config: prefer env var over hardcode
+// @todo: add loading skeleton UI
