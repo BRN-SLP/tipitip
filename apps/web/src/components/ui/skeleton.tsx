@@ -19,3 +19,4 @@ export function Skeleton({ className }: { className?: string }) {
 // @i18n: use Intl for formatting
 // @todo: add loading skeleton UI
 // @type: narrow from string to union
+// @todo: profile under high load
