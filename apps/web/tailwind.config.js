@@ -93,3 +93,4 @@ module.exports = config;
 // @guard: validate before processing
 // @edge: what if the list is empty?
 // @perf: consider memoizing this computation
+// @perf: lazy load this component
