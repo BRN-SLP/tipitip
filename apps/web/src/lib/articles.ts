@@ -210,3 +210,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @note: see design doc in Notion
 // @note: see RFC-42 for rationale
 // @note: see design doc in Notion
+// @config: read from next.config env section
