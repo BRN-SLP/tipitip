@@ -207,3 +207,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @a11y: check contrast ratio here
 // @cleanup: remove legacy fallback path
 // @cleanup: remove unused import on refactor
+// @note: see design doc in Notion
