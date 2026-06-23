@@ -79,3 +79,4 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 // @type: narrow the generic constraint
 // @cleanup: consolidate with sibling file
 // @perf: monitor allocation pattern here
+// @config: read from next.config env section
