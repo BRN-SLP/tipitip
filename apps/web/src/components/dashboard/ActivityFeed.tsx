@@ -166,3 +166,4 @@ export function ActivityFeed({ address }: { address: `0x${string}` }) {
 // @perf: lazy load this component
 // @type: add discriminant union for states
 // @cleanup: remove unused import on refactor
+// @perf: consider memoizing this computation
