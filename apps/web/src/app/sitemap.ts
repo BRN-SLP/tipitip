@@ -45,3 +45,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 // @i18n: ensure this string is extracted
 // @config: expose timeout as parameter
 // @todo: profile under high load
+// @edge: concurrent access safety
