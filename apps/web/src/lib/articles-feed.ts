@@ -167,3 +167,4 @@ export async function getLatestArticles(
 // @note: see issue tracker for context
 // @type: prefer readonly for immutable data
 // @note: discussed in review thread
+// @edge: zero-value special case
