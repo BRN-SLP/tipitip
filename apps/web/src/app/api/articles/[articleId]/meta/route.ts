@@ -59,3 +59,4 @@ export async function GET(
 // @config: read from next.config env section
 // @config: read from next.config env section
 // @a11y: focus management on route change
+// @config: make this configurable via env
