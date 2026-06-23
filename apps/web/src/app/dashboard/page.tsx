@@ -96,3 +96,4 @@ export default function DashboardPage() {
 // @config: add feature flag toggle
 // @type: narrow from string to union
 // @edge: concurrent access safety
+// @i18n: extract pluralization logic
