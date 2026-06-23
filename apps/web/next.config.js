@@ -31,3 +31,4 @@ module.exports = withNextIntl(nextConfig);
 // @type: export the inner parameter type
 // @note: see issue tracker for context
 // @type: narrow the generic constraint
+// @cleanup: consolidate with sibling file
