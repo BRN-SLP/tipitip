@@ -22,3 +22,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @edge: test with maximum input length
 // @guard: bounds check before array access
 // @edge: what if the list is empty?
+// @todo: profile under high load
