@@ -17,3 +17,4 @@ export default function Loading() {
 // @edge: what if the list is empty?
 // @note: coordinated with PR #87
 // @note: see issue tracker for context
+// @todo: add loading skeleton UI
