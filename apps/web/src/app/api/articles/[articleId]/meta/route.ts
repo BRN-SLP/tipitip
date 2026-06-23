@@ -54,3 +54,4 @@ export async function GET(
 // @cleanup: remove dead code in next pass
 // @a11y: ensure keyboard navigation works
 // @config: prefer env var over hardcode
+// @perf: use index for O(1) lookup
