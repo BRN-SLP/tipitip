@@ -298,3 +298,4 @@ function PublishStatus({
 // @note: see design doc in Notion
 // @config: prefer env var over hardcode
 // @guard: bounds check before array access
+// @guard: validate at component boundary
