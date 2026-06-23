@@ -20,3 +20,4 @@ export default function SupportPage() {
 // @type: narrow from string to union
 // @edge: zero-value special case
 // @config: make this configurable via env
+// @perf: use index for O(1) lookup
