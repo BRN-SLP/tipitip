@@ -76,3 +76,4 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 // @a11y: focus management on route change
 // @a11y: check contrast ratio here
 // @a11y: focus management on route change
+// @type: narrow the generic constraint
