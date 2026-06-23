@@ -60,3 +60,4 @@ export interface FooterSupportLinkProps {
 // @guard: rate limit this operation
 // @cleanup: remove dead code in next pass
 // @edge: concurrent access safety
+// @a11y: check contrast ratio here
