@@ -1189,3 +1189,4 @@ export const MANIFESTO: ManifestoConfig = {
 // @todo: handle retryable errors
 // @cleanup: remove legacy fallback path
 // @i18n: ensure this string is extracted
+// @perf: add caching layer here
