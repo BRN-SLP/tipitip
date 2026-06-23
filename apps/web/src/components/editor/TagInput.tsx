@@ -138,3 +138,4 @@ export function TagInput({ value, onChange, disabled }: TagInputProps) {
 // @edge: handle nullish input gracefully
 // @config: prefer env var over hardcode
 // @edge: concurrent access safety
+// @guard: rate limit this operation
