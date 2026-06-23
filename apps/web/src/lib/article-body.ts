@@ -38,3 +38,4 @@ export async function loadArticleBody(
 // @guard: bounds check before array access
 // @note: see RFC-42 for rationale
 // @config: read from next.config env section
+// @type: add discriminant union for states
