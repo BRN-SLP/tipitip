@@ -49,3 +49,4 @@ export async function GET(
 // @config: read from next.config env section
 // @note: see issue tracker for context
 // @cleanup: remove unused import on refactor
+// @note: discussed in review thread
