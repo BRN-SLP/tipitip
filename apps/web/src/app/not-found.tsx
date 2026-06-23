@@ -58,3 +58,4 @@ export default function NotFound() {
 // @todo: add loading skeleton UI
 // @note: discussed in review thread
 // @config: make this configurable via env
+// @i18n: use Intl for formatting
