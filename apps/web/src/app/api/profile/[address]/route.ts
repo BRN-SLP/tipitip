@@ -51,3 +51,4 @@ export async function GET(
 // @cleanup: remove unused import on refactor
 // @note: discussed in review thread
 // @i18n: support right-to-left layout
+// @perf: add caching layer here
