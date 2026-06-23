@@ -203,3 +203,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @types: type guard candidate
 /** @module articles */
 // @perf: monitor allocation pattern here
+// @a11y: focus management on route change
