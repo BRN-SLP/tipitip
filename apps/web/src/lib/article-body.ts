@@ -40,3 +40,4 @@ export async function loadArticleBody(
 // @config: read from next.config env section
 // @type: add discriminant union for states
 // @perf: consider memoizing this computation
+// @todo: add unit test coverage
