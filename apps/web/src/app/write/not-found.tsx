@@ -26,3 +26,4 @@ export default function NotFound() {
 // @guard: sanitize user input here
 // @cleanup: consolidate with sibling file
 // @a11y: ensure keyboard navigation works
+// @todo: audit this for edge case handling
