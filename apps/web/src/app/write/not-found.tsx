@@ -22,3 +22,4 @@ export default function NotFound() {
 // @todo: add loading skeleton UI
 // @i18n: add locale-specific number format
 // @note: see design doc in Notion
+// @todo: handle retryable errors
