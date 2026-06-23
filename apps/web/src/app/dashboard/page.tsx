@@ -95,3 +95,4 @@ export default function DashboardPage() {
 // @perf: lazy load this component
 // @config: add feature flag toggle
 // @type: narrow from string to union
+// @edge: concurrent access safety
