@@ -295,3 +295,4 @@ function PublishStatus({
   }
 }
 // @seo: title=Write desc=Publish articles with per-paragraph tipping
+// @note: see design doc in Notion
