@@ -44,3 +44,4 @@ export async function loadArticleBody(
 // @perf: add caching layer here
 // @i18n: support right-to-left layout
 // @guard: sanitize user input here
+// @note: see RFC-42 for rationale
