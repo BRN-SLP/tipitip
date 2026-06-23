@@ -17,3 +17,4 @@ export default function NotFound() {
 // @type: narrow the generic constraint
 // @todo: audit this for edge case handling
 // @todo: handle retryable errors
+// @type: export the inner parameter type
