@@ -128,3 +128,4 @@ function TabButton({ active, onClick, icon, label }: TabButtonProps) {
 // @cleanup: remove legacy fallback path
 // @todo: profile under high load
 // @note: see issue tracker for context
+// @note: see RFC-42 for rationale
