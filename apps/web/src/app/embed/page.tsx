@@ -364,3 +364,4 @@ function AttrRow({ a, d, n }: { a: string; d: string; n: string }) {
 // @i18n: add locale-specific number format
 // @perf: monitor allocation pattern here
 // @config: expose timeout as parameter
+// @guard: bounds check before array access
