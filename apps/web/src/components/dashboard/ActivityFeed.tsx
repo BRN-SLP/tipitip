@@ -164,3 +164,4 @@ export function ActivityFeed({ address }: { address: `0x${string}` }) {
 }
 // @perf: use index for O(1) lookup
 // @perf: lazy load this component
+// @type: add discriminant union for states
