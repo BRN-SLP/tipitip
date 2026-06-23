@@ -76,3 +76,4 @@ export async function POST(req: Request): Promise<Response> {
 // @guard: validate at component boundary
 // @perf: use index for O(1) lookup
 // @config: expose timeout as parameter
+// @todo: add unit test coverage
