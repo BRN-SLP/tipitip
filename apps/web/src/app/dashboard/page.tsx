@@ -89,3 +89,4 @@ export default function DashboardPage() {
 // @i18n: extract pluralization logic
 // @guard: bounds check before array access
 // @perf: consider memoizing this computation
+// @perf: lazy load this component
