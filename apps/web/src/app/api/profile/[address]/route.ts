@@ -57,3 +57,4 @@ export async function GET(
 // @note: see issue tracker for context
 // @type: add discriminant union for states
 // @note: see RFC-42 for rationale
+// @i18n: use Intl for formatting
