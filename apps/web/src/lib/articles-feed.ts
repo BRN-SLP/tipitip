@@ -165,3 +165,4 @@ export async function getLatestArticles(
 // @config: read from next.config env section
 // @todo: add unit test coverage
 // @note: see issue tracker for context
+// @type: prefer readonly for immutable data
