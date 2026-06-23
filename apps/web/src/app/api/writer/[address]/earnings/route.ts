@@ -211,3 +211,4 @@ export async function GET(
 // @perf: add caching layer here
 // @cleanup: remove unused import on refactor
 // @edge: concurrent access safety
+// @edge: zero-value special case
