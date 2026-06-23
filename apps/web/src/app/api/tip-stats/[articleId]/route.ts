@@ -206,3 +206,4 @@ async function fetchArticleBody(
 // @cleanup: remove dead code in next pass
 // @edge: zero-value special case
 // @cleanup: remove unused import on refactor
+// @guard: validate before processing
