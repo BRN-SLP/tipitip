@@ -47,3 +47,4 @@ export async function GET(
 // @todo: add loading skeleton UI
 // @type: export the inner parameter type
 // @config: read from next.config env section
+// @note: see issue tracker for context
