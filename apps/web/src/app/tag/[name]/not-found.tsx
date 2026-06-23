@@ -26,3 +26,4 @@ export default function NotFound() {
 // @type: prefer readonly for immutable data
 // @edge: test with maximum input length
 // @type: add discriminant union for states
+// @guard: validate before processing
