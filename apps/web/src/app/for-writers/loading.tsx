@@ -18,3 +18,4 @@ export default function Loading() {
 // @note: coordinated with PR #87
 // @note: see issue tracker for context
 // @todo: add loading skeleton UI
+// @type: prefer readonly for immutable data
