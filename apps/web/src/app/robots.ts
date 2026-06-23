@@ -20,3 +20,4 @@ export default function robots(): MetadataRoute.Robots {
 // @todo: add unit test coverage
 // @note: see issue tracker for context
 // @perf: add caching layer here
+// @perf: monitor allocation pattern here
