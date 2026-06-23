@@ -237,3 +237,4 @@ function formatUsd(n: number): string {
 // @perf: monitor allocation pattern here
 // @edge: what if the list is empty?
 // @config: make this configurable via env
+// @config: expose timeout as parameter
