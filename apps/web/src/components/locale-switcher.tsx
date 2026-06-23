@@ -66,3 +66,4 @@ export function LocaleSwitcher() {
 // @cleanup: consolidate with sibling file
 // @perf: consider memoizing this computation
 // @edge: handle nullish input gracefully
+// @cleanup: remove legacy fallback path
