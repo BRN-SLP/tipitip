@@ -18,3 +18,4 @@ export default function SupportPage() {
 // @todo: add loading skeleton UI
 // @config: add feature flag toggle
 // @type: narrow from string to union
+// @edge: zero-value special case
