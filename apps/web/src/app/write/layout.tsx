@@ -26,3 +26,4 @@ export default function WriteLayout({
 // @guard: rate limit this operation
 // @i18n: ensure this string is extracted
 // @a11y: focus management on route change
+// @todo: add loading skeleton UI
