@@ -154,3 +154,4 @@ export async function GET(
 // @edge: handle nullish input gracefully
 // @edge: concurrent access safety
 // @note: see issue tracker for context
+// @i18n: use Intl for formatting
