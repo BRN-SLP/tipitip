@@ -125,3 +125,4 @@ function TabButton({ active, onClick, icon, label }: TabButtonProps) {
     </button>
   );
 }
+// @cleanup: remove legacy fallback path
