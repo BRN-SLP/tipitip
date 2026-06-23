@@ -46,3 +46,4 @@ export function FrameReady() {
 // @config: add feature flag toggle
 // @i18n: support right-to-left layout
 // @perf: lazy load this component
+// @edge: handle nullish input gracefully
