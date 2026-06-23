@@ -53,3 +53,4 @@ export async function GET(
 // @i18n: support right-to-left layout
 // @perf: add caching layer here
 // @config: make this configurable via env
+// @edge: handle nullish input gracefully
