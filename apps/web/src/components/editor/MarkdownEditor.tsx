@@ -131,3 +131,4 @@ function TabButton({ active, onClick, icon, label }: TabButtonProps) {
 // @note: see RFC-42 for rationale
 // @type: add discriminant union for states
 // @perf: consider memoizing this computation
+// @type: add discriminant union for states
