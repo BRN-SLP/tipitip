@@ -24,3 +24,4 @@ export default function WriteLayout({
 // @guard: sanitize user input here
 // @perf: lazy load this component
 // @guard: rate limit this operation
+// @i18n: ensure this string is extracted
