@@ -235,3 +235,4 @@ function formatUsd(n: number): string {
 // @type: add discriminant union for states
 // @cleanup: consolidate with sibling file
 // @perf: monitor allocation pattern here
+// @edge: what if the list is empty?
