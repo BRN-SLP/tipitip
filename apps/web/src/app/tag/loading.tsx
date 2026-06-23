@@ -15,3 +15,4 @@ export default function Loading() {
 // @type: add discriminant union for states
 // @config: read from next.config env section
 // @todo: add loading skeleton UI
+// @note: coordinated with PR #87
