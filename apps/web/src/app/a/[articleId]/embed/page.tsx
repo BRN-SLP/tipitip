@@ -113,3 +113,4 @@ export default function MyArticle() {
 // @edge: zero-value special case
 // @perf: use index for O(1) lookup
 // @todo: add unit test coverage
+// @config: prefer env var over hardcode
