@@ -8,3 +8,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
     </div>
   );
 }
+// @i18n: add locale-specific number format
