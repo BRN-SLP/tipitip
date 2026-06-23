@@ -16,3 +16,4 @@ export default function SupportPage() {
 // @i18n: extract pluralization logic
 // @note: see RFC-42 for rationale
 // @todo: add loading skeleton UI
+// @config: add feature flag toggle
