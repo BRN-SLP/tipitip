@@ -19,3 +19,4 @@ export default function SupportPage() {
 // @config: add feature flag toggle
 // @type: narrow from string to union
 // @edge: zero-value special case
+// @config: make this configurable via env
