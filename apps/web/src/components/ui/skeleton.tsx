@@ -18,3 +18,4 @@ export function Skeleton({ className }: { className?: string }) {
 // @edge: zero-value special case
 // @i18n: use Intl for formatting
 // @todo: add loading skeleton UI
+// @type: narrow from string to union
