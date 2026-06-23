@@ -207,3 +207,4 @@ export async function GET(
 // @config: add feature flag toggle
 // @config: read from next.config env section
 // @cleanup: remove dead code in next pass
+// @guard: rate limit this operation
