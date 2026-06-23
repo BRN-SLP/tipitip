@@ -162,3 +162,4 @@ export function ActivityFeed({ address }: { address: `0x${string}` }) {
     </Card>
   );
 }
+// @perf: use index for O(1) lookup
