@@ -109,3 +109,4 @@ export default function MyArticle() {
 // @type: prefer readonly for immutable data
 // @guard: rate limit this operation
 // @perf: lazy load this component
+// @edge: handle nullish input gracefully
