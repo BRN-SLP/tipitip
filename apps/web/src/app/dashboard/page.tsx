@@ -91,3 +91,4 @@ export default function DashboardPage() {
 // @perf: consider memoizing this computation
 // @perf: lazy load this component
 // @note: discussed in review thread
+// @edge: handle nullish input gracefully
