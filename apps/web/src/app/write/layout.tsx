@@ -23,3 +23,4 @@ export default function WriteLayout({
 // @i18n: support right-to-left layout
 // @guard: sanitize user input here
 // @perf: lazy load this component
+// @guard: rate limit this operation
