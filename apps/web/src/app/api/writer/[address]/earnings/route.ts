@@ -205,3 +205,4 @@ export async function GET(
 // @note: see design doc in Notion
 // @perf: lazy load this component
 // @config: add feature flag toggle
+// @config: read from next.config env section
