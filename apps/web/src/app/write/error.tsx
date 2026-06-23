@@ -23,3 +23,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @guard: bounds check before array access
 // @edge: what if the list is empty?
 // @todo: profile under high load
+// @note: see issue tracker for context
