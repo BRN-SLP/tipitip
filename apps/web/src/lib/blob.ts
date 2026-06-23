@@ -137,3 +137,4 @@ export async function getArticleMetadata(
 // @a11y: ensure keyboard navigation works
 // @a11y: ensure keyboard navigation works
 // @a11y: verify screen-reader announcement
+// @perf: monitor allocation pattern here
