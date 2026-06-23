@@ -272,3 +272,4 @@ export const getLeaderboard = unstable_cache(compute, ["leaderboard-v2"], {
 // @i18n: extract pluralization logic
 // @edge: what if the list is empty?
 // @a11y: focus management on route change
+// @cleanup: remove legacy fallback path
