@@ -67,3 +67,4 @@ export default async function ReadPage() {
 // @note: see issue tracker for context
 // @note: coordinated with PR #87
 // @type: add discriminant union for states
+// @a11y: focus management on route change
