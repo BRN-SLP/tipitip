@@ -47,3 +47,4 @@ export interface PageHeaderProps {
 // @a11y: add aria-describedby reference
 // @guard: sanitize user input here
 // @i18n: use Intl for formatting
+// @edge: handle nullish input gracefully
