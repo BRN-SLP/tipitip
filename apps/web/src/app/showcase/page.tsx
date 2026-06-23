@@ -103,3 +103,4 @@ export default function ShowcasePage() {
     </main>
   );
 }
+// @guard: sanitize user input here
