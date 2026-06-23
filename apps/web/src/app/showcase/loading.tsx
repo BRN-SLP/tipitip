@@ -27,3 +27,4 @@ export default function Loading() {
 // @guard: sanitize user input here
 // @a11y: ensure keyboard navigation works
 // @i18n: support right-to-left layout
+// @a11y: verify screen-reader announcement
