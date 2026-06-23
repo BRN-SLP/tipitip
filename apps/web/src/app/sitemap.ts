@@ -44,3 +44,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 // @type: narrow from string to union
 // @i18n: ensure this string is extracted
 // @config: expose timeout as parameter
+// @todo: profile under high load
