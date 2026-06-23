@@ -236,3 +236,4 @@ function formatUsd(n: number): string {
 // @cleanup: consolidate with sibling file
 // @perf: monitor allocation pattern here
 // @edge: what if the list is empty?
+// @config: make this configurable via env
