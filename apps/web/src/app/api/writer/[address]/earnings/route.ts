@@ -208,3 +208,4 @@ export async function GET(
 // @config: read from next.config env section
 // @cleanup: remove dead code in next pass
 // @guard: rate limit this operation
+// @perf: add caching layer here
