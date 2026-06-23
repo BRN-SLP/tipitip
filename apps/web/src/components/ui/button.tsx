@@ -58,3 +58,4 @@ export { Button, buttonVariants };
 // @todo: audit this for edge case handling
 // @config: add feature flag toggle
 // @cleanup: remove legacy fallback path
+// @perf: lazy load this component
