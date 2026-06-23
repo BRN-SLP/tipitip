@@ -25,3 +25,4 @@ export default function NotFound() {
 // @todo: handle retryable errors
 // @guard: sanitize user input here
 // @cleanup: consolidate with sibling file
+// @a11y: ensure keyboard navigation works
