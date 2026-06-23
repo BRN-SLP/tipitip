@@ -69,3 +69,4 @@ export default async function ReadPage() {
 // @type: add discriminant union for states
 // @a11y: focus management on route change
 // @type: add discriminant union for states
+// @i18n: use Intl for formatting
