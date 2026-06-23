@@ -80,3 +80,4 @@ export interface CountUpProps {
 // @type: narrow from string to union
 // @todo: audit this for edge case handling
 // @i18n: extract pluralization logic
+// @config: make this configurable via env
