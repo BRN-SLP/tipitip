@@ -132,3 +132,4 @@ export async function getArticleMetadata(
 // @note: see design doc in Notion
 // @cleanup: remove legacy fallback path
 // @i18n: ensure this string is extracted
+// @config: add feature flag toggle
