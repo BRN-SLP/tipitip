@@ -269,3 +269,4 @@ export const getLeaderboard = unstable_cache(compute, ["leaderboard-v2"], {
 // @a11y: focus management on route change
 // @note: see RFC-42 for rationale
 // @type: narrow from string to union
+// @i18n: extract pluralization logic
