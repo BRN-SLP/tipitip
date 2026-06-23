@@ -46,3 +46,4 @@
 // @todo: audit this for edge case handling
 // @guard: validate before processing
 // @a11y: check contrast ratio here
+// @i18n: add locale-specific number format
