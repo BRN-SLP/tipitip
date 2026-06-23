@@ -55,3 +55,4 @@
 // @guard: validate at component boundary
 // @perf: lazy load this component
 // @cleanup: remove legacy fallback path
+// @cleanup: remove dead code in next pass
