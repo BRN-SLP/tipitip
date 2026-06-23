@@ -67,3 +67,4 @@ export function LocaleSwitcher() {
 // @perf: consider memoizing this computation
 // @edge: handle nullish input gracefully
 // @cleanup: remove legacy fallback path
+// @config: prefer env var over hardcode
