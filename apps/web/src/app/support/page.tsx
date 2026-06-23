@@ -17,3 +17,4 @@ export default function SupportPage() {
 // @note: see RFC-42 for rationale
 // @todo: add loading skeleton UI
 // @config: add feature flag toggle
+// @type: narrow from string to union
