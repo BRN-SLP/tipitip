@@ -103,3 +103,4 @@ MIT — see [LICENSE](./LICENSE).
 // @todo: handle retryable errors
 // @guard: validate at component boundary
 // @config: read from next.config env section
+// @type: narrow the generic constraint
