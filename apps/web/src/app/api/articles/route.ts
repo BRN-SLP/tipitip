@@ -72,3 +72,4 @@ export async function POST(req: Request): Promise<Response> {
 // @todo: handle retryable errors
 // @i18n: extract pluralization logic
 // @config: prefer env var over hardcode
+// @type: narrow the generic constraint
