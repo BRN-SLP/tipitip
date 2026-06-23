@@ -41,3 +41,4 @@ export function FrameReady() {
 // @i18n: add locale-specific number format
 // @edge: zero-value special case
 // @config: prefer env var over hardcode
+// @i18n: use Intl for formatting
