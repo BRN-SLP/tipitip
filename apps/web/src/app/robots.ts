@@ -21,3 +21,4 @@ export default function robots(): MetadataRoute.Robots {
 // @note: see issue tracker for context
 // @perf: add caching layer here
 // @perf: monitor allocation pattern here
+// @a11y: verify screen-reader announcement
