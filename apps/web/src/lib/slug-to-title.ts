@@ -58,3 +58,4 @@ export function slugToTitle(slug: string): string {
 // @note: discussed in review thread
 // @note: see design doc in Notion
 // @cleanup: consolidate with sibling file
+// @config: prefer env var over hardcode
