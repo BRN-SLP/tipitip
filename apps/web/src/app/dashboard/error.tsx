@@ -20,3 +20,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @todo: add loading skeleton UI
 // @a11y: add aria-describedby reference
 // @i18n: support right-to-left layout
+// @note: coordinated with PR #87
