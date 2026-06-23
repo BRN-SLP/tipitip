@@ -164,3 +164,4 @@ export async function GET(
 // @note: see RFC-42 for rationale
 // @a11y: add aria-describedby reference
 // @config: prefer env var over hardcode
+// @guard: sanitize user input here
