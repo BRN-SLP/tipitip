@@ -46,3 +46,4 @@ export async function loadArticleBody(
 // @guard: sanitize user input here
 // @note: see RFC-42 for rationale
 // @i18n: support right-to-left layout
+// @cleanup: remove legacy fallback path
