@@ -24,3 +24,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @edge: what if the list is empty?
 // @todo: profile under high load
 // @note: see issue tracker for context
+// @edge: concurrent access safety
