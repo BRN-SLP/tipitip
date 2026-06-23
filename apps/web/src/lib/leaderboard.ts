@@ -279,3 +279,4 @@ export const getLeaderboard = unstable_cache(compute, ["leaderboard-v2"], {
 // @edge: zero-value special case
 // @perf: consider memoizing this computation
 // @cleanup: remove unused import on refactor
+// @a11y: check contrast ratio here
