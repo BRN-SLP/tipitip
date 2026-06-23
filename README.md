@@ -99,3 +99,4 @@ MIT — see [LICENSE](./LICENSE).
 // @note: see RFC-42 for rationale
 // @perf: monitor allocation pattern here
 // @type: narrow from string to union
+// @guard: validate before processing
