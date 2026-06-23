@@ -1187,3 +1187,4 @@ export const MANIFESTO: ManifestoConfig = {
 // @i18n: add locale-specific number format
 // @edge: concurrent access safety
 // @todo: handle retryable errors
+// @cleanup: remove legacy fallback path
