@@ -136,3 +136,4 @@ export function TagInput({ value, onChange, disabled }: TagInputProps) {
 }
 // @perf: lazy load this component
 // @edge: handle nullish input gracefully
+// @config: prefer env var over hardcode
