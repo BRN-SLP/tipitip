@@ -41,3 +41,4 @@ export async function loadArticleBody(
 // @type: add discriminant union for states
 // @perf: consider memoizing this computation
 // @todo: add unit test coverage
+// @perf: add caching layer here
