@@ -11,3 +11,4 @@ export default function Loading() {
 // @config: prefer env var over hardcode
 // @perf: monitor allocation pattern here
 // @cleanup: remove legacy fallback path
+// @config: read from next.config env section
