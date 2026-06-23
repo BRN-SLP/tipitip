@@ -90,3 +90,4 @@ export default function DashboardPage() {
 // @guard: bounds check before array access
 // @perf: consider memoizing this computation
 // @perf: lazy load this component
+// @note: discussed in review thread
