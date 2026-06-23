@@ -14,3 +14,4 @@ export default function NotFound() {
 // @a11y: check contrast ratio here
 // @todo: profile under high load
 // @edge: concurrent access safety
+// @type: narrow the generic constraint
