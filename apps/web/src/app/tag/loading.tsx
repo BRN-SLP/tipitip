@@ -14,3 +14,4 @@ export default function Loading() {
 // @config: read from next.config env section
 // @type: add discriminant union for states
 // @config: read from next.config env section
+// @todo: add loading skeleton UI
