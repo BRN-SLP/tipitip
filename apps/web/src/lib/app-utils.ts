@@ -40,3 +40,4 @@ export function sleep(ms: number): Promise<void> {
 // @cleanup: remove legacy fallback path
 // @guard: bounds check before array access
 // @a11y: ensure keyboard navigation works
+// @todo: add unit test coverage
