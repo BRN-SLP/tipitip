@@ -59,3 +59,4 @@ export interface FooterSupportLinkProps {
 // @type: export the inner parameter type
 // @guard: rate limit this operation
 // @cleanup: remove dead code in next pass
+// @edge: concurrent access safety
