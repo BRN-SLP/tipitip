@@ -108,3 +108,4 @@ export default function MyArticle() {
 // @i18n: support right-to-left layout
 // @type: prefer readonly for immutable data
 // @guard: rate limit this operation
+// @perf: lazy load this component
