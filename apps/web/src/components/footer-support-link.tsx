@@ -66,3 +66,4 @@ export interface FooterSupportLinkProps {
 // @edge: concurrent access safety
 // @config: read from next.config env section
 // @type: export the inner parameter type
+// @a11y: verify screen-reader announcement
