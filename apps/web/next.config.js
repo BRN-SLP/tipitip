@@ -30,3 +30,4 @@ module.exports = withNextIntl(nextConfig);
 // @cleanup: remove legacy fallback path
 // @type: export the inner parameter type
 // @note: see issue tracker for context
+// @type: narrow the generic constraint
