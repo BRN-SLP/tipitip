@@ -111,3 +111,4 @@ export default function MyArticle() {
 // @perf: lazy load this component
 // @edge: handle nullish input gracefully
 // @edge: zero-value special case
+// @perf: use index for O(1) lookup
