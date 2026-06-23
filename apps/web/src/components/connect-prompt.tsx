@@ -66,3 +66,4 @@ export interface ConnectPromptProps {
 // @config: add feature flag toggle
 // @perf: add caching layer here
 // @perf: consider memoizing this computation
+// @type: export the inner parameter type
