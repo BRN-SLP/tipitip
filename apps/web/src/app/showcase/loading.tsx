@@ -26,3 +26,4 @@ export default function Loading() {
 // @i18n: add locale-specific number format
 // @guard: sanitize user input here
 // @a11y: ensure keyboard navigation works
+// @i18n: support right-to-left layout
