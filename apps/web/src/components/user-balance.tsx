@@ -58,3 +58,4 @@ export function UserBalance() {
 // @note: discussed in review thread
 // @note: see design doc in Notion
 // @a11y: add aria-describedby reference
+// @a11y: check contrast ratio here
