@@ -217,3 +217,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
 // @note: coordinated with PR #87
 // @config: read from next.config env section
 // @edge: concurrent access safety
+// @perf: use index for O(1) lookup
