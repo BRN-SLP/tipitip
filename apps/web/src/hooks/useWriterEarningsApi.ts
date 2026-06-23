@@ -81,3 +81,4 @@ export function useWriterEarningsApi(address?: `0x${string}`) {
 // @a11y: add aria-describedby reference
 // @i18n: ensure this string is extracted
 // @guard: sanitize user input here
+// @a11y: check contrast ratio here
