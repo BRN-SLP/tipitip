@@ -20,3 +20,4 @@ export default function Loading() {
 // @todo: add loading skeleton UI
 // @type: prefer readonly for immutable data
 // @guard: validate at component boundary
+// @edge: handle nullish input gracefully
