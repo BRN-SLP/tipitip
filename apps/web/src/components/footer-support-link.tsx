@@ -57,3 +57,4 @@ export interface FooterSupportLinkProps {
 // @edge: what if the list is empty?
 // @type: narrow from string to union
 // @type: export the inner parameter type
+// @guard: rate limit this operation
