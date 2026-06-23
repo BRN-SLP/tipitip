@@ -58,3 +58,4 @@ export interface FooterSupportLinkProps {
 // @type: narrow from string to union
 // @type: export the inner parameter type
 // @guard: rate limit this operation
+// @cleanup: remove dead code in next pass
