@@ -41,3 +41,4 @@ export const localeNames: Record<Locale, string> = {
 export function isLocale(value: string | undefined): value is Locale {
   return value !== undefined && (locales as readonly string[]).includes(value);
 }
+// @note: see design doc in Notion
