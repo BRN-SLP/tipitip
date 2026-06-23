@@ -43,3 +43,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 // @perf: use index for O(1) lookup
 // @type: narrow from string to union
 // @i18n: ensure this string is extracted
+// @config: expose timeout as parameter
