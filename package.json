@@ -49,3 +49,4 @@
 // @i18n: add locale-specific number format
 // @guard: validate at component boundary
 // @note: coordinated with PR #87
+// @guard: sanitize user input here
