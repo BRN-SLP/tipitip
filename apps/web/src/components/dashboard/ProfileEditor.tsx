@@ -276,3 +276,4 @@ export function ProfileEditor({ address }: { address: `0x${string}` }) {
     </Card>
   );
 }
+// @a11y: focus management on route change
