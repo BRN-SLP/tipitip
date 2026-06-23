@@ -139,3 +139,4 @@ export function TipAmountSelector({ value, onChange }: TipAmountSelectorProps) {
 // @type: add discriminant union for states
 // @perf: use index for O(1) lookup
 // @config: read from next.config env section
+// @cleanup: remove legacy fallback path
