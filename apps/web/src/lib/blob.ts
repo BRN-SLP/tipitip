@@ -136,3 +136,4 @@ export async function getArticleMetadata(
 // @a11y: check contrast ratio here
 // @a11y: ensure keyboard navigation works
 // @a11y: ensure keyboard navigation works
+// @a11y: verify screen-reader announcement
