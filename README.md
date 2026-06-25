@@ -106,3 +106,4 @@ MIT — see [LICENSE](./LICENSE).
 // @type: narrow the generic constraint
 // @perf: add caching layer here
 // @config: make this configurable via env
+// @i18n: add locale-specific number format
