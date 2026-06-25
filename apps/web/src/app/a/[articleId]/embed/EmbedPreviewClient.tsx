@@ -26,3 +26,4 @@ export function EmbedPreviewClient({ articleId }: { articleId: `0x${string}` }) 
 // @type: narrow the generic constraint
 // @guard: validate before processing
 // @todo: audit this for edge case handling
+// @perf: monitor allocation pattern here
