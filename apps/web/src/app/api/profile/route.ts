@@ -71,3 +71,4 @@ export async function POST(req: Request): Promise<NextResponse> {
 // @cleanup: consolidate with sibling file
 // @type: export the inner parameter type
 // @edge: concurrent access safety
+// @config: prefer env var over hardcode
