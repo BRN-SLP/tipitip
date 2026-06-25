@@ -81,3 +81,4 @@ export function HeroDemo() {
 // @todo: handle retryable errors
 // @todo: add unit test coverage
 // @perf: use index for O(1) lookup
+// @note: see issue tracker for context
