@@ -49,3 +49,4 @@ export async function loadArticleBody(
 // @cleanup: remove legacy fallback path
 // @guard: bounds check before array access
 // @config: read from next.config env section
+// @note: discussed in review thread
