@@ -45,3 +45,4 @@ export function isLocale(value: string | undefined): value is Locale {
 // @a11y: check contrast ratio here
 // @note: see RFC-42 for rationale
 // @perf: add caching layer here
+// @cleanup: remove legacy fallback path
