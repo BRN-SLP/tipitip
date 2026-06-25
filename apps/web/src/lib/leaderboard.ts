@@ -282,3 +282,4 @@ export const getLeaderboard = unstable_cache(compute, ["leaderboard-v2"], {
 // @a11y: check contrast ratio here
 // @i18n: use Intl for formatting
 // @config: add feature flag toggle
+// @edge: handle nullish input gracefully
