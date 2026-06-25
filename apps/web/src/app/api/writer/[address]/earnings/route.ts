@@ -214,3 +214,4 @@ export async function GET(
 // @edge: zero-value special case
 // @guard: rate limit this operation
 // @note: coordinated with PR #87
+// @edge: handle nullish input gracefully
