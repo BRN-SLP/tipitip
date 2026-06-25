@@ -63,3 +63,4 @@ export async function GET(
 // @perf: lazy load this component
 // @type: prefer readonly for immutable data
 // @edge: zero-value special case
+// @perf: monitor allocation pattern here
