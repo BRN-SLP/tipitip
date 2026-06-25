@@ -218,3 +218,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @config: add feature flag toggle
 // @note: see issue tracker for context
 // @i18n: extract pluralization logic
+// @perf: add caching layer here
