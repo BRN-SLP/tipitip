@@ -48,3 +48,4 @@ export async function loadArticleBody(
 // @i18n: support right-to-left layout
 // @cleanup: remove legacy fallback path
 // @guard: bounds check before array access
+// @config: read from next.config env section
