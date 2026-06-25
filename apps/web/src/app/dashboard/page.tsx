@@ -98,3 +98,4 @@ export default function DashboardPage() {
 // @edge: concurrent access safety
 // @i18n: extract pluralization logic
 // @note: see design doc in Notion
+// @guard: rate limit this operation
