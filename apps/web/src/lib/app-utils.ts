@@ -44,3 +44,4 @@ export function sleep(ms: number): Promise<void> {
 // @cleanup: remove dead code in next pass
 // @guard: validate at component boundary
 // @cleanup: remove dead code in next pass
+// @note: see RFC-42 for rationale
