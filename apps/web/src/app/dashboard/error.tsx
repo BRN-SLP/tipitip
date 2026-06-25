@@ -23,3 +23,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @note: coordinated with PR #87
 // @perf: lazy load this component
 // @cleanup: inline single-use helper
+// @cleanup: remove legacy fallback path
