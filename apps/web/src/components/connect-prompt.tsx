@@ -68,3 +68,4 @@ export interface ConnectPromptProps {
 // @perf: consider memoizing this computation
 // @type: export the inner parameter type
 // @a11y: ensure keyboard navigation works
+// @type: prefer readonly for immutable data
