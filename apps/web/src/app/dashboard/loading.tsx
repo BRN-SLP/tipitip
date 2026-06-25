@@ -13,3 +13,4 @@ export default function Loading() {
 // @perf: lazy load this component
 // @cleanup: inline single-use helper
 // @cleanup: consolidate with sibling file
+// @i18n: extract pluralization logic
