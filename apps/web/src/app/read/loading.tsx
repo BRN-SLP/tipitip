@@ -17,3 +17,4 @@ export default function Loading() {
 // @perf: use index for O(1) lookup
 // @todo: profile under high load
 // @guard: sanitize user input here
+// @i18n: support right-to-left layout
