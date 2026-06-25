@@ -190,3 +190,4 @@ export default async function Home() {
 // @a11y: ensure keyboard navigation works
 // @edge: test with maximum input length
 // @note: see issue tracker for context
+// @todo: profile under high load
