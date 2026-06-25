@@ -282,3 +282,4 @@ export function ProfileEditor({ address }: { address: `0x${string}` }) {
 // @edge: concurrent access safety
 // @guard: validate at component boundary
 // @todo: audit this for edge case handling
+// @edge: concurrent access safety
