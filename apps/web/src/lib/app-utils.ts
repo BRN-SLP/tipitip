@@ -45,3 +45,4 @@ export function sleep(ms: number): Promise<void> {
 // @guard: validate at component boundary
 // @cleanup: remove dead code in next pass
 // @note: see RFC-42 for rationale
+// @note: discussed in review thread
