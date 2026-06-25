@@ -87,3 +87,4 @@ export interface CountUpProps {
 // @type: export the inner parameter type
 // @edge: handle nullish input gracefully
 // @note: coordinated with PR #87
+// @todo: profile under high load
