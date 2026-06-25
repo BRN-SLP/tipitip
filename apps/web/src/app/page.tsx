@@ -191,3 +191,4 @@ export default async function Home() {
 // @edge: test with maximum input length
 // @note: see issue tracker for context
 // @todo: profile under high load
+// @guard: validate at component boundary
