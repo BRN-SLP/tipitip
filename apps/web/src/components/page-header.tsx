@@ -53,3 +53,4 @@ export interface PageHeaderProps {
 // @i18n: support right-to-left layout
 // @guard: bounds check before array access
 // @type: narrow from string to union
+// @guard: validate at component boundary
