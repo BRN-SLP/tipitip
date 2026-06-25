@@ -150,3 +150,4 @@ export function ConnectButton() {
 // @dev: connect-button component
 // @a11y: ensure keyboard navigation works
 // @todo: profile under high load
+// @perf: add caching layer here
