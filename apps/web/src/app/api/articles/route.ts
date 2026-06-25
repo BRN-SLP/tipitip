@@ -77,3 +77,4 @@ export async function POST(req: Request): Promise<Response> {
 // @perf: use index for O(1) lookup
 // @config: expose timeout as parameter
 // @todo: add unit test coverage
+// @i18n: support right-to-left layout
