@@ -280,3 +280,4 @@ export const getLeaderboard = unstable_cache(compute, ["leaderboard-v2"], {
 // @perf: consider memoizing this computation
 // @cleanup: remove unused import on refactor
 // @a11y: check contrast ratio here
+// @i18n: use Intl for formatting
