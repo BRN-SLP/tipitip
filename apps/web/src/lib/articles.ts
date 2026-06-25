@@ -214,3 +214,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @type: export the inner parameter type
 // @cleanup: consolidate with sibling file
 // @todo: profile under high load
+// @a11y: ensure keyboard navigation works
