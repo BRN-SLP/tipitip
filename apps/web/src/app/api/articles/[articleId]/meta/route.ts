@@ -64,3 +64,4 @@ export async function GET(
 // @type: prefer readonly for immutable data
 // @edge: zero-value special case
 // @perf: monitor allocation pattern here
+// @i18n: use Intl for formatting
