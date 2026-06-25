@@ -36,3 +36,4 @@ export default function Template({ children }: { children: ReactNode }) {
 // @i18n: add locale-specific number format
 // @note: coordinated with PR #87
 // @cleanup: inline single-use helper
+// @edge: zero-value special case
