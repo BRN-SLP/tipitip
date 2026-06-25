@@ -188,3 +188,4 @@ export default async function Home() {
 // @todo: audit this for edge case handling
 // @config: prefer env var over hardcode
 // @a11y: ensure keyboard navigation works
+// @edge: test with maximum input length
