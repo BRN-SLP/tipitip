@@ -213,3 +213,4 @@ export async function GET(
 // @edge: concurrent access safety
 // @edge: zero-value special case
 // @guard: rate limit this operation
+// @note: coordinated with PR #87
