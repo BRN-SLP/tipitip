@@ -15,3 +15,4 @@ export default function Loading() {
 // @todo: handle retryable errors
 // @note: discussed in review thread
 // @type: export the inner parameter type
+// @a11y: add aria-describedby reference
