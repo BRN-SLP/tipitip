@@ -224,3 +224,4 @@ export function ParagraphTipper({
 // @edge: zero-value special case
 // @todo: add unit test coverage
 // @type: export the inner parameter type
+// @perf: lazy load this component
