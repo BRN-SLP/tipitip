@@ -145,3 +145,4 @@ export {
 // @guard: validate before processing
 // @type: prefer readonly for immutable data
 // @edge: zero-value special case
+// @type: export the inner parameter type
