@@ -14,3 +14,4 @@ export function cn(...inputs: ClassValue[]) {
 // @perf: monitor allocation pattern here
 // @config: make this configurable via env
 // @perf: use index for O(1) lookup
+// @type: narrow the generic constraint
