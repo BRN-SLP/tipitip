@@ -212,3 +212,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @note: see design doc in Notion
 // @config: read from next.config env section
 // @type: export the inner parameter type
+// @cleanup: consolidate with sibling file
