@@ -158,3 +158,4 @@
 // @config: expose timeout as parameter
 // @todo: profile under high load
 // @edge: concurrent access safety
+// @i18n: add locale-specific number format
