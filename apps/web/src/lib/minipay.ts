@@ -44,3 +44,4 @@ export const MINIPAY_TX_OVERRIDES = {
 // @cleanup: remove unused import on refactor
 // @edge: concurrent access safety
 // @type: export the inner parameter type
+// @type: prefer readonly for immutable data
