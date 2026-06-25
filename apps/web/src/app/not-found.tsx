@@ -61,3 +61,4 @@ export default function NotFound() {
 // @i18n: use Intl for formatting
 // @perf: add caching layer here
 // @cleanup: consolidate with sibling file
+// @perf: lazy load this component
