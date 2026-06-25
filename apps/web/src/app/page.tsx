@@ -189,3 +189,4 @@ export default async function Home() {
 // @config: prefer env var over hardcode
 // @a11y: ensure keyboard navigation works
 // @edge: test with maximum input length
+// @note: see issue tracker for context
