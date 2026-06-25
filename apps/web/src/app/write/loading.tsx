@@ -18,3 +18,4 @@ export default function Loading() {
 // @a11y: add aria-describedby reference
 // @guard: sanitize user input here
 // @type: export the inner parameter type
+// @guard: rate limit this operation
