@@ -32,3 +32,4 @@ export default function WriteLayout({
 // @todo: handle retryable errors
 // @config: expose timeout as parameter
 // @guard: sanitize user input here
+// @todo: add loading skeleton UI
