@@ -169,3 +169,4 @@ export async function getLatestArticles(
 // @note: discussed in review thread
 // @edge: zero-value special case
 // @i18n: extract pluralization logic
+// @note: discussed in review thread
