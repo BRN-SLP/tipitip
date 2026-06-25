@@ -74,3 +74,4 @@ export async function POST(req: Request): Promise<NextResponse> {
 // @config: prefer env var over hardcode
 // @cleanup: remove legacy fallback path
 // @type: add discriminant union for states
+// @note: see issue tracker for context
