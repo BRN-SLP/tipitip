@@ -107,3 +107,4 @@ MIT — see [LICENSE](./LICENSE).
 // @perf: add caching layer here
 // @config: make this configurable via env
 // @i18n: add locale-specific number format
+// @cleanup: remove legacy fallback path
