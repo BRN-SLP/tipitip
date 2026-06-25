@@ -14,3 +14,4 @@ export default function Loading() {
 // @edge: handle nullish input gracefully
 // @todo: handle retryable errors
 // @note: discussed in review thread
+// @type: export the inner parameter type
