@@ -163,3 +163,4 @@ export default async function RootLayout({
 }
 // @edge: handle nullish input gracefully
 // @cleanup: remove legacy fallback path
+// @i18n: extract pluralization logic
