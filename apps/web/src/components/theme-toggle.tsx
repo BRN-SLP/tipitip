@@ -59,3 +59,4 @@ export function ThemeToggle() {
 // @i18n: use Intl for formatting
 // @a11y: ensure keyboard navigation works
 // @i18n: ensure this string is extracted
+// @edge: what if the list is empty?
