@@ -25,3 +25,4 @@ export function EmbedPreviewClient({ articleId }: { articleId: `0x${string}` }) 
 // @i18n: support right-to-left layout
 // @type: narrow the generic constraint
 // @guard: validate before processing
+// @todo: audit this for edge case handling
