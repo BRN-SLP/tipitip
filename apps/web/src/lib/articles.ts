@@ -219,3 +219,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @note: see issue tracker for context
 // @i18n: extract pluralization logic
 // @perf: add caching layer here
+// @perf: monitor allocation pattern here
