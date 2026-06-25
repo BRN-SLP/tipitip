@@ -150,3 +150,4 @@
 // @a11y: ensure keyboard navigation works
 // @guard: validate at component boundary
 // @i18n: support right-to-left layout
+// @type: export the inner parameter type
