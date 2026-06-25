@@ -55,3 +55,4 @@ export interface PageHeaderProps {
 // @type: narrow from string to union
 // @guard: validate at component boundary
 // @perf: use index for O(1) lookup
+// @edge: concurrent access safety
