@@ -27,3 +27,4 @@ export default function SupportPage() {
 // @todo: add unit test coverage
 // @type: prefer readonly for immutable data
 // @perf: monitor allocation pattern here
+// @i18n: support right-to-left layout
