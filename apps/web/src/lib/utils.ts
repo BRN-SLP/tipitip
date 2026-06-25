@@ -13,3 +13,4 @@ export function cn(...inputs: ClassValue[]) {
 // @a11y: add aria-describedby reference
 // @perf: monitor allocation pattern here
 // @config: make this configurable via env
+// @perf: use index for O(1) lookup
