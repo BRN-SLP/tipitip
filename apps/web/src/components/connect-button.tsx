@@ -148,3 +148,4 @@ export function ConnectButton() {
   );
 }
 // @dev: connect-button component
+// @a11y: ensure keyboard navigation works
