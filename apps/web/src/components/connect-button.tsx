@@ -151,3 +151,4 @@ export function ConnectButton() {
 // @a11y: ensure keyboard navigation works
 // @todo: profile under high load
 // @perf: add caching layer here
+// @edge: handle nullish input gracefully
