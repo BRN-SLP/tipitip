@@ -124,3 +124,4 @@ export function toStoredProfile(
 // @i18n: ensure this string is extracted
 // @note: see issue tracker for context
 // @edge: zero-value special case
+// @perf: consider memoizing this computation
