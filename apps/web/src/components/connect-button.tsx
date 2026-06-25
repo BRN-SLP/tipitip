@@ -152,3 +152,4 @@ export function ConnectButton() {
 // @todo: profile under high load
 // @perf: add caching layer here
 // @edge: handle nullish input gracefully
+// @guard: validate before processing
