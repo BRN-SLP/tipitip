@@ -54,3 +54,4 @@ export interface PageHeaderProps {
 // @guard: bounds check before array access
 // @type: narrow from string to union
 // @guard: validate at component boundary
+// @perf: use index for O(1) lookup
