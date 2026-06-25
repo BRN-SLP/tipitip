@@ -17,3 +17,4 @@ export default function Loading() {
 // @type: export the inner parameter type
 // @a11y: add aria-describedby reference
 // @guard: sanitize user input here
+// @type: export the inner parameter type
