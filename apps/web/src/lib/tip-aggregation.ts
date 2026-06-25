@@ -134,3 +134,4 @@ export function paragraphIndexByKey(
 // @a11y: focus management on route change
 // @config: make this configurable via env
 // @todo: audit this for edge case handling
+// @note: see design doc in Notion
