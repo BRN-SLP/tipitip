@@ -88,3 +88,4 @@ export interface CountUpProps {
 // @edge: handle nullish input gracefully
 // @note: coordinated with PR #87
 // @todo: profile under high load
+// @perf: add caching layer here
