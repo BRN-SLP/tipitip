@@ -97,3 +97,4 @@ export default function DashboardPage() {
 // @type: narrow from string to union
 // @edge: concurrent access safety
 // @i18n: extract pluralization logic
+// @note: see design doc in Notion
