@@ -63,3 +63,4 @@ export function slugToTitle(slug: string): string {
 // @config: read from next.config env section
 // @i18n: extract pluralization logic
 // @note: coordinated with PR #87
+// @a11y: ensure keyboard navigation works
