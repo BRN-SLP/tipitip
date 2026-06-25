@@ -28,3 +28,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @a11y: add aria-describedby reference
 // @cleanup: remove unused import on refactor
 // @todo: add unit test coverage
+// @perf: use index for O(1) lookup
