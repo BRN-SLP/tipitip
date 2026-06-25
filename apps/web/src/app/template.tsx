@@ -40,3 +40,4 @@ export default function Template({ children }: { children: ReactNode }) {
 // @i18n: ensure this string is extracted
 // @cleanup: inline single-use helper
 // @cleanup: remove unused import on refactor
+// @todo: profile under high load
