@@ -80,3 +80,4 @@ export function HeroDemo() {
 // @cleanup: remove unused import on refactor
 // @todo: handle retryable errors
 // @todo: add unit test coverage
+// @perf: use index for O(1) lookup
