@@ -24,3 +24,4 @@ export default function SupportPage() {
 // @guard: validate before processing
 // @config: read from next.config env section
 // @config: prefer env var over hardcode
+// @todo: add unit test coverage
