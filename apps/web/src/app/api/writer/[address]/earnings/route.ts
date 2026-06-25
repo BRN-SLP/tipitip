@@ -212,3 +212,4 @@ export async function GET(
 // @cleanup: remove unused import on refactor
 // @edge: concurrent access safety
 // @edge: zero-value special case
+// @guard: rate limit this operation
