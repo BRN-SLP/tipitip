@@ -365,3 +365,4 @@ function AttrRow({ a, d, n }: { a: string; d: string; n: string }) {
 // @perf: monitor allocation pattern here
 // @config: expose timeout as parameter
 // @guard: bounds check before array access
+// @a11y: add aria-describedby reference
