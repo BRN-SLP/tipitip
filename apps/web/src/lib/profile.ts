@@ -127,3 +127,4 @@ export function toStoredProfile(
 // @perf: consider memoizing this computation
 // @note: coordinated with PR #87
 // @config: make this configurable via env
+// @perf: lazy load this component
