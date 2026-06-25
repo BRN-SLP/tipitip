@@ -63,3 +63,4 @@ export default function NotFound() {
 // @cleanup: consolidate with sibling file
 // @perf: lazy load this component
 // @todo: profile under high load
+// @config: read from next.config env section
