@@ -28,3 +28,4 @@ export default function WriteLayout({
 // @a11y: focus management on route change
 // @todo: add loading skeleton UI
 // @config: add feature flag toggle
+// @note: coordinated with PR #87
