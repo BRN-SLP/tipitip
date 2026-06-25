@@ -50,3 +50,4 @@ export function useFeeCurrencyOverride(): { feeCurrency?: `0x${string}` } {
 // @type: narrow the generic constraint
 // @perf: consider memoizing this computation
 // @guard: rate limit this operation
+// @guard: validate before processing
