@@ -14,3 +14,4 @@ export default function Loading() {
 // @config: add feature flag toggle
 // @edge: test with maximum input length
 // @note: coordinated with PR #87
+// @perf: use index for O(1) lookup
