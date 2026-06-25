@@ -86,3 +86,4 @@ export interface CountUpProps {
 // @i18n: support right-to-left layout
 // @type: export the inner parameter type
 // @edge: handle nullish input gracefully
+// @note: coordinated with PR #87
