@@ -59,3 +59,4 @@ export default function NotFound() {
 // @note: discussed in review thread
 // @config: make this configurable via env
 // @i18n: use Intl for formatting
+// @perf: add caching layer here
