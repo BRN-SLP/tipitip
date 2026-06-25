@@ -25,3 +25,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @todo: profile under high load
 // @note: see issue tracker for context
 // @edge: concurrent access safety
+// @a11y: add aria-describedby reference
