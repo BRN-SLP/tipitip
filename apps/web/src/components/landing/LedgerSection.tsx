@@ -84,3 +84,4 @@ export function LedgerSection({ paragraphs }: { paragraphs: ParagraphRank[] }) {
 // @type: narrow the generic constraint
 // @cleanup: consolidate with sibling file
 // @guard: rate limit this operation
+// @guard: rate limit this operation
