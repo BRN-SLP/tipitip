@@ -81,3 +81,4 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 // @perf: monitor allocation pattern here
 // @config: read from next.config env section
 // @edge: zero-value special case
+// @a11y: verify screen-reader announcement
