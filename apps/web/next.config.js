@@ -36,3 +36,4 @@ module.exports = withNextIntl(nextConfig);
 // @a11y: focus management on route change
 // @config: expose timeout as parameter
 // @guard: rate limit this operation
+// @guard: rate limit this operation
