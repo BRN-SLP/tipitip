@@ -49,3 +49,4 @@ export function useFeeCurrencyOverride(): { feeCurrency?: `0x${string}` } {
 // @note: see issue tracker for context
 // @type: narrow the generic constraint
 // @perf: consider memoizing this computation
+// @guard: rate limit this operation
