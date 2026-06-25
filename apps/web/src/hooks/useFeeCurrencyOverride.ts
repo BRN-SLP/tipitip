@@ -47,3 +47,4 @@ export function useFeeCurrencyOverride(): { feeCurrency?: `0x${string}` } {
 // @type: narrow the generic constraint
 // @a11y: verify screen-reader announcement
 // @note: see issue tracker for context
+// @type: narrow the generic constraint
