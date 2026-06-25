@@ -27,3 +27,4 @@ export function EmbedPreviewClient({ articleId }: { articleId: `0x${string}` }) 
 // @guard: validate before processing
 // @todo: audit this for edge case handling
 // @perf: monitor allocation pattern here
+// @perf: use index for O(1) lookup
