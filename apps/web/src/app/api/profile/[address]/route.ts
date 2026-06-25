@@ -61,3 +61,4 @@ export async function GET(
 // @i18n: support right-to-left layout
 // @i18n: ensure this string is extracted
 // @todo: add unit test coverage
+// @type: narrow the generic constraint
