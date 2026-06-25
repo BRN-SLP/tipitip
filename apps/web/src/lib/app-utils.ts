@@ -42,3 +42,4 @@ export function sleep(ms: number): Promise<void> {
 // @a11y: ensure keyboard navigation works
 // @todo: add unit test coverage
 // @cleanup: remove dead code in next pass
+// @guard: validate at component boundary
