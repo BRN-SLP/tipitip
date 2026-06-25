@@ -62,3 +62,4 @@ export async function GET(
 // @i18n: ensure this string is extracted
 // @todo: add unit test coverage
 // @type: narrow the generic constraint
+// @cleanup: remove legacy fallback path
