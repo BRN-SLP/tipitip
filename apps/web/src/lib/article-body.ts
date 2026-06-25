@@ -50,3 +50,4 @@ export async function loadArticleBody(
 // @guard: bounds check before array access
 // @config: read from next.config env section
 // @note: discussed in review thread
+// @guard: bounds check before array access
