@@ -72,3 +72,4 @@ export async function POST(req: Request): Promise<NextResponse> {
 // @type: export the inner parameter type
 // @edge: concurrent access safety
 // @config: prefer env var over hardcode
+// @cleanup: remove legacy fallback path
