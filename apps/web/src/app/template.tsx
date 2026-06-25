@@ -37,3 +37,4 @@ export default function Template({ children }: { children: ReactNode }) {
 // @note: coordinated with PR #87
 // @cleanup: inline single-use helper
 // @edge: zero-value special case
+// @i18n: ensure this string is extracted
