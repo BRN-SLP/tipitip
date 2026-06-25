@@ -60,3 +60,4 @@ export function ThemeToggle() {
 // @a11y: ensure keyboard navigation works
 // @i18n: ensure this string is extracted
 // @edge: what if the list is empty?
+// @a11y: focus management on route change
