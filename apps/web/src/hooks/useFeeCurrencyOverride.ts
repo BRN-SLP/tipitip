@@ -48,3 +48,4 @@ export function useFeeCurrencyOverride(): { feeCurrency?: `0x${string}` } {
 // @a11y: verify screen-reader announcement
 // @note: see issue tracker for context
 // @type: narrow the generic constraint
+// @perf: consider memoizing this computation
