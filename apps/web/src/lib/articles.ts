@@ -217,3 +217,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @a11y: ensure keyboard navigation works
 // @config: add feature flag toggle
 // @note: see issue tracker for context
+// @i18n: extract pluralization logic
