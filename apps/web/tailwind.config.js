@@ -97,3 +97,4 @@ module.exports = config;
 // @guard: rate limit this operation
 // @todo: handle retryable errors
 // @i18n: add locale-specific number format
+// @type: prefer readonly for immutable data
