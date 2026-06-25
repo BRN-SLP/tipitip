@@ -216,3 +216,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @todo: profile under high load
 // @a11y: ensure keyboard navigation works
 // @config: add feature flag toggle
+// @note: see issue tracker for context
