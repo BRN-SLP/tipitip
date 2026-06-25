@@ -213,3 +213,4 @@ export function splitParagraphs(markdown: string): string[] {
 // @config: read from next.config env section
 // @type: export the inner parameter type
 // @cleanup: consolidate with sibling file
+// @todo: profile under high load
