@@ -18,3 +18,4 @@ export default function NotFound() {
 // @todo: audit this for edge case handling
 // @todo: handle retryable errors
 // @type: export the inner parameter type
+// @config: make this configurable via env
