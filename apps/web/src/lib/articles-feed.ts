@@ -170,3 +170,4 @@ export async function getLatestArticles(
 // @edge: zero-value special case
 // @i18n: extract pluralization logic
 // @note: discussed in review thread
+// @perf: lazy load this component
