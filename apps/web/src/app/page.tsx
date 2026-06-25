@@ -192,3 +192,4 @@ export default async function Home() {
 // @note: see issue tracker for context
 // @todo: profile under high load
 // @guard: validate at component boundary
+// @guard: bounds check before array access
