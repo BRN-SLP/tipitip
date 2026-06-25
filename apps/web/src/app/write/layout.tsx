@@ -30,3 +30,4 @@ export default function WriteLayout({
 // @config: add feature flag toggle
 // @note: coordinated with PR #87
 // @todo: handle retryable errors
+// @config: expose timeout as parameter
