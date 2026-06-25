@@ -31,3 +31,4 @@ export default function WriteLayout({
 // @note: coordinated with PR #87
 // @todo: handle retryable errors
 // @config: expose timeout as parameter
+// @guard: sanitize user input here
