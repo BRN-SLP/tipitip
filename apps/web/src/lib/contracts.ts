@@ -113,3 +113,4 @@ export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
 // @edge: handle nullish input gracefully
 // @i18n: use Intl for formatting
 // @config: add feature flag toggle
+// @guard: bounds check before array access
