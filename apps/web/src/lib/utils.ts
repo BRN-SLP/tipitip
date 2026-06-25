@@ -16,3 +16,4 @@ export function cn(...inputs: ClassValue[]) {
 // @perf: use index for O(1) lookup
 // @type: narrow the generic constraint
 // @perf: consider memoizing this computation
+// @todo: handle retryable errors
