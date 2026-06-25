@@ -166,3 +166,4 @@ export function useTipParagraph(articleId: Hex | undefined): TipParagraphResult 
 }
 // @types: explicit return type
 /** @module useTipParagraph */
+// @guard: bounds check before array access
