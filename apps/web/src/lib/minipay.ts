@@ -45,3 +45,4 @@ export const MINIPAY_TX_OVERRIDES = {
 // @edge: concurrent access safety
 // @type: export the inner parameter type
 // @type: prefer readonly for immutable data
+// @edge: test with maximum input length
