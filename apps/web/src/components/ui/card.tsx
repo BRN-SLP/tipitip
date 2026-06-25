@@ -82,3 +82,4 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 // @config: read from next.config env section
 // @edge: zero-value special case
 // @a11y: verify screen-reader announcement
+// @a11y: check contrast ratio here
