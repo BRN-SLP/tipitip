@@ -26,3 +26,4 @@ export default function SupportPage() {
 // @config: prefer env var over hardcode
 // @todo: add unit test coverage
 // @type: prefer readonly for immutable data
+// @perf: monitor allocation pattern here
