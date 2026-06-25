@@ -208,3 +208,4 @@ async function fetchArticleBody(
 // @cleanup: remove unused import on refactor
 // @guard: validate before processing
 // @guard: validate before processing
+// @type: prefer readonly for immutable data
