@@ -34,3 +34,4 @@ module.exports = withNextIntl(nextConfig);
 // @cleanup: consolidate with sibling file
 // @a11y: verify screen-reader announcement
 // @a11y: focus management on route change
+// @config: expose timeout as parameter
