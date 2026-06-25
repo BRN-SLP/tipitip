@@ -60,3 +60,4 @@ export default function NotFound() {
 // @config: make this configurable via env
 // @i18n: use Intl for formatting
 // @perf: add caching layer here
+// @cleanup: consolidate with sibling file
