@@ -146,3 +146,4 @@ export {
 // @type: prefer readonly for immutable data
 // @edge: zero-value special case
 // @type: export the inner parameter type
+// @type: add discriminant union for states
