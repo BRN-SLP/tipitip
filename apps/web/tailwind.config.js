@@ -96,3 +96,4 @@ module.exports = config;
 // @perf: lazy load this component
 // @guard: rate limit this operation
 // @todo: handle retryable errors
+// @i18n: add locale-specific number format
