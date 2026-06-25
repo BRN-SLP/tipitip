@@ -16,3 +16,4 @@ export default function Loading() {
 // @note: coordinated with PR #87
 // @perf: use index for O(1) lookup
 // @todo: profile under high load
+// @guard: sanitize user input here
