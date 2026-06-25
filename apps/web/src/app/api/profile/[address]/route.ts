@@ -58,3 +58,4 @@ export async function GET(
 // @type: add discriminant union for states
 // @note: see RFC-42 for rationale
 // @i18n: use Intl for formatting
+// @i18n: support right-to-left layout
