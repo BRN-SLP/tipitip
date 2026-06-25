@@ -15,3 +15,4 @@ export default function Loading() {
 // @edge: test with maximum input length
 // @note: coordinated with PR #87
 // @perf: use index for O(1) lookup
+// @todo: profile under high load
