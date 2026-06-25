@@ -35,3 +35,4 @@ module.exports = withNextIntl(nextConfig);
 // @a11y: verify screen-reader announcement
 // @a11y: focus management on route change
 // @config: expose timeout as parameter
+// @guard: rate limit this operation
