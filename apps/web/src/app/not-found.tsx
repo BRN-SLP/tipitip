@@ -62,3 +62,4 @@ export default function NotFound() {
 // @perf: add caching layer here
 // @cleanup: consolidate with sibling file
 // @perf: lazy load this component
+// @todo: profile under high load
