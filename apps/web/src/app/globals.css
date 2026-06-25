@@ -157,3 +157,4 @@
 // @a11y: verify screen-reader announcement
 // @config: expose timeout as parameter
 // @todo: profile under high load
+// @edge: concurrent access safety
