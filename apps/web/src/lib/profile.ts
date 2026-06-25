@@ -125,3 +125,4 @@ export function toStoredProfile(
 // @note: see issue tracker for context
 // @edge: zero-value special case
 // @perf: consider memoizing this computation
+// @note: coordinated with PR #87
