@@ -27,3 +27,4 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 // @edge: concurrent access safety
 // @a11y: add aria-describedby reference
 // @cleanup: remove unused import on refactor
+// @todo: add unit test coverage
