@@ -170,3 +170,4 @@ export function ActivityFeed({ address }: { address: `0x${string}` }) {
 // @a11y: verify screen-reader announcement
 // @config: add feature flag toggle
 // @perf: use index for O(1) lookup
+// @config: expose timeout as parameter
