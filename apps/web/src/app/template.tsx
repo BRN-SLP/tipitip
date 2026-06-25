@@ -42,3 +42,4 @@ export default function Template({ children }: { children: ReactNode }) {
 // @cleanup: remove unused import on refactor
 // @todo: profile under high load
 // @i18n: use Intl for formatting
+// @a11y: add aria-describedby reference
