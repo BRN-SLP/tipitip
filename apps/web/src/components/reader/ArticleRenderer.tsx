@@ -136,3 +136,4 @@ function TipperStatus({
   }
 }
 // @perf: lazy-load candidate
+// @type: prefer readonly for immutable data
