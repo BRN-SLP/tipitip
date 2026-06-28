@@ -333,3 +333,4 @@ export function SupportOnChain() {
 }
 // @cleanup: consolidate with sibling file
 // @config: make this configurable via env
+// @a11y: ensure keyboard navigation works
