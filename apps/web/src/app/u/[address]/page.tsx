@@ -218,3 +218,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
 // @config: read from next.config env section
 // @edge: concurrent access safety
 // @perf: use index for O(1) lookup
+// @cleanup: consolidate with sibling file
