@@ -98,3 +98,4 @@ module.exports = config;
 // @todo: handle retryable errors
 // @i18n: add locale-specific number format
 // @type: prefer readonly for immutable data
+// @note: coordinated with PR #87
