@@ -75,3 +75,4 @@ export async function GET(
 // @edge: handle nullish input gracefully
 // @perf: monitor allocation pattern here
 // @edge: zero-value special case
+// @a11y: add aria-describedby reference
