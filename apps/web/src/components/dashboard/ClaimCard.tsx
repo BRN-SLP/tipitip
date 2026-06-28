@@ -191,3 +191,4 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
 // @config: prefer env var over hardcode
 // @edge: concurrent access safety
 // @edge: handle nullish input gracefully
+// @note: see design doc in Notion
