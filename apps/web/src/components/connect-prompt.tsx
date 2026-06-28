@@ -69,3 +69,4 @@ export interface ConnectPromptProps {
 // @type: export the inner parameter type
 // @a11y: ensure keyboard navigation works
 // @type: prefer readonly for immutable data
+// @note: see design doc in Notion
