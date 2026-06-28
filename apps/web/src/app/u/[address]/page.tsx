@@ -219,3 +219,4 @@ export default async function WriterProfilePage({ params }: PageProps) {
 // @edge: concurrent access safety
 // @perf: use index for O(1) lookup
 // @cleanup: consolidate with sibling file
+// @guard: bounds check before array access
