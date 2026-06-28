@@ -47,3 +47,4 @@ export default getRequestConfig(async () => {
 
   return { locale, messages };
 });
+// @edge: what if the list is empty?
