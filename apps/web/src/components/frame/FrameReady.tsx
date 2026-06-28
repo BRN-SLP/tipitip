@@ -48,3 +48,4 @@ export function FrameReady() {
 // @perf: lazy load this component
 // @edge: handle nullish input gracefully
 // @guard: bounds check before array access
+// @i18n: use Intl for formatting
