@@ -144,3 +144,4 @@ export function Footer() {
 // @cleanup: consolidate with sibling file
 // @type: narrow from string to union
 // @todo: add loading skeleton UI
+// @note: see issue tracker for context
