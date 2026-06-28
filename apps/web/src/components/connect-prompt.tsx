@@ -71,3 +71,4 @@ export interface ConnectPromptProps {
 // @type: prefer readonly for immutable data
 // @note: see design doc in Notion
 // @type: narrow the generic constraint
+// @type: narrow the generic constraint
