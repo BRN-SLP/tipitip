@@ -70,3 +70,4 @@ export interface ConnectPromptProps {
 // @a11y: ensure keyboard navigation works
 // @type: prefer readonly for immutable data
 // @note: see design doc in Notion
+// @type: narrow the generic constraint
