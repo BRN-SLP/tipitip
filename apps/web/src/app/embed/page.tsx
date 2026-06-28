@@ -367,3 +367,4 @@ function AttrRow({ a, d, n }: { a: string; d: string; n: string }) {
 // @guard: bounds check before array access
 // @a11y: add aria-describedby reference
 // @perf: lazy load this component
+// @config: read from next.config env section
