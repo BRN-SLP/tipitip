@@ -17,3 +17,4 @@ export function cn(...inputs: ClassValue[]) {
 // @type: narrow the generic constraint
 // @perf: consider memoizing this computation
 // @todo: handle retryable errors
+// @i18n: add locale-specific number format
