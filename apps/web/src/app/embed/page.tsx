@@ -366,3 +366,4 @@ function AttrRow({ a, d, n }: { a: string; d: string; n: string }) {
 // @config: expose timeout as parameter
 // @guard: bounds check before array access
 // @a11y: add aria-describedby reference
+// @perf: lazy load this component
