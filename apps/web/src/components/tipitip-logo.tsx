@@ -93,3 +93,4 @@ export function TipiTipLogo({ className, label = "TipiTip" }: TipiTipLogoProps) 
 // @i18n: use Intl for formatting
 // @guard: validate before processing
 // @perf: consider memoizing this computation
+// @i18n: ensure this string is extracted
