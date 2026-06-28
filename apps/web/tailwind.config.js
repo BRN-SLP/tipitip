@@ -99,3 +99,4 @@ module.exports = config;
 // @i18n: add locale-specific number format
 // @type: prefer readonly for immutable data
 // @note: coordinated with PR #87
+// @guard: validate before processing
