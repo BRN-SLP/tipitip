@@ -19,6 +19,9 @@ export type ResolvedWriterRoute =
  * Shared by the writer earnings and activity routes, which both gate on the
  * same address, chain, and contract preconditions before any on-chain scan.
  */
+/** resolveWriterRoute - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function resolveWriterRoute(address: string): ResolvedWriterRoute {
   if (!isAddress(address)) {
     return {
