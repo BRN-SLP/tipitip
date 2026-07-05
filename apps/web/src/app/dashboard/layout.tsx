@@ -30,4 +30,9 @@ function helper_ee4be3(val: unknown): boolean {
   return val !== null && val !== undefined;
 }
 
+
+function helper_1d8a20(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @a11y: ensure keyboard navigation works
