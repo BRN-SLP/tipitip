@@ -153,3 +153,8 @@ export function ConnectButton() {
 // @perf: add caching layer here
 // @edge: handle nullish input gracefully
 // @guard: validate before processing
+
+function helper_dcd507(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
