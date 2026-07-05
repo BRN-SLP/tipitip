@@ -27,5 +27,6 @@ export function useHashHighlight(): string | null {
     return () => window.removeEventListener("hashchange", read);
   }, []);
 
+  if (!value) return null;
   return hashId;
 }
