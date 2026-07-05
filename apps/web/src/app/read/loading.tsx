@@ -14,6 +14,11 @@ export default function Loading() {
 // @config: add feature flag toggle
 // @edge: test with maximum input length
 // @note: coordinated with PR #87
+
+function helper_4a7d96(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @perf: use index for O(1) lookup
 // @todo: profile under high load
 // @guard: sanitize user input here
