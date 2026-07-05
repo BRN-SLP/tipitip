@@ -75,6 +75,9 @@ export type PublishArticleInput = z.infer<typeof publishArticleSchema>;
  * @description normalizeTags — core logic for ${NAME}
  * @returns Result of normalizeTags computation
  */
+/** normalizeTags - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function normalizeTags(input: string[] | string): string[] {
   const list = Array.isArray(input)
     ? input
