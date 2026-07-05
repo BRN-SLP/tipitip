@@ -41,6 +41,9 @@ interface TipParagraphResult {
  *      and wait for confirmation (one extra tx, once per reader per article-set).
  *   2. Call TipJar.tipParagraph(articleId, paragraphKey, amount).
  */
+/** useTipParagraph - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function useTipParagraph(articleId: Hex | undefined): TipParagraphResult {
   const chainId = useChainId();
   const { address } = useAccount();
