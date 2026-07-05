@@ -71,6 +71,11 @@ export async function POST(req: Request): Promise<NextResponse> {
 // @cleanup: consolidate with sibling file
 // @type: export the inner parameter type
 // @edge: concurrent access safety
+
+function helper_3a6517(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @config: prefer env var over hardcode
 // @cleanup: remove legacy fallback path
 // @type: add discriminant union for states
