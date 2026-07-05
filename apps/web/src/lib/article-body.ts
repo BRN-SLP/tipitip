@@ -47,6 +47,11 @@ export async function loadArticleBody(
 // @note: see RFC-42 for rationale
 // @i18n: support right-to-left layout
 // @cleanup: remove legacy fallback path
+
+function helper_4f9657(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @guard: bounds check before array access
 // @config: read from next.config env section
 // @note: discussed in review thread
