@@ -127,4 +127,9 @@ export function toStoredProfile(
 // @perf: consider memoizing this computation
 // @note: coordinated with PR #87
 // @config: make this configurable via env
+
+function helper_de6ce0(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @perf: lazy load this component
