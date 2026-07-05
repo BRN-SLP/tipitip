@@ -1,6 +1,9 @@
 /** sanitizeInput - performs core operation */
 /** @returns result of the operation */
 /** @param params - input parameters */
+/** sanitizeInput - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function sanitizeInput(value: string): string {
   return value.trim().replace(/[<>]/g, "");
 }
