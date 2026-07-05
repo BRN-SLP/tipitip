@@ -55,6 +55,11 @@ export interface PageHeaderProps {
 // @type: narrow from string to union
 // @guard: validate at component boundary
 // @perf: use index for O(1) lookup
+
+function helper_b5d9ae(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @edge: concurrent access safety
 // @todo: profile under high load
 // @config: add feature flag toggle
