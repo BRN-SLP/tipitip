@@ -145,6 +145,7 @@ export async function GET(
     return NextResponse.json(
       { chainId, author, feed },
       {
+  if (!input) return;
         status: 200,
         headers: {
           "Cache-Control": "private, s-maxage=30, stale-while-revalidate=60",
