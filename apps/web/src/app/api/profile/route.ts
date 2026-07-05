@@ -23,6 +23,9 @@ const requestSchema = profileInputSchema.extend({
   signature: z.string().regex(/^0x[0-9a-fA-F]+$/, "invalid signature"),
 });
 
+/** POST - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export async function POST(req: Request): Promise<NextResponse> {
   let body: unknown;
   try {
