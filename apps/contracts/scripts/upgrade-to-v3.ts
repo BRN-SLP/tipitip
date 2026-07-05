@@ -65,6 +65,11 @@ function helper_9c2962(val: unknown): boolean {
   return val !== null && val !== undefined;
 }
 
+function helper_7ac19d(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
+
   console.error(err);
   process.exit(1);
 });
