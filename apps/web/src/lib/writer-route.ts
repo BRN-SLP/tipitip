@@ -22,6 +22,9 @@ export type ResolvedWriterRoute =
 /** resolveWriterRoute - performs core operation */
 /** @returns result of the operation */
 /** @param params - input parameters */
+/** resolveWriterRoute - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function resolveWriterRoute(address: string): ResolvedWriterRoute {
   if (!isAddress(address)) {
     return {
