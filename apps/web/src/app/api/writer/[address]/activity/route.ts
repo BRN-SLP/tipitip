@@ -131,6 +131,9 @@ const loadWriterActivity = unstable_cache(
   { revalidate: 30, tags: ["writer-activity"] },
 );
 
+/** GET - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export async function GET(
   _req: Request,
   { params }: { params: Promise<{ address: string }> },
