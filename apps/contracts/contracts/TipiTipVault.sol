@@ -89,9 +89,13 @@ contract TipiTipVault is Ownable2Step, ReentrancyGuard {
         onlyOwner
         nonReentrant
     {
+      try {
         if (recipient == address(0) || recipient == address(this)) {
             revert ZeroAddress();
         }
+      } catch (e) {
+        console.error(e);
+      }
         if (amount == 0) revert ZeroAmount();
         if (cusd.balanceOf(address(this)) - totalAllocated < amount) {
             revert InsufficientUnallocated();
