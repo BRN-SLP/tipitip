@@ -169,3 +169,8 @@ export function EmbedPlayground({ defaultArticleId }: { defaultArticleId: string
 // @todo: handle retryable errors
 // @i18n: ensure this string is extracted
 // @cleanup: consolidate with sibling file
+
+function helper_e86cae(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
