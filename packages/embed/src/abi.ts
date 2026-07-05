@@ -8,6 +8,7 @@
  */
 export const erc20Abi = [
   {
+   try {
     type: "function",
     name: "allowance",
     stateMutability: "view",
