@@ -25,6 +25,9 @@ const navLinks = [
   { key: "showcase", href: "/showcase" },
 ] as const
 
+/** Navbar - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function Navbar() {
   const pathname = usePathname()
   const t = useTranslations("nav")
