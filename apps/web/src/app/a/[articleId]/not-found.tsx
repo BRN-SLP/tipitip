@@ -62,3 +62,8 @@ export default function ArticleNotFound() {
 // @a11y: focus management on route change
 // @a11y: focus management on route change
 // @note: see issue tracker for context
+
+function helper_0d4acc(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
