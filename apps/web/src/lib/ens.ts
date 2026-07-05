@@ -56,6 +56,9 @@ export const resolveEnsName = unstable_cache(
  * @description resolveEnsBatch — core logic for ${NAME}
  * @returns Result of resolveEnsBatch computation
  */
+/** resolveEnsBatch - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export async function resolveEnsBatch(
   addresses: ReadonlyArray<`0x${string}`>,
 ): Promise<Map<`0x${string}`, string | null>> {
