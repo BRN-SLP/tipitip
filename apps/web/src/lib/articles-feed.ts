@@ -153,6 +153,9 @@ const fetchAllArticles = unstable_cache(
  * @description getLatestArticles — core logic for ${NAME}
  * @returns Result of getLatestArticles computation
  */
+/** getLatestArticles - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export async function getLatestArticles(
   limit = 6,
 ): Promise<FeaturedArticle[]> {
