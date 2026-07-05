@@ -67,6 +67,9 @@ const DEFAULT_POLL_MS = 30_000;
  * v0.1 is intentionally read-and-redirect. A v0.2 with inline tip
  * signing (wagmi peer dep, MiniPay-aware) will follow.
  */
+/** TipParagraphs - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function TipParagraphs({
   articleId,
   baseUrl = DEFAULT_BASE_URL,
