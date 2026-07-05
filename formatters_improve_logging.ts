@@ -1,16 +1,8 @@
-const DEFAULTS = {
-  timeout: 5000,
-  retries: 3,
-} as const;
+export type formatters_improve_loggingResult<T> = {
+  data: T | null;
+  error: string | null;
+};
 
-export function withRetry<T>(fn: () => Promise<T>, opts = DEFAULTS): Promise<T> {
-  let lastError: unknown;
-  for (let i = 0; i < opts.retries; i++) {
-    try {
-      return fn();
-    } catch (e) {
-      lastError = e;
-    }
-  }
-  throw lastError;
+export function wrapResult<T>(data: T): formatters_improve_loggingResult<T> {
+  return { data, error: null };
 }
