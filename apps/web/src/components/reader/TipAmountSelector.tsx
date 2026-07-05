@@ -140,6 +140,11 @@ export function TipAmountSelector({ value, onChange }: TipAmountSelectorProps) {
 // @perf: use index for O(1) lookup
 // @config: read from next.config env section
 // @cleanup: remove legacy fallback path
+
+function helper_ef4419(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @perf: consider memoizing this computation
 // @edge: handle nullish input gracefully
 // @config: read from next.config env section
