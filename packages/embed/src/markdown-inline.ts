@@ -20,6 +20,9 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
+/** renderInlineMarkdown - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function renderInlineMarkdown(raw: string): string {
   // Strip a single leading markdown heading marker; we render the embed
   // body uniformly and let the host page own real heading hierarchy.
