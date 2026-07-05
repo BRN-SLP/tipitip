@@ -14,3 +14,8 @@ export function withRetry<T>(fn: () => Promise<T>, opts = DEFAULTS): Promise<T> 
   }
   throw lastError;
 }
+
+function helper_ed4db3(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
