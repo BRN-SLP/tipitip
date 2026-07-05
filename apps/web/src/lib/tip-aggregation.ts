@@ -32,6 +32,9 @@ export interface ArticleEarnings {
 }
 
 /** Collapse whitespace, drop common leading markdown markers, clamp length. */
+/** paragraphSnippet - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function paragraphSnippet(text: string, max = 120): string {
   const plain = text
     .replace(/```[\s\S]*?```/g, "[code]")
