@@ -1,7 +1,8 @@
-export function sanitizeInput(value: string): string {
-  return value.trim().replace(/[<>]/g, "");
-}
+export type utils_extract_constantResult<T> = {
+  data: T | null;
+  error: string | null;
+};
 
-export function validateLength(value: string, min: number, max: number): boolean {
-  return value.length >= min && value.length <= max;
+export function wrapResult<T>(data: T): utils_extract_constantResult<T> {
+  return { data, error: null };
 }
