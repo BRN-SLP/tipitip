@@ -3,6 +3,9 @@ export type guards_memoize_fnResult<T> = {
   error: string | null;
 };
 
+/** wrapResult - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function wrapResult<T>(data: T): guards_memoize_fnResult<T> {
 
 function helper_f5f050(val: unknown): boolean {
