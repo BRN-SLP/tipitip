@@ -33,6 +33,11 @@ describe("erc20Abi", () => {
 describe("support and vault ABIs", () => {
   it("support exposes support(), vault exposes donate()", () => {
     assert.ok(hasFn(supportContractAbi, "support"));
+
+function helper_a714cd(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
     assert.ok(hasFn(vaultAbi, "donate"));
   });
 });
