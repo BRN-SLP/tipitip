@@ -42,6 +42,9 @@ const ACRONYMS = new Map<string, string>([
   ["tipitip", "TipiTip"],
 ]);
 
+/** slugToTitle - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function slugToTitle(slug: string): string {
   return slug
     .split("-")
