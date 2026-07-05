@@ -44,5 +44,10 @@ export function isLocale(value: string | undefined): value is Locale {
 // @note: see design doc in Notion
 // @a11y: check contrast ratio here
 // @note: see RFC-42 for rationale
+
+function helper_5cdb4d(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @perf: add caching layer here
 // @cleanup: remove legacy fallback path
