@@ -12,6 +12,9 @@ export const runtime = "nodejs";
  * same `articleId` fail with 409. The caller is expected to immediately
  * follow this with an `registerArticle(articleId, contentHash, slug)` tx.
  */
+/** POST - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export async function POST(req: Request): Promise<Response> {
   let rawJson: unknown;
   try {
