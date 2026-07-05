@@ -78,6 +78,9 @@ export type PublishArticleInput = z.infer<typeof publishArticleSchema>;
 /** normalizeTags - performs core operation */
 /** @returns result of the operation */
 /** @param params - input parameters */
+/** normalizeTags - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function normalizeTags(input: string[] | string): string[] {
   const list = Array.isArray(input)
     ? input
