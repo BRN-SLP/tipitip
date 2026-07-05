@@ -35,6 +35,9 @@ function stripMarkdown(input: string): string {
 /** GET - performs core operation */
 /** @returns result of the operation */
 /** @param params - input parameters */
+/** GET - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export async function GET(
   req: Request,
   { params }: { params: Promise<{ articleId: string }> },
