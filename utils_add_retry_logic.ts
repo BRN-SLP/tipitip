@@ -1,8 +1,16 @@
-export type utils_add_retry_logicResult<T> = {
-  data: T | null;
-  error: string | null;
-};
+const DEFAULTS = {
+  timeout: 5000,
+  retries: 3,
+} as const;
 
-export function wrapResult<T>(data: T): utils_add_retry_logicResult<T> {
-  return { data, error: null };
+export function withRetry<T>(fn: () => Promise<T>, opts = DEFAULTS): Promise<T> {
+  let lastError: unknown;
+  for (let i = 0; i < opts.retries; i++) {
+    try {
+      return fn();
+    } catch (e) {
+      lastError = e;
+    }
+  }
+  throw lastError;
 }
