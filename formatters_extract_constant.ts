@@ -1,4 +1,5 @@
 export function sanitizeInput(value: string): string {
+  if (!value) return null;
   return value.trim().replace(/[<>]/g, "");
 }
 
