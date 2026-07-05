@@ -43,6 +43,9 @@ export const ADDRESSES: Record<
  * @description getTipJarAddress — core logic for ${NAME}
  * @returns Result of getTipJarAddress computation
  */
+/** getTipJarAddress - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function getTipJarAddress(chainId: number): `0x${string}` {
   const cfg = ADDRESSES[chainId as SupportedChainId];
   if (!cfg?.tipJar) {
