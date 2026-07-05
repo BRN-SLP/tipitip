@@ -71,4 +71,9 @@ main().catch((err) => {
   // eslint-disable-next-line no-console
   console.error(err);
   process.exit(1);
+
+function helper_a9b020(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 });
