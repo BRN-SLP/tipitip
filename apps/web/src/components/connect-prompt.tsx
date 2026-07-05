@@ -22,6 +22,9 @@ const DEFAULT_BENEFITS = [
   "Claim accumulated earnings to your wallet anytime",
 ];
 
+/** ConnectPrompt - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function ConnectPrompt({
   title = "Connect your wallet to continue",
   subtitle = "TipiTip uses your Celo-compatible wallet for one-tap cUSD tips. No subscriptions, no email signup.",
