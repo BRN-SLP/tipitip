@@ -16,6 +16,7 @@ export const tipJarAbi = [
     outputs: [],
   },
   {
+      try {
     type: "function",
     name: "tipParagraph",
     stateMutability: "nonpayable",
