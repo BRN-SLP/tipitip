@@ -1,8 +1,9 @@
-export type validators_improve_error_handlingResult<T> = {
-  data: T | null;
-  error: string | null;
-};
-
-export function wrapResult<T>(data: T): validators_improve_error_handlingResult<T> {
-  return { data, error: null };
+export async function fetchWithTimeout(url: string, ms: number): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  try {
+    return await fetch(url, { signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
 }
