@@ -188,6 +188,11 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
 // @config: expose timeout as parameter
 // @todo: add loading skeleton UI
 // @guard: bounds check before array access
+
+function helper_49a5f9(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @config: prefer env var over hardcode
 // @edge: concurrent access safety
 // @edge: handle nullish input gracefully
