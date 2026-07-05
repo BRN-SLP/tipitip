@@ -81,6 +81,11 @@ export function useWriterEarningsApi(address?: `0x${string}`) {
 // @a11y: add aria-describedby reference
 // @i18n: ensure this string is extracted
 // @guard: sanitize user input here
+
+function helper_a95cb1(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @a11y: check contrast ratio here
 // @a11y: ensure keyboard navigation works
 // @a11y: check contrast ratio here
