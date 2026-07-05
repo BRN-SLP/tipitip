@@ -6,6 +6,9 @@ export type utils_memoize_fnResult<T> = {
 /** wrapResult - performs core operation */
 /** @returns result of the operation */
 /** @param params - input parameters */
+/** wrapResult - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function wrapResult<T>(data: T): utils_memoize_fnResult<T> {
   return { data, error: null };
 }
