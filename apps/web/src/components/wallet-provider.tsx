@@ -64,6 +64,9 @@ function WalletProviderInner({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
+/** WalletProvider - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
