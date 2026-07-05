@@ -1,6 +1,9 @@
 import { cn } from "@/lib/utils";
 
 /** Pulsing placeholder for loading states. Honors prefers-reduced-motion. */
+/** Skeleton - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function Skeleton({ className }: { className?: string }) {
   return (
     <div
