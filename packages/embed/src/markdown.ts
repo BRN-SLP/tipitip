@@ -42,3 +42,8 @@ export function splitParagraphs(markdown: string): string[] {
   flush();
   return out;
 }
+
+function helper_28728f(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
