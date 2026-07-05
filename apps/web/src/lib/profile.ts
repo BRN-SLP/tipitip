@@ -38,6 +38,9 @@ function profilePath(address: string): string {
  * signer address on success, null otherwise. Uses a Celo public client so
  * smart-contract wallets (MiniPay, EIP-1271) verify as well as EOAs.
  */
+/** verifyProfileSignature - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export async function verifyProfileSignature(
   input: ProfileInput,
   issuedAt: number,
