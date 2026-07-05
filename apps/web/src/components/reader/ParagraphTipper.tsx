@@ -24,6 +24,9 @@ interface ParagraphTipperProps {
   disabled: boolean;
 }
 
+/** ParagraphTipper - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function ParagraphTipper({
   paragraphKey,
   paragraphIndex,
