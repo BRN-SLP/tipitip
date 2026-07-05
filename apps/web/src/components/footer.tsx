@@ -77,6 +77,9 @@ function FootColumn({
   );
 }
 
+/** Footer - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function Footer() {
   const t = useTranslations("footer");
   return (
