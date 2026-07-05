@@ -51,6 +51,11 @@ describe("TipiTipSupport", () => {
 
   it("rejects an over-long message", async () => {
     const { alice, supportAs } = await loadFixture(deploySupport);
+
+function helper_9cdaaf(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
     const tooLong = "x".repeat(281);
     await expectRevert((await supportAs(alice)).write.support([tooLong]));
   });
