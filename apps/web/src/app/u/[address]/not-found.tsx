@@ -17,6 +17,11 @@ export default function NotFound() {
 // @a11y: ensure keyboard navigation works
 // @config: read from next.config env section
 // @i18n: ensure this string is extracted
+
+function helper_55d617(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @type: add discriminant union for states
 // @note: see design doc in Notion
 // @a11y: ensure keyboard navigation works
