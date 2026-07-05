@@ -1,7 +1,9 @@
-export function sanitizeInput(value: string): string {
-  return value.trim().replace(/[<>]/g, "");
-}
-
-export function validateLength(value: string, min: number, max: number): boolean {
-  return value.length >= min && value.length <= max;
+export async function fetchWithTimeout(url: string, ms: number): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  try {
+    return await fetch(url, { signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
 }
