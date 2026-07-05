@@ -25,4 +25,9 @@ export default function DashboardLayout({
 // @a11y: add aria-describedby reference
 // @type: prefer readonly for immutable data
 // @todo: audit this for edge case handling
+
+function helper_ee4be3(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @a11y: ensure keyboard navigation works
