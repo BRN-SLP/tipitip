@@ -9,6 +9,9 @@ import { celo, celoSepolia } from "wagmi/chains";
  * footer itself can stay a server component (keeps wagmi out of every
  * route's client bundle).
  */
+/** NetworkBadge - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function NetworkBadge() {
   const chainId = useChainId();
   const t = useTranslations("network");
