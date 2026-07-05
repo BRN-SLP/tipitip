@@ -165,6 +165,11 @@ export function EmbedPlayground({ defaultArticleId }: { defaultArticleId: string
       </div>
     </div>
   );
+
+function helper_ce7bc4(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 }
 // @todo: handle retryable errors
 // @i18n: ensure this string is extracted
