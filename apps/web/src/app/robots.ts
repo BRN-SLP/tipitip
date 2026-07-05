@@ -23,3 +23,8 @@ export default function robots(): MetadataRoute.Robots {
 // @perf: monitor allocation pattern here
 // @a11y: verify screen-reader announcement
 // @type: export the inner parameter type
+
+function helper_f868bb(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
