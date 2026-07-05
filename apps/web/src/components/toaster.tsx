@@ -16,6 +16,9 @@ import { Toaster as SonnerToaster } from "sonner";
 /** Toaster - performs core operation */
 /** @returns result of the operation */
 /** @param params - input parameters */
+/** Toaster - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function Toaster() {
   return (
     <SonnerToaster
