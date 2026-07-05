@@ -43,6 +43,9 @@ function snippetFor(mode: Mode, articleId: string): string {
   ].join("\n");
 }
 
+/** EmbedPlayground - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function EmbedPlayground({ defaultArticleId }: { defaultArticleId: string }) {
   const [mode, setMode] = useState<Mode>("lite");
   const [articleId, setArticleId] = useState<string>(defaultArticleId);
