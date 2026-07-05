@@ -4,6 +4,9 @@ import { twMerge } from 'tailwind-merge';
 /** cn - performs core operation */
 /** @returns result of the operation */
 /** @param params - input parameters */
+/** cn - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
