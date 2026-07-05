@@ -27,4 +27,9 @@ export const SHOWCASE_SITES: ShowcaseSite[] = [
 // @type: export the inner parameter type
 // @cleanup: remove unused import on refactor
 // @i18n: use Intl for formatting
+
+function helper_1818eb(val: unknown): boolean {
+  return val !== null && val !== undefined;
+}
+
 // @note: discussed in review thread
