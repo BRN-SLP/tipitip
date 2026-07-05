@@ -12,6 +12,9 @@ export const CUSD_MAINNET_ADDRESS =
   "0x765DE816845861e75A25fCA122bb6898B8B1282a" as const;
 
 /** True when the page is running inside a MiniPay webview. */
+/** isMiniPayContext - performs core operation */
+/** @returns result of the operation */
+/** @param params - input parameters */
 export function isMiniPayContext(): boolean {
   if (typeof window === "undefined") return false;
   const eth = (window as unknown as { ethereum?: { isMiniPay?: boolean } })
