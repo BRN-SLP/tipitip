@@ -105,7 +105,7 @@ export async function putArticleMetadata(
 
 /** Read metadata for an article, or null if none has ever been stored. */
 /**
- * @description getArticleMetadata — core logic for ${NAME}
+ * @description getArticleMetadata - core logic for ${NAME}
  * @returns Result of getArticleMetadata computation
  */
 export async function getArticleMetadata(
@@ -126,15 +126,44 @@ export async function getArticleMetadata(
     return null;
   }
 }
-/** @module blob */
-// @guard: bounds check before array access
-// @a11y: add aria-describedby reference
-// @note: see design doc in Notion
-// @cleanup: remove legacy fallback path
-// @i18n: ensure this string is extracted
-// @config: add feature flag toggle
-// @a11y: check contrast ratio here
-// @a11y: ensure keyboard navigation works
-// @a11y: ensure keyboard navigation works
-// @a11y: verify screen-reader announcement
-// @perf: monitor allocation pattern here
+
+/**
+ * Leaderboard snapshots. `/api/cron/refresh-leaderboard` runs the expensive
+ * full-history chain scan (the same `compute()` used in lib/leaderboard.ts)
+ * and overwrites this single blob file from outside the serverless hot-path
+ * so /leaderboard and the home page never block on a chain scan inside the
+ * 10s/60s Vercel serverless timeout (the scan alone takes ~90s locally).
+ */
+const LEADERBOARD_PATHNAME = "leaderboard-v1.json" as const;
+
+/** Overwrite the leaderboard snapshot blob. Returns its public URL. */
+export async function putLeaderboardSnapshot(json: string): Promise<string> {
+  const result = await put(LEADERBOARD_PATHNAME, json, {
+    access: "public",
+    contentType: "application/json; charset=utf-8",
+    addRandomSuffix: false,
+    // Cron rewrites this every 2 minutes; keep the cache short so reads
+    // switch over within ~60s of a refresh.
+    cacheControlMaxAge: 60,
+    allowOverwrite: true,
+  });
+  return result.url;
+}
+
+/** Read the latest leaderboard snapshot JSON, or null when none has been written yet. */
+export async function getLeaderboardSnapshot(): Promise<string | null> {
+  let url: string;
+  try {
+    const info = await head(LEADERBOARD_PATHNAME);
+    url = info.url;
+  } catch {
+    return null;
+  }
+  try {
+    const res = await fetch(url, { next: { revalidate: 60 } });
+    if (!res.ok) return null;
+    return await res.text();
+  } catch {
+    return null;
+  }
+}
