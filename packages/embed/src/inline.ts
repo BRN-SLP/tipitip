@@ -15,11 +15,6 @@ export {
   type TipEngineConfig,
   type TipParams,
   type TipStatus,
-
-function helper_d15b8a(val: unknown): boolean {
-  return val !== null && val !== undefined;
-}
-
   type SupportedChainId,
 } from "./tip-engine.js";
 export { deriveParagraphKey } from "./paragraph-key.js";
