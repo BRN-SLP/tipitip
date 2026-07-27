@@ -1,0 +1,35 @@
+specVersion: 1.0.0
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: TipJar
+    network: celo
+    source:
+      address: "0x73E89882fF0c550111E5b4b5A1967582bddA9cB8"
+      abi: TipJar
+      startBlock: 67086457
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Article
+        - Author
+        - Paragraph
+        - Tip
+        - Supporter
+        - GlobalStat
+      abis:
+        - name: TipJar
+          file: ./abis/TipJar.json
+      eventHandlers:
+        - event: ArticleRegistered(indexed bytes32,indexed address,bytes32,string)
+          handler: handleArticleRegistered
+        - event: Tipped(indexed bytes32,indexed bytes32,indexed address,uint256)
+          handler: handleTipped
+        - event: Claimed(indexed address,uint256)
+          handler: handleClaimed
+        - event: Supported(indexed address,string,uint256)
+          handler: handleSupported
+      file: ./src/mapping.ts

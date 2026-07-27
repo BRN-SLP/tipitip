@@ -1,0 +1,73 @@
+# TipiTip subgraph schema.
+#
+# Entities mirror the Leaderboard shape consumed by apps/web so the web
+# client can map query results 1:1 into ArticleRank / AuthorRank /
+# ParagraphRank / LeaderboardTotals.
+#
+# Wei values are stored as BigInt strings (BigDecimal also works for
+# read-only display, but BigInt keeps exact integer wei without float
+# drift). The web client formats with viem's formatUnits(18) as today.
+
+type Article @entity {
+  # bytes32 articleId
+  id: ID!
+  slug: String
+  author: Author!
+  contentHash: Bytes
+  totalWei: BigInt!
+  tipsCount: BigInt!
+  registeredAtBlock: BigInt!
+  registeredAtTimestamp: BigInt!
+  paragraphs: [Paragraph!]! @derivedFrom(field: "article")
+  tips: [Tip!]! @derivedFrom(field: "article")
+}
+
+type Author @entity {
+  # lowercased address
+  id: ID!
+  totalWei: BigInt!
+  tipsCount: BigInt!
+  # distinct registered articles
+  articlesCount: BigInt!
+  articles: [Article!]! @derivedFrom(field: "author")
+  tipsGiven: [Tip!]! @derivedFrom(field: "tipper")
+}
+
+type Paragraph @entity {
+  # bytes32 paragraphKey
+  id: ID!
+  article: Article!
+  totalWei: BigInt!
+  tipsCount: BigInt!
+  tips: [Tip!]! @derivedFrom(field: "paragraph")
+}
+
+type Tip @entity {
+  # `${txHash}-${logIndex}`
+  id: ID!
+  article: Article!
+  paragraph: Paragraph!
+  tipper: Author!
+  amountWei: BigInt!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+# Tracks each distinct tipper for the unique-supporters total.
+type Supporter @entity {
+  # lowercased address (same as Author.id; separate entity keeps the
+  # "unique tippers" count cheap and decoupled from author earnings)
+  id: ID!
+  totalTippedWei: BigInt!
+  tipsCount: BigInt!
+}
+
+# Singleton (id = "1") holding platform-wide grand totals, updated on
+# every handler. Cheap upserts; mirrors LeaderboardTotals.
+type GlobalStat @entity {
+  id: ID!
+  totalTippedWei: BigInt!
+  totalTips: BigInt!
+  totalSupporters: BigInt!
+  totalAuthors: BigInt!
+}
