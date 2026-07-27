@@ -1,2 +1,7 @@
 .vercel
 .env*.local
+
+# Local ops scripts for refreshing the leaderboard blob (run with tsx + prod env)
+seed-leaderboard-blob.mts
+server-only-shim.cjs
+empty-server-only.cjs
