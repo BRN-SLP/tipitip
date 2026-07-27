@@ -62,22 +62,6 @@ export function CountUp({
     </span>
   );
 }
-// @perf: React.memo candidate
-
-export interface CountUpProps {
-  className?: string;
-}
-// @i18n: use Intl for formatting
-// @type: add discriminant union for states
-// @type: prefer readonly for immutable data
-// @todo: add loading skeleton UI
-// @edge: what if the list is empty?
-// @config: expose timeout as parameter
-// @perf: monitor allocation pattern here
-// @guard: sanitize user input here
-// @todo: handle retryable errors
-// @guard: bounds check before array access
-// @type: narrow from string to union
 // @todo: audit this for edge case handling
 // @i18n: extract pluralization logic
 // @config: make this configurable via env
