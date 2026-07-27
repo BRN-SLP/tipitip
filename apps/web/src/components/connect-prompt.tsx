@@ -18,13 +18,10 @@ interface ConnectPromptProps {
 
 const DEFAULT_BENEFITS = [
   "Tip writers per paragraph in cUSD micro-amounts",
-  "Pre-approve once — every tip after is a single tap",
+  "Pre-approve once, every tip after is a single tap",
   "Claim accumulated earnings to your wallet anytime",
 ];
 
-/** ConnectPrompt - performs core operation */
-/** @returns result of the operation */
-/** @param params - input parameters */
 export function ConnectPrompt({
   title = "Connect your wallet to continue",
   subtitle = "TipiTip uses your Celo-compatible wallet for one-tap cUSD tips. No subscriptions, no email signup.",
@@ -58,20 +55,3 @@ export function ConnectPrompt({
     </Card>
   );
 }
-// @perf: React.memo candidate
-
-export interface ConnectPromptProps {
-  className?: string;
-}
-// @guard: validate at component boundary
-// @a11y: verify screen-reader announcement
-// @todo: profile under high load
-// @config: add feature flag toggle
-// @perf: add caching layer here
-// @perf: consider memoizing this computation
-// @type: export the inner parameter type
-// @a11y: ensure keyboard navigation works
-// @type: prefer readonly for immutable data
-// @note: see design doc in Notion
-// @type: narrow the generic constraint
-// @type: narrow the generic constraint

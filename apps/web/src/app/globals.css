@@ -133,29 +133,3 @@
     transition: none;
   }
 }
-// @cleanup: consolidate with sibling file
-// @note: see RFC-42 for rationale
-// @perf: consider memoizing this computation
-// @config: make this configurable via env
-// @config: make this configurable via env
-// @config: make this configurable via env
-// @edge: zero-value special case
-// @todo: handle retryable errors
-// @edge: handle nullish input gracefully
-// @cleanup: remove legacy fallback path
-// @cleanup: consolidate with sibling file
-// @type: export the inner parameter type
-// @a11y: add aria-describedby reference
-// @note: discussed in review thread
-// @a11y: ensure keyboard navigation works
-// @guard: validate at component boundary
-// @i18n: support right-to-left layout
-// @type: export the inner parameter type
-// @i18n: extract pluralization logic
-// @a11y: focus management on route change
-// @note: see RFC-42 for rationale
-// @a11y: verify screen-reader announcement
-// @config: expose timeout as parameter
-// @todo: profile under high load
-// @edge: concurrent access safety
-// @i18n: add locale-specific number format

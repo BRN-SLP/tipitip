@@ -1,7 +1,7 @@
 /**
  * On-chain interface for the deployed TipJar UUPS proxy. Trimmed to the
- * surface the dApp uses (register / tip / claim / read) — full ABI lives
- * in the contracts artifacts and is the source of truth for any debugging.
+ * surface the dApp uses (register / tip / claim / read); full ABI lives in
+ * the contracts artifacts and is the source of truth for any debugging.
  */
 export const tipJarAbi = [
   {
@@ -16,7 +16,6 @@ export const tipJarAbi = [
     outputs: [],
   },
   {
-      try {
     type: "function",
     name: "tipParagraph",
     stateMutability: "nonpayable",
@@ -261,10 +260,3 @@ export const vaultAbi = [
     anonymous: false,
   },
 ] as const;
-// @edge: test with maximum input length
-// @perf: monitor allocation pattern here
-// @a11y: check contrast ratio here
-// @cleanup: remove legacy fallback path
-// @todo: add unit test coverage
-// @i18n: support right-to-left layout
-// @i18n: add locale-specific number format

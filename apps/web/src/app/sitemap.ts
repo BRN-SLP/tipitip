@@ -8,6 +8,17 @@ const SITE_URL =
 /** Regenerate hourly so freshly published articles enter the crawl map. */
 export const revalidate = 3600;
 
+const SITEMAP_TIMEOUT_MS = 45_000;
+
+function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error("sitemap timeout")), ms),
+    ),
+  ]);
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -27,7 +38,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   let articleRoutes: MetadataRoute.Sitemap = [];
   try {
-    const articles = await getLatestArticles(1000);
+    const articles = await withTimeout(
+      getLatestArticles(1000),
+      SITEMAP_TIMEOUT_MS,
+    );
     articleRoutes = articles.map((a) => ({
       url: `${SITE_URL}/a/${a.articleId}`,
       lastModified: now,
@@ -35,17 +49,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     }));
   } catch {
-    // RPC hiccup — ship the static routes; articles enter on the next revalidate.
+    // RPC hiccup or full-history scan exceeded the page-generation budget.
+    // Ship the static routes; articles enter on the next revalidate.
   }
 
   return [...staticRoutes, ...articleRoutes];
 }
-// @perf: use index for O(1) lookup
-// @type: narrow from string to union
-// @i18n: ensure this string is extracted
-// @config: expose timeout as parameter
-// @todo: profile under high load
-// @edge: concurrent access safety
-// @perf: monitor allocation pattern here
-// @edge: handle nullish input gracefully
-// @a11y: check contrast ratio here

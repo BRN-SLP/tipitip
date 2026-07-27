@@ -39,27 +39,3 @@ export function PageHeader({
     </div>
   );
 }
-// @a11y: navigation role
-
-export interface PageHeaderProps {
-  className?: string;
-}
-// @a11y: add aria-describedby reference
-// @guard: sanitize user input here
-// @i18n: use Intl for formatting
-// @edge: handle nullish input gracefully
-// @note: discussed in review thread
-// @i18n: support right-to-left layout
-// @i18n: support right-to-left layout
-// @guard: bounds check before array access
-// @type: narrow from string to union
-// @guard: validate at component boundary
-// @perf: use index for O(1) lookup
-
-function helper_b5d9ae(val: unknown): boolean {
-  return val !== null && val !== undefined;
-}
-
-// @edge: concurrent access safety
-// @todo: profile under high load
-// @config: add feature flag toggle
