@@ -1,0 +1,18 @@
+{
+  "name": "@tipitip/subgraph",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The Graph subgraph indexing the TipJar proxy on Celo mainnet for the TipiTip leaderboard.",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --studio tipitip",
+    "auth": "graph auth --studio",
+    "create-local": "graph create --node http://localhost:8020/ tipitip",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 tipitip"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.71.0",
+    "@graphprotocol/graph-ts": "^0.36.0"
+  }
+}
