@@ -14,8 +14,12 @@ import "server-only";
 import { unstable_cache } from "next/cache";
 import type { Hex } from "viem";
 
-import { getArticleBodyUrl } from "./blob";
-import { fetchAllEvents, getActiveChainId } from "./chain-logs";
+import { getArticleBodyUrl, getLeaderboardSnapshot } from "./blob";
+import {
+  fetchAllEvents,
+  getActiveChainId,
+  type RawEventLog,
+} from "./chain-logs";
 import { ADDRESSES, type SupportedChainId } from "./contracts";
 import { paragraphIndexByKey } from "./tip-aggregation";
 
@@ -90,13 +94,25 @@ async function loadBody(articleId: string): Promise<string | null> {
   }
 }
 
-async function compute(): Promise<Leaderboard> {
+/**
+ * Compute the global leaderboard by scanning full chain history.
+ *
+ * This is the expensive path: it paginates every Tipped and ArticleRegistered
+ * event from DEPLOY_BLOCK to the latest block and aggregates them. On Celo
+ * mainnet this takes ~90 seconds and far exceeds the Vercel serverless
+ * timeout, so it must only run from the cron refresh route (which sets
+ * `maxDuration = 60` and writes the result to the leaderboard blob).
+ *
+ * Page renders read the snapshot via `getLeaderboard` instead.
+ */
+export async function compute(): Promise<Leaderboard> {
   const chainId = getActiveChainId();
   if (chainId === null) return EMPTY;
   const tipJar = ADDRESSES[chainId as SupportedChainId]?.tipJar;
   if (!tipJar) return EMPTY;
 
-  let tips, registers;
+  let tips: RawEventLog[] = [];
+  let registers: RawEventLog[] = [];
   try {
     [tips, registers] = await Promise.all([
       fetchAllEvents({ chainId, address: tipJar, eventName: "Tipped" }),
@@ -255,31 +271,29 @@ async function compute(): Promise<Leaderboard> {
   };
 }
 
-/** Cached global leaderboard. Revalidates every 2 minutes. */
-export const getLeaderboard = unstable_cache(compute, ["leaderboard-v2"], {
-  revalidate: 120,
-  tags: ["leaderboard"],
-});
-/** @module leaderboard */
-// @edge: handle nullish input gracefully
-// @guard: validate at component boundary
-// @edge: zero-value special case
-// @a11y: verify screen-reader announcement
-// @edge: zero-value special case
-// @a11y: focus management on route change
-// @note: see RFC-42 for rationale
-// @type: narrow from string to union
-// @i18n: extract pluralization logic
-// @edge: what if the list is empty?
-// @a11y: focus management on route change
-// @cleanup: remove legacy fallback path
-// @guard: validate at component boundary
-// @i18n: use Intl for formatting
-// @todo: add loading skeleton UI
-// @edge: zero-value special case
-// @perf: consider memoizing this computation
-// @cleanup: remove unused import on refactor
-// @a11y: check contrast ratio here
-// @i18n: use Intl for formatting
-// @config: add feature flag toggle
-// @edge: handle nullish input gracefully
+/**
+ * Read the global leaderboard from the snapshot blob.
+ *
+ * The expensive `compute()` scan runs out-of-band via the
+ * `/api/cron/refresh-leaderboard` route and writes the result to
+ * `@vercel/blob` as `leaderboard-v1.json`. Page renders read that snapshot
+ * here instead of rescanning chain history on every request, which would
+ * time out on Vercel.
+ *
+ * Cache key bumped from `leaderboard-v2` to `leaderboard-v3` to invalidate
+ * the frozen EMPTY snapshot the old wrapper persisted. Falls back to EMPTY
+ * until the first cron run writes the blob.
+ */
+export const getLeaderboard = unstable_cache(
+  async (): Promise<Leaderboard> => {
+    const json = await getLeaderboardSnapshot();
+    if (!json) return EMPTY;
+    try {
+      return JSON.parse(json) as Leaderboard;
+    } catch {
+      return EMPTY;
+    }
+  },
+  ["leaderboard-v3"],
+  { revalidate: 60, tags: ["leaderboard"] },
+);
