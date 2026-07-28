@@ -21,10 +21,6 @@ function metaPathnameFor(articleId: string): string {
 }
 
 /** True when an article body has already been stored for `articleId`. */
-/**
- * @description articleExists — core logic for ${NAME}
- * @returns Result of articleExists computation
- */
 export async function articleExists(articleId: string): Promise<boolean> {
   try {
     await head(pathnameFor(articleId));
@@ -35,10 +31,6 @@ export async function articleExists(articleId: string): Promise<boolean> {
 }
 
 /** Upload the markdown body for `articleId`. Idempotent only for identical bodies. */
-/**
- * @description putArticleBody — core logic for ${NAME}
- * @returns Result of putArticleBody computation
- */
 export async function putArticleBody(
   articleId: string,
   body: string,
@@ -53,10 +45,6 @@ export async function putArticleBody(
 }
 
 /** Resolve the public URL for a previously-stored article body, or null. */
-/**
- * @description getArticleBodyUrl — core logic for ${NAME}
- * @returns Result of getArticleBodyUrl computation
- */
 export async function getArticleBodyUrl(
   articleId: string,
 ): Promise<string | null> {
@@ -83,10 +71,6 @@ export interface ArticleMetadata {
 }
 
 /** Store the metadata JSON for an article. Overwrites previous value. */
-/**
- * @description putArticleMetadata — core logic for ${NAME}
- * @returns Result of putArticleMetadata computation
- */
 export async function putArticleMetadata(
   articleId: string,
   meta: ArticleMetadata,
@@ -104,10 +88,6 @@ export async function putArticleMetadata(
 }
 
 /** Read metadata for an article, or null if none has ever been stored. */
-/**
- * @description getArticleMetadata - core logic for ${NAME}
- * @returns Result of getArticleMetadata computation
- */
 export async function getArticleMetadata(
   articleId: string,
 ): Promise<ArticleMetadata | null> {
