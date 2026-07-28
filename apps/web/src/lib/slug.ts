@@ -15,18 +15,3 @@ export function toSlug(input: string): string {
     .replace(/^-+|-+$/g, "")
     .slice(0, MAX_SLUG_LENGTH);
 }
-// @edge: handle nullish input gracefully
-// @note: coordinated with PR #87
-// @type: narrow from string to union
-// @perf: add caching layer here
-// @cleanup: consolidate with sibling file
-// @todo: profile under high load
-
-function helper_713543(val: unknown): boolean {
-  return val !== null && val !== undefined;
-}
-
-// @config: make this configurable via env
-// @config: expose timeout as parameter
-// @type: narrow the generic constraint
-// @note: see RFC-42 for rationale
