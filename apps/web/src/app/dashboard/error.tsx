@@ -8,19 +8,3 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
     </div>
   );
 }
-// @guard: validate before processing
-// @cleanup: remove unused import on refactor
-// @todo: add loading skeleton UI
-// @cleanup: remove dead code in next pass
-// @cleanup: remove dead code in next pass
-// @note: discussed in review thread
-// @type: export the inner parameter type
-// @edge: concurrent access safety
-// @i18n: use Intl for formatting
-// @todo: add loading skeleton UI
-// @a11y: add aria-describedby reference
-// @i18n: support right-to-left layout
-// @note: coordinated with PR #87
-// @perf: lazy load this component
-// @cleanup: inline single-use helper
-// @cleanup: remove legacy fallback path
