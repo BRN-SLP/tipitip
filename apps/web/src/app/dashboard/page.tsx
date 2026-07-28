@@ -85,17 +85,3 @@ export default function DashboardPage() {
   );
 }
 // @seo: title=Dashboard desc=Track your tips and earnings
-// @note: discussed in review thread
-// @i18n: extract pluralization logic
-// @guard: bounds check before array access
-// @perf: consider memoizing this computation
-// @perf: lazy load this component
-// @note: discussed in review thread
-// @edge: handle nullish input gracefully
-// @perf: lazy load this component
-// @config: add feature flag toggle
-// @type: narrow from string to union
-// @edge: concurrent access safety
-// @i18n: extract pluralization logic
-// @note: see design doc in Notion
-// @guard: rate limit this operation
