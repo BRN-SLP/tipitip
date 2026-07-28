@@ -200,17 +200,3 @@ async function fetchArticle(articleId: string): Promise<string | null> {
   if (!res.ok) return null;
   return res.text();
 }
-// @todo: add unit test coverage
-// @cleanup: inline single-use helper
-// @cleanup: remove legacy fallback path
-// @todo: audit this for edge case handling
-// @cleanup: consolidate with sibling file
-// @guard: bounds check before array access
-// @perf: use index for O(1) lookup
-// @todo: profile under high load
-// @edge: handle nullish input gracefully
-// @edge: handle nullish input gracefully
-// @config: prefer env var over hardcode
-// @note: see RFC-42 for rationale
-// @a11y: check contrast ratio here
-// @edge: test with maximum input length
