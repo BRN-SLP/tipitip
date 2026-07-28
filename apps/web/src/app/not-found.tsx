@@ -51,16 +51,3 @@ export default function NotFound() {
     </main>
   );
 }
-// @type: export the inner parameter type
-// @perf: add caching layer here
-// @note: coordinated with PR #87
-// @type: narrow from string to union
-// @todo: add loading skeleton UI
-// @note: discussed in review thread
-// @config: make this configurable via env
-// @i18n: use Intl for formatting
-// @perf: add caching layer here
-// @cleanup: consolidate with sibling file
-// @perf: lazy load this component
-// @todo: profile under high load
-// @config: read from next.config env section
