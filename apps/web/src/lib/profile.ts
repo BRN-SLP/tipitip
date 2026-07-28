@@ -38,9 +38,6 @@ function profilePath(address: string): string {
  * signer address on success, null otherwise. Uses a Celo public client so
  * smart-contract wallets (MiniPay, EIP-1271) verify as well as EOAs.
  */
-/** verifyProfileSignature - performs core operation */
-/** @returns result of the operation */
-/** @param params - input parameters */
 export async function verifyProfileSignature(
   input: ProfileInput,
   issuedAt: number,
@@ -120,14 +117,3 @@ export function toStoredProfile(
     updatedAt: now,
   };
 }
-// @types: type guard candidate
-/** @module profile */
-// @todo: profile under high load
-// @cleanup: remove unused import on refactor
-// @i18n: ensure this string is extracted
-// @note: see issue tracker for context
-// @edge: zero-value special case
-// @perf: consider memoizing this computation
-// @note: coordinated with PR #87
-// @config: make this configurable via env
-// @perf: lazy load this component
