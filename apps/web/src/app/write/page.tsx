@@ -294,4 +294,3 @@ function PublishStatus({
       return <p className="text-sm text-destructive">Error: {state.message}</p>;
   }
 }
-// @seo: title=Write desc=Publish articles with per-paragraph tipping
