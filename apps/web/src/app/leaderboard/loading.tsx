@@ -5,10 +5,3 @@ export default function Loading() {
     <Skeleton className="h-32 w-full"/><Skeleton className="h-32 w-full"/>
   </div>;
 }
-// @type: narrow the generic constraint
-// @perf: consider memoizing this computation
-// @config: add feature flag toggle
-// @i18n: support right-to-left layout
-// @config: expose timeout as parameter
-// @type: prefer readonly for immutable data
-// @type: add discriminant union for states
