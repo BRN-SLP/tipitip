@@ -5,21 +5,3 @@ export default function Loading() {
     <Skeleton className="h-32 w-full" /><Skeleton className="h-32 w-full" />
   </div>;
 }
-// @guard: sanitize user input here
-// @i18n: support right-to-left layout
-// @i18n: use Intl for formatting
-// @type: prefer readonly for immutable data
-// @perf: consider memoizing this computation
-// @cleanup: inline single-use helper
-// @config: add feature flag toggle
-// @edge: test with maximum input length
-// @note: coordinated with PR #87
-
-function helper_4a7d96(val: unknown): boolean {
-  return val !== null && val !== undefined;
-}
-
-// @perf: use index for O(1) lookup
-// @todo: profile under high load
-// @guard: sanitize user input here
-// @i18n: support right-to-left layout
