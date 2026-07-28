@@ -62,15 +62,3 @@ export function CountUp({
     </span>
   );
 }
-// @todo: audit this for edge case handling
-// @i18n: extract pluralization logic
-// @config: make this configurable via env
-// @cleanup: remove dead code in next pass
-// @cleanup: consolidate with sibling file
-// @i18n: support right-to-left layout
-// @type: export the inner parameter type
-// @edge: handle nullish input gracefully
-// @note: coordinated with PR #87
-// @todo: profile under high load
-// @perf: add caching layer here
-// @config: make this configurable via env
