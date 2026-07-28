@@ -65,21 +65,3 @@ CardFooter.displayName = 'CardFooter';
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
 // Variants: default, outline, ghost, link — see class-variance-authority
-// @cleanup: remove unused import on refactor
-// @i18n: extract pluralization logic
-// @a11y: ensure keyboard navigation works
-// @todo: add unit test coverage
-// @edge: handle nullish input gracefully
-// @perf: consider memoizing this computation
-// @config: prefer env var over hardcode
-// @i18n: support right-to-left layout
-// @a11y: focus management on route change
-// @a11y: check contrast ratio here
-// @a11y: focus management on route change
-// @type: narrow the generic constraint
-// @cleanup: consolidate with sibling file
-// @perf: monitor allocation pattern here
-// @config: read from next.config env section
-// @edge: zero-value special case
-// @a11y: verify screen-reader announcement
-// @a11y: check contrast ratio here
