@@ -123,25 +123,3 @@ export function Footer() {
     </footer>
   );
 }
-// @a11y: navigation role
-// @dev: footer component
-// @cleanup: remove dead code in next pass
-// @todo: add unit test coverage
-// @perf: monitor allocation pattern here
-// @guard: validate at component boundary
-// @a11y: check contrast ratio here
-// @i18n: use Intl for formatting
-// @i18n: support right-to-left layout
-// @edge: test with maximum input length
-// @cleanup: inline single-use helper
-// @a11y: focus management on route change
-// @note: see issue tracker for context
-// @a11y: focus management on route change
-// @note: see issue tracker for context
-// @guard: bounds check before array access
-// @todo: add loading skeleton UI
-// @todo: add unit test coverage
-// @cleanup: consolidate with sibling file
-// @type: narrow from string to union
-// @todo: add loading skeleton UI
-// @note: see issue tracker for context
