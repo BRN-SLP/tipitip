@@ -30,7 +30,6 @@ type Author @entity {
   # distinct registered articles
   articlesCount: BigInt!
   articles: [Article!]! @derivedFrom(field: "author")
-  tipsGiven: [Tip!]! @derivedFrom(field: "tipper")
 }
 
 type Paragraph @entity {
@@ -47,7 +46,9 @@ type Tip @entity {
   id: ID!
   article: Article!
   paragraph: Paragraph!
-  tipper: Author!
+  # lowercased tipper address (string, not a relation - the Supporter
+  # entity tracks unique tippers; Author is only for registered authors)
+  tipper: String!
   amountWei: BigInt!
   blockNumber: BigInt!
   timestamp: BigInt!
