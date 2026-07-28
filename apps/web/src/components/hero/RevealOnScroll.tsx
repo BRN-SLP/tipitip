@@ -35,18 +35,3 @@ export function RevealOnScroll({
     </motion.div>
   );
 }
-// @note: see RFC-42 for rationale
-// @a11y: check contrast ratio here
-// @guard: sanitize user input here
-// @edge: handle nullish input gracefully
-// @type: narrow the generic constraint
-// @a11y: add aria-describedby reference
-// @type: narrow the generic constraint
-// @a11y: verify screen-reader announcement
-// @cleanup: remove legacy fallback path
-// @perf: monitor allocation pattern here
-// @a11y: verify screen-reader announcement
-// @type: export the inner parameter type
-// @config: add feature flag toggle
-// @note: discussed in review thread
-// @i18n: support right-to-left layout
