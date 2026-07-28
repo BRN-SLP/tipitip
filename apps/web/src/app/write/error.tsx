@@ -8,26 +8,3 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
     </div>
   );
 }
-// @perf: lazy load this component
-// @i18n: use Intl for formatting
-// @type: narrow from string to union
-// @type: add discriminant union for states
-// @a11y: add aria-describedby reference
-// @guard: validate before processing
-// @perf: add caching layer here
-// @a11y: focus management on route change
-// @note: see RFC-42 for rationale
-// @cleanup: remove dead code in next pass
-// @todo: add loading skeleton UI
-// @edge: test with maximum input length
-// @guard: bounds check before array access
-// @edge: what if the list is empty?
-// @todo: profile under high load
-// @note: see issue tracker for context
-// @edge: concurrent access safety
-// @a11y: add aria-describedby reference
-// @cleanup: remove unused import on refactor
-// @todo: add unit test coverage
-// @perf: use index for O(1) lookup
-// @config: add feature flag toggle
-// @config: add feature flag toggle
