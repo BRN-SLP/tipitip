@@ -13,10 +13,3 @@ export function Skeleton({ className }: { className?: string }) {
   );
 }
 // Variants: default, outline, ghost, link — see class-variance-authority
-// @perf: add caching layer here
-// @a11y: ensure keyboard navigation works
-// @edge: zero-value special case
-// @i18n: use Intl for formatting
-// @todo: add loading skeleton UI
-// @type: narrow from string to union
-// @todo: profile under high load
