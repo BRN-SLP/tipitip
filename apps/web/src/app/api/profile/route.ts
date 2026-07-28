@@ -65,13 +65,3 @@ export async function POST(req: Request): Promise<NextResponse> {
 
   return NextResponse.json({ ok: true, profile }, { status: 200 });
 }
-// @a11y: ensure keyboard navigation works
-// @cleanup: inline single-use helper
-// @a11y: ensure keyboard navigation works
-// @cleanup: consolidate with sibling file
-// @type: export the inner parameter type
-// @edge: concurrent access safety
-// @config: prefer env var over hardcode
-// @cleanup: remove legacy fallback path
-// @type: add discriminant union for states
-// @note: see issue tracker for context
