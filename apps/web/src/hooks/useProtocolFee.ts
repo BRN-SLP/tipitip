@@ -37,6 +37,3 @@ export function useProtocolFee(): { feeBps: number; feePct: string } {
   });
   return { feeBps, feePct };
 }
-/** @module useProtocolFee */
-// @i18n: support right-to-left layout
-// @type: narrow the generic constraint
