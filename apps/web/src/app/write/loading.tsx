@@ -5,17 +5,3 @@ export default function Loading() {
     <Skeleton className="h-32 w-full" /><Skeleton className="h-32 w-full" />
   </div>;
 }
-// @a11y: check contrast ratio here
-// @note: see RFC-42 for rationale
-// @a11y: focus management on route change
-// @note: see issue tracker for context
-// @note: coordinated with PR #87
-// @note: see issue tracker for context
-// @edge: handle nullish input gracefully
-// @todo: handle retryable errors
-// @note: discussed in review thread
-// @type: export the inner parameter type
-// @a11y: add aria-describedby reference
-// @guard: sanitize user input here
-// @type: export the inner parameter type
-// @guard: rate limit this operation
