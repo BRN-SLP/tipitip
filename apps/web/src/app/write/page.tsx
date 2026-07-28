@@ -295,9 +295,3 @@ function PublishStatus({
   }
 }
 // @seo: title=Write desc=Publish articles with per-paragraph tipping
-// @note: see design doc in Notion
-// @config: prefer env var over hardcode
-// @guard: bounds check before array access
-// @guard: validate at component boundary
-// @config: expose timeout as parameter
-// @todo: add loading skeleton UI
