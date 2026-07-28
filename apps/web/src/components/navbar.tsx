@@ -16,14 +16,18 @@ import { ConnectButton } from "@/components/connect-button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { TipiTipLogo } from "@/components/tipitip-logo"
 
+// Reader/writer discovery flow, in order of use. Dashboard is kept apart
+// (rendered after a divider) because it is the signed-in author's own space,
+// not part of the public reading/browsing journey.
 const navLinks = [
   { key: "read", href: "/read" },
-  { key: "leaderboard", href: "/leaderboard" },
   { key: "write", href: "/write" },
-  { key: "dashboard", href: "/dashboard" },
+  { key: "leaderboard", href: "/leaderboard" },
   { key: "forWriters", href: "/for-writers" },
   { key: "showcase", href: "/showcase" },
 ] as const
+
+const accountLinks = [{ key: "dashboard", href: "/dashboard" }] as const
 
 export function Navbar() {
   const pathname = usePathname()
@@ -63,6 +67,19 @@ export function Navbar() {
                     {t(`links.${link.key}`)}
                   </Link>
                 ))}
+                <div className="my-2 border-t" aria-hidden="true" />
+                {accountLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    aria-current={pathname === link.href ? "page" : undefined}
+                    className={`text-base font-medium transition-colors hover:text-foreground ${
+                      pathname === link.href ? "text-foreground" : "text-foreground/70"
+                    }`}
+                  >
+                    {t(`links.${link.key}`)}
+                  </Link>
+                ))}
                 <div className="mt-6 flex items-center gap-2 border-t pt-6">
                   <ThemeToggle />
                   <ConnectButton />
@@ -83,6 +100,19 @@ export function Navbar() {
         {/* Center: desktop nav */}
         <nav className="hidden items-center gap-7 md:flex">
           {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              aria-current={pathname === link.href ? "page" : undefined}
+              className={`text-sm transition-colors hover:text-foreground ${
+                pathname === link.href ? "text-foreground" : "text-foreground/70"
+              }`}
+            >
+              {t(`links.${link.key}`)}
+            </Link>
+          ))}
+          <span className="h-4 w-px bg-border" aria-hidden="true" />
+          {accountLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
