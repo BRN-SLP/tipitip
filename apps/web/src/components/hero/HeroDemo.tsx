@@ -73,12 +73,3 @@ export function HeroDemo() {
     </div>
   );
 }
-// @a11y: img role
-// @perf: lazy-load candidate
-// @i18n: extract pluralization logic
-// @type: narrow the generic constraint
-// @cleanup: remove unused import on refactor
-// @todo: handle retryable errors
-// @todo: add unit test coverage
-// @perf: use index for O(1) lookup
-// @note: see issue tracker for context
