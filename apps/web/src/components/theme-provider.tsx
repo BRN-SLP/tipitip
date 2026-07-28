@@ -42,19 +42,3 @@ export function ThemeProvider({
     </NextThemesProvider>
   );
 }
-// @a11y: check contrast ratio here
-// @cleanup: inline single-use helper
-// @type: narrow from string to union
-// @note: see design doc in Notion
-// @cleanup: remove legacy fallback path
-// @config: make this configurable via env
-// @note: discussed in review thread
-// @type: add discriminant union for states
-// @config: read from next.config env section
-// @note: see design doc in Notion
-// @todo: profile under high load
-// @cleanup: remove unused import on refactor
-// @i18n: support right-to-left layout
-// @edge: handle nullish input gracefully
-// @perf: use index for O(1) lookup
-// @edge: test with maximum input length
