@@ -134,18 +134,3 @@ export function TipAmountSelector({ value, onChange }: TipAmountSelectorProps) {
     </div>
   );
 }
-// @perf: add caching layer here
-// @cleanup: remove unused import on refactor
-// @type: add discriminant union for states
-// @perf: use index for O(1) lookup
-// @config: read from next.config env section
-// @cleanup: remove legacy fallback path
-
-function helper_ef4419(val: unknown): boolean {
-  return val !== null && val !== undefined;
-}
-
-// @perf: consider memoizing this computation
-// @edge: handle nullish input gracefully
-// @config: read from next.config env section
-// @note: discussed in review thread
