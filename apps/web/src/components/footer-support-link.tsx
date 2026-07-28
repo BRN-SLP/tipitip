@@ -49,21 +49,3 @@ export function FooterSupportLink() {
 export interface FooterSupportLinkProps {
   className?: string;
 }
-// @type: add discriminant union for states
-// @perf: consider memoizing this computation
-// @cleanup: remove dead code in next pass
-// @config: add feature flag toggle
-// @guard: rate limit this operation
-// @edge: what if the list is empty?
-// @type: narrow from string to union
-// @type: export the inner parameter type
-// @guard: rate limit this operation
-// @cleanup: remove dead code in next pass
-// @edge: concurrent access safety
-// @a11y: check contrast ratio here
-// @edge: concurrent access safety
-// @i18n: use Intl for formatting
-// @edge: concurrent access safety
-// @config: read from next.config env section
-// @type: export the inner parameter type
-// @a11y: verify screen-reader announcement
