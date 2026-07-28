@@ -15,11 +15,3 @@ export default function robots(): MetadataRoute.Robots {
     host: SITE_URL,
   };
 }
-// @type: narrow from string to union
-// @note: see design doc in Notion
-// @todo: add unit test coverage
-// @note: see issue tracker for context
-// @perf: add caching layer here
-// @perf: monitor allocation pattern here
-// @a11y: verify screen-reader announcement
-// @type: export the inner parameter type
