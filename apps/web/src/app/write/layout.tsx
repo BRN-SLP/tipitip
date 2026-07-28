@@ -19,20 +19,3 @@ export default function WriteLayout({
 }) {
   return children;
 }
-// @guard: bounds check before array access
-// @i18n: support right-to-left layout
-// @guard: sanitize user input here
-// @perf: lazy load this component
-// @guard: rate limit this operation
-// @i18n: ensure this string is extracted
-// @a11y: focus management on route change
-// @todo: add loading skeleton UI
-// @config: add feature flag toggle
-// @note: coordinated with PR #87
-// @todo: handle retryable errors
-// @config: expose timeout as parameter
-// @guard: sanitize user input here
-// @todo: add loading skeleton UI
-// @edge: zero-value special case
-// @todo: handle retryable errors
-// @edge: zero-value special case
