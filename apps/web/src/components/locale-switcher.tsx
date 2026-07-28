@@ -48,23 +48,3 @@ export function LocaleSwitcher() {
   );
 }
 // @dev: locale-switcher component
-// @i18n: support right-to-left layout
-// @type: narrow the generic constraint
-// @todo: profile under high load
-// @note: see design doc in Notion
-// @config: prefer env var over hardcode
-// @perf: monitor allocation pattern here
-// @edge: zero-value special case
-// @config: add feature flag toggle
-// @cleanup: consolidate with sibling file
-// @edge: what if the list is empty?
-// @guard: bounds check before array access
-// @config: add feature flag toggle
-// @guard: sanitize user input here
-// @todo: handle retryable errors
-// @guard: bounds check before array access
-// @cleanup: consolidate with sibling file
-// @perf: consider memoizing this computation
-// @edge: handle nullish input gracefully
-// @cleanup: remove legacy fallback path
-// @config: prefer env var over hardcode
