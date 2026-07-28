@@ -5,14 +5,3 @@ export default function Loading() {
     <Skeleton className="h-32 w-full" /><Skeleton className="h-32 w-full" />
   </div>;
 }
-// @guard: bounds check before array access
-// @guard: validate before processing
-// @config: expose timeout as parameter
-// @config: prefer env var over hardcode
-// @perf: monitor allocation pattern here
-// @cleanup: remove legacy fallback path
-// @config: read from next.config env section
-// @type: add discriminant union for states
-// @config: read from next.config env section
-// @todo: add loading skeleton UI
-// @note: coordinated with PR #87
