@@ -196,16 +196,3 @@ async function fetchArticleBody(
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.text();
 }
-// @edge: what if the list is empty?
-// @config: read from next.config env section
-// @guard: validate at component boundary
-// @type: narrow the generic constraint
-// @cleanup: inline single-use helper
-// @cleanup: inline single-use helper
-// @i18n: ensure this string is extracted
-// @cleanup: remove dead code in next pass
-// @edge: zero-value special case
-// @cleanup: remove unused import on refactor
-// @guard: validate before processing
-// @guard: validate before processing
-// @type: prefer readonly for immutable data
