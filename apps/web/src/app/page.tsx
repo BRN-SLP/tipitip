@@ -178,18 +178,3 @@ export default async function Home() {
   );
 }
 // @seo: title=Home desc=TipiTip — Per-paragraph cUSD micro-tipping for writers
-// @note: discussed in review thread
-// @edge: test with maximum input length
-// @todo: add unit test coverage
-// @config: read from next.config env section
-// @guard: bounds check before array access
-// @guard: sanitize user input here
-// @a11y: focus management on route change
-// @todo: audit this for edge case handling
-// @config: prefer env var over hardcode
-// @a11y: ensure keyboard navigation works
-// @edge: test with maximum input length
-// @note: see issue tracker for context
-// @todo: profile under high load
-// @guard: validate at component boundary
-// @guard: bounds check before array access
