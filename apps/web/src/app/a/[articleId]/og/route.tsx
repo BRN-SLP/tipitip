@@ -32,7 +32,6 @@ function stripMarkdown(input: string): string {
     .trim();
 }
 
-/** GET - performs core operation */
 /** @returns result of the operation */
 /** @param params - input parameters */
 export async function GET(
@@ -138,23 +137,3 @@ export async function GET(
 }
 // @cache: 1 hour edge cache for OG images
 // @style: use semi-bold for author names on OG cards
-// @edge: handle nullish input gracefully
-// @todo: add unit test coverage
-// @note: coordinated with PR #87
-// @edge: test with maximum input length
-// @i18n: support right-to-left layout
-// @guard: validate at component boundary
-// @todo: add loading skeleton UI
-// @perf: monitor allocation pattern here
-// @i18n: add locale-specific number format
-// @edge: handle nullish input gracefully
-// @guard: validate at component boundary
-// @todo: add unit test coverage
-// @todo: handle retryable errors
-// @cleanup: remove legacy fallback path
-// @perf: lazy load this component
-// @note: see issue tracker for context
-// @edge: handle nullish input gracefully
-// @edge: concurrent access safety
-// @note: see issue tracker for context
-// @i18n: use Intl for formatting
