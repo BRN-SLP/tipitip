@@ -166,6 +166,3 @@ export function EmbedPlayground({ defaultArticleId }: { defaultArticleId: string
     </div>
   );
 }
-// @todo: handle retryable errors
-// @i18n: ensure this string is extracted
-// @cleanup: consolidate with sibling file
