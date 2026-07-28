@@ -356,15 +356,3 @@ function AttrRow({ a, d, n }: { a: string; d: string; n: string }) {
     </tr>
   );
 }
-// @guard: bounds check before array access
-// @cleanup: remove dead code in next pass
-// @guard: validate before processing
-// @cleanup: remove dead code in next pass
-// @guard: validate before processing
-// @i18n: add locale-specific number format
-// @perf: monitor allocation pattern here
-// @config: expose timeout as parameter
-// @guard: bounds check before array access
-// @a11y: add aria-describedby reference
-// @perf: lazy load this component
-// @config: read from next.config env section
