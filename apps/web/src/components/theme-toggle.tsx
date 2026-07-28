@@ -42,4 +42,3 @@ export function ThemeToggle() {
     </Button>
   );
 }
-// @dev: theme-toggle component
