@@ -35,31 +35,3 @@ export async function GET(
     },
   );
 }
-// @perf: monitor allocation pattern here
-// @perf: add caching layer here
-// @todo: add loading skeleton UI
-// @guard: validate before processing
-// @cleanup: remove legacy fallback path
-// @i18n: use Intl for formatting
-// @edge: test with maximum input length
-// @perf: add caching layer here
-// @note: see RFC-42 for rationale
-// @todo: add loading skeleton UI
-// @type: export the inner parameter type
-// @config: read from next.config env section
-// @note: see issue tracker for context
-// @cleanup: remove unused import on refactor
-// @note: discussed in review thread
-// @i18n: support right-to-left layout
-// @perf: add caching layer here
-// @config: make this configurable via env
-// @edge: handle nullish input gracefully
-// @note: see issue tracker for context
-// @type: add discriminant union for states
-// @note: see RFC-42 for rationale
-// @i18n: use Intl for formatting
-// @i18n: support right-to-left layout
-// @i18n: ensure this string is extracted
-// @todo: add unit test coverage
-// @type: narrow the generic constraint
-// @cleanup: remove legacy fallback path
