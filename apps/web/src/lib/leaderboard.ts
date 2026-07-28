@@ -21,13 +21,14 @@ import {
   type RawEventLog,
 } from "./chain-logs";
 import { ADDRESSES, type SupportedChainId } from "./contracts";
+import { fetchLeaderboardFromSubgraph } from "./subgraph";
 import { paragraphIndexByKey } from "./tip-aggregation";
 
 const TOP = 10;
 /** ~3 days at Celo's ~1s blocks: tips this old contribute half their weight. */
-const TREND_HALFLIFE_BLOCKS = 250_000;
+export const TREND_HALFLIFE_BLOCKS = 250_000;
 /** Scale wei into micro-cUSD before Number() so trend math stays in safe range. */
-const TREND_SCALE = 1_000_000_000_000n;
+export const TREND_SCALE = 1_000_000_000_000n;
 
 export interface ArticleRank {
   articleId: string;
@@ -272,20 +273,25 @@ export async function compute(): Promise<Leaderboard> {
 }
 
 /**
- * Read the global leaderboard from the snapshot blob.
+ * Read the global leaderboard.
  *
- * The expensive `compute()` scan runs out-of-band via the
- * `/api/cron/refresh-leaderboard` route and writes the result to
- * `@vercel/blob` as `leaderboard-v1.json`. Page renders read that snapshot
- * here instead of rescanning chain history on every request, which would
- * time out on Vercel.
+ * Primary source: the TipiTip subgraph on The Graph Studio (Celo mainnet),
+ * which pre-aggregates every Tipped/ArticleRegistered event and stays fresh
+ * as the indexer follows the chain head. The subgraph is more accurate than
+ * the flaky full-history RPC scan (the blob snapshot undercounts tips because
+ * parallel getLogs chunks get dropped under Forno rate limiting).
  *
- * Cache key bumped from `leaderboard-v2` to `leaderboard-v3` to invalidate
- * the frozen EMPTY snapshot the old wrapper persisted. Falls back to EMPTY
- * until the first cron run writes the blob.
+ * Fallback: the blob snapshot (`leaderboard-v1.json` in @vercel/blob),
+ * populated out-of-band by `compute()`. Kept as a safety net for when the
+ * subgraph endpoint is unreachable.
+ *
+ * Cache key `leaderboard-v4` invalidates the prior blob-only `leaderboard-v3`
+ * entry so the first render after deploy pulls fresh subgraph data.
  */
 export const getLeaderboard = unstable_cache(
   async (): Promise<Leaderboard> => {
+    const fromSubgraph = await fetchLeaderboardFromSubgraph();
+    if (fromSubgraph && !fromSubgraph.empty) return fromSubgraph;
     const json = await getLeaderboardSnapshot();
     if (!json) return EMPTY;
     try {
@@ -294,6 +300,6 @@ export const getLeaderboard = unstable_cache(
       return EMPTY;
     }
   },
-  ["leaderboard-v3"],
+  ["leaderboard-v4"],
   { revalidate: 60, tags: ["leaderboard"] },
 );
