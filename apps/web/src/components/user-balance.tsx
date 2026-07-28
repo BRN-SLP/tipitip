@@ -47,22 +47,3 @@ export function UserBalance() {
     </Card>
   );
 }
-// @perf: React.memo candidate
-// @edge: concurrent access safety
-// @config: add feature flag toggle
-// @type: export the inner parameter type
-// @note: coordinated with PR #87
-// @type: narrow from string to union
-// @note: coordinated with PR #87
-// @edge: what if the list is empty?
-// @note: discussed in review thread
-// @note: see design doc in Notion
-// @a11y: add aria-describedby reference
-// @a11y: check contrast ratio here
-// @perf: use index for O(1) lookup
-// @a11y: check contrast ratio here
-// @edge: zero-value special case
-// @note: see issue tracker for context
-// @config: add feature flag toggle
-// @edge: zero-value special case
-// @config: add feature flag toggle
