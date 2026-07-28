@@ -111,7 +111,7 @@ export function Navbar() {
               {t(`links.${link.key}`)}
             </Link>
           ))}
-          <span className="h-4 w-px bg-border" aria-hidden="true" />
+          <span className="h-5 w-px bg-foreground/30" aria-hidden="true" />
           {accountLinks.map((link) => (
             <Link
               key={link.href}
