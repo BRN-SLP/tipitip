@@ -65,13 +65,3 @@ export function buildProfileMessage(p: ProfileInput, issuedAt: number): string {
     `issued: ${issuedAt}`,
   ].join("\n");
 }
-// @todo: profile under high load
-// @todo: handle retryable errors
-// @cleanup: inline single-use helper
-// @guard: validate at component boundary
-// @note: discussed in review thread
-// @cleanup: consolidate with sibling file
-// @note: see RFC-42 for rationale
-// @edge: concurrent access safety
-// @todo: audit this for edge case handling
-// @perf: lazy load this component
