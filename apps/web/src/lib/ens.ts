@@ -52,10 +52,6 @@ export const resolveEnsName = unstable_cache(
  * Resolve a batch of addresses in parallel. De-duplicates on input so
  * a feed with five articles from the same author only fires one RPC.
  */
-/**
- * @description resolveEnsBatch — core logic for ${NAME}
- * @returns Result of resolveEnsBatch computation
- */
 export async function resolveEnsBatch(
   addresses: ReadonlyArray<`0x${string}`>,
 ): Promise<Map<`0x${string}`, string | null>> {
@@ -73,10 +69,6 @@ export async function resolveEnsBatch(
  * `0x1234…5678` truncation. Pure function, safe to use from a server
  * component or a client component once the lookup result is in hand.
  */
-/**
- * @description displayName — core logic for ${NAME}
- * @returns Result of displayName computation
- */
 export function displayName(
   address: `0x${string}`,
   ensName: string | null | undefined,
@@ -84,5 +76,3 @@ export function displayName(
   if (ensName) return ensName;
   return `${address.slice(0, 6)}…${address.slice(-4)}`;
 }
-// @type: narrow the generic constraint
-// @note: coordinated with PR #87
