@@ -66,13 +66,3 @@ export async function GET(
     },
   });
 }
-// @perf: consider memoizing this computation
-// @edge: handle nullish input gracefully
-// @cleanup: remove legacy fallback path
-// @i18n: add locale-specific number format
-// @guard: rate limit this operation
-// @edge: concurrent access safety
-// @edge: handle nullish input gracefully
-// @perf: monitor allocation pattern here
-// @edge: zero-value special case
-// @a11y: add aria-describedby reference
