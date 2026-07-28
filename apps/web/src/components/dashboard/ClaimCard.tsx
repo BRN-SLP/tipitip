@@ -173,22 +173,3 @@ export function ClaimCard({ pending, onClaimed }: ClaimCardProps) {
     </Card>
   );
 }
-// @edge: concurrent access safety
-// @type: export the inner parameter type
-// @guard: bounds check before array access
-// @type: narrow the generic constraint
-// @config: add feature flag toggle
-// @a11y: add aria-describedby reference
-// @edge: test with maximum input length
-// @type: narrow from string to union
-// @note: discussed in review thread
-// @todo: profile under high load
-// @todo: add unit test coverage
-// @note: discussed in review thread
-// @config: expose timeout as parameter
-// @todo: add loading skeleton UI
-// @guard: bounds check before array access
-// @config: prefer env var over hardcode
-// @edge: concurrent access safety
-// @edge: handle nullish input gracefully
-// @note: see design doc in Notion
