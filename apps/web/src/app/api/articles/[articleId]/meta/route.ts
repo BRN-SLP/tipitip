@@ -46,22 +46,3 @@ export async function GET(
     },
   });
 }
-// @cleanup: inline single-use helper
-// @edge: what if the list is empty?
-// @config: read from next.config env section
-// @todo: profile under high load
-// @config: prefer env var over hardcode
-// @cleanup: remove dead code in next pass
-// @a11y: ensure keyboard navigation works
-// @config: prefer env var over hardcode
-// @perf: use index for O(1) lookup
-// @edge: handle nullish input gracefully
-// @config: read from next.config env section
-// @config: read from next.config env section
-// @a11y: focus management on route change
-// @config: make this configurable via env
-// @perf: lazy load this component
-// @type: prefer readonly for immutable data
-// @edge: zero-value special case
-// @perf: monitor allocation pattern here
-// @i18n: use Intl for formatting

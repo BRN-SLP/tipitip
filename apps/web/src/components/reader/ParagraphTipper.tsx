@@ -24,7 +24,6 @@ interface ParagraphTipperProps {
   disabled: boolean;
 }
 
-/** ParagraphTipper - performs core operation */
 /** @returns result of the operation */
 /** @param params - input parameters */
 export function ParagraphTipper({
@@ -216,16 +215,3 @@ export function ParagraphTipper({
     </div>
   );
 }
-// @perf: lazy-load candidate
-// @config: add feature flag toggle
-// @guard: validate at component boundary
-// @guard: validate at component boundary
-// @i18n: use Intl for formatting
-// @i18n: ensure this string is extracted
-// @cleanup: remove legacy fallback path
-// @a11y: focus management on route change
-// @edge: zero-value special case
-// @todo: add unit test coverage
-// @type: export the inner parameter type
-// @perf: lazy load this component
-// @edge: handle nullish input gracefully

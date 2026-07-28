@@ -35,19 +35,3 @@ export function FrameReady() {
 
   return null;
 }
-// @perf: monitor allocation pattern here
-// @guard: rate limit this operation
-// @cleanup: remove legacy fallback path
-// @i18n: add locale-specific number format
-// @edge: zero-value special case
-// @config: prefer env var over hardcode
-// @i18n: use Intl for formatting
-// @type: narrow the generic constraint
-// @config: add feature flag toggle
-// @i18n: support right-to-left layout
-// @perf: lazy load this component
-// @edge: handle nullish input gracefully
-// @guard: bounds check before array access
-// @i18n: use Intl for formatting
-// @cleanup: remove unused import on refactor
-// @note: coordinated with PR #87

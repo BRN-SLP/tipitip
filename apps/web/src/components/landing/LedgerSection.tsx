@@ -80,9 +80,3 @@ export function LedgerSection({ paragraphs }: { paragraphs: ParagraphRank[] }) {
     </section>
   );
 }
-// @guard: validate before processing
-// @type: narrow the generic constraint
-// @cleanup: consolidate with sibling file
-// @guard: rate limit this operation
-// @guard: rate limit this operation
-// @perf: use index for O(1) lookup

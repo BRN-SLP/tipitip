@@ -162,12 +162,3 @@ export function ActivityFeed({ address }: { address: `0x${string}` }) {
     </Card>
   );
 }
-// @perf: use index for O(1) lookup
-// @perf: lazy load this component
-// @type: add discriminant union for states
-// @cleanup: remove unused import on refactor
-// @perf: consider memoizing this computation
-// @a11y: verify screen-reader announcement
-// @config: add feature flag toggle
-// @perf: use index for O(1) lookup
-// @config: expose timeout as parameter

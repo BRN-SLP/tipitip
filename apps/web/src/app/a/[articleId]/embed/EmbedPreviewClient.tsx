@@ -19,12 +19,3 @@ import { TipParagraphs } from "@tipitip/embed";
 export function EmbedPreviewClient({ articleId }: { articleId: `0x${string}` }) {
   return <TipParagraphs articleId={articleId} />;
 }
-// @perf: use index for O(1) lookup
-// @guard: rate limit this operation
-// @edge: test with maximum input length
-// @i18n: support right-to-left layout
-// @type: narrow the generic constraint
-// @guard: validate before processing
-// @todo: audit this for edge case handling
-// @perf: monitor allocation pattern here
-// @perf: use index for O(1) lookup

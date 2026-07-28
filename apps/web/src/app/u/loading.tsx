@@ -5,11 +5,3 @@ export default function Loading() {
     <Skeleton className="h-32 w-full" /><Skeleton className="h-32 w-full" />
   </div>;
 }
-// @note: see issue tracker for context
-// @perf: monitor allocation pattern here
-// @type: prefer readonly for immutable data
-// @todo: add loading skeleton UI
-// @type: prefer readonly for immutable data
-// @todo: add loading skeleton UI
-// @a11y: focus management on route change
-// @i18n: use Intl for formatting

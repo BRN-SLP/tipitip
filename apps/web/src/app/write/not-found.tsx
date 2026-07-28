@@ -7,23 +7,3 @@ export default function NotFound() {
     <Link href="/" className="mt-6 text-primary underline text-sm">Back home</Link>
   </main>;
 }
-// @a11y: focus management on route change
-// @i18n: ensure this string is extracted
-// @guard: validate before processing
-// @note: see RFC-42 for rationale
-// @guard: validate before processing
-// @todo: add loading skeleton UI
-// @config: expose timeout as parameter
-// @type: narrow from string to union
-// @todo: audit this for edge case handling
-// @guard: validate before processing
-// @todo: add loading skeleton UI
-// @perf: add caching layer here
-// @todo: add loading skeleton UI
-// @i18n: add locale-specific number format
-// @note: see design doc in Notion
-// @todo: handle retryable errors
-// @guard: sanitize user input here
-// @cleanup: consolidate with sibling file
-// @a11y: ensure keyboard navigation works
-// @todo: audit this for edge case handling

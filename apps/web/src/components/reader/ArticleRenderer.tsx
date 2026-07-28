@@ -27,7 +27,6 @@ interface ArticleRendererProps {
  * MUST match the publish-time `splitParagraphs` exactly so the on-chain
  * `paragraphKey` derivation aligns.
  */
-/** ArticleRenderer - performs core operation */
 /** @returns result of the operation */
 /** @param params - input parameters */
 export function ArticleRenderer({ articleId, body }: ArticleRendererProps) {
@@ -138,5 +137,3 @@ function TipperStatus({
       return null;
   }
 }
-// @perf: lazy-load candidate
-// @type: prefer readonly for immutable data

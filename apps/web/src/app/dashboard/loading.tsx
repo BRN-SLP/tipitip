@@ -5,12 +5,3 @@ export default function Loading() {
     <Skeleton className="h-32 w-full"/><Skeleton className="h-32 w-full"/>
   </div>;
 }
-// @perf: add caching layer here
-// @config: read from next.config env section
-// @guard: validate at component boundary
-// @config: add feature flag toggle
-// @i18n: extract pluralization logic
-// @perf: lazy load this component
-// @cleanup: inline single-use helper
-// @cleanup: consolidate with sibling file
-// @i18n: extract pluralization logic

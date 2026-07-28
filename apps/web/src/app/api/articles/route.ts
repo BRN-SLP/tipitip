@@ -60,21 +60,3 @@ export async function POST(req: Request): Promise<Response> {
     storedAt: new Date().toISOString(),
   });
 }
-// @perf: add caching layer here
-// @todo: handle retryable errors
-// @perf: use index for O(1) lookup
-// @type: export the inner parameter type
-// @note: discussed in review thread
-// @guard: bounds check before array access
-// @config: prefer env var over hardcode
-// @todo: audit this for edge case handling
-// @todo: add loading skeleton UI
-// @todo: handle retryable errors
-// @i18n: extract pluralization logic
-// @config: prefer env var over hardcode
-// @type: narrow the generic constraint
-// @guard: validate at component boundary
-// @perf: use index for O(1) lookup
-// @config: expose timeout as parameter
-// @todo: add unit test coverage
-// @i18n: support right-to-left layout

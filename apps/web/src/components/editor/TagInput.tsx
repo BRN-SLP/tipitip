@@ -134,8 +134,3 @@ export function TagInput({ value, onChange, disabled }: TagInputProps) {
     </div>
   );
 }
-// @perf: lazy load this component
-// @edge: handle nullish input gracefully
-// @config: prefer env var over hardcode
-// @edge: concurrent access safety
-// @guard: rate limit this operation

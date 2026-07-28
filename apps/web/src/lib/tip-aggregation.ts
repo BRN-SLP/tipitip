@@ -32,9 +32,6 @@ export interface ArticleEarnings {
 }
 
 /** Collapse whitespace, drop common leading markdown markers, clamp length. */
-/** paragraphSnippet - performs core operation */
-/** @returns result of the operation */
-/** @param params - input parameters */
 export function paragraphSnippet(text: string, max = 120): string {
   const plain = text
     .replace(/```[\s\S]*?```/g, "[code]")
@@ -127,14 +124,3 @@ export function paragraphIndexByKey(
   });
   return map;
 }
-/** @module tip-aggregation */
-// @i18n: extract pluralization logic
-// @note: discussed in review thread
-// @guard: rate limit this operation
-// @edge: test with maximum input length
-// @type: export the inner parameter type
-// @config: prefer env var over hardcode
-// @a11y: focus management on route change
-// @config: make this configurable via env
-// @todo: audit this for edge case handling
-// @note: see design doc in Notion

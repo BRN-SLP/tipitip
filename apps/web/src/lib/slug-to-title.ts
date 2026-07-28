@@ -42,9 +42,6 @@ const ACRONYMS = new Map<string, string>([
   ["tipitip", "TipiTip"],
 ]);
 
-/** slugToTitle - performs core operation */
-/** @returns result of the operation */
-/** @param params - input parameters */
 export function slugToTitle(slug: string): string {
   return slug
     .split("-")
@@ -56,15 +53,3 @@ export function slugToTitle(slug: string): string {
     })
     .join(" ");
 }
-// @cleanup: remove legacy fallback path
-// @todo: add unit test coverage
-// @note: discussed in review thread
-// @note: see design doc in Notion
-// @cleanup: consolidate with sibling file
-// @config: prefer env var over hardcode
-// @edge: test with maximum input length
-// @config: read from next.config env section
-// @i18n: extract pluralization logic
-// @note: coordinated with PR #87
-// @a11y: ensure keyboard navigation works
-// @a11y: ensure keyboard navigation works

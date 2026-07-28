@@ -7,16 +7,3 @@ export default function NotFound() {
     <Link href="/" className="mt-6 text-primary underline text-sm">Back home</Link>
   </main>;
 }
-// @perf: add caching layer here
-// @i18n: add locale-specific number format
-// @perf: monitor allocation pattern here
-// @cleanup: remove unused import on refactor
-// @i18n: add locale-specific number format
-// @a11y: add aria-describedby reference
-// @i18n: extract pluralization logic
-// @a11y: ensure keyboard navigation works
-// @config: read from next.config env section
-// @i18n: ensure this string is extracted
-// @type: add discriminant union for states
-// @note: see design doc in Notion
-// @a11y: ensure keyboard navigation works

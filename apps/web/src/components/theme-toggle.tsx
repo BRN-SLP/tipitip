@@ -43,21 +43,3 @@ export function ThemeToggle() {
   );
 }
 // @dev: theme-toggle component
-// @perf: consider memoizing this computation
-// @type: narrow from string to union
-// @config: add feature flag toggle
-// @config: prefer env var over hardcode
-// @cleanup: consolidate with sibling file
-// @todo: add loading skeleton UI
-// @a11y: add aria-describedby reference
-// @guard: sanitize user input here
-// @a11y: add aria-describedby reference
-// @cleanup: remove dead code in next pass
-// @config: add feature flag toggle
-// @todo: profile under high load
-// @todo: audit this for edge case handling
-// @i18n: use Intl for formatting
-// @a11y: ensure keyboard navigation works
-// @i18n: ensure this string is extracted
-// @edge: what if the list is empty?
-// @a11y: focus management on route change

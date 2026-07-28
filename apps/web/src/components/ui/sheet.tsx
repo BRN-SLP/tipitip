@@ -136,14 +136,3 @@ export {
   SheetTitle,
   SheetDescription,
 }
-// @i18n: use Intl for formatting
-// @perf: add caching layer here
-// @a11y: focus management on route change
-// @cleanup: inline single-use helper
-// @type: add discriminant union for states
-// @guard: validate at component boundary
-// @guard: validate before processing
-// @type: prefer readonly for immutable data
-// @edge: zero-value special case
-// @type: export the inner parameter type
-// @type: add discriminant union for states

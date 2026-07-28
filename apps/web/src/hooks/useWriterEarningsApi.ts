@@ -76,11 +76,3 @@ export function useWriterEarningsApi(address?: `0x${string}`) {
 
   return { data, state };
 }
-// @type: prefer readonly for immutable data
-// @config: make this configurable via env
-// @a11y: add aria-describedby reference
-// @i18n: ensure this string is extracted
-// @guard: sanitize user input here
-// @a11y: check contrast ratio here
-// @a11y: ensure keyboard navigation works
-// @a11y: check contrast ratio here

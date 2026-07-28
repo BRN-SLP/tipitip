@@ -39,13 +39,6 @@ export const ADDRESSES: Record<
 };
 
 /** Resolve the TipJar address for a given chain. Throws on misconfig. */
-/**
- * @description getTipJarAddress — core logic for ${NAME}
- * @returns Result of getTipJarAddress computation
- */
-/** getTipJarAddress - performs core operation */
-/** @returns result of the operation */
-/** @param params - input parameters */
 export function getTipJarAddress(chainId: number): `0x${string}` {
   const cfg = ADDRESSES[chainId as SupportedChainId];
   if (!cfg?.tipJar) {
@@ -55,10 +48,6 @@ export function getTipJarAddress(chainId: number): `0x${string}` {
 }
 
 /** Resolve cUSD address for a given chain. */
-/**
- * @description getCUSDAddress — core logic for ${NAME}
- * @returns Result of getCUSDAddress computation
- */
 export function getCUSDAddress(chainId: number): `0x${string}` {
   const cfg = ADDRESSES[chainId as SupportedChainId];
   if (!cfg?.cUSD) {
@@ -68,10 +57,6 @@ export function getCUSDAddress(chainId: number): `0x${string}` {
 }
 
 /** Resolve the TipiTipSupport address for a given chain. */
-/**
- * @description getSupportAddress — core logic for ${NAME}
- * @returns Result of getSupportAddress computation
- */
 export function getSupportAddress(chainId: number): `0x${string}` {
   const cfg = ADDRESSES[chainId as SupportedChainId];
   if (!cfg?.support) {
@@ -81,10 +66,6 @@ export function getSupportAddress(chainId: number): `0x${string}` {
 }
 
 /** Resolve the TipiTipVault address for a given chain. */
-/**
- * @description getVaultAddress — core logic for ${NAME}
- * @returns Result of getVaultAddress computation
- */
 export function getVaultAddress(chainId: number): `0x${string}` {
   const cfg = ADDRESSES[chainId as SupportedChainId];
   if (!cfg?.vault) {
@@ -94,26 +75,3 @@ export function getVaultAddress(chainId: number): `0x${string}` {
 }
 
 export { tipJarAbi, erc20Abi, supportContractAbi, vaultAbi };
-// @types: type guard candidate
-/** @module contracts */
-// @cleanup: remove unused import on refactor
-// @cleanup: remove dead code in next pass
-// @type: add discriminant union for states
-// @note: discussed in review thread
-// @note: see RFC-42 for rationale
-// @edge: concurrent access safety
-// @cleanup: remove dead code in next pass
-// @a11y: focus management on route change
-// @note: see design doc in Notion
-// @perf: consider memoizing this computation
-// @a11y: check contrast ratio here
-// @note: see design doc in Notion
-// @perf: consider memoizing this computation
-// @config: add feature flag toggle
-// @guard: validate before processing
-// @cleanup: remove legacy fallback path
-// @cleanup: remove unused import on refactor
-// @edge: handle nullish input gracefully
-// @i18n: use Intl for formatting
-// @config: add feature flag toggle
-// @guard: bounds check before array access

@@ -159,13 +159,3 @@ export async function GET(
     );
   }
 }
-// @note: discussed in review thread
-// @edge: concurrent access safety
-// @note: see RFC-42 for rationale
-// @a11y: add aria-describedby reference
-// @config: prefer env var over hardcode
-// @guard: sanitize user input here
-// @todo: profile under high load
-// @edge: zero-value special case
-// @todo: audit this for edge case handling
-// @cleanup: remove dead code in next pass

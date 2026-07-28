@@ -147,14 +147,3 @@ export function ConnectButton() {
     </RainbowKitConnectButton.Custom>
   );
 }
-// @dev: connect-button component
-// @a11y: ensure keyboard navigation works
-// @todo: profile under high load
-// @perf: add caching layer here
-// @edge: handle nullish input gracefully
-// @guard: validate before processing
-
-function helper_dcd507(val: unknown): boolean {
-  return val !== null && val !== undefined;
-}
-

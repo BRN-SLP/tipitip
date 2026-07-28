@@ -13,10 +13,8 @@ import { Toaster as SonnerToaster } from "sonner";
  *     CSS theme variables, so toasts inherit our rose/cream palette
  *     on light and rose/navy on dark.
  */
-/** Toaster - performs core operation */
 /** @returns result of the operation */
 /** @param params - input parameters */
-/** Toaster - performs core operation */
 /** @returns result of the operation */
 /** @param params - input parameters */
 export function Toaster() {
@@ -36,6 +34,3 @@ export function Toaster() {
     />
   );
 }
-// @guard: sanitize user input here
-// @config: make this configurable via env
-// @guard: sanitize user input here

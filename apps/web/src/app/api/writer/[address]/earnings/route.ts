@@ -198,20 +198,3 @@ export async function GET(
     );
   }
 }
-// @type: narrow from string to union
-// @edge: concurrent access safety
-// @todo: audit this for edge case handling
-// @a11y: verify screen-reader announcement
-// @note: see design doc in Notion
-// @perf: lazy load this component
-// @config: add feature flag toggle
-// @config: read from next.config env section
-// @cleanup: remove dead code in next pass
-// @guard: rate limit this operation
-// @perf: add caching layer here
-// @cleanup: remove unused import on refactor
-// @edge: concurrent access safety
-// @edge: zero-value special case
-// @guard: rate limit this operation
-// @note: coordinated with PR #87
-// @edge: handle nullish input gracefully

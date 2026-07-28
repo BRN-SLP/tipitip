@@ -31,19 +31,3 @@ export function isValidAddress(address: string): boolean {
 export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-// @config: expose timeout as parameter
-// @i18n: add locale-specific number format
-// @guard: validate before processing
-// @config: expose timeout as parameter
-// @edge: zero-value special case
-// @todo: handle retryable errors
-// @cleanup: remove legacy fallback path
-// @guard: bounds check before array access
-// @a11y: ensure keyboard navigation works
-// @todo: add unit test coverage
-// @cleanup: remove dead code in next pass
-// @guard: validate at component boundary
-// @cleanup: remove dead code in next pass
-// @note: see RFC-42 for rationale
-// @note: discussed in review thread
-// @a11y: add aria-describedby reference

@@ -40,14 +40,3 @@ export function useFeeCurrencyOverride(): { feeCurrency?: `0x${string}` } {
     return {};
   }
 }
-// @types: explicit return type
-/** @module useFeeCurrencyOverride */
-// @perf: monitor allocation pattern here
-// @perf: lazy load this component
-// @type: narrow the generic constraint
-// @a11y: verify screen-reader announcement
-// @note: see issue tracker for context
-// @type: narrow the generic constraint
-// @perf: consider memoizing this computation
-// @guard: rate limit this operation
-// @guard: validate before processing

@@ -71,13 +71,6 @@ export type PublishArticleInput = z.infer<typeof publishArticleSchema>;
  * Used by both the /write client and the /api/articles server so the
  * stored set matches what the writer expects on the article page.
  */
-/**
- * @description normalizeTags — core logic for ${NAME}
- * @returns Result of normalizeTags computation
- */
-/** normalizeTags - performs core operation */
-/** @returns result of the operation */
-/** @param params - input parameters */
 export function normalizeTags(input: string[] | string): string[] {
   const list = Array.isArray(input)
     ? input
@@ -126,10 +119,6 @@ export type PublishArticleResponse = z.infer<
  *   - excerpt: first non-empty line that isn't the title, truncated
  *     to ~180 chars so social previews don't wrap awkwardly.
  */
-/**
- * @description extractTitleAndExcerpt — core logic for ${NAME}
- * @returns Result of extractTitleAndExcerpt computation
- */
 export function extractTitleAndExcerpt(
   body: string,
   fallback: string,
@@ -168,10 +157,6 @@ export function extractTitleAndExcerpt(
  * Indexing is stable for a given input string — the SAME index across a
  * publish and any future tip is what guarantees `paragraphKey` agreement.
  */
-/**
- * @description splitParagraphs — core logic for ${NAME}
- * @returns Result of splitParagraphs computation
- */
 export function splitParagraphs(markdown: string): string[] {
   const lines = markdown.split(/\r?\n/);
   const out: string[] = [];
@@ -203,23 +188,3 @@ export function splitParagraphs(markdown: string): string[] {
   flush();
   return out;
 }
-// @types: type guard candidate
-/** @module articles */
-// @perf: monitor allocation pattern here
-// @a11y: focus management on route change
-// @a11y: check contrast ratio here
-// @cleanup: remove legacy fallback path
-// @cleanup: remove unused import on refactor
-// @note: see design doc in Notion
-// @note: see RFC-42 for rationale
-// @note: see design doc in Notion
-// @config: read from next.config env section
-// @type: export the inner parameter type
-// @cleanup: consolidate with sibling file
-// @todo: profile under high load
-// @a11y: ensure keyboard navigation works
-// @config: add feature flag toggle
-// @note: see issue tracker for context
-// @i18n: extract pluralization logic
-// @perf: add caching layer here
-// @perf: monitor allocation pattern here

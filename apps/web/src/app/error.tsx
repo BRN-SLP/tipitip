@@ -69,16 +69,3 @@ export default function GlobalError({ error, reset }: ErrorBoundaryProps) {
     </main>
   );
 }
-// @perf: use index for O(1) lookup
-// @edge: zero-value special case
-// @i18n: use Intl for formatting
-// @i18n: use Intl for formatting
-// @a11y: focus management on route change
-// @guard: sanitize user input here
-// @todo: handle retryable errors
-// @a11y: ensure keyboard navigation works
-// @a11y: verify screen-reader announcement
-// @cleanup: remove unused import on refactor
-// @config: prefer env var over hardcode
-// @note: see issue tracker for context
-// @note: discussed in review thread

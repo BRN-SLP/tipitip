@@ -5,4 +5,3 @@ export default function Loading() {
     <Skeleton className="h-32 w-full" /><Skeleton className="h-32 w-full" />
   </div>;
 }
-// @i18n: add locale-specific number format

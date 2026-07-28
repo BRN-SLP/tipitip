@@ -5,21 +5,3 @@ export default function Loading() {
     <Skeleton className="h-32 w-full" /><Skeleton className="h-32 w-full" />
   </div>;
 }
-// @note: see design doc in Notion
-// @guard: sanitize user input here
-// @config: expose timeout as parameter
-// @guard: bounds check before array access
-// @note: see issue tracker for context
-// @type: narrow from string to union
-// @perf: lazy load this component
-// @cleanup: remove unused import on refactor
-// @a11y: check contrast ratio here
-// @edge: what if the list is empty?
-// @note: coordinated with PR #87
-// @note: see issue tracker for context
-// @todo: add loading skeleton UI
-// @type: prefer readonly for immutable data
-// @guard: validate at component boundary
-// @edge: handle nullish input gracefully
-// @i18n: add locale-specific number format
-// @guard: validate at component boundary

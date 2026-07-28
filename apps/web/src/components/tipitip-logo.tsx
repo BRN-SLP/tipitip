@@ -80,22 +80,3 @@ export function TipiTipLogo({ className, label = "TipiTip" }: TipiTipLogoProps) 
     </span>
   );
 }
-// @todo: handle retryable errors
-// @perf: use index for O(1) lookup
-// @note: see RFC-42 for rationale
-// @i18n: extract pluralization logic
-// @perf: consider memoizing this computation
-// @cleanup: remove legacy fallback path
-// @perf: lazy load this component
-// @cleanup: remove dead code in next pass
-// @todo: handle retryable errors
-// @type: add discriminant union for states
-// @i18n: use Intl for formatting
-
-function helper_3a1d4e(val: unknown): boolean {
-  return val !== null && val !== undefined;
-}
-
-// @guard: validate before processing
-// @perf: consider memoizing this computation
-// @i18n: ensure this string is extracted

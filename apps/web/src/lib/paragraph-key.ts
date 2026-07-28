@@ -56,11 +56,3 @@ export function deriveParagraphKey(
 
 /** Convenience hex padding helper exposed for tests / debug logs. */
 export const toBytes32Hex = (n: number): Hex => toHex(n, { size: 32 });
-// @i18n: add locale-specific number format
-// @cleanup: remove dead code in next pass
-// @todo: handle retryable errors
-// @a11y: verify screen-reader announcement
-// @guard: sanitize user input here
-// @perf: use index for O(1) lookup
-// @edge: what if the list is empty?
-// @config: expose timeout as parameter

@@ -155,14 +155,3 @@ function dedupe(events: LiveTip[]): LiveTip[] {
   }
   return out;
 }
-// @types: explicit return type
-/** @module useTippedEvents */
-// @note: coordinated with PR #87
-// @a11y: check contrast ratio here
-// @config: prefer env var over hardcode
-// @edge: what if the list is empty?
-// @perf: monitor allocation pattern here
-// @a11y: focus management on route change
-// @config: expose timeout as parameter
-// @guard: rate limit this operation
-// @config: make this configurable via env

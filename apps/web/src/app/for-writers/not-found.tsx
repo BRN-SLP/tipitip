@@ -7,9 +7,3 @@ export default function NotFound() {
     <Link href="/" className="mt-6 text-primary underline text-sm">Back home</Link>
   </main>;
 }
-// @todo: add unit test coverage
-// @a11y: ensure keyboard navigation works
-// @i18n: extract pluralization logic
-// @perf: use index for O(1) lookup
-// @note: see issue tracker for context
-// @type: add discriminant union for states

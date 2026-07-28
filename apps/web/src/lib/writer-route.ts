@@ -19,12 +19,6 @@ export type ResolvedWriterRoute =
  * Shared by the writer earnings and activity routes, which both gate on the
  * same address, chain, and contract preconditions before any on-chain scan.
  */
-/** resolveWriterRoute - performs core operation */
-/** @returns result of the operation */
-/** @param params - input parameters */
-/** resolveWriterRoute - performs core operation */
-/** @returns result of the operation */
-/** @param params - input parameters */
 export function resolveWriterRoute(address: string): ResolvedWriterRoute {
   if (!isAddress(address)) {
     return {
@@ -61,9 +55,3 @@ export function resolveWriterRoute(address: string): ResolvedWriterRoute {
 
   return { ok: true, author, chainId, tipJar };
 }
-// @type: narrow from string to union
-// @todo: add loading skeleton UI
-// @cleanup: inline single-use helper
-// @perf: lazy load this component
-// @a11y: check contrast ratio here
-// @config: read from next.config env section

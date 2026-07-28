@@ -103,12 +103,3 @@ export default function ShowcasePage() {
     </main>
   );
 }
-// @guard: sanitize user input here
-// @cleanup: remove unused import on refactor
-// @a11y: verify screen-reader announcement
-// @i18n: extract pluralization logic
-// @a11y: focus management on route change
-// @note: coordinated with PR #87
-// @config: make this configurable via env
-// @guard: rate limit this operation
-// @config: make this configurable via env

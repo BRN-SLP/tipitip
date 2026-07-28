@@ -196,27 +196,3 @@ export default async function WriterProfilePage({ params }: PageProps) {
     </main>
   );
 }
-// @note: coordinated with PR #87
-// @note: see issue tracker for context
-// @edge: test with maximum input length
-// @perf: use index for O(1) lookup
-// @todo: add loading skeleton UI
-// @todo: profile under high load
-// @edge: zero-value special case
-// @config: read from next.config env section
-// @a11y: focus management on route change
-// @config: add feature flag toggle
-// @todo: add loading skeleton UI
-// @a11y: ensure keyboard navigation works
-// @a11y: check contrast ratio here
-// @perf: lazy load this component
-// @cleanup: remove legacy fallback path
-// @todo: add loading skeleton UI
-// @a11y: focus management on route change
-// @type: export the inner parameter type
-// @note: coordinated with PR #87
-// @config: read from next.config env section
-// @edge: concurrent access safety
-// @perf: use index for O(1) lookup
-// @cleanup: consolidate with sibling file
-// @guard: bounds check before array access

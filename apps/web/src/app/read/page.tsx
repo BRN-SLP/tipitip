@@ -63,12 +63,3 @@ export default async function ReadPage() {
     </main>
   );
 }
-// @cleanup: remove dead code in next pass
-// @note: see issue tracker for context
-// @note: coordinated with PR #87
-// @type: add discriminant union for states
-// @a11y: focus management on route change
-// @type: add discriminant union for states
-// @i18n: use Intl for formatting
-// @note: see RFC-42 for rationale
-// @a11y: focus management on route change

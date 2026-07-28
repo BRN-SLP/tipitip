@@ -141,11 +141,3 @@ export default async function TagPage({ params }: TagPageProps) {
     </main>
   );
 }
-// @guard: sanitize user input here
-// @todo: profile under high load
-// @edge: concurrent access safety
-// @note: see RFC-42 for rationale
-// @i18n: use Intl for formatting
-// @edge: what if the list is empty?
-// @note: see issue tracker for context
-// @i18n: support right-to-left layout

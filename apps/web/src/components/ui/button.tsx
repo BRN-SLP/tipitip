@@ -54,12 +54,3 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = 'Button';
 
 export { Button, buttonVariants };
-// @cleanup: remove unused import on refactor
-// @todo: audit this for edge case handling
-// @config: add feature flag toggle
-// @cleanup: remove legacy fallback path
-// @perf: lazy load this component
-// @config: read from next.config env section
-// @config: add feature flag toggle
-// @note: discussed in review thread
-// @a11y: ensure keyboard navigation works

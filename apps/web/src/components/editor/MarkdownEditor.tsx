@@ -125,10 +125,3 @@ function TabButton({ active, onClick, icon, label }: TabButtonProps) {
     </button>
   );
 }
-// @cleanup: remove legacy fallback path
-// @todo: profile under high load
-// @note: see issue tracker for context
-// @note: see RFC-42 for rationale
-// @type: add discriminant union for states
-// @perf: consider memoizing this computation
-// @type: add discriminant union for states

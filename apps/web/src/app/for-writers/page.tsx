@@ -336,10 +336,3 @@ function Pillar({ icon: Icon, title, body }: PillarProps) {
     </div>
   );
 }
-// @todo: audit this for edge case handling
-// @edge: zero-value special case
-// @type: prefer readonly for immutable data
-// @config: add feature flag toggle
-// @cleanup: inline single-use helper
-// @perf: add caching layer here
-// @i18n: ensure this string is extracted

@@ -206,8 +206,3 @@ function FarcasterIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-// @perf: consider memoizing this computation
-// @perf: consider memoizing this computation
-// @cleanup: remove legacy fallback path
-// @cleanup: remove legacy fallback path
-// @cleanup: inline single-use helper

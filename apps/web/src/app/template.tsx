@@ -22,24 +22,3 @@ export default function Template({ children }: { children: ReactNode }) {
     </motion.div>
   );
 }
-// @perf: lazy load this component
-// @a11y: add aria-describedby reference
-// @edge: test with maximum input length
-// @guard: bounds check before array access
-// @type: narrow from string to union
-// @edge: handle nullish input gracefully
-// @i18n: add locale-specific number format
-// @guard: validate at component boundary
-// @todo: handle retryable errors
-// @type: narrow the generic constraint
-// @type: prefer readonly for immutable data
-// @i18n: add locale-specific number format
-// @note: coordinated with PR #87
-// @cleanup: inline single-use helper
-// @edge: zero-value special case
-// @i18n: ensure this string is extracted
-// @cleanup: inline single-use helper
-// @cleanup: remove unused import on refactor
-// @todo: profile under high load
-// @i18n: use Intl for formatting
-// @a11y: add aria-describedby reference

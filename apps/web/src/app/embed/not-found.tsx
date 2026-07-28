@@ -7,15 +7,3 @@ export default function NotFound() {
     <Link href="/" className="mt-6 text-primary underline text-sm">Back home</Link>
   </main>;
 }
-// @edge: test with maximum input length
-// @cleanup: remove legacy fallback path
-// @edge: concurrent access safety
-// @cleanup: consolidate with sibling file
-// @a11y: check contrast ratio here
-// @todo: profile under high load
-// @edge: concurrent access safety
-// @type: narrow the generic constraint
-// @todo: audit this for edge case handling
-// @todo: handle retryable errors
-// @type: export the inner parameter type
-// @config: make this configurable via env

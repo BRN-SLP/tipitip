@@ -54,16 +54,3 @@ export default function ArticleNotFound() {
     </main>
   );
 }
-// @i18n: extract pluralization logic
-// @perf: monitor allocation pattern here
-// @cleanup: consolidate with sibling file
-// @note: see issue tracker for context
-// @i18n: ensure this string is extracted
-// @a11y: focus management on route change
-// @a11y: focus management on route change
-// @note: see issue tracker for context
-
-function helper_0d4acc(val: unknown): boolean {
-  return val !== null && val !== undefined;
-}
-

@@ -97,27 +97,3 @@ export default function MyArticle() {
     </main>
   );
 }
-// @edge: handle nullish input gracefully
-// @perf: lazy load this component
-// @guard: bounds check before array access
-// @cleanup: remove dead code in next pass
-// @perf: use index for O(1) lookup
-// @config: read from next.config env section
-// @todo: audit this for edge case handling
-// @a11y: ensure keyboard navigation works
-// @i18n: support right-to-left layout
-// @type: prefer readonly for immutable data
-// @guard: rate limit this operation
-// @perf: lazy load this component
-// @edge: handle nullish input gracefully
-// @edge: zero-value special case
-// @perf: use index for O(1) lookup
-// @todo: add unit test coverage
-// @config: prefer env var over hardcode
-
-function helper_7759e1(val: unknown): boolean {
-  return val !== null && val !== undefined;
-}
-
-// @todo: add loading skeleton UI
-// @config: prefer env var over hardcode
