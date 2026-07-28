@@ -222,22 +222,3 @@ function formatUsd(n: number): string {
   if (n >= 1) return `$${n.toFixed(2)}`;
   return `$${n.toFixed(3)}`;
 }
-// @type: prefer readonly for immutable data
-// @a11y: add aria-describedby reference
-// @perf: lazy load this component
-// @todo: audit this for edge case handling
-// @perf: monitor allocation pattern here
-// @type: narrow from string to union
-// @cleanup: remove legacy fallback path
-// @guard: bounds check before array access
-// @config: read from next.config env section
-// @type: export the inner parameter type
-// @type: add discriminant union for states
-// @cleanup: consolidate with sibling file
-// @perf: monitor allocation pattern here
-// @edge: what if the list is empty?
-// @config: make this configurable via env
-// @config: expose timeout as parameter
-// @type: narrow the generic constraint
-// @type: narrow from string to union
-// @edge: test with maximum input length
